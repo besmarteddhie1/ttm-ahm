@@ -1,0 +1,383 @@
+<div id="AHMJXUAM007" class="div-app" data-version="1.0">
+    <div class="global_message">
+
+    </div>
+    <div id="ahmjxuam007p01" class="subpage subpage-default" data-path="Maintain Menu Service">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group large-font">
+                    <label>Search</label>
+                    <div class="input-group">
+                        <input id="ahmjxuam007p01Search" type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary large-button default" type="button" 
+                                    onclick="$('#ahmjxuam007p01SearchTable').bootstrapTable('refresh');">Search</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <table id="ahmjxuam007p01TableDelete" 
+                       data-source-id="ahmjxuam007p01SearchTable" 
+                       data-unique-id="vid"
+                       data-pagination="true"
+                       data-page-size="5">
+                    <thead>
+                        <tr>
+                            <th data-field="vid" 
+                                data-sortable="true"
+                                data-visible="false"
+                                >ID Service</th>
+                            <th data-field="vusername" 
+                                data-sortable="true"
+                                >Service Name</th>
+                            <th data-field="vaction"
+                                data-formatter="actionRemoveFormatter"
+                                data-events="actionEvents">Action
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+        </div>
+        <div class="form-group-button">
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam007PrepareAdd(this);return false;">Add</button>
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam007DisableKonfirm(this);return false;">Delete</button>
+            <!--
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam007ResetKonfirm(this);return false;">Reset Password</button>
+            -->
+        </div>
+        <br/>
+        <div id="table-container">
+            <table 	id="ahmjxuam007p01SearchTable"
+                    data-method="post"
+                    data-url="/uam002/paging"
+                    data-content-type="application/json"
+                    data-data-type="json"
+                    data-query-params-type="limit"
+                    data-query-params="ahmjxuam007Presearch"
+                    data-response-handler="loadData"
+                    data-side-pagination="server"
+                    data-pagination="true"
+                    data-custom-action="edit"
+                    data-edit-func="ahmjxuam007PrepareEdit"
+                    data-checkbox-table="ahmjxuam007p01TableDelete"
+                    data-unique-id="vid"
+                    >
+                <thead>
+                    <tr>
+
+                        <th data-field="state" 
+                            data-checkbox="true"
+                            data-formatter="stateFormatter"></th>
+
+                        <th data-field="vid" 
+                            data-sortable="true"
+                            data-visible="false"
+                            >ID Service</th>
+                        <th data-field="vusername" 
+                            data-sortable="true"
+                            data-visible="true"
+                            >Service Name</th>
+                    </tr>
+                </thead>
+
+            </table>
+        </div>
+
+
+    </div>
+    <div id="ahmjxuam007p02" class="subpage" data-path="Maintain Menu Service/Add Menu Service">
+        <form class="form-horizontal">
+        <!--
+            <div class="form-group large-font">
+                <label for="ahmjxuam007p02VServiceName" class="col-sm-2 control-label">Service Name <span style="color:red">*)  </span></label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam007p02VServiceName" name="vservicename" class="form-control" maxlength="25">
+                </div>
+            </div>
+            -->
+            
+            <div class="form-group large-font">
+                <label for="ahmjxuam007p02IdMenu" class="col-sm-2 control-label">Menu <span style="color:red">*)  </span></label>
+                <div class="lookup-wrapper col-sm-6" >
+                    <div class="input-group lookup" 
+                         data-url="/uam002/lovdealer"
+                         data-lookup-pre-func="ahmjxuam007LookupDealer" 
+                         data-columns='[{"id":"vid","name":"vid","visible":"false","sortable":"false"},{"id":"vdealercode","name":"Kode Dealer","visible":"true","sortable":"true"}
+                         ,{"id":"vname","name":"Nama Dealer","visible":"true","sortable":"true"}]'
+                         data-callback='{"ahmjxuam007p02IdDealer":"vid","ahmjxuam007p02Dealer":"vdealercode"}'
+                         >
+                        <input id="ahmjxuam007p02IdMenu" name="ahmjxuam007p02IdDealer" type="hidden"/>
+                        <input id="ahmjxuam007p02Menu" name="ahmjxuam007p02Dealer" class="form-control input-lookup" placeholder="LOV Menu...." data-field-id="vid">
+                        <span class="input-group-btn">
+                            <button id="ahmjxuam007p02Menubtn" class="btn btn-default large-button btn-lookup" type="button">...</button>
+                        </span>
+                    </div>
+                </div>  
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam007p02IdService" class="col-sm-2 control-label">Service <span style="color:red">*)  </span></label>
+                <div class="lookup-wrapper col-sm-6" >
+                    <div class="input-group lookup" 
+                         data-url="/uam002/lovdealer"
+                         data-lookup-pre-func="ahmjxuam007LookupDealer" 
+                         data-columns='[{"id":"vid","name":"vid","visible":"false","sortable":"false"},{"id":"vdealercode","name":"Kode Dealer","visible":"true","sortable":"true"}
+                         ,{"id":"vname","name":"Nama Dealer","visible":"true","sortable":"true"}]'
+                         data-callback='{"ahmjxuam007p02IdDealer":"vid","ahmjxuam007p02Dealer":"vdealercode"}'
+                         >
+                        <input id="ahmjxuam007p02IdService" name="ahmjxuam007p02IdDealer" type="hidden"/>
+                        <input id="ahmjxuam007p02Service" name="ahmjxuam007p02Dealer" class="form-control input-lookup" placeholder="LOV Service...." data-field-id="vid">
+                        <span class="input-group-btn">
+                            <button id="ahmjxuam007p02Servicebtn" class="btn btn-default large-button btn-lookup" type="button">...</button>
+                        </span>
+                    </div>
+                </div>  
+            </div>
+            
+            
+            <div class="col-sm-offset-2 col-sm-10 form-group-button">
+                <button id="btnAddNew" class="btn btn-default btn-primary large-button" style="display: none" onclick="ahmjxuam007PrepareAdd(this);return false;">Add New</button>
+                <button  id="btnSubmit" class="btn btn-default btn-primary large-button" onclick="ahmjxuam007AddData(this);return false;">Submit</button>
+                <button id="btnReset" class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
+                <button  class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam007p01');$('#ahmjxuam007p01SearchTable').bootstrapTable('refresh');return false;">Back</button>
+            </div>
+        </form>
+    </div>
+    <div id="ahmjxuam007p03" class="subpage" data-path="Maintain Role Service/Edit Role Service">
+        <form class="form-horizontal">
+            <div class="form-group large-font">
+                <input type="hidden" name="iver" data-field="iver"/>
+
+                <div>
+                    <label for="ahmjxuam007p03Viduser" class="col-sm-2 control-label">Service ID</label>
+                    <div class="col-sm-6">
+                        <input id="ahmjxuam007p03Vidservice" name="vid" class="form-control" data-field="vid" disabled="disabled">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <div>
+                    <label for="ahmjxuam007p03Vservicename" class="col-sm-2 control-label">Service Name</label>
+                    <div class="col-sm-6">
+                        <input id="ahmjxuam007p03Vservicename" name="vservicename" class="form-control" data-field="vservicename" disabled="disabled">
+                    </div>
+                </div>
+            </div>
+            <!--
+            <div class="form-group large-font">
+                <label class="col-sm-2 control-label">Status</label>
+                <div class="col-sm-6">
+
+                    <label class="radio-inline">
+                        <input type="radio" name="vstat" value="AKTIF" data-field="vstat"> Aktif
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="vstat" value="TIDAK AKTIF" data-field="vstat"> Tidak Aktif
+                    </label>
+
+                </div>
+            </div>
+            -->
+
+
+            <div class="col-sm-offset-2 col-sm-6 form-group-button">
+                <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam007Update(this);return false;">Submit</button>
+                <button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam007p01');$('#ahmjxuam007p01SearchTable').bootstrapTable('refresh');return false;">Back</button>
+            </div>
+
+            <input id="ahmjxuam007p03Viduser" type="hidden" name="vid" data-field="vid"/>
+            <input id="ahmjxuam007p03Iver" type="hidden" name="iver" data-field="iver"/>
+
+        </form>
+
+    </div>
+
+
+    <div id="ahmjxuam007p04" class="subpage" data-path="Maintain Menu Service/Konfirmasi Delete Menu Service">
+        <table 	id="ahmjxuam007p04DisableTable">
+
+            <thead>
+                <tr>
+                    <th data-field="vid" 
+                        data-sortable="true"
+                        data-visible="false"
+                        >User ID</th>
+                    <th data-field="iver" 
+                        data-sortable="true"
+                        data-visible="false"
+                        >Iver</th>
+                    <th data-field="vusername" 
+                        data-sortable="true"
+                        >Username</th>
+                    <th data-field="vstat" 
+                        data-sortable="true" 
+                        >Status</th>
+                </tr>
+            </thead>
+
+        </table>
+        <br/>
+        <div class="form-group-button">
+            <button id="btnDisable" name="btnDisable" class="btn btn-default btn-primary large-button" onclick="ahmjxuam007DisableData(this); return false;">Delete</button>
+            <button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam007p01');return false;">Back</button>
+
+        </div>
+    </div>
+
+
+
+    <div id="ahmjxuam007p05" class="subpage" data-path="Maintain Role Serice/Konfirmasi Reset Password">
+        <table id="ahmjxuam007p05ResetTable">
+
+            <thead>
+                <tr>
+                    <th data-field="vid" 
+                        data-sortable="true"
+                        data-visible="false"
+                        >User ID</th>
+                    <th data-field="iver" 
+                        data-sortable="true"
+                        data-visible="false"
+                        >Iver</th>
+                    <th data-field="vusername" 
+                        data-sortable="true"
+                        >Username</th>
+                    <th data-field="vstat" 
+                        data-sortable="true" 
+                        >Status</th>
+                </tr>
+            </thead>
+
+        </table>
+        <br/>
+        <div class="form-group-button">
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam007ResetData(this);">Reset</button>
+            <button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam007p01');return false;">Back</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function stateFormatter(value, row, index) {
+        if (row.vstat === "TIDAK AKTIF") {
+            return {
+                disabled: true
+            };
+        }
+        return value;
+    }
+     
+    function ahmjxuam007LookupDealer(params){
+        params.search = {"any": $('#ahmjxuam007p02Dealer').val()};
+        if(params.sort == undefined){
+            return{
+                limit : params.limit,
+                offset : params.offset,
+                search : params.search
+            }
+        }
+        return params;
+    }
+    function ahmjxuam007Presearch(params){
+        params.search = {"any": $('#ahmjxuam007p01Search').val()};
+        if(params.sort == undefined){
+            return{
+                limit : params.limit,
+                offset : params.offset,
+                search : params.search
+            }
+        }
+        return params;
+    }
+    function ahmjxuam007PrepareAdd(obj){
+        var page = $('#ahmjxuam007p02');
+        $('input, select', page).prop('disabled',false);   
+        _fw_reset_subpage(page);
+        _fw_subpage(obj, 'ahmjxuam007p02');
+        $('button[id="btnAddNew"]', page).hide();
+        $('button[id="btnSubmit"]', page).show();
+        $('button[id="btnReset"]', page).show();
+        $('button[id="ahmjxuam007p02Dealerbtn"]',page).prop('disabled',false);
+        
+                             
+    }
+                            
+    function ahmjxuam007AddData(obj){
+        console.log("Add Data @ahmjxuam007")
+        
+    }
+        
+    function ahmjxuam007PrepareEdit(obj, row, index){
+        _fw_subpage(obj, 'ahmjxuam007p03', row);    
+    }
+    function ahmjxuam007Update(obj){
+        var page = $(obj).closest('.subpage');
+        _fw_validation_clear(obj);
+            
+        if(_fw_validation_validate(obj)){
+            var vo = new Object();
+            vo.vid = $('input[name="vid"]', page).val();
+            vo.iver = $('input[name="iver"]', page).val();
+            vo.vusername = $('input[name="vusername"]', page).val();
+            vo.vstat = $('input[name="vstat"]:checked', page).val();
+            _fw_post('/uam002/update', vo, function(data){
+                if(data.stat=="200"){
+                
+                    //_fw_subpage(obj, 'ahmdsh1c008p01');
+                    _fw_setMessage(obj, 1, data);
+                    var iver = parseInt(vo.iver)+1;
+                    $('input[name="iver"]', page).val(iver);
+                    $('#ahmjxuam007p01SearchTable').bootstrapTable('refresh');
+                } else {
+                    //_fw_setMessage(obj, 0, data);
+                    console.log('update-error');
+                    _fw_setMessage(obj, '0', data);
+                
+                }
+            });
+        }
+    }
+    function ahmjxuam007DisableKonfirm(obj){
+        var disabledRows = $('#ahmjxuam007p01TableDelete').bootstrapTable('getData');
+        if(disabledRows.length > 0) {
+            $('#ahmjxuam007p04DisableTable').bootstrapTable('destroy');
+            $('#ahmjxuam007p04DisableTable').bootstrapTable({data:disabledRows});
+        
+            _fw_subpage(obj, 'ahmjxuam007p04');
+        } else {
+            alert('No data selected');
+        }
+    }
+    function ahmjxuam007DisableData(obj){
+        console.log("Delete @ahmjxuam007");
+    }
+    
+    function ahmjxuam007ResetData(obj){
+        var disabledRows = $('#ahmjxuam007p05ResetTable').bootstrapTable('getData');
+        var disabled = [];
+        var vid = [];
+        var listVo = [];
+        $.each(disabledRows, function(){
+            var row = this;            
+            disabled.push({'vid': row.vid});
+            //disabled.push({'vpassword':row.vpassword});
+            vid.push(row.vid);
+        });
+        console.log(disabled);
+        _fw_post('/uam002/reset', disabled, function(data){
+            if(data.stat=="200"){
+                $('#ahmjxuam007p01TableDelete').bootstrapTable('remove', {field: 'vid', values: vid});
+                $('#ahmjxuam007p01SearchTable').bootstrapTable('refresh');
+                _fw_subpage(obj,'ahmjxuam007p01');
+                _fw_setMessage(obj, 1, data);
+            } else {
+                _fw_setMessage(obj, 0, data);
+            }
+        });
+    }
+        
+            
+</script>
+

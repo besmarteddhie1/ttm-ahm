@@ -1,0 +1,324 @@
+<div id="AHMJXUAM005" class="div-app" data-version="1.0">
+    <div class="global_message">
+
+    </div>
+
+    <div id="ahmjxuam005p01" class="subpage subpage-default" data-path="Maintain User Role">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group large-font">
+                    <label>Search</label>
+                    <div class="input-group">
+                        <input id="ahmjxuam005p01Search" type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary large-button default" type="button" 
+                                    onclick="$('#ahmjxuam005p01SearchTable').bootstrapTable('refresh');">Search</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <table id="ahmjxuam005p01TableDelete" 
+                       data-source-id="ahmjxuam005p01TableUserRole" 
+                       data-unique-id="vid"
+                       data-pagination="true"
+                       data-page-size="5">
+                    <thead>
+                        <tr>
+                            <th data-field="vidAhmdsuamMstroles" 
+                                data-sortable="false" 
+                                data-visible="true"
+                                >ID Role</th>
+                            <th data-field="vusername"                            
+                                data-sortable="true"
+                                >User</th>
+                            <th data-field="vaction"
+                                data-formatter="actionRemoveFormatter"
+                                data-events="actionEvents">Action
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+
+        </div>
+
+        <div class="form-group-button">
+            <button id="ahmjxuam005BtnAdd" class="btn btn-default btn-primary large-button" onclick="ahmjxuam005PrepareAdd(this);">Add</button>
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam005DeleteKonfirm(this);return false;">Delete</button>
+        </div>
+        <br/>
+        <div id="table-container">
+
+            <table id="ahmjxuam005p01SearchTable"
+                   data-method="post"
+                   data-url="/uam005/paging"
+                   data-content-type="application/json"
+                   data-data-type="json"
+                   data-query-params-type="limit"
+                   data-query-params="ahmjxuam005Presearch"
+                   data-response-handler="loadData"
+                   data-side-pagination="server"
+                   data-pagination="true"
+                   data-page-size="5"
+                   data-page-list="[5,10,15]"
+                   data-unique-id="vid"
+                   data-checkbox-table="ahmjxuam005p01TableDelete"
+                   >
+                <thead>
+                    <tr>       
+                        <th data-field="state" 
+                            data-checkbox="true"></th>
+                        <th data-field="vid" 
+                            data-sortable="true"
+                            data-visible="false"
+                            >Kode</th>    
+                        <th data-field="vidAhmdsuamMstusers" 
+                            data-visible="false"
+                            >ID User</th>
+                        <th data-field="vusername"                            
+                            data-sortable="false"
+                            >User</th>
+                        <th data-field="vidAhmdsuamMstroles" 
+                            data-sortable="true" 
+                            data-visible="true"
+                            >ID Role</th>
+                        <th data-field="vrolesName" 
+                            data-sortable="false" 
+                            >Role</th>           
+                        <th data-field="vstatus" 
+                            data-sortable="false"
+                            data-visible="true"
+                            >Status</th> 
+                </thead>
+
+            </table>
+        </div>  
+    </div>
+
+    <div id="ahmjxuam005p02" class="subpage" data-path="Maintain User Role/Add Data User Role">    
+        <div >
+            <form class="form-horizontal">
+                <div class="form-group large-font">
+                    <label for="ahmdsuamNotifDuplicate" class="col-sm-2 control-label" id="ahmdsuamNotifDuplicate" style="display:none"><b><span style="color:red">Duplicate Data!</span></b></label>
+                </div>
+                <div class="form-group large-font">
+                    <label for="ahmjxuam005p02User" class="col-sm-2 control-label">User<span style="color:red">*)</span></label>
+                    <div class="lookup-wrapper col-sm-6" >
+                        <div class="input-group lookup" 
+                             data-url="/uam005/lovuser"
+                             data-lookup-pre-func="ahmjxuam005LookupUser" 
+                             data-columns='[{"id":"vid","name":"vid","visible":"true","sortable":"false"},{"id":"vusername","name":"User","visible":"true","sortable":"true"}]'
+                             data-callback='{"ahmjxuam005p02IdUser":"vid","ahmjxuam005p02User":"vusername"}'
+                             >
+                            <input id="ahmjxuam005p02IdUser" type="hidden"/>
+
+                            <input id="ahmjxuam005p02User" class="form-control input-lookup" placeholder="LOV...." >
+                            <span class="input-group-btn">
+                                <button class="btn btn-default large-button btn-lookup" type="button">LOV</button>
+                            </span>
+                        </div>
+                    </div>  
+                </div>
+                <div class="form-group large-font">
+                    <label for="ahmjxuam005p02Role" class="col-sm-2 control-label">Role <span style="color:red">*)</span></label>
+                    <div class="lookup-wrapper col-sm-6" >
+                        <div class="input-group lookup" 
+                             data-url="/uam005/lovrole"
+                             data-lookup-pre-func="ahmjxuam005LookupRole" 
+                             data-columns='[{"id":"vid","name":"vid","visible":"true","sortable":"false"},{"id":"vrolesName","name":"Role","visible":"true","sortable":"true"}]'
+                             data-callback='{"ahmjxuam005p02IdRole":"vid","ahmjxuam005p02Role":"vrolesName"}'
+                             >
+                            <input id="ahmjxuam005p02IdRole" type="hidden"/>
+                            <input id="ahmjxuam005p02Role" class="form-control input-lookup" placeholder="LOV...." >
+                            <span class="input-group-btn">
+                                <button class="btn btn-default large-button btn-lookup" type="button">LOV</button>
+                            </span>
+                        </div>
+                    </div>  
+                </div>
+
+                <div class="col-sm-offset-2 col-sm-10 form-group-button">
+                    <button id="ahmjxuam005p02BtnAddNew" class="btn btn-default btn-primary large-button" style="display: none" onclick="ahmjxuam005PrepareAdd(this);return false;">Add New</button>
+                    <button id="ahmjxuam005p02BtnSubmit" class="btn btn-default btn-primary large-button" onclick="ahmjxuam005AddData(this);return false;">Submit</button>
+                    <button id="ahmjxuam005p02BtnReset" class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
+                    <button id="ahmjxuam005p02BtnBack" class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam005p01');$('#ahmjxuam005p01TableUserRole').bootstrapTable('refresh');return false;">Back</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <div id="ahmjxuam005p04" class="subpage" data-path="Maintain User Role/Confirm Delete">
+        <table 	id="ahmjxuam005p04DeleteTable"
+                >
+            <thead>
+                <tr>
+                    <th data-field="vid" 
+                        data-sortable="false"
+                        data-visible="false"
+                        >Kode</th>    
+                    <th data-field="vusername"                            
+                        data-sortable="true"
+                        >User</th>
+                    <th data-field="vidAhmdsuamMstroles" 
+                        data-sortable="false" 
+                        data-visible="true"
+                        >ID Role</th>
+                    <th data-field="vrolesName" 
+                        data-sortable="true" 
+                        >Role</th>
+                </tr>
+            </thead>
+
+        </table>
+        <br/>
+        <div class="form-group-button">
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam005DeleteData(this); return false;">Delete</button>
+            <button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam005p01'); return false;">Back</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    
+    function ahmjxuam005LookupUser(params){
+        params.search = {"any": $('#ahmjxuam005p02User').val()};
+        if(params.sort == undefined){
+            return{
+                limit : params.limit,
+                offset : params.offset,
+                search : params.search
+            }
+        }
+        return params;
+    }
+    
+    
+    function ahmjxuam005LookupRole(params){
+        params.search = {"any": $('#ahmjxuam005p02Role').val()};
+        if(params.sort == undefined){
+            return{
+                limit : params.limit,
+                offset : params.offset,
+                search : params.search
+            }
+        }
+        return params;
+    }
+    
+    function ahmjxuam005Presearch(params){
+        params.search = {"any": $('#ahmjxuam005p01Search').val()};
+        if(params.sort == undefined){
+            return{
+                limit : params.limit,
+                offset : params.offset,
+                search : params.search
+            }
+        }
+        return params;
+    }
+
+    function ahmjxuam005PrepareAdd(obj){
+        $('#ahmjxuam005p02User,#ahmjxuam005p02Role').prop('disabled',false);    
+        $('#ahmjxuam005p02BtnAddNew').css('display','none'); 
+        $('#ahmjxuam005p02BtnSubmit,#ahmjxuam005p02BtnReset').css('display','');     
+        _fw_reset_subpage($('#ahmjxuam005p02'));
+        _fw_subpage(obj, 'ahmjxuam005p02');
+    }
+ 
+    function ahmjxuam005DeleteKonfirm(obj){
+        var deletedRows = $('#ahmjxuam005p01TableDelete').bootstrapTable('getData');
+        if(deletedRows.length > 0) {
+            $('#ahmjxuam005p04DeleteTable').bootstrapTable('destroy');
+            $('#ahmjxuam005p04DeleteTable').bootstrapTable({data:deletedRows});
+        
+            _fw_subpage(obj, 'ahmjxuam005p04');
+        } else {
+            alert('no rows selected');
+        }
+    }
+    function ahmjxuam005DeleteData(obj){
+        var deletedRows = $('#ahmjxuam005p04DeleteTable').bootstrapTable('getData')
+        ,deletedID = [],vidVal = [],row;
+        $.each(deletedRows, function(){
+            row = this;
+            deletedID.push({'vid': row.vid});
+            vidVal.push(row.vid);
+        });
+        _fw_post('/uam005/delete', deletedID, function(data){
+            if(data.stat=="200"){
+                _fw_subpage(obj, 'ahmjxuam005p01');                
+                $('#ahmjxuam005p01TableUserRole').bootstrapTable('refresh');                
+                $('#ahmjxuam005p01TableDelete').bootstrapTable('remove', {field: 'vid', values: vidVal});                
+                _fw_setMessage(obj, 1, data);
+            } else {
+                _fw_setMessage(obj, 0, data);
+            }
+        });
+    }
+
+    function ahmjxuam005AddData(obj){
+        var page = $(obj).closest('.subpage');
+        _fw_validation_clear(obj);
+        _fw_validation_add(obj, 'ahmjxuam005p02User', 'required');
+        _fw_validation_add(obj, 'ahmjxuam005p02Role', 'required');
+        if(_fw_validation_validate(obj)){
+            var vo = new Object()
+            vo.vidAhmdsuamMstusers = $('#ahmjxuam005p02IdUser').val();
+            vo.vidAhmdsuamMstroles = $('#ahmjxuam005p02IdRole').val();
+            _fw_post('/uam005/insert', vo, function(data){
+                if(data.stat=="200"){
+                    ahmjxuam005AfterAddSuccess(obj,data);               
+                } else {
+                    _fw_setMessage(obj, 0, data);
+                    $('#ahmdsuamNotifDuplicate').css('display',''); 
+                }
+            });
+        
+        }
+    }
+
+    function ahmjxuam005AfterAddSuccess(obj,data){
+        $('#ahmjxuam005p02User').prop('disabled',true);
+        $('#ahmjxuam005p02Role').prop('disabled',true);        
+        $('#ahmjxuam005p02BtnAddNew').css('display',''); 
+        $('#ahmjxuam005p02BtnSubmit').css('display','none');     
+        $('#ahmjxuam005p02BtnReset').css('display','none');         
+        _fw_setMessage(obj, 1, data);   
+        
+    }
+
+    function ahmjxuam005Update(obj){
+        var page = $(obj).closest('.subpage');
+        _fw_validation_clear(obj);       
+        _fw_validation_add(obj, 'ahmjxuam005p03IdUser', 'required');
+        _fw_validation_add(obj, 'ahmjxuam005p03IdRole', 'required');        
+        if(_fw_validation_validate(obj)){
+            var vo = new Object();
+            vo.vid = $('#ahmjxuam005p03Vid').val();
+            vo.vidAhmdsuamMstusers = $('#ahmjxuam005p03IdUser').val(); 
+            vo.vidAhmdsuamMstroles = $('#ahmjxuam005p03IdRole').val();
+            vo.vstatus = $('option[name="vstatus"]:checked', page).val();
+            vo.iver = $('#ahmjxuam005p03Iver').val();
+            _fw_post('/uam005/update', vo, function(data){
+                if(data.stat=="200"){
+                    var iver = parseInt(vo.iver)+1;
+                    $('input[name="iver"]', page).val(iver);
+                    ahmjxuam005AfterUpdateSuccess(obj,data);
+                } else {
+                    _fw_setMessage(obj, 0, data);                   
+                }
+            });
+        }
+    }
+
+    function ahmjxuam005AfterUpdateSuccess(obj,data){    
+        _fw_setMessage(obj, 1, data);        
+    }
+    
+    
+</script>
+

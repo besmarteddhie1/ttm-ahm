@@ -1,0 +1,347 @@
+<div id="AHMJXUAM002" class="div-app" data-version="1.0">
+    <div class="global_message">
+
+    </div>
+    <div id="ahmjxuam002p01" class="subpage subpage-default" data-path="Maintain Roles">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group large-font">
+                    <label>Search</label>
+                    <div class="input-group">
+                        <input id="ahmjxuam002p01Search" type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary large-button" type="button" onclick="$('#ahmjxuam002p01SearchTable').bootstrapTable('refresh');">Search</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <table id="ahmjxuam002p01TableDisable" 
+                       data-source-id="ahmjxuam002p01SearchTable" 
+                       data-unique-id="vid"
+                       data-pagination="true"
+                       data-page-size="5">
+                    <thead>
+                        <tr>
+                            <th data-field="vrolesId" 
+                                data-sortable="true"
+                                data-visible="true"
+                                >ID Role</th>
+                            <th data-field="vrolesName" 
+                                data-sortable="true"
+                                >Nama Role</th>
+                            <th data-field="vaction"
+                                data-formatter="actionRemoveFormatter"
+                                data-events="actionEvents">Action
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+        </div>
+        <div class="form-group-button">
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam002Add(this);return false;">Add</button>
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam002DisableKonfirm(this);return false;">Disable</button>
+        </div>
+        <br/>
+        <div id="table-container">
+            <table 	id="ahmjxuam002p01SearchTable"
+                    data-method="post"
+                    data-url="/uam002/paging"
+                    data-content-type="application/json"
+                    data-data-type="json"
+                    data-query-params-type="limit"
+                    data-query-params="ahmjxuam002Presearch"
+                    data-response-handler="loadData"
+                    data-side-pagination="server"
+                    data-pagination="true"
+                    data-custom-action="edit"
+                    data-edit-func="ahmjxuam002Edit"
+                    data-checkbox-table="ahmjxuam002p01TableDisable"
+                    data-unique-id="vid"
+                    >
+                <thead>
+                    <tr>
+                        <th data-field="state" 
+                            data-checkbox="true"
+                            data-formatter="stateFormatter"></th>
+                        <th data-field="vid" 
+                            data-sortable="true"
+                            data-visible="false"
+                            >ID</th>
+                        <th data-field="iver" 
+                            data-sortable="true"
+                            data-visible="false"
+                            >Ver</th>
+                        <th data-field="vrolesId" 
+                            data-sortable="true"
+                            data-visible="true"
+                            >ID Role</th>
+                        <th data-field="vrolesName" 
+                            data-sortable="true"
+                            data-visible="true"
+                            >Nama Role</th>
+                        <th data-field="vrolesDesc" 
+                            data-sortable="true"
+                            >Deskripsi Role</th>
+                        <th data-field="vrolesStatus" 
+                            data-sortable="true"
+                            >Status Role</th>
+                    </tr>
+                </thead>
+
+            </table>
+        </div>
+
+
+    </div>
+    <div id="ahmjxuam002p02" class="subpage" data-path="Maintain Roles/Add Role">
+        <form class="form-horizontal">
+            <div class="form-group large-font">
+                <label for="ahmjxuam002p02VrolesId" class="col-sm-2 control-label">ID Role <span style="color:red">*)</span></label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam002p02VrolesId" name="vrolesId" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam002p02VrolesName" class="col-sm-2 control-label">Nama Role <span style="color:red">*)</span></label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam002p02VrolesName" name="vrolesName" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam002p02VrolesDesc" class="col-sm-2 control-label">Deskripsi Role </label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam002p02VrolesDesc" name="vrolesDesc" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-offset-2 col-sm-6 form-group-button">
+                <button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="ahmjxuam002AddNew(this);return false;" style="display: none">Add New</button>
+                <button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="ahmjxuam002AddData(this);return false;">Submit</button>
+                <button class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this)">Reset</button>
+                <button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam002p01');return false;">Back</button>
+            </div>
+        </form>
+    </div>
+    <div id="ahmjxuam002p03" class="subpage" data-path="Maintain Roles/Edit Role">
+        <form class="form-horizontal">
+            <input type="hidden" name="vid" data-field="vid"/>
+            <input type="hidden" name="iver" data-field="iver"/>
+            <div class="form-group large-font">
+                <label for="ahmjxuam002p03VrolesId" class="col-sm-2 control-label">ID Role</label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam002p03VrolesId" name="vrolesId" class="form-control" data-field="vrolesId" disabled="disabled">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam002p03VrolesName" class="col-sm-2 control-label">Nama Role <span style="color:red">*)</span></label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam002p03VrolesName" name="vrolesName" class="form-control" data-field="vrolesName">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam002p03VrolesDesc" class="col-sm-2 control-label">Deskripsi Role </label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam002p03VrolesDesc" name="vrolesDesc" class="form-control" data-field="vrolesDesc">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label class="col-sm-2 control-label">Status</label>
+                <div class="col-sm-6">
+
+                    <label class="radio-inline">
+                        <input type="radio" name="vrolesStatus" value="AKTIF" data-field="vrolesStatus"> Aktif
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="vrolesStatus" value="TIDAK AKTIF" data-field="vrolesStatus"> Tidak Aktif
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="col-sm-offset-2 col-sm-6 form-group-button">
+                <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam002Update(this);return false;">Submit</button>
+                <button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam002p01');return false;">Back</button>
+            </div>
+
+        </form>
+
+    </div>
+    <div id="ahmjxuam002p04" class="subpage" data-path="Maintain Roles/Konfirmasi Disable">
+        <table 	id="ahmjxuam002p04DisableTable"
+                >
+            <thead>
+                <tr>
+                    <th data-field="vid" 
+                        data-sortable="true"
+                        data-visible="false"
+                        >ID</th>
+                    <th data-field="iver" 
+                        data-sortable="true"
+                        data-visible="false"
+                        >Ver</th>
+
+                    <th data-field="vrolesId" 
+                        data-sortable="true"
+                        data-visible="true"
+                        >ID Role</th>
+                    <th data-field="vrolesName" 
+                        data-sortable="true"
+                        >Nama Role</th>
+                    <th data-field="vrolesDesc" 
+                        data-sortable="true" 
+                        >Deskripsi Role</th>
+                </tr>
+            </thead>
+
+        </table>
+        <br/>
+        <div class="form-group-button">
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam002DisableData(this)">Disable</button>
+            <button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam002p01'); return false;">Back</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    
+    function stateFormatter(value, row, index) {
+        if (row.vrolesStatus === "TIDAK AKTIF") {
+            return {
+                disabled: true
+            };
+        }
+        /*  if (row.vrolesStatus === "TIDAK AKTIF") {
+            return {
+                disabled: true,
+                checked: true
+            }
+        }*/
+        return value;
+    }
+    
+    function ahmjxuam002Presearch(params){
+        params.search = {"any": $('#ahmjxuam002p01Search').val()};
+        if(params.sort == undefined){
+            return{
+                limit : params.limit,
+                offset : params.offset,
+                search : params.search
+            }
+        }
+        return params;
+    }
+    function ahmjxuam002Add(obj){
+        var page = $('#ahmjxuam002p02');
+        $('input, select', page).prop('disabled',false);
+        _fw_reset_subpage(page);
+        _fw_subpage(obj, 'ahmjxuam002p02');
+        $('button[name="btnAddNew"]', page).hide();
+        $('button[name="btnSubmit"]', page).show();
+    }
+    function ahmjxuam002Edit(obj, row, index){
+        _fw_subpage(obj, 'ahmjxuam002p03', row);
+    }
+    
+    function ahmjxuam002DisableKonfirm(obj){
+        var disabledRows = $('#ahmjxuam002p01TableDisable').bootstrapTable('getData');
+        if(disabledRows.length > 0) {
+            $('#ahmjxuam002p04DisableTable').bootstrapTable('destroy');
+            $('#ahmjxuam002p04DisableTable').bootstrapTable({data:disabledRows});
+        
+            _fw_subpage(obj, 'ahmjxuam002p04');
+        } else {
+            alert('no data selected');
+        }
+    }
+    
+    function ahmjxuam002DisableData(obj){
+        var disabledRows = $('#ahmjxuam002p04DisableTable').bootstrapTable('getData');
+        var disabled = [];
+        var vid = [];
+        var listVo = [];
+        $.each(disabledRows, function(){
+            var row = this;
+            
+            disabled.push({'vid': row.vid});
+            vid.push(row.vid);
+        });
+        _fw_post('/uam002/disable', disabled, function(data){
+            if(data.stat=="200"){
+                _fw_setMessage(obj, 1, data);
+                $('#ahmjxuam002p01TableDisable').bootstrapTable('remove', {field: 'vid', values: vid});
+                $('#ahmjxuam002p01SearchTable').bootstrapTable('refresh');
+            } else {
+                _fw_setMessage(obj, 0, data);
+            }
+        });
+    }
+    function ahmjxuam002AddData(obj){
+        var page = $(obj).closest('.subpage');
+        _fw_validation_clear(obj);
+        _fw_validation_add(obj, 'ahmjxuam002p02VrolesId', 'required');
+        _fw_validation_add(obj, 'ahmjxuam002p02VrolesName', 'required');
+        _fw_validation_add(obj, 'ahmjxuam002p02VrolesDesc', 'required');
+        if(_fw_validation_validate(obj)){
+            var vo = new Object();
+            vo.vrolesId = $('input[name="vrolesId"]', page).val();
+            vo.vrolesName = $('input[name="vrolesName"]', page).val();
+            vo.vrolesDesc = $('input[name="vrolesDesc"]', page).val();
+        
+            _fw_post('/uam002/insert', vo, function(data){
+                if(data.stat=="200"){
+                    //_fw_subpage(obj, 'ahmdsh1c008p01');
+                    $('input, select', page).prop('disabled',true);
+                    $('button[name="btnAddNew"]', page).show();
+                    $('button[name="btnSubmit"]', page).hide();
+                    _fw_setMessage(obj, 1, data);
+                    $('#ahmjxuam002p01SearchTable').bootstrapTable('refresh');
+                } else {
+                    _fw_setMessage(obj, 0, data);
+                }
+            });
+        }
+    }
+
+    function ahmjxuam002AddNew(obj){
+        _fw_validation_clear(obj);
+        var page = $(obj).closest('.subpage');
+        $('input, select', page).prop('disabled',false);
+        _fw_reset_subpage(obj);
+        $('button[name="btnAddNew"]', page).hide();
+        $('button[name="btnSubmit"]', page).show();
+    }
+
+    function ahmjxuam002Update(obj){
+        var page = $(obj).closest('.subpage');
+        _fw_validation_clear(obj);
+        _fw_validation_add(obj, 'ahmjxuam002p03VrolesName', 'required');
+        _fw_validation_add(obj, 'ahmjxuam002p03VrolesDesc', 'text area');
+        if(_fw_validation_validate(obj)){
+            var vo = new Object();
+            vo.vid = $('input[name="vid"]', page).val();
+            vo.iver = $('input[name="iver"]', page).val();
+            vo.vrolesId = $('input[name="vrolesId"]', page).val();
+            vo.vrolesName = $('input[name="vrolesName"]', page).val();
+            vo.vrolesDesc = $('input[name="vrolesDesc"]', page).val();
+            vo.vrolesStatus = $('input[name="vrolesStatus"]:checked', page).val();
+            _fw_post('/uam002/update', vo, function(data){
+                if(data.stat=="200"){
+                
+                    //_fw_subpage(obj, 'ahmdsh1c008p01');
+                    _fw_setMessage(obj, 1, data);
+                    var iver = parseInt(vo.iver)+1;
+                    $('input[name="iver"]', page).val(iver);
+                    $('#ahmjxuam002p01SearchTable').bootstrapTable('refresh');
+                } else {
+                    //_fw_setMessage(obj, 0, data);
+                    console.log('update-error');
+                    _fw_setMessage(obj, '0', data);
+                
+                }
+            });
+        }
+    }
+
+</script>

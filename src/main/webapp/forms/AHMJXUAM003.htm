@@ -1,0 +1,382 @@
+<div id="AHMJXUAM003" class="div-app" data-version="1.0">
+    <div class="global_message">
+
+    </div>
+    <div id="ahmjxuam003p01" class="subpage subpage-default" data-path="Maintain Services">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group large-font">
+                    <label>Search</label>
+                    <div class="input-group">
+                        <input id="ahmjxuam003p01Search" type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary large-button default" type="button" 
+                                    onclick="$('#ahmjxuam003p01SearchTable').bootstrapTable('refresh');">Search</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <table id="ahmjxuam003p01TableDisable" 
+                       data-source-id="ahmjxuam003p01SearchTable" 
+                       data-unique-id="vid"
+                       data-pagination="true"
+                       data-page-size="5">
+                    <thead>
+                        <tr>
+                            <!-- <th data-field="vrolesId" 
+                                data-sortable="true"
+                                data-visible="true"
+                                >ID Service</th> -->
+                            <th data-field="vrolesName" 
+                                data-sortable="true"
+                                >Nama Service</th>
+                            <th data-field="vrolesName" 
+                                data-sortable="true"
+                                >URL Service</th>
+                            <th data-field="vrolesName" 
+                                data-sortable="true"
+                                >Application</th>
+                            <th data-field="vaction"
+                                data-formatter="actionRemoveFormatter"
+                                data-events="actionEvents">Action
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+        </div>
+        <div class="form-group-button">
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam003Add(this);return false;">Add</button>
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam003DisableKonfirm(this);return false;">Disable</button>
+        </div>
+        <br/>
+        <div id="table-container">
+            <table 	id="ahmjxuam003p01SearchTable"
+                    data-method="post"
+                    data-url="/uam003/paging"
+                    data-content-type="application/json"
+                    data-data-type="json"
+                    data-query-params-type="limit"
+                    data-query-params="ahmjxuam003Presearch"
+                    data-response-handler="loadData"
+                    data-side-pagination="server"
+                    data-pagination="true"
+                    data-custom-action="edit"
+                    data-edit-func="ahmjxuam003Edit"
+                    data-checkbox-table="ahmjxuam003p01TableDisable"
+                    data-unique-id="vid"
+                    >
+                <thead>
+                    <tr>
+                        <th data-field="state" 
+                            data-checkbox="true"
+                            data-formatter="stateFormatter"></th>
+                        <th data-field="vid" 
+                            data-sortable="true"
+                            data-visible="false"
+                            >ID</th>
+                        <th data-field="iver" 
+                            data-sortable="true"
+                            data-visible="false"
+                            >Ver</th>
+                        <!-- <th data-field="vrolesId" 
+                            data-sortable="true"
+                            data-visible="true"
+                            >ID Service</th> -->
+                        <th data-field="vrolesName" 
+                            data-sortable="true"
+                            data-visible="true"
+                            >Nama Service</th>
+                        <th data-field="vrolesName" 
+                            data-sortable="true"
+                            data-visible="true"
+                            >URL Service</th>
+                        <th data-field="vrolesDesc" 
+                            data-sortable="true"
+                            >Deskripsi Service</th>
+                        <th data-field="vrolesName" 
+                            data-sortable="true"
+                            data-visible="true"
+                            >Application</th>
+                        <th data-field="vrolesStatus" 
+                            data-sortable="true"
+                            >Status Service</th>
+                    </tr>
+                </thead>
+
+            </table>
+        </div>
+
+
+    </div>
+    <div id="ahmjxuam003p02" class="subpage" data-path="Maintain Services/Add Service">
+        <form class="form-horizontal">
+            <!-- <div class="form-group large-font">
+                <label for="ahmjxuam003p02VrolesId" class="col-sm-2 control-label">ID Service <span style="color:red">*)</span></label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam003p02VrolesId" name="vrolesId" class="form-control">
+                </div>
+            </div> -->
+            <div class="form-group large-font">
+                <label for="ahmjxuam003p02VrolesName" class="col-sm-2 control-label">Nama Service <span style="color:red">*)</span></label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam003p02VrolesName" name="vrolesName" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam003p02VrolesName" class="col-sm-2 control-label">URL Service <span style="color:red">*)</span></label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam003p02VrolesName" name="vrolesName" class="form-control">
+                </div>
+            </div>
+            
+            <div class="form-group large-font">
+                <label for="ahmjxuam003p02VrolesDesc" class="col-sm-2 control-label">Deskripsi Service </label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam003p02VrolesDesc" name="vrolesDesc" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-offset-2 col-sm-6 form-group-button">
+                <button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="ahmjxuam003AddNew(this);return false;" style="display: none">Add New</button>
+                <button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="ahmjxuam003AddData(this);return false;">Submit</button>
+                <button class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this)">Reset</button>
+                <button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam003p01');return false;">Back</button>
+            </div>
+        </form>
+    </div>
+    <div id="ahmjxuam003p03" class="subpage" data-path="Maintain Services/Edit Service">
+        <form class="form-horizontal">
+            <input type="hidden" name="vid" data-field="vid"/>
+            <input type="hidden" name="iver" data-field="iver"/>
+            <!-- <div class="form-group large-font">
+                <label for="ahmjxuam003p03VrolesId" class="col-sm-2 control-label">ID Service</label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam003p03VrolesId" name="vrolesId" class="form-control" data-field="vrolesId" disabled="disabled">
+                </div>
+            </div> -->
+            <div class="form-group large-font">
+                <label for="ahmjxuam003p03VrolesName" class="col-sm-2 control-label">Nama Service <span style="color:red">*)</span></label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam003p03VrolesName" name="vrolesName" class="form-control" data-field="vrolesName">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam003p02VrolesName" class="col-sm-2 control-label">URL Service <span style="color:red">*)</span></label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam003p02VrolesName" name="vrolesName" class="form-control">
+                </div>
+            </div>
+            
+            <div class="form-group large-font">
+                <label for="ahmjxuam003p03VrolesDesc" class="col-sm-2 control-label">Deskripsi Service </label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam003p03VrolesDesc" name="vrolesDesc" class="form-control" data-field="vrolesDesc">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label class="col-sm-2 control-label">Status</label>
+                <div class="col-sm-6">
+
+                    <label class="radio-inline">
+                        <input type="radio" name="vrolesStatus" value="AKTIF" data-field="vrolesStatus"> Aktif
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="vrolesStatus" value="TIDAK AKTIF" data-field="vrolesStatus"> Tidak Aktif
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="col-sm-offset-2 col-sm-6 form-group-button">
+                <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam003Update(this);return false;">Submit</button>
+                <button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam003p01');return false;">Back</button>
+            </div>
+
+        </form>
+
+    </div>
+    <div id="ahmjxuam003p04" class="subpage" data-path="Maintain Services/Konfirmasi Disable">
+        <table 	id="ahmjxuam003p04DisableTable"
+                >
+            <thead>
+                <tr>
+                    <th data-field="vid" 
+                        data-sortable="true"
+                        data-visible="false"
+                        >ID</th>
+                    <th data-field="iver" 
+                        data-sortable="true"
+                        data-visible="false"
+                        >Ver</th>
+
+                    <!-- <th data-field="vrolesId" 
+                        data-sortable="true"
+                        data-visible="true"
+                        >ID Service</th> -->
+                    <th data-field="vrolesName" 
+                        data-sortable="true"
+                        >Nama Service</th>
+                    <th data-field="vrolesName" 
+                        data-sortable="true"
+                        >URL Service</th>
+                    <th data-field="vrolesName" 
+                        data-sortable="true"
+                        >Application</th>
+                    <th data-field="vrolesDesc" 
+                        data-sortable="true" 
+                        >Deskripsi Service</th>
+                </tr>
+            </thead>
+
+        </table>
+        <br/>
+        <div class="form-group-button">
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam003DisableData(this)">Disable</button>
+            <button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam003p01'); return false;">Back</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    
+    function stateFormatter(value, row, index) {
+        if (row.vrolesStatus === "TIDAK AKTIF") {
+            return {
+                disabled: true
+            };
+        }
+        /*  if (row.vrolesStatus === "TIDAK AKTIF") {
+            return {
+                disabled: true,
+                checked: true
+            }
+        }*/
+        return value;
+    }
+    
+    function ahmjxuam003Presearch(params){
+        params.search = {"any": $('#ahmjxuam003p01Search').val()};
+        if(params.sort == undefined){
+            return{
+                limit : params.limit,
+                offset : params.offset,
+                search : params.search
+            }
+        }
+        return params;
+    }
+    function ahmjxuam003Add(obj){
+        var page = $('#ahmjxuam003p02');
+        $('input, select', page).prop('disabled',false);
+        _fw_reset_subpage(page);
+        _fw_subpage(obj, 'ahmjxuam003p02');
+        $('button[name="btnAddNew"]', page).hide();
+        $('button[name="btnSubmit"]', page).show();
+    }
+    function ahmjxuam003Edit(obj, row, index){
+        _fw_subpage(obj, 'ahmjxuam003p03', row);
+    }
+    
+    function ahmjxuam003DisableKonfirm(obj){
+        var disabledRows = $('#ahmjxuam003p01TableDisable').bootstrapTable('getData');
+        if(disabledRows.length > 0) {
+            $('#ahmjxuam003p04DisableTable').bootstrapTable('destroy');
+            $('#ahmjxuam003p04DisableTable').bootstrapTable({data:disabledRows});
+        
+            _fw_subpage(obj, 'ahmjxuam003p04');
+        } else {
+            alert('no data selected');
+        }
+    }
+    
+    function ahmjxuam003DisableData(obj){
+        var disabledRows = $('#ahmjxuam003p04DisableTable').bootstrapTable('getData');
+        var disabled = [];
+        var vid = [];
+        var listVo = [];
+        $.each(disabledRows, function(){
+            var row = this;
+            
+            disabled.push({'vid': row.vid});
+            vid.push(row.vid);
+        });
+        _fw_post('/uam003/disable', disabled, function(data){
+            if(data.stat=="200"){
+                _fw_setMessage(obj, 1, data);
+                $('#ahmjxuam003p01TableDisable').bootstrapTable('remove', {field: 'vid', values: vid});
+                $('#ahmjxuam003p01SearchTable').bootstrapTable('refresh');
+            } else {
+                _fw_setMessage(obj, 0, data);
+            }
+        });
+    }
+    function ahmjxuam003AddData(obj){
+        var page = $(obj).closest('.subpage');
+        _fw_validation_clear(obj);
+        _fw_validation_add(obj, 'ahmjxuam003p02VrolesId', 'required');
+        _fw_validation_add(obj, 'ahmjxuam003p02VrolesName', 'required');
+        _fw_validation_add(obj, 'ahmjxuam003p02VrolesDesc', 'required');
+        if(_fw_validation_validate(obj)){
+            var vo = new Object();
+            vo.vrolesId = $('input[name="vrolesId"]', page).val();
+            vo.vrolesName = $('input[name="vrolesName"]', page).val();
+            vo.vrolesDesc = $('input[name="vrolesDesc"]', page).val();
+        
+            _fw_post('/uam003/insert', vo, function(data){
+                if(data.stat=="200"){
+                    //_fw_subpage(obj, 'ahmdsh1c008p01');
+                    $('input, select', page).prop('disabled',true);
+                    $('button[name="btnAddNew"]', page).show();
+                    $('button[name="btnSubmit"]', page).hide();
+                    _fw_setMessage(obj, 1, data);
+                    $('#ahmjxuam003p01SearchTable').bootstrapTable('refresh');
+                } else {
+                    _fw_setMessage(obj, 0, data);
+                }
+            });
+        }
+    }
+
+    function ahmjxuam003AddNew(obj){
+        _fw_validation_clear(obj);
+        var page = $(obj).closest('.subpage');
+        $('input, select', page).prop('disabled',false);
+        _fw_reset_subpage(obj);
+        $('button[name="btnAddNew"]', page).hide();
+        $('button[name="btnSubmit"]', page).show();
+    }
+
+    function ahmjxuam003Update(obj){
+        var page = $(obj).closest('.subpage');
+        _fw_validation_clear(obj);
+        _fw_validation_add(obj, 'ahmjxuam003p03VrolesName', 'required');
+        _fw_validation_add(obj, 'ahmjxuam003p03VrolesDesc', 'text area');
+        if(_fw_validation_validate(obj)){
+            var vo = new Object();
+            vo.vid = $('input[name="vid"]', page).val();
+            vo.iver = $('input[name="iver"]', page).val();
+            vo.vrolesId = $('input[name="vrolesId"]', page).val();
+            vo.vrolesName = $('input[name="vrolesName"]', page).val();
+            vo.vrolesDesc = $('input[name="vrolesDesc"]', page).val();
+            vo.vrolesStatus = $('input[name="vrolesStatus"]:checked', page).val();
+            _fw_post('/uam003/update', vo, function(data){
+                if(data.stat=="200"){
+                
+                    //_fw_subpage(obj, 'ahmdsh1c008p01');
+                    _fw_setMessage(obj, 1, data);
+                    var iver = parseInt(vo.iver)+1;
+                    $('input[name="iver"]', page).val(iver);
+                    $('#ahmjxuam003p01SearchTable').bootstrapTable('refresh');
+                } else {
+                    //_fw_setMessage(obj, 0, data);
+                    console.log('update-error');
+                    _fw_setMessage(obj, '0', data);
+                
+                }
+            });
+        }
+    }
+
+</script>

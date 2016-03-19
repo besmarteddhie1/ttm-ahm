@@ -1,0 +1,547 @@
+<div id="AHMJXUAM004" class="div-app" data-version="1.0">
+    <div class="global_message">
+
+    </div>
+    <div id="ahmjxuam004p01" class="subpage subpage-default" data-path="Maintain Menus">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group large-font">
+                    <label>Search</label>
+                    <div class="input-group">
+                        <input id="ahmjxuam004p01Search" type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary large-button" type="button" onclick="$('#ahmjxuam004p01SearchTable').bootstrapTable('refresh');">Search</button>
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <table id="ahmjxuam004p01TableDelete" 
+                       data-source-id="ahmjxuam004p01SearchTable"
+                       data-unique-id="vid"
+                       data-pagination="true"
+                       data-page-size="5">
+                    <thead>
+                        <tr>
+                            <th data-field="vapplicationId" 
+                                data-sortable="true"
+                                data-visible="true"
+                                >Application ID</th>
+                            <th data-field="vmenuId" 
+                                data-sortable="true"
+                                data-visible="true"
+                                >Menu ID</th>
+                            <th data-field="vtitle" 
+                                data-sortable="true"
+                                data-visible="true"
+                                >Title</th>
+                            <th data-field="vurl" 
+                                data-sortable="true"
+                                data-visible="true"
+                                >URL</th>
+                            <th data-field="vparent" 
+                                data-sortable="true"
+                                data-visible="true"
+                                >Parent</th>
+                            <th data-field="vaction"
+                                data-formatter="actionRemoveFormatter"
+                                data-events="actionEvents">Action
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group-button">
+                    <button id="ahmjxuam004BtnAdd" class="btn btn-primary large-button" onclick="ahmjxuam004PrepareAdd(this); return false;">Add New</button>
+                    <button id="ahmjxuam004BtnDisable" class="btn btn-primary large-button" onclick="ahmjxuam004PrepareDisable(this); return false;">Disable</button>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div id="table-container">
+            <table id="ahmjxuam004p01SearchTable"
+                   data-method="post"
+                   data-url="/uam004/paging"
+                   data-content-type="application/json"
+                   data-data-type="json"
+                   data-query-params-type="limit"
+                   data-query-params="ahmjxuam004Presearch"
+                   data-response-handler="loadData"
+                   data-side-pagination="server"
+                   data-pagination="true"
+                   data-custom-action="edit"
+                   data-edit-func="ahmjxuam004PrepareEdit"
+                   data-checkbox-table="ahmjxuam004p01TableDelete"
+                   data-unique-id="vid"
+                   >
+                <thead>
+                    <tr>
+                        <th data-field="state" 
+                            data-checkbox="true"
+                            data-formatter="stateFormatter"></th>
+                        <th data-field="vid" 
+                            data-sortable="false"
+                            data-visible="false"
+                            >VID</th>
+                        <th data-field="vapplicationId" 
+                            data-sortable="true"
+                            data-visible="true"
+                            >Application ID</th>
+                        <th data-field="vmenuId" 
+                            data-sortable="true"
+                            data-visible="true"
+                            >Menu ID</th>
+                        <th data-field="vtitle" 
+                            data-sortable="true"
+                            data-visible="true"
+                            >Title Menu</th>
+                        <th data-field="vurl" 
+                            data-sortable="true"
+                            data-visible="true"
+                            >URL</th>
+                        <th data-field="vidparent"
+                            data-visible="false"
+                            >VID Parent</th>
+                        <th data-field="vparent" 
+                            data-sortable="true"
+                            data-visible="true"
+                            >Parent</th>
+                        <th data-field="vicon"
+                            data-sortable="false"
+                            data-visible="true"
+                            >Icon</th>
+                        <th data-field="vstat"
+                            data-visible="true"
+                            >Status</th>
+                        <th data-field="iver" 
+                            data-sortable="false"
+                            data-visible="false"
+                            >IVER</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div id="ahmjxuam004p02" class="subpage" data-path="Maintain Menus/Add Menu">
+        <form class="form-horizontal">
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02ApplicationId" class="col-sm-2 control-label" >Application ID<span style="color:red"> *)  </span></label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p02ApplicationId" name="vapplicationId" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02MenuId" class="col-sm-2 control-label">Menu ID<span style="color:red"> *)  </span></label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p02MenuId" name="vmenuId" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02Title" class="col-sm-2 control-label">Title<span style="color:red"> *)  </span></label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p02Title" name="vtitle" class="form-control" maxlength="36">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02Url" class="col-sm-2 control-label">URL </label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p02Url" name="vurl" class="form-control" maxlength="128">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02Parent" class="col-sm-2 control-label">Parent </label>
+                <div class="lookup-wrapper col-sm-6" >
+                    <div class="input-group lookup" 
+                         data-url="/uam004/getLovParent"
+                         data-lookup-pre-func="ahmjxuam004LookupParent" 
+                         data-columns='[{"id":"vid","name":"VID","visible":"false","sortable":"true"},
+                         {"id":"vapplicationId","name":"Application ID","visible":"true","sortable":"true"},
+                         {"id":"vtitle","name":"Parent","visible":"true","sortable":"true"}]'
+                         data-callback='{"ahmjxuam004p02IdParent":"vid","ahmjxuam004p02Parent":"vtitle"}'
+                         >
+                        <input id="ahmjxuam004p02IdParent" name="vidparent2" type="hidden" data-field="vid"/>
+                        <input id="ahmjxuam004p02Parent" name="vparent" class="form-control input-lookup" placeholder="LOV...." data-field-id="vid">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default large-button btn-lookup" type="button">...</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02Iconadd" class="col-sm-2 control-label">Icon </label>
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <input id="ahmjxuam004p02Iconadd" name="vicon" type="text" class="form-control always-disabled" disabled>
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary large-button" type="button" onclick="ahmjxuam004PageIcon(this, 'add')" style="width: 45px!important;min-width: 45px!important;">
+                                <span class="glyphicon glyphicon-new-window" style="color: white;"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02Previewadd" class="col-sm-2 control-label">  </label>
+                <div class="col-sm-6">
+                    <div class="icon-apps preview">
+                        <span id="ahmjxuam004Previewadd" style="color: white;"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-offset-2 col-sm-6 form-group-button">
+                <button id="ahmjxuam004p02BtnAddNew" class="btn btn-primary large-button" style="display: none" onclick="ahmjxuam004AddNew(this);return false;">Add New</button>
+                <button id="ahmjxuam004p02BtnSubmit" class="btn btn-primary large-button" onclick="ahmjxuam004AddData(this); return false;">Submit</button>
+                <button id="ahmjxuam004p02BtnBack" class="btn btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam004p01');return false;">Back</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="ahmjxuam004p03" class="subpage" data-path="Maintain Menus/Edit Menu">
+        <form class="form-horizontal">
+            <input id="ahmjxuam004p03Vid" type="hidden" name="vid" data-field="vid"/>
+            <input id="ahmjxuam004p03Viver" type="hidden" name="iver" data-field="iver"/>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p03VApplicationId" class="col-sm-2 control-label">Application ID</label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p03VApplicationId" name="vapplicationId" class="form-control" data-field="vapplicationId" disabled="disabled">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmduam004p03VMenuId" class="col-sm-2 control-label">Menu ID</label>
+                <div class="col-sm-6">
+                    <input id="ahmduam004p03VMenuId" name="vmenuId" class="form-control" data-field="vmenuId" disabled="disabled">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p03VTitle" class="col-sm-2 control-label">Title</label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p03VTitle" name="vtitle" class="form-control" data-field="vtitle" maxlength="24">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p03VUrl" class="col-sm-2 control-label">URL</label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p03VUrl" name="vurl" class="form-control" data-field="vurl" maxlength="128">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p03VParent" class="col-sm-2 control-label">Parent</label>
+                <div class="lookup-wrapper col-sm-6" >
+                    <div class="input-group lookup" 
+                         data-url="/uam004/getLovParent"
+                         data-lookup-pre-func="ahmjxuam004p03LookupParent" 
+                         data-columns='[{"id":"vid","name":"VID","visible":"false","sortable":"true"},
+                         {"id":"vapplicationId","name":"Application ID","visible":"true","sortable":"true"},
+                         {"id":"vtitle","name":"Parent","visible":"true","sortable":"true"}]'
+                         data-callback='{"ahmjxuam004p03IdParent":"vid","ahmjxuam004p03Parent":"vtitle"}'
+                         >
+                        <input id="ahmjxuam004p03IdParent" name="vidparent" type="hidden" data-field="vidparent" data-field-id="vid"/>
+                        <input id="ahmjxuam004p03Parent" type="text" name="vparent" class="form-control input-lookup" placeholder="LOV...." data-field="vparent" data-field-id="vtitle">
+                        <span class="input-group-btn"> 
+                            <button class="btn btn-default large-button btn-lookup" type="button">...</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label class="col-sm-2 control-label">Status</label>
+                <div class="col-sm-6">
+
+                    <label class="radio-inline">
+                        <input type="radio" name="vstat" value="AKTIF" data-field="vstat"> Aktif
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="vstat" value="TIDAK AKTIF" data-field="vstat"> Tidak Aktif
+                    </label>
+
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02Iconedit" class="col-sm-2 control-label">Icon </label>
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <input id="ahmjxuam004p02Iconedit" name="vicon" type="text" class="form-control always-disabled" disabled data-field="vicon">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary large-button" type="button" onclick="ahmjxuam004PageIcon(this, 'edit')" style="width: 45px!important;min-width: 45px!important;">
+                                <span class="glyphicon glyphicon-new-window" style="color: white;"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02Previewedit" class="col-sm-2 control-label">  </label>
+                <div class="col-sm-6">
+                    <div class="icon-apps preview">
+                        <span id="ahmjxuam004Previewedit" style="color: white;"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-offset-2 col-sm-6 form-group-button">
+                <button id="ahmjxuamBtnSubmitUpdate" class="btn btn-default btn-primary large-button" onclick="ahmjxuam004Update(this);return false;">Submit</button>
+                <button class="btn btn-primary large-button" onclick="back(this);return false;">Back</button>
+            </div>
+        </form>
+    </div>
+    <div id="ahmjxuam004p04" class="subpage" data-path="Maintain Menus/Konfirmasi Disable Menu">
+        <table 	id="ahmjxuam004p04DisableTable">
+
+            <thead>
+                <tr>
+                    <th data-field="vid" 
+                        data-visible="false"
+                        >VID</th>
+                    <th data-field="vapplicationId"
+                        data-visible="true"
+                        >Application ID</th>
+                    <th data-field="vmenuId"
+                        data-visible="true"
+                        >Menu ID</th>
+                    <th data-field="vtitle" 
+                        data-visible="true"
+                        >Title Menu</th>
+                    <th data-field="vurl" 
+                        data-visible="true"
+                        >URL</th>
+                    <th data-field="vidparent"
+                        data-visible="false"
+                        >VID Parent</th>
+                    <th data-field="vparent"
+                        data-visible="true"
+                        >Parent</th>
+                </tr>
+            </thead>
+
+        </table>
+        <div class="form-group-button">
+            <button name="btnDisable" class="btn btn-default btn-primary large-button" onclick="ahmjxuam004DisableData(this); return false;">Disable</button>
+            <button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam004p01');return false;">Back</button>
+
+        </div>
+    </div>
+    <div id="ahmjxuam004p05" class="subpage" data-path="Maintain Menus/Add Menu/Select Icon">
+        <input type="hidden" id="ahmjxuam004p05FromPage" value="add"/>
+        <div class="row">
+            <div class="col-md-12" id="ahmjxuam004p05IconContainer">
+                
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function stateFormatter(value, row, index) {
+        if (row.vstat === "TIDAK AKTIF") {
+            return {
+                disabled: true
+            };
+        }
+        return value;
+    }
+    function ahmjxuam004Presearch(params){
+        params.search = {"any": $('#ahmjxuam004p01Search').val()};
+        if(params.sort == undefined){
+            return{
+                limit : params.limit,
+                offset : params.offset,
+                search : params.search
+            }
+        }
+        return params;
+    }
+    function ahmjxuam004LookupParent(params){
+        params.search = {"any" : $('#ahmjxuam004p02Parent').val()};
+        if(params.sort == undefined){
+            return{limit : params.limit,
+                offset : params.offset, 
+                search : params.search
+            }
+        }
+        return params;
+    }
+    function ahmjxuam004p03LookupParent(params){
+        params.search = {"any" : $('#ahmjxuam004p03Parent').val()};
+        if(params.sort == undefined){
+            return{limit : params.limit,
+                offset : params.offset, 
+                search : params.search
+            }
+        }
+        return params;
+    }
+    function back(obj){
+        _fw_subpage(obj, 'ahmjxuam004p01');
+        $('#ahmjxuamNotifUpdate').css('display','none');
+    }
+    function ahmjxuam004PrepareAdd(obj){
+        var page = $('#ahmjxuam004p02');
+        $('#ahmjxuam004p02BtnSubmit').css('display','');
+        $('#ahmjxuam004p02BtnAddNew').css('display','none'); 
+        _fw_reset_subpage(page);
+        _fw_subpage(obj, 'ahmjxuam004p02');
+    }
+    
+    function ahmjxuam004PrepareEdit(obj, row, index){
+        _fw_subpage(obj, 'ahmjxuam004p03', row);
+        console.log(row.vicon);
+        $('#ahmjxuam004Previewedit').attr('class', row.vicon);
+    }
+    function ahmjxuam004AddData(obj){
+        var page = $(obj).closest('.subpage');
+        _fw_validation_clear(obj);
+        _fw_validation_add(obj, 'ahmjxuam004p02ApplicationId', 'required');
+        _fw_validation_add(obj, 'ahmjxuam004p02MenuId', 'required');
+        _fw_validation_add(obj, 'ahmjxuam004p02Title', 'required');
+        if(_fw_validation_validate(obj)){
+            var vo = new Object();
+            vo.vapplicationId = $('input[name="vapplicationId"]', page).val();
+            vo.vmenuId = $('input[name="vmenuId"]', page).val();
+            vo.vtitle = $('input[name="vtitle"]', page).val();
+            vo.vurl = $('input[name="vurl"]', page).val();
+            vo.vparent = $('input[name="vidparent2"]', page).val();
+            vo.vicon = $('input[name="vicon"]', page).val();
+            //        
+            _fw_post('/uam004/insert', vo, function(data){
+                if(data.stat=="200"){
+                    _fw_setMessage(obj, 1, data);
+                    ahmjxuam004AfterAddSuccess(obj,data);
+                    $('#ahmjxuam004p01SearchTable').bootstrapTable('refresh');
+                } else {
+                    _fw_setMessage(obj, 0, data);
+                }
+            });
+        }
+    }
+    
+    function ahmjxuam004Update(obj){
+        var page = $(obj).closest('.subpage');
+        _fw_validation_clear(obj);
+        _fw_validation_add(obj, 'ahmjxuam004p03VApplicationId', '');
+        _fw_validation_add(obj, 'ahmjxuam004p03VMenuId', '');
+        _fw_validation_add(obj, 'ahmjxuam004p03VTitle', 'text area');
+        _fw_validation_add(obj, 'ahmjxuam004p03VUrl', 'text area');
+        _fw_validation_add(obj, 'ahmjxuam004p03VParent', 'text area');
+        if(_fw_validation_validate(obj)){
+            var vo = new Object();
+            vo.vid=  $('input[name="vid"]', page).val();
+            vo.iver = $('input[name="iver"]', page).val();
+            vo.vapplicationId = $('input[name="vapplicationId"]', page).val();
+            vo.vmenuId = $('input[name="vmenuId"]', page).val();
+            vo.vtitle = $('input[name="vtitle"]', page).val();
+            vo.vurl = $('input[name="vurl"]', page).val();
+            vo.vidparent = $('input[name="vidparent"]', page).val();
+            vo.vstat = $('input[name="vstat"]:checked', page).val();
+            vo.vicon = $('input[name="vicon"]', page).val();
+            _fw_post('/uam004/update', vo, function(data){
+                if(data.stat=="200"){
+                    _fw_setMessage(obj, 1, data);
+                    $('#ahmjxuamNotifUpdate').css('display','');
+                    var iver = parseInt(vo.iver)+1;
+                    $('input[name="iver"]', page).val(iver);
+                    ahmjxuam004AfterUpdateSuccess(obj, data);
+                    $('#ahmjxuam004p01SearchTable').bootstrapTable('refresh');
+                } else {
+                    console.log('update-error');
+                    _fw_setMessage(obj, '0', data);
+                }
+            });
+        }
+    }
+    function ahmjxuam004AfterUpdateSuccess(obj,data){
+        $('#ahmjxuam004p03VApplicationId').prop('disabled',true);
+        $('#ahmjxuam004p03VMenuId').prop('disabled',true);
+        $('#ahmjxuam004p03VTitle').prop('disabled',false);
+        $('#ahmjxuam004p03VUrl').prop('disabled',false);
+        $('#ahmjxuam004p03VParent').prop('disabled',false); 
+        $('#ahmjxuamBtnSubmitUpdate').css('display','');     
+        $('#ahmjxh1c006p02BtnReset').css('display','none');
+    }
+    
+    function ahmjxuam004AfterAddSuccess(obj,data){
+        $('#ahmjxuam004p02ApplicationId').prop('disabled',true);
+        $('#ahmjxuam004p02MenuId').prop('disabled',true);
+        $('#ahmjxuam004p02Title').prop('disabled',true);
+        $('#ahmjxuam004p02Url').prop('disabled',true);
+        $('#ahmjxuam004p02Parent').prop('disabled',true);
+        $('#ahmjxuam004p02BtnAddNew').css('display',''); 
+        $('#ahmjxuam004p02BtnSubmit').css('display','none');  
+    }
+    
+    function ahmjxuam004AddNew(obj){
+        _fw_validation_clear(obj);
+        var page = $(obj).closest('.subpage');
+        $('input, select', page).prop('disabled',false);
+        _fw_reset_subpage(obj);
+        $('#ahmjxuam004p02BtnSubmit').css('display','');
+        $('#ahmjxuam004p02BtnAddNew').css('display','none');
+    }
+    
+    function ahmjxuam004PrepareDisable(obj){
+        var disabledRows = $('#ahmjxuam004p01TableDelete').bootstrapTable('getData');
+        if(disabledRows.length > 0) {
+            $('#ahmjxuam004p04DisableTable').bootstrapTable('destroy');
+            $('#ahmjxuam004p04DisableTable').bootstrapTable({data:disabledRows});
+        
+            _fw_subpage(obj, 'ahmjxuam004p04');
+        } else {
+        }
+    }
+    function ahmjxuam004DisableData(obj){
+        var disabledRows = $('#ahmjxuam004p04DisableTable').bootstrapTable('getData');
+        var disabled = [];
+        var vid = [];
+        $.each(disabledRows, function(){
+            var row = this;            
+            disabled.push({'vid': row.vid});
+            vid.push(row.vid);
+        });
+        _fw_post('/uam004/disable', disabled, function(data){
+            if(data.stat=="200"){
+                
+                _fw_setMessage(obj, 1, data);
+                $('#ahmjxuam004p01TableDelete').bootstrapTable('remove', {field: 'vid', values: vid});
+                $('#ahmjxuam004p01SearchTable').bootstrapTable('refresh');
+            } else {
+                _fw_setMessage(obj, 0, data);
+            }
+        });
+    }
+    
+    function ahmjxuam004PageIcon(obj, from){
+        ahmjxuam004GenerateListIcon();
+        $('#ahmjxuam004p05FromPage').val(from);
+        
+        var path = $(obj).closest('.subpage').data('path') + '/Select Icon';
+        
+        $('#ahmjxuam004p05').data('path', path);
+        _fw_subpage(obj, 'ahmjxuam004p05');
+        
+    }
+    
+    function ahmjxuam004GenerateListIcon() {
+        _fw_post('/uam004/geticon','',function(data){
+            $.each(data.rows, function(i,v){
+               $('#ahmjxuam004p05IconContainer').append(
+                '<div class="icon-apps" onclick="ahmjxuam004SelectIcon(this)"><span class="'+v+'" style="color: white;"></span></div>'
+                );
+            });
+            
+        });
+    }
+    
+    function ahmjxuam004SelectIcon(obj) {
+        var className = $('span', $(obj)).attr('class');
+        var from = $('#ahmjxuam004p05FromPage').val();
+        $('#ahmjxuam004p02Icon'+from).val(className);
+        $('#ahmjxuam004Preview'+from).attr('class', className);
+        if(from == 'add') {
+            _fw_subpage(obj, 'ahmjxuam004p02');
+        } else {
+            _fw_subpage(obj, 'ahmjxuam004p03');
+        }
+        
+    }
+</script>

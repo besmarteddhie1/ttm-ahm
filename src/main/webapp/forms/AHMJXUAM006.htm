@@ -1,0 +1,306 @@
+<div id="AHMJXUAM006" class="div-app" data-version="1.0">
+    <div class="global_message">
+
+    </div>
+
+    <div id="ahmjxuam006p01" class="subpage subpage-default" data-path="Maintain Role Access">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group large-font">
+                    <label>Search</label>
+                    <div class="input-group">
+                        <input id="ahmjxuam006p01Keyword" type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary large-button" type="button" onclick="$('#ahmjxuam006p01TableRoleAccess').bootstrapTable('refresh');">Search</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <table id="ahmjxuam006p01TableDelete" 
+                       data-source-id="ahmjxuam006p01TableRoleAccess" 
+                       data-unique-id="vid"
+                       data-pagination="true"
+                       data-page-size="5">
+                    <thead>
+                        <tr>
+                            <th data-field="vrolesId" 
+                                data-sortable="false" 
+                                data-visible="true"
+                                >ID Role</th>
+                            <th data-field="vrolesName" 
+                                data-sortable="false" 
+                                data-visible="true"
+                                >Nama Role</th>
+                            <th data-field="vmenuid"                            
+                                data-sortable="true"
+                                >ID Menu</th>
+                            <th data-field="vtitle"                            
+                                data-sortable="true"
+                                >Judul Menu</th>
+                            <th data-field="vaction"
+                                data-formatter="actionRemoveFormatter"
+                                data-events="actionEvents">Action
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+
+        </div>
+
+        <div class="form-group-button">
+            <button id="ahmjxuam006BtnAdd" class="btn btn-default btn-primary large-button" onclick="ahmjxuam006PrepareAdd(this);">Add</button>
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam006DeleteKonfirm(this);return false;">Delete</button>
+        </div>
+        <br/>
+        <div id="table-container">
+
+            <table id="ahmjxuam006p01TableRoleAccess"
+                   data-method="post"
+                   data-url="/uam006/paging"
+                   data-content-type="application/json"
+                   data-data-type="json"
+                   data-query-params-type="limit"
+                   data-query-params="ahmjxuam006Presearch"
+                   data-response-handler="loadData"
+                   data-side-pagination="server"
+                   data-pagination="true"
+                   data-page-size="5"
+                   data-page-list="[5,10,15]"  
+                   data-unique-id="vid"
+                   data-checkbox-table="ahmjxuam006p01TableDelete"
+                   >
+                <thead>
+                    <tr>       
+                        <th data-field="state" 
+                            data-checkbox="true"></th>
+                        <th data-field="vid" 
+                            data-sortable="true"
+                            data-visible="false"
+                            >Kode</th>
+                        <th data-field="vidAhmdsuamMstroles" 
+                            data-visible="false"
+                            >VID Role</th>
+                        <th data-field="vrolesId" 
+                            data-sortable="true" 
+                            >ID Role</th>
+                        <th data-field="vrolesName" 
+                            data-sortable="true" 
+                            >Nama Role</th>
+                        <th data-field="vidAhmdsuamMstmenus" 
+                            data-visible="false"
+                            >VID Menu</th>
+                        <th data-field="vmenuid"                            
+                            data-sortable="true"
+                            data-visible="true"
+                            >ID Menu</th>           
+                        <th data-field="vtitle" 
+                            data-sortable="false"
+                            data-visible="true"
+                            >Judul</th>
+                        <th data-field="iver" 
+                            data-visible="false"
+                            >IVER</th>
+                </thead>
+
+            </table>
+        </div>  
+    </div>
+
+    <div id="ahmjxuam006p02" class="subpage" data-path="Maintain Role Access/Assign Role Access">    
+        <div >
+            <form class="form-horizontal">
+                <div class="form-group large-font">
+                    <label for="ahmjxuam006p02Role" class="col-sm-2 control-label">Role <span style="color:red">*)</span></label>
+                    <div class="lookup-wrapper col-sm-6" >
+                        <div class="input-group lookup" 
+                             data-url="/uam006/lovrole"
+                             data-lookup-pre-func="ahmjxuam006LookupRole" 
+                             data-columns='[{"id":"vid","name":"vid","visible":"false"},{"id":"vrolesId","name":"ID Role","visible":"true","sortable":"true"},
+                             {"id":"vrolesName","name":"Nama Role","visible":"true","sortable":"true"},{"id":"vrolesDesc","name":"Deskripsi Role","visible":"true","sortable":"false"}]'
+                             data-callback='{"ahmjxuam006p02IdRole":"vid","ahmjxuam006p02Role":"vrolesName"}'
+                             >
+                            <input id="ahmjxuam006p02IdRole" type="hidden"/>
+                            <input id="ahmjxuam006p02Role" class="form-control input-lookup" placeholder="LOV...." >
+                            <span class="input-group-btn">
+                                <button class="btn btn-default large-button btn-lookup" type="button">LOV</button>
+                            </span>
+                        </div>
+                    </div>  
+                </div>
+                <div class="form-group large-font">
+                    <label for="ahmjxuam006p02Menu" class="col-sm-2 control-label">Menu<span style="color:red">*)</span></label>
+                    <div class="lookup-wrapper col-sm-6" >
+                        <div class="input-group lookup" 
+                             data-url="/uam006/lovmenu"
+                             data-lookup-pre-func="ahmjxuam006LookupMenu" 
+                             data-columns='[{"id":"vid","name":"vid","visible":"false"},{"id":"vmenuid","name":"ID Menu","visible":"true","sortable":"true"},
+                             {"id":"vtitle","name":"Judul Menu","visible":"true","sortable":"true"}]'
+                             data-callback='{"ahmjxuam006p02IdMenu":"vid","ahmjxuam006p02Menu":"vtitle"}'
+                             >
+                            <input id="ahmjxuam006p02IdMenu" type="hidden"/>
+
+                            <input id="ahmjxuam006p02Menu" class="form-control input-lookup" placeholder="LOV...." >
+                            <span class="input-group-btn">
+                                <button class="btn btn-default large-button btn-lookup" type="button">LOV</button>
+                            </span>
+                        </div>
+                    </div>  
+                </div>
+
+                <div class="col-sm-offset-2 col-sm-10 form-group-button">
+                    <button id="ahmjxuam006p02BtnAddNew" class="btn btn-default btn-primary large-button" style="display: none" onclick="ahmjxuam006PrepareAdd(this);return false;">Add New</button>
+                    <button id="ahmjxuam006p02BtnSubmit" class="btn btn-default btn-primary large-button" onclick="ahmjxuam006AddData(this);return false;">Submit</button>
+                    <button id="ahmjxuam006p02BtnReset" class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
+                    <button id="ahmjxuam006p02BtnBack" class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam006p01');$('#ahmjxuam006p01TableRoleAccess').bootstrapTable('refresh');return false;">Back</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="ahmjxuam006p04" class="subpage" data-path="Maintain Role Access/Confirm Delete">
+        <table 	id="ahmjxuam006p04DeleteTable"
+                >
+            <thead>
+                <tr>
+                    <th data-field="vid"
+                        data-visible="false"
+                        >Kode</th>    
+                    <th data-field="vrolesName" 
+                        data-sortable="true" 
+                        >Role</th>
+                    <th data-field="vmenuid"                            
+                        data-sortable="true"
+                        data-visible="true"
+                        >ID Menu</th>
+                    <th data-field="vtitle"                            
+                        data-sortable="true"
+                        data-visible="true"
+                        >Judul Menu</th>
+                </tr>
+            </thead>
+
+        </table>
+        <br/>
+        <div class="form-group-button">
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam006DeleteData(this)">Delete</button>
+            <button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam006p01'); return false;">Back</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    
+    function ahmjxuam006LookupMenu(params){
+        params.search = {"any": $('#ahmjxuam006p02Menu').val()};
+        if(params.sort == undefined){
+            return{
+                limit : params.limit,
+                offset : params.offset,
+                search : params.search
+            }
+        }
+        return params;
+    }
+    
+    
+    function ahmjxuam006LookupRole(params){
+        params.search = {"any": $('#ahmjxuam006p02Role').val()};
+        if(params.sort == undefined){
+            return{
+                limit : params.limit,
+                offset : params.offset,
+                search : params.search
+            }
+        }
+        return params;
+    }
+    
+    function ahmjxuam006Presearch(params){
+        params.search = {"any": $('#ahmjxuam006p01Keyword').val()};
+        if(params.sort == undefined){
+            return{
+                limit : params.limit,
+                offset : params.offset,
+                search : params.search
+            }
+        }
+        return params;
+    }
+
+    function ahmjxuam006PrepareAdd(obj){
+        $('#ahmjxuam006p02Menu,#ahmjxuam006p02Role').prop('disabled',false);    
+        $('#ahmjxuam006p02BtnAddNew').css('display','none'); 
+        $('#ahmjxuam006p02BtnSubmit,#ahmjxuam006p02BtnReset').css('display','');     
+        _fw_reset_subpage($('#ahmjxuam006p02'));
+        _fw_subpage(obj, 'ahmjxuam006p02');
+    }
+
+    function ahmjxuam006DeleteKonfirm(obj){
+        var deletedRows = $('#ahmjxuam006p01TableDelete').bootstrapTable('getData');
+        if(deletedRows.length > 0) {
+            $('#ahmjxuam006p04DeleteTable').bootstrapTable('destroy');
+            $('#ahmjxuam006p04DeleteTable').bootstrapTable({data:deletedRows});
+        
+            _fw_subpage(obj, 'ahmjxuam006p04');
+        } else {
+            //alert('no rows selected');
+        }
+    }
+    function ahmjxuam006DeleteData(obj){
+        var deletedRows = $('#ahmjxuam006p04DeleteTable').bootstrapTable('getData')
+        ,deletedID = [],vidVal = [],row;
+        $.each(deletedRows, function(){
+            row = this;
+            deletedID.push({'vid': row.vid});
+            vidVal.push(row.vid);
+        });
+        _fw_post('/uam006/delete', deletedID, function(data){
+            if(data.stat=="200"){                
+                _fw_setMessage(obj, 1, data);
+                $('#ahmjxuam006p01TableRoleAccess').bootstrapTable('refresh');                
+                $('#ahmjxuam006p01TableDelete').bootstrapTable('remove', {field: 'vid', values: vidVal});                
+            } else {
+                _fw_setMessage(obj, 0, data);
+            }
+        });
+    }
+
+    function ahmjxuam006AddData(obj){
+        var page = $(obj).closest('.subpage');
+        _fw_validation_clear(obj);
+        _fw_validation_add(obj, 'ahmjxuam006p02Menu', 'required');
+        _fw_validation_add(obj, 'ahmjxuam006p02Role', 'required');
+        if(_fw_validation_validate(obj)){
+            var vo = new Object()
+            vo.vidAhmjxuamMstmenus = $('#ahmjxuam006p02IdMenu').val();
+            vo.vidAhmjxuamMstroles = $('#ahmjxuam006p02IdRole').val();
+            console.log("devo pacar yogi",vo);
+            _fw_post('/uam006/insert', vo, function(data){
+                console.log("add data",data);
+                if(data.stat=="200"){
+                    ahmjxuam006AfterAddSuccess(obj,data);               
+                } else {
+                    _fw_setMessage(obj, 0, data);
+                    $('#ahmdsuamNotifDuplicate').css('display',''); 
+                }
+            });
+        
+        }
+    }
+
+    function ahmjxuam006AfterAddSuccess(obj,data){
+        $('#ahmjxuam006p02Menu').prop('disabled',true);
+        $('#ahmjxuam006p02Role').prop('disabled',true);        
+        $('#ahmjxuam006p02BtnAddNew').css('display',''); 
+        $('#ahmjxuam006p02BtnSubmit').css('display','none');     
+        $('#ahmjxuam006p02BtnReset').css('display','none');         
+        _fw_setMessage(obj, 1, data);   
+        
+    }
+
+</script>
+

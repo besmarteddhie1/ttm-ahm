@@ -1,0 +1,63 @@
+<div id="AHMDSUAM007" class="div-app" data-version="1.0">
+    <div class="global_message">
+
+    </div>
+    <div id="ahmdsuam007" class="subpage subpage-default" data-path="Change Password">
+        <form class="form-horizontal">
+            <div class="form-group large-font">
+                <label for="ahmdsuam007OldPassword" class="col-sm-2 control-label">Password Lama <span style="color:red">*)</span></label>
+                <div class="col-sm-6">
+                    <input type="password" id="ahmdsuam007OldPassword" name="ahmdsuam007OldPassword" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmdsuam007NewPassword" class="col-sm-2 control-label">Password Baru <span style="color:red">*)</span></label>
+                <div class="col-sm-6">
+                    <input type="password" id="ahmdsuam007NewPassword" name="ahmdsuam007NewPassword" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmdsuam007ConfirmPassword" class="col-sm-2 control-label">Password Konfirmasi <span style="color:red">*)</span></label>
+                <div class="col-sm-6">
+                    <input type="password" id="ahmdsuam007ConfirmPassword" name="ahmdsuam007ConfirmPassword" class="form-control">
+                </div>
+            </div>
+        </form>
+        
+        <div class="col-sm-offset-2 col-sm-6 form-group-button">
+            <button name="btnSave" id="ahmdsuam007BtnSave" class="btn btn-default btn-primary large-button" onclick="ahmdsuam007Save(this);return false;">Save</button>
+        </div>
+    </div>
+    <script>
+        function ahmdsuam007Save(obj) {
+            var page = $(obj).closest('.subpage');
+            _fw_validation_clear(obj);
+            _fw_validation_add(obj, 'ahmdsuam007OldPassword', 'required');
+            _fw_validation_add(obj, 'ahmdsuam007NewPassword', 'required');
+            _fw_validation_add(obj, 'ahmdsuam007ConfirmPassword', 'required');
+            if(_fw_validation_validate(obj)){
+                var vo = new Object();
+                vo.oldPassword = $('#ahmdsuam007OldPassword').val();
+                vo.newPassword = $('#ahmdsuam007NewPassword').val();
+                vo.confirmNewPassword = $('#ahmdsuam007ConfirmPassword').val();
+                
+                if(vo.newPassword == vo.confirmNewPassword){
+                    _fw_post('/dashboard/changepass', vo, function(data){
+                        if(data.stat=="200"){                      
+                            _fw_setMessage(obj, 1, data);
+                        } else {
+                            _fw_setMessage(obj, 0, data);
+
+                        }
+                    });
+                } else {
+                    $('#ahmdsuam007NewPassword').closest('.form-group').addClass('has-error has-feedback');
+                    $('#ahmdsuam007ConfirmPassword').closest('.form-group').addClass('has-error has-feedback');
+                    
+                    _fw_setMessage(obj, 0, "Password baru dan password konfirmasi tidak sama");
+                }
+                
+            }
+        }
+    </script>
+</div>
