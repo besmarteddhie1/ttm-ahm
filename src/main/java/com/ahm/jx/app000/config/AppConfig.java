@@ -36,7 +36,8 @@ public class AppConfig {
     @Value("${jdbc.driver}")
     private String driver;
     
-    @Bean
+    //Disable, get Datasource from com.ahm.jx.config.JpaConfig
+    //@Bean
     public DataSource dataSource() {
         System.out.println("password : "+password);
         DriverManagerDataSource dataSource = new DriverManagerDataSource();

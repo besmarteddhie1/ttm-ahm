@@ -4,10 +4,8 @@
  */
 package com.ahm.jx.app000.model;
 
-import com.ahm.jx.common.model.BaseAuditVersioning;
-import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,21 +13,25 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
+
+import com.ahm.jx.common.model.BaseAuditVersioning;
 
 /**
  *
  * @author AFI
  */
+
 @Entity
 @Audited(targetAuditMode = RelationTargetAuditMode.AUDITED)
 @Table(name = "AHMDSUAM_MSTUSERS")
-public class AhmdsuamMstusers extends BaseAuditVersioning implements Serializable {
+public class AhmdsuamMstusers extends BaseAuditVersioning {
 
-    @Column(name = "VUSERNAME", length = 30, nullable = false, unique = true)
+	private static final long serialVersionUID = -3594793515100006127L;
+
+	@Column(name = "VUSERNAME", length = 30, nullable = false, unique = true)
     private String vusername;
 
     @Column(name = "VPASSWORD")
@@ -38,14 +40,14 @@ public class AhmdsuamMstusers extends BaseAuditVersioning implements Serializabl
     @Column(name="VID_AHMDSBSC_MSTDLRCODE")    
     private String vidAhmdsbscMstdlrcode;
     
-    @ManyToOne(targetEntity=AhmdsbscMstdlrcode.class,fetch= FetchType.LAZY)
-    @JoinColumn(name="VID_AHMDSBSC_MSTDLRCODE",referencedColumnName="VID",insertable=false,updatable=false)
+    @ManyToOne(targetEntity=AhmdsbscMstdlrcode.class, fetch= FetchType.LAZY)
+    @JoinColumn(name="VID_AHMDSBSC_MSTDLRCODE", referencedColumnName="VID", insertable=false, updatable=false)
     private AhmdsbscMstdlrcode ahmdsbscMstdlrcode;
  
     @OneToMany(mappedBy = "ahmdsuamMstusers")    
     private List<AhmdsuamMstusrrols> listAhmdsuamMstusrrolses;
     
-    @Column(name = "VSTAT",length=1)
+    @Column(name = "VSTAT", length=1)
     private String vstat;
 
     public String getVusername() {

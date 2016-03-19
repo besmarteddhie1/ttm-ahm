@@ -20,11 +20,11 @@ public class DBConnectionMysqlImpl extends DBConnection {
 //    private String DB_CONNECTION = "jdbc:mysql://138.91.39.8:3306/dims";
       private String DB_CONNECTION = "jdbc:mysql://localhost:3306/ttm";
 
-    private String DB_USER = "root";  
+    private String DB_USER = "ttm";  
 //    private String DB_USER = "dbuser";
 //    private String DB_PASSWORD = "ahmids";
 //    private String DB_PASSWORD = "dbPassw0rd!";
-        private String DB_PASSWORD = "";
+        private String DB_PASSWORD = "nopassword";
 
     
     

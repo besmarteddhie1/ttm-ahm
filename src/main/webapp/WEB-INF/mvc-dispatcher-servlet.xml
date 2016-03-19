@@ -38,8 +38,10 @@
         <property name="packagesToScan" >
             <list>
                 <value>com.ahm.jx.app000.model</value>
+                <value>com.ahm.jx.ttm.entities</value>
             </list>
         </property>
+        
         <property name="dataSource" ref="dataSource"/>
         <property name="hibernateProperties">
             <props>

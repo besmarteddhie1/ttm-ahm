@@ -44,7 +44,7 @@ class JpaConfig {
 
     @Bean
     public DataSource dataSource() {
-        HikariConfig config = new HikariConfig();
+        HikariConfig config = new HikariConfig();        
         config.setDriverClassName(driver);
         config.setJdbcUrl(url);
         config.setUsername(username);

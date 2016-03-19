@@ -28,22 +28,22 @@ public class AhmBaseEntity implements Serializable {
 	@Column(name="vid")
 	private String id;
 	
-	@Column(name="VCREABY")
+	@Column(name="vcreaby")
 	private String createBy;
 	
-	@Column(name="VMODIBY")
+	@Column(name="vmodiby")
 	private String modiBy;		
 	
 	@Version
-	@Column(name="IVER")
+	@Column(name="iver")
 	private Integer lockVersion;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="DCREA")
+	@Column(name="dcrea")
 	private Date dateCreate;
 		
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="DMODI")
+	@Column(name="dmodi")
 	private Date dateModi;
 
 	public String getId() {

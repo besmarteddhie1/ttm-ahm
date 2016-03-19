@@ -24,9 +24,11 @@ import org.hibernate.envers.RelationTargetAuditMode;
 @Entity
 @Audited(targetAuditMode = RelationTargetAuditMode.AUDITED)
 @Table(name="AHMDSUAM_MSTROLES")
-public class AhmdsuamMstroles extends BaseAuditVersioning implements Serializable{
+public class AhmdsuamMstroles extends BaseAuditVersioning implements Serializable {
     
-    @Column(name="VROLES_ID",length = 20,nullable = false,unique = true) 
+	private static final long serialVersionUID = 4847222996650784545L;
+
+	@Column(name="VROLES_ID",length = 20, nullable = false, unique = true) 
     private String vrolesId;
     
     @Column(name="VROLES_NAME",length = 30) 
