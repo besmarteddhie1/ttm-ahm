@@ -4,8 +4,6 @@
  */
 package com.filter;
 
-import com.ahm.jx.app000.model.AhmjxuamHstsvcusgs;
-import com.ahm.jx.common.constant.CommonConstant;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -18,17 +16,18 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.servlet.Filter;
-import javax.servlet.http.Cookie;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.codec.binary.Base64;
-import org.springframework.web.util.CookieGenerator;
+
+import com.ahm.jx.common.constant.CommonConstant;
 
 /**
  *

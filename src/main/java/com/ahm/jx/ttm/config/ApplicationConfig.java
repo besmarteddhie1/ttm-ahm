@@ -9,7 +9,6 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import com.ahm.jx.ttm.Application;
 
 @Configuration
-@PropertySource("classpath:persistence.properties")
 @PropertySource("classpath:application.properties")
 @ComponentScan(basePackageClasses = Application.class)
 class ApplicationConfig {

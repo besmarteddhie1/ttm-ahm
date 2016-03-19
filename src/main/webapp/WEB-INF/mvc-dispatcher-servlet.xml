@@ -22,21 +22,12 @@
                 <value>
                     classpath:database.properties
                 </value>
-<!--                <value>
-                    file:///D:/jdbc.properties
-                </value>-->
+                <value>
+                    classpath:persistence.properties
+                </value>                
             </list>
         </property>
     </bean>
-
-    <!--org.springframework.jdbc.datasource.DriverManagerDataSource-->
-
-<!--    <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
-        <property name="driverClassName" value="${jdbc.driver}"></property>
-        <property name="url" value="${jdbc.url}"></property>
-        <property name="username" value="${jdbc.username}"></property>
-        <property name="password" value="${jdbc.password}"></property>
-    </bean>-->
 
     <bean class="org.springframework.orm.hibernate4.HibernateTransactionManager" id="transactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
