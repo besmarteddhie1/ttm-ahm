@@ -4,11 +4,11 @@
  */
 package com.ahm.jx.app000.config;
 
-import com.ahm.jx.secure.CryptUtil;
-import java.security.Key;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
