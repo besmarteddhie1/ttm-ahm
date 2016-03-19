@@ -19,6 +19,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
  *
  * @author achmad.ha
  */
+
 @Configuration
 @PropertySource("classpath:database.properties")
 public class AppConfig {
