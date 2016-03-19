@@ -16,7 +16,6 @@ import com.ahm.jx.dashboard.vo.VoChangePassword;
 import com.ahm.jx.dashboard.vo.VoUser;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
