@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.*;
 
 @Entity
 @DiscriminatorValue(AbstractPartner.type_main_dealer)

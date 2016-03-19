@@ -20,6 +20,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import org.springframework.util.ClassUtils;
 
+import com.ahm.jx.ttm.Application;
+
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackageClasses = Application.class)

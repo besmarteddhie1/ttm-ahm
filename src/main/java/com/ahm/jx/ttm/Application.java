@@ -1,3 +1,3 @@
-package com.ahm.jx.ttm.config;
+package com.ahm.jx.ttm;
 
 public interface Application {}
