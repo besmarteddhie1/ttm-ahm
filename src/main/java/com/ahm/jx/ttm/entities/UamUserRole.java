@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "AHMDSUAM_MSTUSRROLS")    
+@Table(name = "ahmdsuam_mstusrrols")    
 public class UamUserRole extends AhmBaseEntity {
     
 	private static final long serialVersionUID = 2708307937115713991L;

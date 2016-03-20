@@ -11,17 +11,17 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "AHMJXUAM_HDRRLACCESS")
+@Table(name = "ahmjxuam_hdrrlaccess")
 public class UamRoleMenu extends AhmBaseEntity {
 
 	private static final long serialVersionUID = -4031508059474896902L;
 	
 	@ManyToOne
-	@JoinColumn(name = "VID_AHMJXUAM_MSTROLES", referencedColumnName="vid")
+	@JoinColumn(name = "vid_ahmjxuam_mstroles", referencedColumnName="vid")
 	private UamRole role;
 	
 	@ManyToOne
-	@JoinColumn(name = "VID_AHMJXUAM_MSTMENUS", referencedColumnName="vid")
+	@JoinColumn(name = "vid_ahmjxuam_mstmenus", referencedColumnName="vid")
 	private UamMenu menu;
 
 	public UamRole getRole() {
