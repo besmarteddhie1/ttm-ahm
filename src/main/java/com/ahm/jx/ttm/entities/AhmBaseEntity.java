@@ -21,7 +21,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class AhmBaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 5621497326705047937L;
-	
+
 	@Id
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")

@@ -11,15 +11,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.hibernate.envers.Audited;
-import org.hibernate.envers.RelationTargetAuditMode;
 import org.hibernate.validator.constraints.Length;
 
 import com.ahm.jx.ttm.config.EntityDomain;
 
 
 @Entity
-@Audited(targetAuditMode = RelationTargetAuditMode.AUDITED)
 @Table(name = "ahmdsuam_mstusers")
 public class UamUser extends AhmBaseEntity {
 

@@ -5,16 +5,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.envers.Audited;
-import org.hibernate.envers.RelationTargetAuditMode;
-
 /**
  *
  * @author sigit refactored by apri
  */
 
 @Entity
-@Audited(targetAuditMode = RelationTargetAuditMode.AUDITED)
 @Table(name = "AHMJXUAM_HDRRLACCESS")
 public class UamRoleMenu extends AhmBaseEntity {
 

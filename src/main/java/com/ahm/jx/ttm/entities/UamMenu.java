@@ -13,8 +13,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
-import org.hibernate.envers.Audited;
-import org.hibernate.envers.RelationTargetAuditMode;
 
 /**
  *
@@ -22,7 +20,6 @@ import org.hibernate.envers.RelationTargetAuditMode;
  */
 
 @Entity
-@Audited(targetAuditMode = RelationTargetAuditMode.AUDITED)
 @Table(name = "AHMJXUAM_MSTMENUS")
 public class UamMenu extends AhmBaseEntity {
 
