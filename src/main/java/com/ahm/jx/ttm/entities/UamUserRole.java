@@ -13,33 +13,33 @@ import org.hibernate.envers.RelationTargetAuditMode;
 @Entity
 @Audited(targetAuditMode = RelationTargetAuditMode.AUDITED)
 @Table(name = "AHMDSUAM_MSTUSRROLS")    
-public class SecurityUserRole extends AhmBaseEntity {
+public class UamUserRole extends AhmBaseEntity {
     
 	private static final long serialVersionUID = 2708307937115713991L;
 
 	@ManyToOne
 	@JoinColumn(name="vid_ahmdsuam_mstusers", referencedColumnName="vid")
-	private SecurityUser user;
+	private UamUser user;
 	
     @JoinColumn(name="vid_ahmdsuam_mstroles", referencedColumnName="vid") 
-    private SecurityRole role;
+    private UamRole role;
 
     @Column(name="status") 
-    private Boolean status;
+    private Boolean status;    
 
-	public SecurityUser getUser() {
+	public UamUser getUser() {
 		return user;
 	}
 
-	public void setUser(SecurityUser user) {
+	public void setUser(UamUser user) {
 		this.user = user;
 	}
 
-	public SecurityRole getRole() {
+	public UamRole getRole() {
 		return role;
 	}
 
-	public void setRole(SecurityRole role) {
+	public void setRole(UamRole role) {
 		this.role = role;
 	}
 
@@ -50,5 +50,5 @@ public class SecurityUserRole extends AhmBaseEntity {
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
-    
+
 }

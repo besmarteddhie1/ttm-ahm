@@ -1,6 +1,7 @@
 
 package com.ahm.jx.ttm.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -8,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
@@ -19,7 +21,7 @@ import com.ahm.jx.ttm.config.EntityDomain;
 @Entity
 @Audited(targetAuditMode = RelationTargetAuditMode.AUDITED)
 @Table(name = "ahmdsuam_mstusers")
-public class SecurityUser extends AhmBaseEntity {
+public class UamUser extends AhmBaseEntity {
 
 	private static final long serialVersionUID = -3594793515100006127L;
 
@@ -37,7 +39,21 @@ public class SecurityUser extends AhmBaseEntity {
     private Boolean status;
     
     @OneToMany(cascade=CascadeType.ALL, mappedBy="user")
-    private List<SecurityUserRole> roles;
+    private List<UamUserRole> userRoles;
+    
+    @Transient
+    private List<UamRole> roles;
+    
+    @Transient
+    private List<UamMenu> menus;    
+
+	public List<UamUserRole> getUserRoles() {
+		return userRoles;
+	}
+
+	public void setUserRoles(List<UamUserRole> userRoles) {
+		this.userRoles = userRoles;
+	}
 
 	public String getUserName() {
 		return userName;
@@ -69,15 +85,34 @@ public class SecurityUser extends AhmBaseEntity {
 
 	public void setStatus(Boolean status) {
 		this.status = status;
+	}
+
+	public List<UamRole> getRoles() {
+		if (this.roles == null) {
+			this.roles = new ArrayList<UamRole>();
+			for (UamUserRole u: userRoles) 
+				if (u.getStatus()) this.roles.add(u.getRole());
+		}
+		return roles;
+	}
+
+	public void setRoles(List<UamRole> roles) {
+		this.roles = roles;
+	}
+
+	public List<UamMenu> getMenus() {
+		if (this.menus == null) {
+			this.menus = new ArrayList<UamMenu>();
+			for (UamRole u: getRoles()) 
+				for (UamMenu m: u.getMenus())
+					this.menus.add(m);
+		}		
+		return menus;
+	}
+
+	public void setMenus(List<UamMenu> menus) {
+		this.menus = menus;
 	}    
     
-    /*
-    @ManyToOne(targetEntity=AhmdsbscMstdlrcode.class, fetch= FetchType.LAZY)
-    @JoinColumn(name="VID_AHMDSBSC_MSTDLRCODE", referencedColumnName="VID", insertable=false, updatable=false)
-    private AhmdsbscMstdlrcode ahmdsbscMstdlrcode;
- 
-    @OneToMany(mappedBy = "ahmdsuamMstusers")    
-    private List<AhmdsuamMstusrrols> listAhmdsuamMstusrrolses;
-    */    
     
 }
