@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -17,7 +19,7 @@ import com.ahm.jx.ttm.config.EntityDomain;
 
 
 @Entity
-@Table(name = "ahmdsuam_mstusers")
+@Table(name = "ahmjxuam_mstusers")
 public class UamUser extends AhmBaseEntity {
 
 	private static final long serialVersionUID = -3594793515100006127L;
@@ -29,8 +31,9 @@ public class UamUser extends AhmBaseEntity {
     @Column(name = "VPASSWORD")
     private String password;    
     
-    @Column(name="VID_AHMDSBSC_MSTDLRCODE")    
-    private String dealerCode;
+    @ManyToOne
+    @JoinColumn(name="VID_AHMJXUAM_MSTPARTNER", referencedColumnName="vid")    
+    private AhmPartner partner;
     
     @Column(name = "vstat")
     private Boolean status;
@@ -68,14 +71,6 @@ public class UamUser extends AhmBaseEntity {
 		this.password = password;
 	}
 
-	public String getDealerCode() {
-		return dealerCode;
-	}
-
-	public void setDealerCode(String dealerCode) {
-		this.dealerCode = dealerCode;
-	}
-
 	public Boolean getStatus() {
 		return status;
 	}
@@ -109,6 +104,14 @@ public class UamUser extends AhmBaseEntity {
 
 	public void setMenus(List<UamMenu> menus) {
 		this.menus = menus;
+	}
+
+	public AhmPartner getPartner() {
+		return partner;
+	}
+
+	public void setPartner(AhmPartner partner) {
+		this.partner = partner;
 	}    
     
     
