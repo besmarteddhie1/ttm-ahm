@@ -22,9 +22,9 @@ import javax.persistence.UniqueConstraint;
 import com.ahm.jx.common.model.BaseAuditVersioning;
 
 /**
- *
  * @author achmad
  */
+
 @Entity
 @Table(name="AHMDSUAM_HDRRLACCESS",
         uniqueConstraints = @UniqueConstraint(columnNames = {"VID_AHMDSUAM_MSTMENUS", "VID_AHMDSUAM_MSTROLES"}))
