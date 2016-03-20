@@ -25,7 +25,6 @@ import org.hibernate.envers.RelationTargetAuditMode;
  * @author sigit
  */
 @Entity
-@Audited(targetAuditMode = RelationTargetAuditMode.AUDITED)
 @Table(name = "AHMJXUAM_HDRRLACCESS",
         uniqueConstraints = @UniqueConstraint(columnNames = {"VID_AHMJXUAM_MSTMENUS", "VID_AHMJXUAM_MSTROLES"}))
 public class AhmjxuamHdrrlaccess extends BaseAuditVersioning implements Serializable {

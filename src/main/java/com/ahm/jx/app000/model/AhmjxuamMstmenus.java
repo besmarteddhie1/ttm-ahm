@@ -25,7 +25,6 @@ import org.hibernate.envers.RelationTargetAuditMode;
  * @author sigit
  */
 @Entity
-@Audited(targetAuditMode = RelationTargetAuditMode.AUDITED)
 @Table(name = "AHMJXUAM_MSTMENUS")
 public class AhmjxuamMstmenus extends BaseAuditVersioning implements Serializable {
 

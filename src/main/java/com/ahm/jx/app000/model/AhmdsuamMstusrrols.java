@@ -24,7 +24,6 @@ import org.hibernate.envers.RelationTargetAuditMode;
  * @author achmad
  */
 @Entity
-@Audited(targetAuditMode = RelationTargetAuditMode.AUDITED)
 @Table(name = "AHMDSUAM_MSTUSRROLS", 
         uniqueConstraints = @UniqueConstraint(columnNames = {"VID_AHMDSUAM_MSTUSERS", "VID_AHMDSUAM_MSTROLES"}))    
     public class AhmdsuamMstusrrols extends BaseAuditVersioning implements Serializable {

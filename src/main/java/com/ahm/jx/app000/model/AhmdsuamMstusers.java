@@ -25,7 +25,6 @@ import com.ahm.jx.common.model.BaseAuditVersioning;
  */
 
 @Entity
-@Audited(targetAuditMode = RelationTargetAuditMode.AUDITED)
 @Table(name = "AHMDSUAM_MSTUSERS")
 public class AhmdsuamMstusers extends BaseAuditVersioning {
 
