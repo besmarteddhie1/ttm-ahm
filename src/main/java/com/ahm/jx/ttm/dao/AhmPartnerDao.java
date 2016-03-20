@@ -10,7 +10,7 @@ public interface AhmPartnerDao extends JpaRepository<AhmPartner, String> {
 	
 	AhmPartner findOneByDealerCode(String dealerCode);
 	
-	AhmPartner findOneByIdAhmCode(String dealerCode);
+	AhmPartner findOneByAhmCode(String dealerCode);
 	
 	AhmPartner findOneByPartnerCode(String dealerCode);
 	

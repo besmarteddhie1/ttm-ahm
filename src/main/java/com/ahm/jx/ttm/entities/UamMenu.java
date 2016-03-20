@@ -29,7 +29,7 @@ public class UamMenu extends AhmBaseEntity {
 	private static final long serialVersionUID = 5743125358008818944L;
 
 	@Column(name = "VMENU_ID", length = 16, nullable = false)
-    private String IdMenu;
+    private String idMenu;
 
     @Column(name = "VTITLE", length = 36, nullable = false)
     private String tittle;
@@ -55,16 +55,15 @@ public class UamMenu extends AhmBaseEntity {
     private UamMenu parent;
 
     @OneToMany(cascade=CascadeType.ALL, mappedBy="parent")
-    @JoinColumn(name = "VPARENT", referencedColumnName = "VID")
     @NotFound(action = NotFoundAction.IGNORE)
     private List<UamMenu> child;
 
 	public String getIdMenu() {
-		return IdMenu;
+		return idMenu;
 	}
 
 	public void setIdMenu(String idMenu) {
-		IdMenu = idMenu;
+		this.idMenu = idMenu;
 	}
 
 	public String getTittle() {

@@ -8,8 +8,7 @@ import com.ahm.jx.ttm.entities.UamMenu;
 @Repository
 public interface UamMenuDao extends JpaRepository<UamMenu, String> {
 	
-	UamMenu findOneByIdMenu(String idMenu);	
+	UamMenu findOneByIdMenu(String idMenu);
 	
-	UamMenu findOneByName(String name);
-	
+	UamMenu findOneByIdApplication(String idApplication);	
 }

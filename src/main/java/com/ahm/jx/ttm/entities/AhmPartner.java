@@ -17,7 +17,7 @@ public class AhmPartner extends AhmBaseEntity {
 	private static final long serialVersionUID = 1123754243149467367L;
 
     @Column(name="vidahmprtncode")
-    private String idAhmCode;
+    private String ahmCode;
     
 	@Column(name="vidprtncode")
     private String partnerCode;
@@ -48,6 +48,14 @@ public class AhmPartner extends AhmBaseEntity {
     
     @Column(name="VID_AHMDSBSC_MSTDLRCODE",nullable=false,length=64)
     private String dealerCode;
+
+	public String getAhmCode() {
+		return ahmCode;
+	}
+
+	public void setAhmCode(String ahmCode) {
+		this.ahmCode = ahmCode;
+	}
 
 	public String getPartnerCode() {
 		return partnerCode;
@@ -116,15 +124,6 @@ public class AhmPartner extends AhmBaseEntity {
 	public String getDealerCode() {
 		return dealerCode;
 	}
-
-	public String getIdAhmCode() {
-		return idAhmCode;
-	}
-
-	public void setIdAhmCode(String idAhmCode) {
-		this.idAhmCode = idAhmCode;
-	}
-
 	public void setDealerCode(String dealerCode) {
 		this.dealerCode = dealerCode;
 	}
