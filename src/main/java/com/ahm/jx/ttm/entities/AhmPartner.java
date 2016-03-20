@@ -14,26 +14,10 @@ import javax.persistence.Table;
 @Table(name = "ahmdsh1c_mstpartner")
 public class AhmPartner extends AhmBaseEntity {
 
-	public String getTypeRT() {
-		return typeRT;
-	}
-
-	public void setTypeRT(String typeRT) {
-		this.typeRT = typeRT;
-	}
-
-	public String getDealerCode() {
-		return dealerCode;
-	}
-
-	public void setDealerCode(String dealerCode) {
-		this.dealerCode = dealerCode;
-	}
-
 	private static final long serialVersionUID = 1123754243149467367L;
 
     @Column(name="vidahmprtncode")
-    private String idAhmPartnerCode;
+    private String idAhmCode;
     
 	@Column(name="vidprtncode")
     private String partnerCode;
@@ -64,14 +48,6 @@ public class AhmPartner extends AhmBaseEntity {
     
     @Column(name="VID_AHMDSBSC_MSTDLRCODE",nullable=false,length=64)
     private String dealerCode;
-
-	public String getIdAhmPartnerCode() {
-		return idAhmPartnerCode;
-	}
-
-	public void setIdAhmPartnerCode(String idAhmPartnerCode) {
-		this.idAhmPartnerCode = idAhmPartnerCode;
-	}
 
 	public String getPartnerCode() {
 		return partnerCode;
@@ -127,6 +103,30 @@ public class AhmPartner extends AhmBaseEntity {
 
 	public void setStatusB2B(Boolean statusB2B) {
 		this.statusB2B = statusB2B;
+	}
+
+	public String getTypeRT() {
+		return typeRT;
+	}
+
+	public void setTypeRT(String typeRT) {
+		this.typeRT = typeRT;
+	}
+
+	public String getDealerCode() {
+		return dealerCode;
+	}
+
+	public String getIdAhmCode() {
+		return idAhmCode;
+	}
+
+	public void setIdAhmCode(String idAhmCode) {
+		this.idAhmCode = idAhmCode;
+	}
+
+	public void setDealerCode(String dealerCode) {
+		this.dealerCode = dealerCode;
 	}
 
 	public String getIdB2B() {
