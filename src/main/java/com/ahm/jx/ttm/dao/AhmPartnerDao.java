@@ -8,10 +8,10 @@ import com.ahm.jx.ttm.entities.AhmPartner;
 @Repository
 public interface AhmPartnerDao extends JpaRepository<AhmPartner, String> {
 	
-	AhmPartner findOneByDealerCode(String dealerCode);
+	AhmPartner findOneByIdDealer(String idDealer);
 	
-	AhmPartner findOneByAhmCode(String dealerCode);
+	AhmPartner findOneByIdMainDealer(String mdCode);
 	
-	AhmPartner findOneByPartnerCode(String dealerCode);
+	AhmPartner findOneByMdDealerCode(String dealerCode);
 	
 }

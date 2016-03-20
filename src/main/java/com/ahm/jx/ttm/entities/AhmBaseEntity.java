@@ -16,16 +16,22 @@ import javax.persistence.Version;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.envers.Audited;
+import org.hibernate.validator.constraints.Length;
+
+import com.ahm.jx.ttm.config.EntityDomain;
 
 @MappedSuperclass
+@Audited
 public class AhmBaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 5621497326705047937L;
 
 	@Id
+	@Length(max = EntityDomain.LENGTH_ID)
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
-	@Column(name="vid")
+	@Column(name="vid", length=EntityDomain.LENGTH_ID)
 	private String id;
 	
 	@Column(name="vcreaby")

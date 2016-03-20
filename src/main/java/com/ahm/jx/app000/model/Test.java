@@ -13,6 +13,7 @@ import javax.persistence.Table;
  *
  * @author achmad.ha
  */
+
 @Entity
 @Table(name = "AHMDSH1C_HDRUNINVMD")
 public class Test extends BaseAuditVersioning implements Serializable{

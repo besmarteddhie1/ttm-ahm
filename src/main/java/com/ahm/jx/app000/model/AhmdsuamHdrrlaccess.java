@@ -6,10 +6,9 @@
 
 package com.ahm.jx.app000.model;
 
-import com.ahm.jx.common.model.BaseAuditImpl;
-import com.ahm.jx.common.model.BaseAuditVersioning;
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,8 +18,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import org.hibernate.envers.Audited;
-import org.hibernate.envers.RelationTargetAuditMode;
+
+import com.ahm.jx.common.model.BaseAuditVersioning;
 
 /**
  *
@@ -30,8 +29,10 @@ import org.hibernate.envers.RelationTargetAuditMode;
 @Table(name="AHMDSUAM_HDRRLACCESS",
         uniqueConstraints = @UniqueConstraint(columnNames = {"VID_AHMDSUAM_MSTMENUS", "VID_AHMDSUAM_MSTROLES"}))
 public class AhmdsuamHdrrlaccess extends BaseAuditVersioning implements Serializable{
-    
-    @Column(name="VID_AHMDSUAM_MSTROLES",length = 64,nullable = false)     
+
+	private static final long serialVersionUID = 2321520963747270921L;
+
+	@Column(name="VID_AHMDSUAM_MSTROLES",length = 64,nullable = false)     
     private String vidAhmdsuamMstroles;
     
     @Column(name="VID_AHMDSUAM_MSTMENUS",length = 64,nullable = false)     

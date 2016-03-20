@@ -11,58 +11,60 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "ahmdsh1c_mstpartner")
+@Table(name = "ahmjxuam_mstpartner")
 public class AhmPartner extends AhmBaseEntity {
 
 	private static final long serialVersionUID = 1123754243149467367L;
 
-    @Column(name="vidahmprtncode")
-    private String ahmCode;
+    @Column(name="vdealercode")
+    private String idDealer;
     
-	@Column(name="vidprtncode")
-    private String partnerCode;
+    @Column(name="vmdcode")
+    private String idMainDealer;
     
-    @Column(name="vpartnerdesc")
-    private String name;
+    @Column(name="vmddealercode")
+    private String mdDealerCode;    
         
-    @Column(name="vtypert")
-    private String typeRT;
-            
-    @Column(name="vpicname")
-    private String picName;
+    @Column(name="vname")
+    private String name;
     
-    @Column(name="vstat")
-    private boolean status;    
+    @Column(name="vowner")
+    private String owner;
     
     @Column(name="vaddress")
-    private String alamat;
+    private String address;
     
-    @Column(name="VID_AHMDSH1C_MSTKELURAHAN")
-    private String kelurahan;
+    @Column(name="vphonenum")
+    private String phoneNum;
     
-    @Column(name="VB2BSTAT")
-    private Boolean statusB2B;
-        
-    @Column(name="VIDB2B")
-    private String idB2B;
+    @Column(name="npit")
+    private Integer pit;
     
-    @Column(name="VID_AHMDSBSC_MSTDLRCODE",nullable=false,length=64)
-    private String dealerCode;
+    @Column(name="nlevel")
+    private Integer level;
 
-	public String getAhmCode() {
-		return ahmCode;
+	public String getIdDealer() {
+		return idDealer;
 	}
 
-	public void setAhmCode(String ahmCode) {
-		this.ahmCode = ahmCode;
+	public void setIdDealer(String idDealer) {
+		this.idDealer = idDealer;
 	}
 
-	public String getPartnerCode() {
-		return partnerCode;
+	public String getIdMainDealer() {
+		return idMainDealer;
 	}
 
-	public void setPartnerCode(String partnerCode) {
-		this.partnerCode = partnerCode;
+	public void setIdMainDealer(String idMainDealer) {
+		this.idMainDealer = idMainDealer;
+	}
+
+	public String getMdDealerCode() {
+		return mdDealerCode;
+	}
+
+	public void setMdDealerCode(String mdDealerCode) {
+		this.mdDealerCode = mdDealerCode;
 	}
 
 	public String getName() {
@@ -73,67 +75,43 @@ public class AhmPartner extends AhmBaseEntity {
 		this.name = name;
 	}
 
-	public String getPicName() {
-		return picName;
+	public String getOwner() {
+		return owner;
 	}
 
-	public void setPicName(String picName) {
-		this.picName = picName;
+	public void setOwner(String owner) {
+		this.owner = owner;
 	}
 
-	public boolean isStatus() {
-		return status;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setStatus(boolean status) {
-		this.status = status;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public String getAlamat() {
-		return alamat;
+	public String getPhoneNum() {
+		return phoneNum;
 	}
 
-	public void setAlamat(String alamat) {
-		this.alamat = alamat;
+	public void setPhoneNum(String phoneNum) {
+		this.phoneNum = phoneNum;
 	}
 
-	public String getKelurahan() {
-		return kelurahan;
+	public Integer getPit() {
+		return pit;
 	}
 
-	public void setKelurahan(String kelurahan) {
-		this.kelurahan = kelurahan;
+	public void setPit(Integer pit) {
+		this.pit = pit;
 	}
 
-	public Boolean getStatusB2B() {
-		return statusB2B;
+	public Integer getLevel() {
+		return level;
 	}
 
-	public void setStatusB2B(Boolean statusB2B) {
-		this.statusB2B = statusB2B;
-	}
-
-	public String getTypeRT() {
-		return typeRT;
-	}
-
-	public void setTypeRT(String typeRT) {
-		this.typeRT = typeRT;
-	}
-
-	public String getDealerCode() {
-		return dealerCode;
-	}
-	public void setDealerCode(String dealerCode) {
-		this.dealerCode = dealerCode;
-	}
-
-	public String getIdB2B() {
-		return idB2B;
-	}
-
-	public void setIdB2B(String idB2B) {
-		this.idB2B = idB2B;
-	}
-    
+	public void setLevel(Integer level) {
+		this.level = level;
+	}    
 }
