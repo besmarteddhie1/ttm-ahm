@@ -97,7 +97,8 @@ public class UamUser extends AhmBaseEntity {
 			this.menus = new ArrayList<UamMenu>();
 			for (UamRole u: getRoles()) 
 				for (UamMenu m: u.getMenus())
-					this.menus.add(m);
+					if (!this.menus.contains(m)) 
+						this.menus.add(m);
 		}		
 		return menus;
 	}

@@ -20,7 +20,7 @@ import org.hibernate.annotations.NotFoundAction;
  */
 
 @Entity
-@Table(name = "AHMJXUAM_MSTMENUS")
+@Table(name = "ahmjxuam_mstmenus")
 public class UamMenu extends AhmBaseEntity {
 
 	private static final long serialVersionUID = 5743125358008818944L;

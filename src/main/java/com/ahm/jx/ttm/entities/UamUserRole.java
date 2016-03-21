@@ -7,19 +7,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ahmdsuam_mstusrrols")    
+@Table(name = "ahmjxuam_mstusrrols")    
 public class UamUserRole extends AhmBaseEntity {
     
 	private static final long serialVersionUID = 2708307937115713991L;
 
 	@ManyToOne
-	@JoinColumn(name="vid_ahmdsuam_mstusers", referencedColumnName="vid")
+	@JoinColumn(name="vid_ahmjxuam_mstusers", referencedColumnName="vid")
 	private UamUser user;
 	
-    @JoinColumn(name="vid_ahmdsuam_mstroles", referencedColumnName="vid") 
+    @JoinColumn(name="vid_ahmjxuam_mstroles", referencedColumnName="vid") 
     private UamRole role;
 
-    @Column(name="status") 
+    @Column(name="vstatus") 
     private Boolean status;    
 
 	public UamUser getUser() {
