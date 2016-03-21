@@ -3,6 +3,7 @@ package com.ahm.jx.ttm.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -45,7 +46,10 @@ public class UamUser extends AhmBaseEntity {
     private List<UamRole> roles;
     
     @Transient
-    private List<UamMenu> menus;    
+    private List<UamMenu> menus;
+    
+    @Transient
+    private Map<String, UamMenu> hashMenus;    
 
 	public List<UamUserRole> getUserRoles() {
 		return userRoles;

@@ -6,6 +6,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 @Entity
 @Table(name = "ahmjxuam_mstusrrols")    
 public class UamUserRole extends AhmBaseEntity {
@@ -14,9 +17,12 @@ public class UamUserRole extends AhmBaseEntity {
 
 	@ManyToOne
 	@JoinColumn(name="vid_ahmjxuam_mstusers", referencedColumnName="vid")
+	@NotFound(action = NotFoundAction.IGNORE)
 	private UamUser user;
 	
-    @JoinColumn(name="vid_ahmjxuam_mstroles", referencedColumnName="vid") 
+	@ManyToOne
+    @JoinColumn(name="vid_ahmjxuam_mstroles", referencedColumnName="vid")
+	@NotFound(action = NotFoundAction.IGNORE)
     private UamRole role;
 
     @Column(name="vstatus") 

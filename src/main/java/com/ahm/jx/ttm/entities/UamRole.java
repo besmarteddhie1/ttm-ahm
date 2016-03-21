@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name="ahmdsuam_mstroles")
+@Table(name="ahmjxuam_mstroles")
 public class UamRole extends AhmBaseEntity {
     
 	private static final long serialVersionUID = 4847222996650784545L;
@@ -19,7 +19,7 @@ public class UamRole extends AhmBaseEntity {
 	@Column(name="VROLES_ID",length = 20, nullable = false, unique = true) 
     private String idRole;
     
-    @Column(name="VROLES_NAME",length = 30) 
+    @Column(name="VROLES_NAME", length = 30) 
     private String name;
     
     @Column(name="VROLES_DESC",length = 255) 

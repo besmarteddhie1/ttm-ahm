@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
+import com.ahm.jx.ttm.config.EntityDomain;
+
 /**
  *
  * @author sigit, refactoring by apri
@@ -28,7 +30,7 @@ public class UamMenu extends AhmBaseEntity {
 	@Column(name = "VMENU_ID", length = 16, nullable = false)
     private String idMenu;
 
-    @Column(name = "VTITLE", length = 36, nullable = false)
+    @Column(name = "VTITLE", length = EntityDomain.LENGTH_NAME, nullable = false)
     private String tittle;
 
     @Column(name = "VURL", length = 128, nullable = true)
