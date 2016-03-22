@@ -66,6 +66,7 @@
     </welcome-file-list>
     
     <!-- Enables Spring Security -->
+    
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>

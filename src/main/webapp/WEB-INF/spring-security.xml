@@ -1,0 +1,52 @@
+<beans:beans
+	xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+			http://www.springframework.org/schema/security
+			http://www.springframework.org/schema/security/spring-security.xsd">
+		 
+	<!-- enable use-expressions -->
+	
+	<http auto-config="true" use-expressions="true">
+	
+		<!--
+		
+		<headers>
+			<cache-control />
+		</headers>
+		 
+		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
+
+		<form-login login-page="/signin" 
+		    default-target-url="/dashboard"
+			authentication-failure-url="/signin?error" 
+			username-parameter="username"
+			password-parameter="password" 
+			login-processing-url="/dashboard" />
+
+		<logout logout-success-url="/signin?logout" delete-cookies="JSESSIONID" />
+		<csrf />
+				 -->
+
+	</http>
+
+	<!-- Select users and user_roles from database -->
+	<authentication-manager>
+	    <!-- 
+		<authentication-provider>
+			<password-encoder hash="md5"/>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select vusername username, vpassword password, vstat enabled from ahmjxuam_mstusers where vusername=?"
+				authorities-by-username-query="select a.vusername username, d.vmenu_id role
+											     from ahmjxuam_mstusers a 
+                                           inner join ahmjxuam_mstusrrols b on (b.vid_ahmjxuam_mstusers = a.vid)
+                                           inner join ahmjxuam_hdrrlaccess c on (c.vid_ahmjxuam_mstroles = b.vid_ahmjxuam_mstroles)
+                                           inner join ahmjxuam_mstmenus d on (c.vid_ahmjxuam_mstmenus = d.VID)
+                                           group by a.vusername, d.vmenu_id" />
+		</authentication-provider>
+		 -->
+	</authentication-manager>
+ 	
+</beans:beans>
