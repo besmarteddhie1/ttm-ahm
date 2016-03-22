@@ -2,6 +2,7 @@
 package com.ahm.jx.ttm.entities;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -44,12 +45,9 @@ public class UamUser extends AhmBaseEntity {
     
     @Transient
     private List<UamRole> roles;
-    
+        
     @Transient
-    private List<UamMenu> menus;
-    
-    @Transient
-    private Map<String, UamMenu> hashMenus;    
+    private Map<String, UamMenu> mapMenu;    
 
 	public List<UamUserRole> getUserRoles() {
 		return userRoles;
@@ -97,18 +95,7 @@ public class UamUser extends AhmBaseEntity {
 	}
 
 	public List<UamMenu> getMenus() {
-		if (this.menus == null) {
-			this.menus = new ArrayList<UamMenu>();
-			for (UamRole u: getRoles()) 
-				for (UamMenu m: u.getMenus())
-					if (!this.menus.contains(m)) 
-						this.menus.add(m);
-		}		
-		return menus;
-	}
-
-	public void setMenus(List<UamMenu> menus) {
-		this.menus = menus;
+		return new ArrayList<UamMenu>(mapMenu.values());
 	}
 
 	public AhmPartner getPartner() {
@@ -117,7 +104,25 @@ public class UamUser extends AhmBaseEntity {
 
 	public void setPartner(AhmPartner partner) {
 		this.partner = partner;
+	}
+
+	public Map<String, UamMenu> getMapMenu() {
+		if (this.mapMenu == null) {
+			this.mapMenu = new HashMap<String, UamMenu>();
+			for (UamRole u: getRoles()) 
+				for (UamMenu m: u.getMenus())
+					if (mapMenu.containsKey(m.getIdMenu()))
+						this.mapMenu.put(m.getIdMenu(), m);
+		}		
+		return mapMenu;
+	}
+
+	public void setMapMenu(Map<String, UamMenu> mapMenu) {
+		this.mapMenu = mapMenu;
 	}    
     
+	public boolean getHaveMenu(String idMenu) {
+		return (mapMenu.containsKey(idMenu));		
+	}
     
 }
