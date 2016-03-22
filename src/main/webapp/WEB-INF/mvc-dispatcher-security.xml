@@ -21,9 +21,24 @@
 	</http>
 	
 	<authentication-manager>
-		<authentication-provider user-service-ref="accountService"/>
+	
+		<authentication-provider>
+			<password-encoder hash="md5"/>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select vusername username, vpassword password, vstat enabled from ahmjxuam_mstusers where vusername=?"
+				authorities-by-username-query="select a.vusername username, d.vmenu_id role
+											     from ahmjxuam_mstusers a 
+                                           inner join ahmjxuam_mstusrrols b on (b.vid_ahmjxuam_mstusers = a.vid)
+                                           inner join ahmjxuam_hdrrlaccess c on (c.vid_ahmjxuam_mstroles = b.vid_ahmjxuam_mstroles)
+                                           inner join ahmjxuam_mstmenus d on (c.vid_ahmjxuam_mstmenus = d.vid)
+                                           where a.vusername=?
+                                           group by a.vusername, d.vmenu_id" />
+		</authentication-provider>
 		
-		<!--  				
+		<!--
+			
+		<authentication-provider user-service-ref="accountService"/>
+				  			
 		<authentication-provider>		
 			<user-service>
 				<user name="admin" password="admin" authorities="ROLE_USER,ROLE_ADMIN"/>
