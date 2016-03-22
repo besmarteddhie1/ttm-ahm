@@ -1,4 +1,4 @@
-var baseURL = "/ahmjxdsh000/rest";
+var baseURL = "/ahmjxdsh000/";
 
 function recursive_menu(menu_obj, array_data, html_string){
     var menu_childs = new Array();
@@ -43,7 +43,7 @@ function _fw_login(user, pass){
     $.ajax
     ({
         type: "POST",
-        url: baseURL+"/dashboard/login",
+        url: baseURL + "/dashboard/login",
         contentType: "application/json",
         dataType: 'json',
         async: false,
