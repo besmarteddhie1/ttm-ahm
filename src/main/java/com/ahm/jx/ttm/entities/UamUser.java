@@ -41,13 +41,22 @@ public class UamUser extends AhmBaseEntity {
     private Boolean status;
     
     @OneToMany(cascade=CascadeType.ALL, mappedBy="user")
-    private List<UamUserRole> userRoles;
+    private List<UamUserRole> userRoles = new ArrayList<UamUserRole>();
     
     @Transient
     private List<UamRole> roles;
         
     @Transient
-    private Map<String, UamMenu> mapMenu;    
+    private Map<String, UamMenu> mapMenu;
+    
+    public UamUser() {
+	}
+    
+    public UamUser(String userName, String password) {
+    	this.userName = userName;
+    	this.password = password;
+    	this.status = true;
+	}
 
 	public List<UamUserRole> getUserRoles() {
 		return userRoles;
@@ -84,7 +93,7 @@ public class UamUser extends AhmBaseEntity {
 	public List<UamRole> getRoles() {
 		if (this.roles == null) {
 			this.roles = new ArrayList<UamRole>();
-			for (UamUserRole u: userRoles) 
+			for (UamUserRole u: this.getUserRoles()) 
 				if (u.getStatus()) this.roles.add(u.getRole());
 		}
 		return roles;
