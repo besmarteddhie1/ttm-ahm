@@ -94,7 +94,7 @@ public class DashboardAhmjxuamMstusersDaoImpl extends GenericHibernateDao<Ahmjxu
         VoAhmjxuamMstpartner voAhmjxuamMstpartner = null;
         String hql = "SELECT dlr.vid , "
                 + "dlr.vdealercode , dlr.vaddress , "
-                + "dlr.vname , dlr.vowner , dlr.vphonemun , "
+                + "dlr.vname , dlr.vowner , dlr.vphonenum, "
                 + "dlr.vcity , dlr.vmdcode , dlr.dbegineff , "
                 + "dlr.dendeff , dlr.nlevel , dlr.vmddlrcode , "
                 + "dlr.npit "
@@ -112,7 +112,7 @@ public class DashboardAhmjxuamMstusersDaoImpl extends GenericHibernateDao<Ahmjxu
             voAhmjxuamMstpartner.setVaddress(temp[2] + "");
             voAhmjxuamMstpartner.setVname(temp[3] + "");
             voAhmjxuamMstpartner.setVowner(temp[4] + "");
-            voAhmjxuamMstpartner.setVphonemun(temp[5] + "");
+            voAhmjxuamMstpartner.setVphonenum(temp[5] + "");
             voAhmjxuamMstpartner.setVcity(temp[6] + "");
             voAhmjxuamMstpartner.setVmdcode(temp[7] + "");
 

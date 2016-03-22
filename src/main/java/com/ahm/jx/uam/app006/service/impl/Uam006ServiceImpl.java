@@ -82,10 +82,13 @@ public class Uam006ServiceImpl implements Uam006Service {
     public DtoRespond insertRoleAccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Uam006VoAhmjxuamHdrrlaccess uam006VoAhmjxuamHdrrlaccess, String token, String appId) {
         DtoRespond dtoRespond;
         String username = dashboardService.getUsername(httpServletRequest);
+        System.out.println("------> username: " + username);
+
         dtoRespond = dashboardService.authenticationAndAuthorization(httpServletRequest, httpServletResponse, token, appId);
+        System.out.println("------> dtoRespond.getStat(): " + dtoRespond.getStat());
         if (dtoRespond.getStat().equals(CommonConstant._200)) {
             String parent = uam006AhmjxuamMstmenuDao.getParentId(uam006VoAhmjxuamHdrrlaccess.getVidAhmjxuamMstmenus());
-
+            System.out.println("------> parent: " + parent);
             while (parent != null) {
                 if (!uam006AhmjxuamMstmenuDao.isParentExist(parent, uam006VoAhmjxuamHdrrlaccess.getVidAhmjxuamMstroles())) {
                     AhmjxuamHdrrlaccess parentMenu = new AhmjxuamHdrrlaccess();

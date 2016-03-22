@@ -53,7 +53,7 @@
         <div id="table-container">
             <table 	id="ahmjxuam009p01SearchTable"
                     data-method="post"
-                    data-url="/uam002/paging"
+                    data-url="/uam009/paging"
                     data-content-type="application/json"
                     data-data-type="json"
                     data-query-params-type="limit"
@@ -113,7 +113,7 @@
                 <label for="ahmjxuam009p02IdDealer" class="col-sm-2 control-label">Dealer <span style="color:red">*)  </span></label>
                 <div class="lookup-wrapper col-sm-6" >
                     <div class="input-group lookup" 
-                         data-url="/uam002/lovdealer"
+                         data-url="/uam009/lovdealer"
                          data-lookup-pre-func="ahmjxuam009LookupDealer" 
                          data-columns='[{"id":"vid","name":"vid","visible":"false","sortable":"false"},{"id":"vdealercode","name":"Kode Dealer","visible":"true","sortable":"true"}
                          ,{"id":"vname","name":"Nama Dealer","visible":"true","sortable":"true"}]'
@@ -183,7 +183,7 @@
     </div>
 
 
-    <div id="ahmdshuam002p04" class="subpage" data-path="Maintain User/Konfirmasi Disable User">
+    <div id="ahmdshuam009p04" class="subpage" data-path="Maintain User/Konfirmasi Disable User">
         <table 	id="ahmjxuam009p04DisableTable">
 
             <thead>
@@ -216,7 +216,7 @@
 
 
 
-    <div id="ahmdshuam002p05" class="subpage" data-path="Maintain User/Konfirmasi Reset Password">
+    <div id="ahmdshuam009p05" class="subpage" data-path="Maintain User/Konfirmasi Reset Password">
         <table id="ahmjxuam009p05ResetTable">
 
             <thead>
@@ -304,7 +304,7 @@
             vo.vusername = $('input[id="ahmjxuam009p02Dealer"]', page).val()+'.'+$('input[name="vusername"]', page).val();
             vo.vidDlr = $('input[id="ahmjxuam009p02IdDealer"]', page).val();
                                                      
-            _fw_post('/uam002/insert', vo, function(data){
+            _fw_post('/uam009/insert', vo, function(data){
                 if(data.stat=="200"){
                                
                     $('input, select',page).prop('disabled',true);
@@ -343,7 +343,7 @@
             vo.iver = $('input[name="iver"]', page).val();
             vo.vusername = $('input[name="vusername"]', page).val();
             vo.vstat = $('input[name="vstat"]:checked', page).val();
-            _fw_post('/uam002/update', vo, function(data){
+            _fw_post('/uam009/update', vo, function(data){
                 if(data.stat=="200"){
                 
                     //_fw_subpage(obj, 'ahmdsh1c008p01');
@@ -366,7 +366,7 @@
             $('#ahmjxuam009p04DisableTable').bootstrapTable('destroy');
             $('#ahmjxuam009p04DisableTable').bootstrapTable({data:disabledRows});
         
-            _fw_subpage(obj, 'ahmdshuam002p04');
+            _fw_subpage(obj, 'ahmdshuam009p04');
         } else {
             alert('no data selected');
         }
@@ -381,7 +381,7 @@
             disabled.push({'vid': row.vid});
             vid.push(row.vid);
         });
-        _fw_post('/uam002/disable', disabled, function(data){
+        _fw_post('/uam009/disable', disabled, function(data){
             if(data.stat=="200"){
                 
                 _fw_setMessage(obj, 1, data);
@@ -405,7 +405,7 @@
             $('#ahmjxuam009p05ResetTable').bootstrapTable('destroy');
             $('#ahmjxuam009p05ResetTable').bootstrapTable({data:disabledRows});
         
-            _fw_subpage(obj, 'ahmdshuam002p05');
+            _fw_subpage(obj, 'ahmdshuam009p05');
         } else {
             alert('no data selected');
         }
@@ -422,7 +422,7 @@
             vid.push(row.vid);
         });
         console.log(disabled);
-        _fw_post('/uam002/reset', disabled, function(data){
+        _fw_post('/uam009/reset', disabled, function(data){
             if(data.stat=="200"){
                 $('#ahmjxuam009p01TableDelete').bootstrapTable('remove', {field: 'vid', values: vid});
                 $('#ahmjxuam009p01SearchTable').bootstrapTable('refresh');

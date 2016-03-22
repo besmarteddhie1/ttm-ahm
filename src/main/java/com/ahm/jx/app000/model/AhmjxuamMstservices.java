@@ -28,10 +28,10 @@ public class AhmjxuamMstservices extends BaseAuditVersioning implements Serializ
     private String vurl;
 
     @Column(name = "VSVCNAME")
-    private String vsvcname;
+    private String vsvcName;
 
     @Column(name = "VSVCDESC")
-    private String vsvcdesc;
+    private String vsvcDesc;
 
     @Column(name = "VSTAT", length = 1)
     private String vstat;
@@ -43,72 +43,50 @@ public class AhmjxuamMstservices extends BaseAuditVersioning implements Serializ
     @JoinColumn(name = "VID_AHMJXUAM_MSTAPPS", referencedColumnName = "VID", insertable = false, updatable = false)
     private AhmjxuamMstapps ahmjxuamMstapps;
 
-    /**
-     * @return the vurl
-     */
     public String getVurl() {
         return vurl;
     }
 
-    /**
-     * @param vurl the vurl to set
-     */
     public void setVurl(String vurl) {
         this.vurl = vurl;
     }
 
-    /**
-     * @return the vsvcname
-     */
-    public String getVsvcname() {
-        return vsvcname;
+    public String getVsvcName() {
+        return vsvcName;
     }
 
-    /**
-     * @param vsvcname the vsvcname to set
-     */
-    public void setVsvcname(String vsvcname) {
-        this.vsvcname = vsvcname;
+    public void setVsvcName(String vsvcName) {
+        this.vsvcName = vsvcName;
     }
 
-    /**
-     * @return the vsvcdesc
-     */
-    public String getVsvcdesc() {
-        return vsvcdesc;
+    public String getVsvcDesc() {
+        return vsvcDesc;
     }
 
-    /**
-     * @param vsvcdesc the vsvcdesc to set
-     */
-    public void setVsvcdesc(String vsvcdesc) {
-        this.vsvcdesc = vsvcdesc;
+    public void setVsvcDesc(String vsvcDesc) {
+        this.vsvcDesc = vsvcDesc;
     }
 
-    /**
-     * @return the vidAhmjxuamMstapps
-     */
+    public String getVstat() {
+        return vstat;
+    }
+
+    public void setVstat(String vstat) {
+        this.vstat = vstat;
+    }
+
     public String getVidAhmjxuamMstapps() {
         return vidAhmjxuamMstapps;
     }
 
-    /**
-     * @param vidAhmjxuamMstapps the vidAhmjxuamMstapps to set
-     */
     public void setVidAhmjxuamMstapps(String vidAhmjxuamMstapps) {
         this.vidAhmjxuamMstapps = vidAhmjxuamMstapps;
     }
 
-    /**
-     * @return the ahmjxuamMstapps
-     */
     public AhmjxuamMstapps getAhmjxuamMstapps() {
         return ahmjxuamMstapps;
     }
 
-    /**
-     * @param ahmjxuamMstapps the ahmjxuamMstapps to set
-     */
     public void setAhmjxuamMstapps(AhmjxuamMstapps ahmjxuamMstapps) {
         this.ahmjxuamMstapps = ahmjxuamMstapps;
     }

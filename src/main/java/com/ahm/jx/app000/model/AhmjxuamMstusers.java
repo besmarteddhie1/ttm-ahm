@@ -23,7 +23,6 @@ import org.hibernate.envers.RelationTargetAuditMode;
  *
  * @author sigit
  */
-
 @Entity
 @Table(name = "AHMJXUAM_MSTUSERS")
 public class AhmjxuamMstusers extends BaseAuditVersioning implements Serializable {
@@ -33,6 +32,21 @@ public class AhmjxuamMstusers extends BaseAuditVersioning implements Serializabl
 
     @Column(name = "VPASSWORD")
     private String vpassword;
+
+    @Column(name = "VFULLNAME")
+    private String vfullname;
+
+    @Column(name = "VEMAIL")
+    private String vemail;
+
+    @Column(name = "VPHONE", length = 20)
+    private String vphone;
+
+    @Column(name = "VADDRESS")
+    private String vaddress;
+
+    @Column(name = "DBIRTH")
+    private Date dbirth;
 
     @Column(name = "VTOKEN")
     private String vtoken;
@@ -46,8 +60,6 @@ public class AhmjxuamMstusers extends BaseAuditVersioning implements Serializabl
     @Column(name = "VSTAT", length = 1)
     private String vstat;
 
-//    @Column(name = "VID_AHMDSBSC_MSTLDRDODE")
-//    private String vidAhmdsbscMstldrdode;
     @Column(name = "VID_AHMJXUAM_MSTPARTNER")
     private String vidAhmjxuamMstpartner;
 
@@ -58,140 +70,114 @@ public class AhmjxuamMstusers extends BaseAuditVersioning implements Serializabl
     @OneToMany(mappedBy = "ahmjxuamMstusers")
     private List<AhmjxuamMstusrrols> listAhmjxuamMstusrrolses;
 
-    /**
-     * @return the vusername
-     */
     public String getVusername() {
         return vusername;
     }
 
-    /**
-     * @param vusername the vusername to set
-     */
     public void setVusername(String vusername) {
         this.vusername = vusername;
     }
 
-    /**
-     * @return the vpassword
-     */
     public String getVpassword() {
         return vpassword;
     }
 
-    /**
-     * @param vpassword the vpassword to set
-     */
     public void setVpassword(String vpassword) {
         this.vpassword = vpassword;
     }
 
-    /**
-     * @return the vtoken
-     */
+    public String getVfullname() {
+        return vfullname;
+    }
+
+    public void setVfullname(String vfullname) {
+        this.vfullname = vfullname;
+    }
+
+    public String getVemail() {
+        return vemail;
+    }
+
+    public void setVemail(String vemail) {
+        this.vemail = vemail;
+    }
+
+    public String getVphone() {
+        return vphone;
+    }
+
+    public void setVphone(String vphone) {
+        this.vphone = vphone;
+    }
+
+    public String getVaddress() {
+        return vaddress;
+    }
+
+    public void setVaddress(String vaddress) {
+        this.vaddress = vaddress;
+    }
+
+    public Date getDbirth() {
+        return dbirth;
+    }
+
+    public void setDbirth(Date dbirth) {
+        this.dbirth = dbirth;
+    }
+
     public String getVtoken() {
         return vtoken;
     }
 
-    /**
-     * @param vtoken the vtoken to set
-     */
     public void setVtoken(String vtoken) {
         this.vtoken = vtoken;
     }
 
-    /**
-     * @return the dtokenexp
-     */
     public Date getDtokenexp() {
         return dtokenexp;
     }
 
-    /**
-     * @param dtokenexp the dtokenexp to set
-     */
     public void setDtokenexp(Date dtokenexp) {
         this.dtokenexp = dtokenexp;
     }
 
-    /**
-     * @return the vipaddress
-     */
     public String getVipaddress() {
         return vipaddress;
     }
 
-    /**
-     * @param vipaddress the vipaddress to set
-     */
     public void setVipaddress(String vipaddress) {
         this.vipaddress = vipaddress;
     }
 
-    /**
-     * @return the vstat
-     */
     public String getVstat() {
         return vstat;
     }
 
-    /**
-     * @param vstat the vstat to set
-     */
     public void setVstat(String vstat) {
         this.vstat = vstat;
     }
 
-//    /**
-//     * @return the vidAhmdsbscMstldrdode
-//     */
-//    public String getVidAhmdsbscMstldrdode() {
-//        return vidAhmdsbscMstldrdode;
-//    }
-//    /**
-//     * @param vidAhmdsbscMstldrdode the vidAhmdsbscMstldrdode to set
-//     */
-//    public void setVidAhmdsbscMstldrdode(String vidAhmdsbscMstldrdode) {
-//        this.vidAhmdsbscMstldrdode = vidAhmdsbscMstldrdode;
-//    }
-    /**
-     * @return the vidAhmjxuamMstpartner
-     */
     public String getVidAhmjxuamMstpartner() {
         return vidAhmjxuamMstpartner;
     }
 
-    /**
-     * @param vidAhmjxuamMstpartner the vidAhmjxuamMstpartner to set
-     */
     public void setVidAhmjxuamMstpartner(String vidAhmjxuamMstpartner) {
         this.vidAhmjxuamMstpartner = vidAhmjxuamMstpartner;
     }
 
-    /**
-     * @return the ahmjxuamMstpartner
-     */
     public AhmjxuamMstpartner getAhmjxuamMstpartner() {
         return ahmjxuamMstpartner;
     }
 
-    /**
-     * @param ahmjxuamMstpartner the ahmjxuamMstpartner to set
-     */
     public void setAhmjxuamMstpartner(AhmjxuamMstpartner ahmjxuamMstpartner) {
         this.ahmjxuamMstpartner = ahmjxuamMstpartner;
     }
 
-    /**
-     * @return the listAhmjxuamMstusrrolses
-     */
     public List<AhmjxuamMstusrrols> getListAhmjxuamMstusrrolses() {
         return listAhmjxuamMstusrrolses;
     }
 
-    /**
-     * @param listAhmjxuamMstusrrolses the listAhmjxuamMstusrrolses to set
-     */
     public void setListAhmjxuamMstusrrolses(List<AhmjxuamMstusrrols> listAhmjxuamMstusrrolses) {
         this.listAhmjxuamMstusrrolses = listAhmjxuamMstusrrolses;
     }

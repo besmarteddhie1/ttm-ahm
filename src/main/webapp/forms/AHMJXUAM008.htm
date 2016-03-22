@@ -25,11 +25,7 @@
                        data-page-size="5">
                     <thead>
                         <tr>
-                            <!-- <th data-field="vrolesId" 
-                                data-sortable="true"
-                                data-visible="true"
-                                >ID Application</th> -->
-                            <th data-field="vrolesName" 
+                            <th data-field="vname" 
                                 data-sortable="true"
                                 >Nama Application</th>
                             <th data-field="vaction"
@@ -50,7 +46,7 @@
         <div id="table-container">
             <table 	id="ahmjxuam008p01SearchTable"
                     data-method="post"
-                    data-url="/uam003/paging"
+                    data-url="/uam008/paging"
                     data-content-type="application/json"
                     data-data-type="json"
                     data-query-params-type="limit"
@@ -76,18 +72,14 @@
                             data-sortable="true"
                             data-visible="false"
                             >Ver</th>
-                        <!-- <th data-field="vrolesId" 
-                            data-sortable="true"
-                            data-visible="true"
-                            >ID Application</th> -->
-                        <th data-field="vrolesName" 
+                        <th data-field="vname" 
                             data-sortable="true"
                             data-visible="true"
                             >Nama Application</th>
-                        <th data-field="vrolesDesc" 
+                        <th data-field="vdesc" 
                             data-sortable="true"
                             >Deskripsi Application</th>
-                        <th data-field="vrolesStatus" 
+                        <th data-field="vstat" 
                             data-sortable="true"
                             >Status Application</th>
                     </tr>
@@ -100,22 +92,30 @@
     </div>
     <div id="ahmjxuam008p02" class="subpage" data-path="Maintain Apps/Add App">
         <form class="form-horizontal">
-            <!-- <div class="form-group large-font">
-                <label for="ahmjxuam008p02VrolesId" class="col-sm-2 control-label">ID Application <span style="color:red">*)</span></label>
-                <div class="col-sm-6">
-                    <input id="ahmjxuam008p02VrolesId" name="vrolesId" class="form-control">
-                </div>
-            </div> -->
+
             <div class="form-group large-font">
-                <label for="ahmjxuam008p02VrolesName" class="col-sm-2 control-label">Nama Application <span style="color:red">*)</span></label>
+                <label for="ahmjxuam008p02Vname" class="col-sm-2 control-label">Nama Application <span style="color:red">*)</span></label>
                 <div class="col-sm-6">
-                    <input id="ahmjxuam008p02VrolesName" name="vrolesName" class="form-control">
+                    <input id="ahmjxuam008p02Vname" name="vname" class="form-control">
                 </div>
             </div>
             <div class="form-group large-font">
-                <label for="ahmjxuam008p02VrolesDesc" class="col-sm-2 control-label">Deskripsi Application </label>
+                <label for="ahmjxuam008p02Vdesc" class="col-sm-2 control-label">Deskripsi Application </label>
                 <div class="col-sm-6">
-                    <input id="ahmjxuam008p02VrolesDesc" name="vrolesDesc" class="form-control">
+                    <input id="ahmjxuam008p02Vdesc" name="vdesc" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label class="col-sm-2 control-label">Status</label>
+                <div class="col-sm-6">
+
+                    <label class="radio-inline">
+                        <input type="radio" name="vstat" value="AKTIF" data-field="vstat"> Aktif
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="vstat" value="TIDAK AKTIF" data-field="vstat"> Tidak Aktif
+                    </label>
+
                 </div>
             </div>
             <div class="col-sm-offset-2 col-sm-6 form-group-button">
@@ -130,22 +130,17 @@
         <form class="form-horizontal">
             <input type="hidden" name="vid" data-field="vid"/>
             <input type="hidden" name="iver" data-field="iver"/>
-            <!-- <div class="form-group large-font">
-                <label for="ahmjxuam008p03VrolesId" class="col-sm-2 control-label">ID Application</label>
-                <div class="col-sm-6">
-                    <input id="ahmjxuam008p03VrolesId" name="vrolesId" class="form-control" data-field="vrolesId" disabled="disabled">
-                </div>
-            </div> -->
+
             <div class="form-group large-font">
-                <label for="ahmjxuam008p03VrolesName" class="col-sm-2 control-label">Nama Application <span style="color:red">*)</span></label>
+                <label for="ahmjxuam008p03Vname" class="col-sm-2 control-label">Nama Application <span style="color:red">*)</span></label>
                 <div class="col-sm-6">
-                    <input id="ahmjxuam008p03VrolesName" name="vrolesName" class="form-control" data-field="vrolesName">
+                    <input id="ahmjxuam008p03Vname" name="vname" class="form-control" data-field="vname">
                 </div>
             </div>
             <div class="form-group large-font">
-                <label for="ahmjxuam008p03VrolesDesc" class="col-sm-2 control-label">Deskripsi Application </label>
+                <label for="ahmjxuam008p03Vdesc" class="col-sm-2 control-label">Deskripsi Application </label>
                 <div class="col-sm-6">
-                    <input id="ahmjxuam008p03VrolesDesc" name="vrolesDesc" class="form-control" data-field="vrolesDesc">
+                    <input id="ahmjxuam008p03Vdesc" name="vdesc" class="form-control" data-field="vdesc">
                 </div>
             </div>
             <div class="form-group large-font">
@@ -153,10 +148,10 @@
                 <div class="col-sm-6">
 
                     <label class="radio-inline">
-                        <input type="radio" name="vrolesStatus" value="AKTIF" data-field="vrolesStatus"> Aktif
+                        <input type="radio" name="vstat" value="AKTIF" data-field="vstat"> Aktif
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="vrolesStatus" value="TIDAK AKTIF" data-field="vrolesStatus"> Tidak Aktif
+                        <input type="radio" name="vstat" value="TIDAK AKTIF" data-field="vstat"> Tidak Aktif
                     </label>
 
                 </div>
@@ -183,15 +178,10 @@
                         data-sortable="true"
                         data-visible="false"
                         >Ver</th>
-
-                    <!-- <th data-field="vrolesId" 
-                        data-sortable="true"
-                        data-visible="true"
-                        >ID Application</th> -->
-                    <th data-field="vrolesName" 
+                    <th data-field="vname" 
                         data-sortable="true"
                         >Nama Application</th>
-                    <th data-field="vrolesDesc" 
+                    <th data-field="vdesc" 
                         data-sortable="true" 
                         >Deskripsi Application</th>
                 </tr>
@@ -208,17 +198,11 @@
 <script type="text/javascript">
     
     function stateFormatter(value, row, index) {
-        if (row.vrolesStatus === "TIDAK AKTIF") {
+        if (row.vdesc === "TIDAK AKTIF") {
             return {
                 disabled: true
             };
         }
-        /*  if (row.vrolesStatus === "TIDAK AKTIF") {
-            return {
-                disabled: true,
-                checked: true
-            }
-        }*/
         return value;
     }
     
@@ -268,7 +252,7 @@
             disabled.push({'vid': row.vid});
             vid.push(row.vid);
         });
-        _fw_post('/uam003/disable', disabled, function(data){
+        _fw_post('/uam008/disable', disabled, function(data){
             if(data.stat=="200"){
                 _fw_setMessage(obj, 1, data);
                 $('#ahmjxuam008p01TableDisable').bootstrapTable('remove', {field: 'vid', values: vid});
@@ -281,16 +265,14 @@
     function ahmjxuam008AddData(obj){
         var page = $(obj).closest('.subpage');
         _fw_validation_clear(obj);
-        _fw_validation_add(obj, 'ahmjxuam008p02VrolesId', 'required');
-        _fw_validation_add(obj, 'ahmjxuam008p02VrolesName', 'required');
-        _fw_validation_add(obj, 'ahmjxuam008p02VrolesDesc', 'required');
+        _fw_validation_add(obj, 'ahmjxuam008p02Vname', 'required');
+        _fw_validation_add(obj, 'ahmjxuam008p02Vdesc', 'required');
         if(_fw_validation_validate(obj)){
             var vo = new Object();
-            vo.vrolesId = $('input[name="vrolesId"]', page).val();
-            vo.vrolesName = $('input[name="vrolesName"]', page).val();
-            vo.vrolesDesc = $('input[name="vrolesDesc"]', page).val();
+            vo.vname = $('input[name="vname"]', page).val();
+            vo.vdesc = $('input[name="vdesc"]', page).val();
         
-            _fw_post('/uam003/insert', vo, function(data){
+            _fw_post('/uam008/insert', vo, function(data){
                 if(data.stat=="200"){
                     //_fw_subpage(obj, 'ahmdsh1c008p01');
                     $('input, select', page).prop('disabled',true);
@@ -317,17 +299,16 @@
     function ahmjxuam008Update(obj){
         var page = $(obj).closest('.subpage');
         _fw_validation_clear(obj);
-        _fw_validation_add(obj, 'ahmjxuam008p03VrolesName', 'required');
-        _fw_validation_add(obj, 'ahmjxuam008p03VrolesDesc', 'text area');
+        _fw_validation_add(obj, 'ahmjxuam008p03Vname', 'required');
+        _fw_validation_add(obj, 'ahmjxuam008p03Vdesc', 'text area');
         if(_fw_validation_validate(obj)){
             var vo = new Object();
             vo.vid = $('input[name="vid"]', page).val();
             vo.iver = $('input[name="iver"]', page).val();
-            vo.vrolesId = $('input[name="vrolesId"]', page).val();
-            vo.vrolesName = $('input[name="vrolesName"]', page).val();
-            vo.vrolesDesc = $('input[name="vrolesDesc"]', page).val();
-            vo.vrolesStatus = $('input[name="vrolesStatus"]:checked', page).val();
-            _fw_post('/uam003/update', vo, function(data){
+            vo.vname = $('input[name="vname"]', page).val();
+            vo.vdesc = $('input[name="vdesc"]', page).val();
+            vo.vstat = $('input[name="vstat"]:checked', page).val();
+            _fw_post('/uam008/update', vo, function(data){
                 if(data.stat=="200"){
                 
                     //_fw_subpage(obj, 'ahmdsh1c008p01');

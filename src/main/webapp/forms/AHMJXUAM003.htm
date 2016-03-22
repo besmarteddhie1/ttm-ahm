@@ -25,17 +25,13 @@
                        data-page-size="5">
                     <thead>
                         <tr>
-                            <!-- <th data-field="vrolesId" 
-                                data-sortable="true"
-                                data-visible="true"
-                                >ID Service</th> -->
-                            <th data-field="vrolesName" 
+                            <th data-field="vsvcName" 
                                 data-sortable="true"
                                 >Nama Service</th>
-                            <th data-field="vrolesName" 
+                            <th data-field="vsvcName" 
                                 data-sortable="true"
                                 >URL Service</th>
-                            <th data-field="vrolesName" 
+                            <th data-field="vsvcName" 
                                 data-sortable="true"
                                 >Application</th>
                             <th data-field="vaction"
@@ -82,26 +78,22 @@
                             data-sortable="true"
                             data-visible="false"
                             >Ver</th>
-                        <!-- <th data-field="vrolesId" 
-                            data-sortable="true"
-                            data-visible="true"
-                            >ID Service</th> -->
-                        <th data-field="vrolesName" 
+                        <th data-field="vsvcName" 
                             data-sortable="true"
                             data-visible="true"
                             >Nama Service</th>
-                        <th data-field="vrolesName" 
+                        <th data-field="vsvcName" 
                             data-sortable="true"
                             data-visible="true"
                             >URL Service</th>
-                        <th data-field="vrolesDesc" 
+                        <th data-field="vsvcDesc" 
                             data-sortable="true"
                             >Deskripsi Service</th>
-                        <th data-field="vrolesName" 
+                        <th data-field="vsvcName" 
                             data-sortable="true"
                             data-visible="true"
                             >Application</th>
-                        <th data-field="vrolesStatus" 
+                        <th data-field="vstat" 
                             data-sortable="true"
                             >Status Service</th>
                     </tr>
@@ -114,29 +106,36 @@
     </div>
     <div id="ahmjxuam003p02" class="subpage" data-path="Maintain Services/Add Service">
         <form class="form-horizontal">
-            <!-- <div class="form-group large-font">
-                <label for="ahmjxuam003p02VrolesId" class="col-sm-2 control-label">ID Service <span style="color:red">*)</span></label>
-                <div class="col-sm-6">
-                    <input id="ahmjxuam003p02VrolesId" name="vrolesId" class="form-control">
-                </div>
-            </div> -->
             <div class="form-group large-font">
-                <label for="ahmjxuam003p02VrolesName" class="col-sm-2 control-label">Nama Service <span style="color:red">*)</span></label>
+                <label for="ahmjxuam003p02VsvcName" class="col-sm-2 control-label">Nama Service <span style="color:red">*)</span></label>
                 <div class="col-sm-6">
-                    <input id="ahmjxuam003p02VrolesName" name="vrolesName" class="form-control">
+                    <input id="ahmjxuam003p02VsvcName" name="vsvcName" class="form-control">
                 </div>
             </div>
-            <div class="form-group large-font">
-                <label for="ahmjxuam003p02VrolesName" class="col-sm-2 control-label">URL Service <span style="color:red">*)</span></label>
+            <div class="form-group large-font">Service 1
+                <label for="ahmjxuam003p02Vurl" class="col-sm-2 control-label">URL Service <span style="color:red">*)</span></label>
                 <div class="col-sm-6">
-                    <input id="ahmjxuam003p02VrolesName" name="vrolesName" class="form-control">
+                    <input id="ahmjxuam003p02Vurl" name="vurl" class="form-control">
                 </div>
             </div>
             
             <div class="form-group large-font">
-                <label for="ahmjxuam003p02VrolesDesc" class="col-sm-2 control-label">Deskripsi Service </label>
+                <label for="ahmjxuam003p02VsvcDesc" class="col-sm-2 control-label">Deskripsi Service </label>
                 <div class="col-sm-6">
-                    <input id="ahmjxuam003p02VrolesDesc" name="vrolesDesc" class="form-control">
+                    <input id="ahmjxuam003p02VsvcDesc" name="vsvcDesc" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label class="col-sm-2 control-label">Status</label>
+                <div class="col-sm-6">
+
+                    <label class="radio-inline">
+                        <input type="radio" name="vstat" value="AKTIF" data-field="vstat"> Aktif
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="vstat" value="TIDAK AKTIF" data-field="vstat"> Tidak Aktif
+                    </label>
+
                 </div>
             </div>
             <div class="col-sm-offset-2 col-sm-6 form-group-button">
@@ -151,29 +150,23 @@
         <form class="form-horizontal">
             <input type="hidden" name="vid" data-field="vid"/>
             <input type="hidden" name="iver" data-field="iver"/>
-            <!-- <div class="form-group large-font">
-                <label for="ahmjxuam003p03VrolesId" class="col-sm-2 control-label">ID Service</label>
-                <div class="col-sm-6">
-                    <input id="ahmjxuam003p03VrolesId" name="vrolesId" class="form-control" data-field="vrolesId" disabled="disabled">
-                </div>
-            </div> -->
             <div class="form-group large-font">
-                <label for="ahmjxuam003p03VrolesName" class="col-sm-2 control-label">Nama Service <span style="color:red">*)</span></label>
+                <label for="ahmjxuam003p03VsvcName" class="col-sm-2 control-label">Nama Service <span style="color:red">*)</span></label>
                 <div class="col-sm-6">
-                    <input id="ahmjxuam003p03VrolesName" name="vrolesName" class="form-control" data-field="vrolesName">
+                    <input id="ahmjxuam003p03VsvcName" name="vsvcName" class="form-control" data-field="vsvcName">
                 </div>
             </div>
             <div class="form-group large-font">
-                <label for="ahmjxuam003p02VrolesName" class="col-sm-2 control-label">URL Service <span style="color:red">*)</span></label>
+                <label for="ahmjxuam003p02Vurl" class="col-sm-2 control-label">URL Service <span style="color:red">*)</span></label>
                 <div class="col-sm-6">
-                    <input id="ahmjxuam003p02VrolesName" name="vrolesName" class="form-control">
+                    <input id="ahmjxuam003p02Vurl" name="vurl" class="form-control">
                 </div>
             </div>
             
             <div class="form-group large-font">
-                <label for="ahmjxuam003p03VrolesDesc" class="col-sm-2 control-label">Deskripsi Service </label>
+                <label for="ahmjxuam003p03VsvcDesc" class="col-sm-2 control-label">Deskripsi Service </label>
                 <div class="col-sm-6">
-                    <input id="ahmjxuam003p03VrolesDesc" name="vrolesDesc" class="form-control" data-field="vrolesDesc">
+                    <input id="ahmjxuam003p03VsvcDesc" name="vsvcDesc" class="form-control" data-field="vsvcDesc">
                 </div>
             </div>
             <div class="form-group large-font">
@@ -181,10 +174,10 @@
                 <div class="col-sm-6">
 
                     <label class="radio-inline">
-                        <input type="radio" name="vrolesStatus" value="AKTIF" data-field="vrolesStatus"> Aktif
+                        <input type="radio" name="vstat" value="AKTIF" data-field="vstat"> Aktif
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="vrolesStatus" value="TIDAK AKTIF" data-field="vrolesStatus"> Tidak Aktif
+                        <input type="radio" name="vstat" value="TIDAK AKTIF" data-field="vstat"> Tidak Aktif
                     </label>
 
                 </div>
@@ -211,21 +204,16 @@
                         data-sortable="true"
                         data-visible="false"
                         >Ver</th>
-
-                    <!-- <th data-field="vrolesId" 
-                        data-sortable="true"
-                        data-visible="true"
-                        >ID Service</th> -->
-                    <th data-field="vrolesName" 
+                    <th data-field="vsvcName" 
                         data-sortable="true"
                         >Nama Service</th>
-                    <th data-field="vrolesName" 
+                    <th data-field="vsvcName" 
                         data-sortable="true"
                         >URL Service</th>
-                    <th data-field="vrolesName" 
+                    <th data-field="vsvcName" 
                         data-sortable="true"
                         >Application</th>
-                    <th data-field="vrolesDesc" 
+                    <th data-field="vsvcDesc" 
                         data-sortable="true" 
                         >Deskripsi Service</th>
                 </tr>
@@ -242,17 +230,12 @@
 <script type="text/javascript">
     
     function stateFormatter(value, row, index) {
-        if (row.vrolesStatus === "TIDAK AKTIF") {
+        if (row.vstat === "TIDAK AKTIF") {
             return {
                 disabled: true
             };
         }
-        /*  if (row.vrolesStatus === "TIDAK AKTIF") {
-            return {
-                disabled: true,
-                checked: true
-            }
-        }*/
+
         return value;
     }
     
@@ -315,14 +298,12 @@
     function ahmjxuam003AddData(obj){
         var page = $(obj).closest('.subpage');
         _fw_validation_clear(obj);
-        _fw_validation_add(obj, 'ahmjxuam003p02VrolesId', 'required');
-        _fw_validation_add(obj, 'ahmjxuam003p02VrolesName', 'required');
-        _fw_validation_add(obj, 'ahmjxuam003p02VrolesDesc', 'required');
+        _fw_validation_add(obj, 'ahmjxuam003p02VsvcName', 'required');
+        _fw_validation_add(obj, 'ahmjxuam003p02VsvcDesc', 'required');
         if(_fw_validation_validate(obj)){
             var vo = new Object();
-            vo.vrolesId = $('input[name="vrolesId"]', page).val();
-            vo.vrolesName = $('input[name="vrolesName"]', page).val();
-            vo.vrolesDesc = $('input[name="vrolesDesc"]', page).val();
+            vo.vsvcName = $('input[name="vsvcName"]', page).val();
+            vo.vsvcDesc = $('input[name="vsvcDesc"]', page).val();
         
             _fw_post('/uam003/insert', vo, function(data){
                 if(data.stat=="200"){
@@ -351,16 +332,15 @@
     function ahmjxuam003Update(obj){
         var page = $(obj).closest('.subpage');
         _fw_validation_clear(obj);
-        _fw_validation_add(obj, 'ahmjxuam003p03VrolesName', 'required');
-        _fw_validation_add(obj, 'ahmjxuam003p03VrolesDesc', 'text area');
+        _fw_validation_add(obj, 'ahmjxuam003p03VsvcName', 'required');
+        _fw_validation_add(obj, 'ahmjxuam003p03VsvcDesc', 'text area');
         if(_fw_validation_validate(obj)){
             var vo = new Object();
             vo.vid = $('input[name="vid"]', page).val();
             vo.iver = $('input[name="iver"]', page).val();
-            vo.vrolesId = $('input[name="vrolesId"]', page).val();
-            vo.vrolesName = $('input[name="vrolesName"]', page).val();
-            vo.vrolesDesc = $('input[name="vrolesDesc"]', page).val();
-            vo.vrolesStatus = $('input[name="vrolesStatus"]:checked', page).val();
+            vo.vsvcName = $('input[name="vsvcName"]', page).val();
+            vo.vsvcDesc = $('input[name="vsvcDesc"]', page).val();
+            vo.vstat = $('input[name="vstat"]:checked', page).val();
             _fw_post('/uam003/update', vo, function(data){
                 if(data.stat=="200"){
                 

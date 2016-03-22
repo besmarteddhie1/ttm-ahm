@@ -12,6 +12,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -51,6 +52,10 @@ public class AhmjxuamMstmenus extends BaseAuditVersioning implements Serializabl
 
     @Column(name = "IORDER", length = 3)
     private Integer iorder;
+
+    @Lob
+    @Column(name = "BDI")
+    private byte[] bDI;
 
     /*
      * Menu has parent. In database, root menu has parent = "" instead of NULL !!! 

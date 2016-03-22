@@ -38,58 +38,34 @@ public class AhmjxuamTxnbookmark extends BaseAuditVersioning implements Serializ
     @JoinColumn(name = "VID_AHMJXUAM_MSTMENUS", referencedColumnName = "VID", insertable = false, updatable = false)
     private AhmjxuamMstmenus ahmjxuamMstmenus;
 
-    /**
-     * @return the vidAhmjxuamMstusers
-     */
     public String getVidAhmjxuamMstusers() {
         return vidAhmjxuamMstusers;
     }
 
-    /**
-     * @param vidAhmjxuamMstusers the vidAhmjxuamMstusers to set
-     */
     public void setVidAhmjxuamMstusers(String vidAhmjxuamMstusers) {
         this.vidAhmjxuamMstusers = vidAhmjxuamMstusers;
     }
 
-    /**
-     * @return the ahmjxuamMstusers
-     */
     public AhmjxuamMstusers getAhmjxuamMstusers() {
         return ahmjxuamMstusers;
     }
 
-    /**
-     * @param ahmjxuamMstusers the ahmjxuamMstusers to set
-     */
     public void setAhmjxuamMstusers(AhmjxuamMstusers ahmjxuamMstusers) {
         this.ahmjxuamMstusers = ahmjxuamMstusers;
     }
 
-    /**
-     * @return the vidAhmjxuamMstmenus
-     */
     public String getVidAhmjxuamMstmenus() {
         return vidAhmjxuamMstmenus;
     }
 
-    /**
-     * @param vidAhmjxuamMstmenus the vidAhmjxuamMstmenus to set
-     */
     public void setVidAhmjxuamMstmenus(String vidAhmjxuamMstmenus) {
         this.vidAhmjxuamMstmenus = vidAhmjxuamMstmenus;
     }
 
-    /**
-     * @return the ahmjxuamMstmenus
-     */
     public AhmjxuamMstmenus getAhmjxuamMstmenus() {
         return ahmjxuamMstmenus;
     }
 
-    /**
-     * @param ahmjxuamMstmenus the ahmjxuamMstmenus to set
-     */
     public void setAhmjxuamMstmenus(AhmjxuamMstmenus ahmjxuamMstmenus) {
         this.ahmjxuamMstmenus = ahmjxuamMstmenus;
     }

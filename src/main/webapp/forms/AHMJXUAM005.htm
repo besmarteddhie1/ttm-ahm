@@ -10,10 +10,9 @@
                 <div class="form-group large-font">
                     <label>Search</label>
                     <div class="input-group">
-                        <input id="ahmjxuam005p01Search" type="text" class="form-control" placeholder="Search...">
+                        <input id="ahmjxuam005p01Keyword" type="text" class="form-control" placeholder="Search...">
                         <span class="input-group-btn">
-                            <button class="btn btn-primary large-button default" type="button" 
-                                    onclick="$('#ahmjxuam005p01SearchTable').bootstrapTable('refresh');">Search</button>
+                            <button class="btn btn-primary large-button" type="button" onclick="$('#ahmjxuam005p01TableUserRole').bootstrapTable('refresh');">Search</button>
                         </span>
                     </div>
                 </div>
@@ -53,7 +52,7 @@
         <br/>
         <div id="table-container">
 
-            <table id="ahmjxuam005p01SearchTable"
+            <table id="ahmjxuam005p01TableUserRole"
                    data-method="post"
                    data-url="/uam005/paging"
                    data-content-type="application/json"
@@ -210,7 +209,7 @@
     }
     
     function ahmjxuam005Presearch(params){
-        params.search = {"any": $('#ahmjxuam005p01Search').val()};
+        params.search = {"any": $('#ahmjxuam005p01Keyword').val()};
         if(params.sort == undefined){
             return{
                 limit : params.limit,

@@ -372,7 +372,7 @@ public class DashboardServiceImpl implements DashboardService {
             params.put("vDlrname", voAhmjxuamMstpartner.getVname());
             params.put("vDlraddr", voAhmjxuamMstpartner.getVdealercode());
             params.put("vDlrcity", voAhmjxuamMstpartner.getVcity());
-            params.put("vDlrphonenum", voAhmjxuamMstpartner.getVphonemun());
+            params.put("vDlrphonenum", voAhmjxuamMstpartner.getVphonenum());
             params.put("vusername", username);
             params.put("dPrintdate", sdf.format(new Date()));
             params.put(JRParameter.REPORT_LOCALE, locale);

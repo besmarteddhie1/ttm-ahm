@@ -31,25 +31,25 @@ public class AhmBaseEntity implements Serializable {
 	@Length(max = EntityDomain.LENGTH_ID)
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
-	@Column(name="vid", length=EntityDomain.LENGTH_ID)
+	@Column(name="VID", length=EntityDomain.LENGTH_ID)
 	private String id;
 	
-	@Column(name="vcreaby")
+	@Column(name="VCREABY")
 	private String createBy;
 	
-	@Column(name="vmodiby")
+	@Column(name="VMODIBY")
 	private String modiBy;		
 	
 	@Version
-	@Column(name="iver")
+	@Column(name="IVER")
 	private Integer lockVersion;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="dcrea")
+	@Column(name="DCREA")
 	private Date dateCreate;
 		
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="dmodi")
+	@Column(name="DMODI")
 	private Date dateModi;
 
 	public String getId() {

@@ -101,6 +101,8 @@ public class Uam006AhmjxuamMstmenuDaoImpl extends GenericHibernateDao<AhmjxuamMs
     }
 
     public String getParentId(String vidAhmjxuamMstmenus) {
+        System.out.println("------> Uam006AhmjxuamMstmenuDaoImpl.getParentId()");
+        System.out.println("------> vidAhmjxuamMstmenus: " + vidAhmjxuamMstmenus);
         String result;
         Criteria criteria = getCurrentSession().createCriteria(AhmjxuamMstmenus.class, "ahmjxuamMstmenus");
         criteria.add(Restrictions.eq("vid", vidAhmjxuamMstmenus));

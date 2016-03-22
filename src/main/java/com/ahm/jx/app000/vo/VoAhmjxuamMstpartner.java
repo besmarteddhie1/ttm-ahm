@@ -23,7 +23,7 @@ public class VoAhmjxuamMstpartner {
 
     private String vowner;
 
-    private String vphonemun;
+    private String vphonenum;
 
     private String vcity;
 
@@ -81,12 +81,12 @@ public class VoAhmjxuamMstpartner {
         this.vowner = vowner;
     }
 
-    public String getVphonemun() {
-        return vphonemun;
+    public String getVphonenum() {
+        return vphonenum;
     }
 
-    public void setVphonemun(String vphonemun) {
-        this.vphonemun = vphonemun;
+    public void setVphonenum(String vphonenum) {
+        this.vphonenum = vphonenum;
     }
 
     public String getVcity() {

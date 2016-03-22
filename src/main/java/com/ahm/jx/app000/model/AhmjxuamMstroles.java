@@ -41,86 +41,50 @@ public class AhmjxuamMstroles extends BaseAuditVersioning implements Serializabl
     @OneToMany(mappedBy = "ahmjxuamMstroles")
     private List<AhmjxuamHdrrlaccess> listAhmjxuamHdrrlaccesses;
 
-    /**
-     * @return the vrolesId
-     */
     public String getVrolesId() {
         return vrolesId;
     }
 
-    /**
-     * @param vrolesId the vrolesId to set
-     */
     public void setVrolesId(String vrolesId) {
         this.vrolesId = vrolesId;
     }
 
-    /**
-     * @return the vrolesName
-     */
     public String getVrolesName() {
         return vrolesName;
     }
 
-    /**
-     * @param vrolesName the vrolesName to set
-     */
     public void setVrolesName(String vrolesName) {
         this.vrolesName = vrolesName;
     }
 
-    /**
-     * @return the vrolesDesc
-     */
     public String getVrolesDesc() {
         return vrolesDesc;
     }
 
-    /**
-     * @param vrolesDesc the vrolesDesc to set
-     */
     public void setVrolesDesc(String vrolesDesc) {
         this.vrolesDesc = vrolesDesc;
     }
 
-    /**
-     * @return the vrolesStatus
-     */
     public String getVrolesStatus() {
         return vrolesStatus;
     }
 
-    /**
-     * @param vrolesStatus the vrolesStatus to set
-     */
     public void setVrolesStatus(String vrolesStatus) {
         this.vrolesStatus = vrolesStatus;
     }
 
-    /**
-     * @return the listAhmjxuamMstusrrolses
-     */
     public List<AhmjxuamMstusrrols> getListAhmjxuamMstusrrolses() {
         return listAhmjxuamMstusrrolses;
     }
 
-    /**
-     * @param listAhmjxuamMstusrrolses the listAhmjxuamMstusrrolses to set
-     */
     public void setListAhmjxuamMstusrrolses(List<AhmjxuamMstusrrols> listAhmjxuamMstusrrolses) {
         this.listAhmjxuamMstusrrolses = listAhmjxuamMstusrrolses;
     }
 
-    /**
-     * @return the listAhmjxuamHdrrlaccesses
-     */
     public List<AhmjxuamHdrrlaccess> getListAhmjxuamHdrrlaccesses() {
         return listAhmjxuamHdrrlaccesses;
     }
 
-    /**
-     * @param listAhmjxuamHdrrlaccesses the listAhmjxuamHdrrlaccesses to set
-     */
     public void setListAhmjxuamHdrrlaccesses(List<AhmjxuamHdrrlaccess> listAhmjxuamHdrrlaccesses) {
         this.listAhmjxuamHdrrlaccesses = listAhmjxuamHdrrlaccesses;
     }

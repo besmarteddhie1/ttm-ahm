@@ -13,7 +13,6 @@ import java.util.List;
  *
  * @author sigit
  */
-
 public interface AhmjxuamMstusersDao extends GenericDao<AhmjxuamMstusers, String> {
 
     public List<AhmjxuamMstusers> getAllMstUsers();

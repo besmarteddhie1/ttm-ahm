@@ -14,8 +14,17 @@
                                     onclick="$('#ahmjxuam001p01SearchTable').bootstrapTable('refresh');">Search</button>
                         </span>
                     </div>
-                </div>
-                
+                </div><!-- 
+                <div class="form-group large-font">
+                    <label>Search User</label>
+                    <div class="input-group">
+                        <input id="ahmjxuam001p01Search" type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default large-button" type="button" onclick="function(){$('#table-form').bootstrapTable('refresh', {silent: true});}">Search</button>
+                            <button class="btn btn-primary large-button" type="button" onclick="$('#ahmjxuam001p01SearchTable').bootstrapTable('refresh');">Search</button>
+                        </span>
+                    </div>
+                </div> -->
             </div>
             <div class="col-md-6">
 
@@ -52,7 +61,7 @@
         <div id="table-container">
             <table 	id="ahmjxuam001p01SearchTable"
                     data-method="post"
-                    data-url="/uam002/paging"
+                    data-url="/uam001/paging"
                     data-content-type="application/json"
                     data-data-type="json"
                     data-query-params-type="limit"
@@ -112,7 +121,7 @@
                 <label for="ahmjxuam001p02IdPartner" class="col-sm-2 control-label">Partner <span style="color:red">*)  </span></label>
                 <div class="lookup-wrapper col-sm-6" >
                     <div class="input-group lookup" 
-                         data-url="/uam002/lovdealer"
+                         data-url="/uam001/lovdealer"
                          data-lookup-pre-func="ahmjxuam001LookupDealer" 
                          data-columns='[{"id":"vid","name":"vid","visible":"false","sortable":"false"},{"id":"vdealercode","name":"Kode Dealer","visible":"true","sortable":"true"}
                          ,{"id":"vname","name":"Nama Dealer","visible":"true","sortable":"true"}]'
@@ -206,7 +215,7 @@
     </div>
 
 
-    <div id="ahmdshuam002p04" class="subpage" data-path="Maintain User/Konfirmasi Disable User">
+    <div id="ahmdshuam001p04" class="subpage" data-path="Maintain User/Konfirmasi Disable User">
         <table 	id="ahmjxuam001p04DisableTable">
 
             <thead>
@@ -239,7 +248,7 @@
 
 
 
-    <div id="ahmdshuam002p05" class="subpage" data-path="Maintain User/Konfirmasi Reset Password">
+    <div id="ahmdshuam001p05" class="subpage" data-path="Maintain User/Konfirmasi Reset Password">
         <table id="ahmjxuam001p05ResetTable">
 
             <thead>
@@ -328,7 +337,7 @@
             vo.vusername = $('input[id="ahmjxuam001p02Partner"]', page).val()+'.'+$('input[name="vfullname"]', page).val();
             vo.vidDlr = $('input[id="ahmjxuam001p02IdPartner"]', page).val();
                                                      
-            _fw_post('/uam002/insert', vo, function(data){
+            _fw_post('/uam001/insert', vo, function(data){
                 if(data.stat=="200"){
                                
                     $('input, select',page).prop('disabled',true);
@@ -367,7 +376,7 @@
             vo.iver = $('input[name="iver"]', page).val();
             vo.vusername = $('input[name="vusername"]', page).val();
             vo.vstat = $('input[name="vstat"]:checked', page).val();
-            _fw_post('/uam002/update', vo, function(data){
+            _fw_post('/uam001/update', vo, function(data){
                 if(data.stat=="200"){
                 
                     //_fw_subpage(obj, 'ahmdsh1c008p01');
@@ -390,7 +399,7 @@
             $('#ahmjxuam001p04DisableTable').bootstrapTable('destroy');
             $('#ahmjxuam001p04DisableTable').bootstrapTable({data:disabledRows});
         
-            _fw_subpage(obj, 'ahmdshuam002p04');
+            _fw_subpage(obj, 'ahmdshuam001p04');
         } else {
             alert('no data selected');
         }
@@ -405,7 +414,7 @@
             disabled.push({'vid': row.vid});
             vid.push(row.vid);
         });
-        _fw_post('/uam002/disable', disabled, function(data){
+        _fw_post('/uam001/disable', disabled, function(data){
             if(data.stat=="200"){
                 
                 _fw_setMessage(obj, 1, data);
@@ -429,7 +438,7 @@
             $('#ahmjxuam001p05ResetTable').bootstrapTable('destroy');
             $('#ahmjxuam001p05ResetTable').bootstrapTable({data:disabledRows});
         
-            _fw_subpage(obj, 'ahmdshuam002p05');
+            _fw_subpage(obj, 'ahmdshuam001p05');
         } else {
             alert('no data selected');
         }
@@ -446,7 +455,7 @@
             vid.push(row.vid);
         });
         console.log(disabled);
-        _fw_post('/uam002/reset', disabled, function(data){
+        _fw_post('/uam001/reset', disabled, function(data){
             if(data.stat=="200"){
                 $('#ahmjxuam001p01TableDelete').bootstrapTable('remove', {field: 'vid', values: vid});
                 $('#ahmjxuam001p01SearchTable').bootstrapTable('refresh');

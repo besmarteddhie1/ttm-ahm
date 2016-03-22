@@ -38,7 +38,7 @@ public class AhmjxuamMstpartner extends BaseAuditVersioning implements Serializa
     private String vowner;
 
     @Column(name = "VPHONENUM", length = 50, nullable = false)
-    private String vphonemun;
+    private String vphonenum;
 
     @Column(name = "VCITY", length = 45, nullable = false)
     private String vcity;
@@ -99,12 +99,12 @@ public class AhmjxuamMstpartner extends BaseAuditVersioning implements Serializa
         this.vowner = vowner;
     }
 
-    public String getVphonemun() {
-        return vphonemun;
+    public String getVphonenum() {
+        return vphonenum;
     }
 
-    public void setVphonemun(String vphonemun) {
-        this.vphonemun = vphonemun;
+    public void setVphonenum(String vphonenum) {
+        this.vphonenum = vphonenum;
     }
 
     public String getVcity() {

@@ -82,7 +82,7 @@
                             data-sortable="true"
                             data-visible="false"
                             >Kode</th>
-                        <th data-field="vidAhmdsuamMstroles" 
+                        <th data-field="vidAhmjxuamMstroles" 
                             data-visible="false"
                             >VID Role</th>
                         <th data-field="vrolesId" 
@@ -91,7 +91,7 @@
                         <th data-field="vrolesName" 
                             data-sortable="true" 
                             >Nama Role</th>
-                        <th data-field="vidAhmdsuamMstmenus" 
+                        <th data-field="vidAhmjxuamMstmenus" 
                             data-visible="false"
                             >VID Menu</th>
                         <th data-field="vmenuid"                            
@@ -278,14 +278,12 @@
             var vo = new Object()
             vo.vidAhmjxuamMstmenus = $('#ahmjxuam006p02IdMenu').val();
             vo.vidAhmjxuamMstroles = $('#ahmjxuam006p02IdRole').val();
-            console.log("devo pacar yogi",vo);
             _fw_post('/uam006/insert', vo, function(data){
-                console.log("add data",data);
                 if(data.stat=="200"){
                     ahmjxuam006AfterAddSuccess(obj,data);               
                 } else {
                     _fw_setMessage(obj, 0, data);
-                    $('#ahmdsuamNotifDuplicate').css('display',''); 
+                    $('#ahmjxuamNotifDuplicate').css('display',''); 
                 }
             });
         

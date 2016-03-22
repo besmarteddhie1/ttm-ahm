@@ -22,14 +22,14 @@ import org.hibernate.envers.RelationTargetAuditMode;
 @Table(name = "AHMJXUAM_HSTSVCUSGS")
 public class AhmjxuamHstsvcusgs extends BaseAuditVersioning implements Serializable {
 
-    @Column(name = "VUSERNAME", length = 30, nullable = false, unique = true)
+    @Column(name = "VUSERNAME", length = 30, nullable = false)
     private String vusername;
 
     @Column(name = "VURL", length = 128, nullable = true)
     private String vurl;
 
     @Column(name = "DACCESSTIME")
-    private Date daccesstime;
+    private Date daccessTime;
 
     @Column(name = "VOS", length = 30)
     private String vos;
@@ -38,90 +38,54 @@ public class AhmjxuamHstsvcusgs extends BaseAuditVersioning implements Serializa
     private String vbrowser;
 
     @Column(name = "VIPADDRESS", length = 20)
-    private String vipaddress;
+    private String vipAddress;
 
-    /**
-     * @return the vusername
-     */
     public String getVusername() {
         return vusername;
     }
 
-    /**
-     * @param vusername the vusername to set
-     */
     public void setVusername(String vusername) {
         this.vusername = vusername;
     }
 
-    /**
-     * @return the vurl
-     */
     public String getVurl() {
         return vurl;
     }
 
-    /**
-     * @param vurl the vurl to set
-     */
     public void setVurl(String vurl) {
         this.vurl = vurl;
     }
 
-    /**
-     * @return the daccesstime
-     */
-    public Date getDaccesstime() {
-        return daccesstime;
+    public Date getDaccessTime() {
+        return daccessTime;
     }
 
-    /**
-     * @param daccesstime the daccesstime to set
-     */
-    public void setDaccesstime(Date daccesstime) {
-        this.daccesstime = daccesstime;
+    public void setDaccessTime(Date daccessTime) {
+        this.daccessTime = daccessTime;
     }
 
-    /**
-     * @return the vos
-     */
     public String getVos() {
         return vos;
     }
 
-    /**
-     * @param vos the vos to set
-     */
     public void setVos(String vos) {
         this.vos = vos;
     }
 
-    /**
-     * @return the vbrowser
-     */
     public String getVbrowser() {
         return vbrowser;
     }
 
-    /**
-     * @param vbrowser the vbrowser to set
-     */
     public void setVbrowser(String vbrowser) {
         this.vbrowser = vbrowser;
     }
 
-    /**
-     * @return the vipaddress
-     */
-    public String getVipaddress() {
-        return vipaddress;
+    public String getVipAddress() {
+        return vipAddress;
     }
 
-    /**
-     * @param vipaddress the vipaddress to set
-     */
-    public void setVipaddress(String vipaddress) {
-        this.vipaddress = vipaddress;
+    public void setVipAddress(String vipAddress) {
+        this.vipAddress = vipAddress;
     }
 
 }

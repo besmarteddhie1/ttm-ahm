@@ -35,44 +35,34 @@ public class AhmjxuamMstapps extends BaseAuditVersioning implements Serializable
     @OneToMany(mappedBy = "ahmjxuamMstapps")
     private List<AhmjxuamMstservices> listAhmjxuamMstserviceses;
 
-    /**
-     * @return the vname
-     */
     public String getVname() {
         return vname;
     }
 
-    /**
-     * @param vname the vname to set
-     */
     public void setVname(String vname) {
         this.vname = vname;
     }
 
-    /**
-     * @return the vdesc
-     */
     public String getVdesc() {
         return vdesc;
     }
 
-    /**
-     * @param vdesc the vdesc to set
-     */
     public void setVdesc(String vdesc) {
         this.vdesc = vdesc;
     }
 
-    /**
-     * @return the listAhmjxuamMstserviceses
-     */
+    public String getVstat() {
+        return vstat;
+    }
+
+    public void setVstat(String vstat) {
+        this.vstat = vstat;
+    }
+
     public List<AhmjxuamMstservices> getListAhmjxuamMstserviceses() {
         return listAhmjxuamMstserviceses;
     }
 
-    /**
-     * @param listAhmjxuamMstserviceses the listAhmjxuamMstserviceses to set
-     */
     public void setListAhmjxuamMstserviceses(List<AhmjxuamMstservices> listAhmjxuamMstserviceses) {
         this.listAhmjxuamMstserviceses = listAhmjxuamMstserviceses;
     }

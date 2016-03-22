@@ -98,7 +98,7 @@ public class Uam010ServiceImpl implements Uam010Service {
                             ahmjxuamMstpartner.setVaddress(license[1]);
                             ahmjxuamMstpartner.setVname(license[2]);
                             ahmjxuamMstpartner.setVowner(license[3]);
-                            ahmjxuamMstpartner.setVphonemun(license[4]);
+                            ahmjxuamMstpartner.setVphonenum(license[4]);
                             ahmjxuamMstpartner.setVcity(license[5]);
                             ahmjxuamMstpartner.setVmdcode(license[6]);
                             ahmjxuamMstpartner.setDbegineff(sdf.parse(license[7]));
@@ -118,7 +118,7 @@ public class Uam010ServiceImpl implements Uam010Service {
                             ahmjxuamMstpartner.setVaddress(license[1]);
                             ahmjxuamMstpartner.setVname(license[2]);
                             ahmjxuamMstpartner.setVowner(license[3]);
-                            ahmjxuamMstpartner.setVphonemun(license[4]);
+                            ahmjxuamMstpartner.setVphonenum(license[4]);
                             ahmjxuamMstpartner.setVcity(license[5]);
                             ahmjxuamMstpartner.setVmdcode(license[6]);
                             ahmjxuamMstpartner.setDbegineff(sdf.parse(license[7]));

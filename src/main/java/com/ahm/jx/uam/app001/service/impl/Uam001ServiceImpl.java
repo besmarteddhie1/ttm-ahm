@@ -62,7 +62,9 @@ public class Uam001ServiceImpl implements Uam001Service {
         return uam001AhmjxuamMstuserDao.getPagingDataAhmjxuamMstuser(first, pageSize, sortField, sortOrder, filters);
     }
 
-    public DtoRespondPaging pagingUser(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, DtoParamPaging dtoParamPaging, String token, String appId) {
+    public DtoRespondPaging pagingUser(HttpServletRequest httpServletRequest,
+            HttpServletResponse httpServletResponse, DtoParamPaging dtoParamPaging,
+            String token, String appId) {
         DtoRespondPaging dtoRespondPaging;
         dtoRespondPaging = dashboardService.authenticationAndAuthorizationPaging(httpServletRequest, httpServletResponse,
                 token, appId);
@@ -77,7 +79,7 @@ public class Uam001ServiceImpl implements Uam001Service {
         return dtoRespondPaging;
     }
 
-    public Uam001AhmjxuamMstuserDao getUam002AhmjxuamMstuserDao() {
+    public Uam001AhmjxuamMstuserDao getUam001AhmjxuamMstuserDao() {
         return uam001AhmjxuamMstuserDao;
     }
 
@@ -109,8 +111,11 @@ public class Uam001ServiceImpl implements Uam001Service {
     }
 
     @Transactional(readOnly = false)
-    public DtoRespond update(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Uam001VoAhmjxuamMstuser uam001VoAhmjxuamMstuser, String token, String appId) {
+    public DtoRespond update(HttpServletRequest httpServletRequest,
+            HttpServletResponse httpServletResponse, Uam001VoAhmjxuamMstuser uam001VoAhmjxuamMstuser,
+            String token, String appId) {
         DtoRespond dtoRespond = new DtoRespond();
+
         String username = dashboardService.getUsername(httpServletRequest);
         dtoRespond = dashboardService.authenticationAndAuthorization(httpServletRequest, httpServletResponse, token, appId);
         if (dtoRespond.getStat().equals(CommonConstant._200)) {
