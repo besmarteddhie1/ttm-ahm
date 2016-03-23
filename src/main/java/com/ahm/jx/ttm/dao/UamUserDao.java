@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.ahm.jx.ttm.entities.UamUser;
 
 @Repository
-@RepositoryRestResource(path = "uamusers")
+@RepositoryRestResource(path = "v1/uamusers")
 public interface UamUserDao extends JpaRepository<UamUser, String> {
 	
 	UamUser findOneByUserName(@Param("name") String userName);

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.ahm.jx.ttm.entities.UamRole;
 
 @Repository
-@RepositoryRestResource(path = "uamroles")
+@RepositoryRestResource(path = "v1/uamroles")
 public interface UamRoleDao extends JpaRepository<UamRole, String> {
 	
 	UamRole findOneByIdRole(@Param("role") String idRole);
