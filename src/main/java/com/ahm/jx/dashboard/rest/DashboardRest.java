@@ -4,18 +4,9 @@
  */
 package com.ahm.jx.dashboard.rest;
 
-import com.ahm.jx.common.constant.CommonConstant;
-import com.ahm.jx.common.rest.dto.DtoRespond;
-import com.ahm.jx.common.rest.dto.DtoRespondAppInfo;
-import com.ahm.jx.common.rest.dto.DtoRespondLogin;
-import com.ahm.jx.common.util.BasicAuth;
-import com.ahm.jx.common.util.RestUtil;
-import com.ahm.jx.dashboard.service.DashboardService;
-import com.ahm.jx.dashboard.vo.VoAppInfo;
-import com.ahm.jx.dashboard.vo.VoChangePassword;
-import com.ahm.jx.dashboard.vo.VoUser;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
@@ -25,6 +16,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.ahm.jx.common.constant.CommonConstant;
+import com.ahm.jx.common.rest.dto.DtoRespond;
+import com.ahm.jx.common.rest.dto.DtoRespondAppInfo;
+import com.ahm.jx.common.rest.dto.DtoRespondLogin;
+import com.ahm.jx.common.util.BasicAuth;
+import com.ahm.jx.dashboard.service.DashboardService;
+import com.ahm.jx.dashboard.vo.VoAppInfo;
+import com.ahm.jx.dashboard.vo.VoChangePassword;
 
 /**
  *

@@ -4,7 +4,7 @@ var form_change_password = "AHMDSUAM007";
 var timeout;
 var username;
 var token;
-var baseURL = "/ahmjxdsh000/rest";
+var baseURL = "/ahmjxdsh000/";
 var baseURLRedirect = "/ahmjxdsh000";
 var updateData = [];
 var lastRequest;

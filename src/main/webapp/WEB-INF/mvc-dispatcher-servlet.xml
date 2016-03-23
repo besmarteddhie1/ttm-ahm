@@ -58,9 +58,9 @@
         <!-- Maksimal Upload 10 MB -->
         <property name="maxUploadSize" value="10000000" />
     </bean>    
-
-    <context:component-scan base-package="com.ahm.jx" />
-
+     
     <mvc:annotation-driven />
-
+    
+    <context:component-scan base-package="com.ahm.jx" />
+          
 </beans>

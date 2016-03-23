@@ -1,0 +1,52 @@
+<beans:beans 
+	xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security.xsd">
+		 
+	<http pattern="/resources/**" security="none"/>
+	<http pattern="/favicon.ico" security="none"/>
+			 
+	<http auto-config="true" use-expressions="true">
+		<intercept-url pattern="/" access="permitAll" />
+		<intercept-url pattern="/api/**" access="isAnonymous()" />
+		<intercept-url pattern="/login.htm" access="permitAll" />
+		<intercept-url pattern="/**" access="isAuthenticated()" />
+        <form-login login-page="/login.htm" default-target-url="/dashboard.htm" always-use-default-target="true" />
+        <csrf disabled="true"/>
+	</http>
+	
+	<authentication-manager>
+	
+		<authentication-provider>
+			<password-encoder hash="md5"/>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select vusername username, vpassword password, vstat enabled from ahmjxuam_mstusers where vusername=?"
+				authorities-by-username-query="select a.vusername username, d.vmenu_id role
+											     from ahmjxuam_mstusers a 
+                                           inner join ahmjxuam_mstusrrols b on (b.vid_ahmjxuam_mstusers = a.vid)
+                                           inner join ahmjxuam_hdrrlaccess c on (c.vid_ahmjxuam_mstroles = b.vid_ahmjxuam_mstroles)
+                                           inner join ahmjxuam_mstmenus d on (c.vid_ahmjxuam_mstmenus = d.vid)
+                                           where a.vusername=?
+                                           group by a.vusername, d.vmenu_id" />
+		</authentication-provider>
+		
+		<!--
+			
+		<authentication-provider user-service-ref="accountService"/>
+				  			
+		<authentication-provider>		
+			<user-service>
+				<user name="admin" password="admin" authorities="ROLE_USER,ROLE_ADMIN"/>
+				<user name="user1" password="user1" authorities="ROLE_USER"/>
+				<user name="admin1@example.com" password="admin1" authorities="ROLE_USER,ROLE_ADMIN"/>
+			</user-service>
+		</authentication-provider>
+		-->
+	</authentication-manager>	
+
+</beans:beans>
