@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="resources/js/jQuery-2.1.3.min.js"></script>
+		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
+		
+                <script type="text/javascript" src="resources/js/login.js"></script>
+		
+                
+                <link href="resources/css/common.css" rel="stylesheet" type="text/css" />
+		<link href="resources/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+		<link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+                
+<head>
+    <title></title>
+</head>
+<body>
+    <div class="login-outer" style="padding:10px" >
+        <div class="login-inner">
+            <div class="login-box" style="padding-top:30px">              
+                <form class="form-horizontal" onsubmit="_fw_login($('#username').val(), $('#password').val()); return false;">
+                    <div class="form-group large-font" style="margin-bottom: 1px!important">
+                        <label  class="col-sm-4 control-label"></label>
+                        <div class="col-sm-4">
+                            <img src="resources/image/dims.png" style="width: 180px; height: 40px; margin-bottom: 15px;"></img>
+                            <div id="error-login" style="font-size: 11px!important; display: none;"><span style="color: red">Invalid username / password</span></div>
+                        </div>                     
+                    </div>
+                    
+                    <div class="form-group large-font">                     
+                        <label for="username" class="col-sm-4 control-label">Username</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" name="username" id="username" type="text" placeholder="type username"/>
+                        </div>    
+                    </div>
+                    <div class="form-group large-font" >
+                        <label for="password" class="col-sm-4 control-label">Password</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" name="password" id="password" type="password" placeholder="type password"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-offset-4 col-sm-4 form-group-button">                      
+                        <!-- <input type="submit" class="btn btn-default btn-primary large-button" value="Login" onclick="_fw_login($('#username').val(), $('#password').val())"/> -->
+                        <button type="submit" class="btn btn-primary large-button" onclick="_fw_login($('#username').val(), $('#password').val())">Login</button>
+                    </div>
+                    <div class="col-sm-offset-4 col-sm-4 form-group-button">
+                        <a href="forgotUsername.htm">Forgot Your Username</a> or <a href="forgotPwd.htm">Password</a> ?
+                        <!-- <button class="btn btn-primary large-button" onclick="_fw_login($('#username').val(), $('#password').val())">Login</button>
+                        <button class="btn btn-primary large-button" onclick="ahmdsuam004PrepareAdd(this); return false;">Forget Username</button>
+                        <button class="btn btn-primary large-button" onclick="ahmdsuam004PrepareAdd(this); return false;">Forget Password</button> -->
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

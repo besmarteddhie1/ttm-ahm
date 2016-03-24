@@ -4,23 +4,23 @@ function recursive_menu(menu_obj, array_data, html_string){
     var menu_childs = new Array();
     html_string += '<ul style="display: none;">';
     $.each(array_data, function(key, value){
-        if(value.vparent == menu_obj.menuId){
+        if(value.parent == menu_obj.menuId){
             var menu_child_obj = new Object();
-            menu_child_obj.menuId = value.vid;
-            menu_child_obj.menuName = value.vtitle;
+            menu_child_obj.menuId = value.idMenu;
+            menu_child_obj.menuName = value.title;
             if(value.vapplicationId == "null"){
                 html_string += '<li class="menu treeview transition">'+
                                     '<a href="#">'+
-                                        '<i class="glyphicon glyphicon-eye-open"></i> <span>'+value.vtitle+'</span>'+
+                                        '<i class="glyphicon glyphicon-eye-open"></i> <span>'+value.title+'</span>'+
                                         '<i class="glyphicon glyphicon-chevron-down icon-menu-expand" style="float:right"></i>'+
                                     '</a>';
                 html_string = recursive_menu(menu_child_obj, array_data, html_string);
                 html_string += '</li>';
             } else {
                 html_string += '<li class="menu transition">'+
-                                    '<a data-formid="'+value.vurl+'" href="#">'+
+                                    '<a data-formid="'+value.url+'" href="#">'+
                                         '<i class="glyphicon glyphicon-circle-o">'+
-                                        '</i>'+value.vtitle+
+                                        '</i>'+value.title+
                                     '</a>'+
                                 '</li>';                
             }
@@ -38,12 +38,14 @@ function recursive_menu(menu_obj, array_data, html_string){
 
 function _fw_login(user, pass){
     var userData = new Object();
+    
     userData.userName = "admin";
     userData.password = "admin";
+    
     $.ajax
     ({
         type: "POST",
-        url: baseURL + "/dashboard/login",
+        url: baseURL + "/api/uamusers/search/findOneByUserName?name=" + user,
         contentType: "application/json",
         dataType: 'json',
         async: false,
@@ -53,29 +55,31 @@ function _fw_login(user, pass){
         data: JSON.stringify(userData)
     })
     .done(function(data){
-        if(data.stat=="200"){
+    	window.location = "dashboard.htm";
+        //if(data.stat=="200"){
+    	if(true) {
             window.location = "dashboard.htm";
-            /*
+
             var menu_root = new Array();
             var htmlMenu = '';
+            
             //find root parent (vparent null)
-            $.each(data.rows, function(key, value){
-               if(value.vparent == "null"){
+            $.each(data.menus, function(key, value){
+            	
+               if(value.parent == "null"){
                    var rootObj = new Object();
-                   rootObj.menuId = value.vid;
-                   rootObj.menuName = value.vtitle;
+                   rootObj.menuId = value.idMenu;
+                   rootObj.menuName = value.title;
                    htmlMenu += '<li class="treeview transition">'+
                                     '<a href="#">'+
-                                        '<i class="glyphicon glyphicon-eye-open"></i> <span>'+value.vtitle+'</span>'+
+                                        '<i class="glyphicon glyphicon-eye-open"></i> <span>'+value.title+'</span>'+
                                         '<i class="glyphicon glyphicon-chevron-down icon-menu-expand" style="float:right"></i>'+
                                     '</a>';
                    htmlMenu = recursive_menu(rootObj, data.rows, htmlMenu);
                    htmlMenu += '</li>';
                    menu_root.push(rootObj);
                } 
-            });
-            */
-           
+            });           
            
         } else {
             $('#error-login').slideDown();

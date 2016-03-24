@@ -2,12 +2,9 @@ package com.ahm.jx.ttm.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.ahm.jx.app000.model.AhmjxuamMstapps;
 
 @Entity
 @Table(name = "AHMJXUAM_MSTSERVICES")
@@ -28,7 +25,7 @@ public class UamService extends AhmBaseEntity {
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "VID_AHMJXUAM_MSTAPPS", referencedColumnName = "VID", insertable = false, updatable = false)
+    @JoinColumn(name = "VID_AHMJXUAM_MSTAPPS", referencedColumnName = "VID")
     private UamApps apps;
 
 

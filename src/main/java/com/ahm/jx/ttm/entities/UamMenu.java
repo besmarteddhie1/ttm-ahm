@@ -11,9 +11,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
-
 import com.ahm.jx.ttm.config.EntityDomain;
 
 /**
@@ -27,34 +24,32 @@ public class UamMenu extends AhmBaseEntity {
 
 	private static final long serialVersionUID = 5743125358008818944L;
 
-	@Column(name = "VMENU_ID", length = 16, nullable = false)
+	@Column(name = "vmenu_id", length = 16, nullable = false)
     private String idMenu;
 
-    @Column(name = "VTITLE", length = EntityDomain.LENGTH_NAME, nullable = false)
+    @Column(name = "vtitle", length = EntityDomain.LENGTH_NAME, nullable = false)
     private String tittle;
 
-    @Column(name = "VURL", length = 128, nullable = true)
+    @Column(name = "vurl", length = 128, nullable = true)
     private String url;
 
-    @Column(name = "VAPPLICATION_ID", length = 16, unique = true)
+    @Column(name = "vapplication_id", length = 16, unique = true)
     private String idApplication;
 
-    @Column(name = "VSTAT", length = 1)
+    @Column(name = "vstat", length = 1)
     private Boolean status;
 
-    @Column(name = "VICON", length = 128)
+    @Column(name = "vicon", length = 128)
     private String icon;
 
-    @Column(name = "IORDER", length = 3)
+    @Column(name = "iorder", length = 3)
     private Integer iorder;
 
     @ManyToOne
     @JoinColumn(name = "vparent", referencedColumnName = "vid")
-    @NotFound(action = NotFoundAction.IGNORE)
     private UamMenu parent;
 
     @OneToMany(cascade=CascadeType.ALL, mappedBy="parent")
-    @NotFound(action = NotFoundAction.IGNORE)
     private List<UamMenu> child;
 
 	public String getIdMenu() {

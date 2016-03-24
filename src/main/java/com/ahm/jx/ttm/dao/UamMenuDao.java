@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.ahm.jx.ttm.entities.UamMenu;
 
 @Repository
-@RepositoryRestResource(path = "v1/uammenus")
+@RepositoryRestResource(path = "uammenus")
 public interface UamMenuDao extends JpaRepository<UamMenu, String> {
 	
 	UamMenu findOneByIdMenu(@Param("idmenu") String idMenu);

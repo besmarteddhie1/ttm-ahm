@@ -16,40 +16,34 @@ import javax.persistence.Version;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.envers.Audited;
-import org.hibernate.validator.constraints.Length;
-
-import com.ahm.jx.ttm.config.EntityDomain;
 
 @MappedSuperclass
-@Audited
 public class AhmBaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 5621497326705047937L;
-
+	
 	@Id
-	@Length(max = EntityDomain.LENGTH_ID)
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
-	@Column(name="VID", length=EntityDomain.LENGTH_ID)
+	@Column(name="vid")
 	private String id;
 	
-	@Column(name="VCREABY")
+	@Column(name="vcreaby")
 	private String createBy;
 	
-	@Column(name="VMODIBY")
+	@Column(name="vmodiby")
 	private String modiBy;		
 	
 	@Version
-	@Column(name="IVER")
+	@Column(name="iver")
 	private Integer lockVersion;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="DCREA")
+	@Column(name="dcrea")
 	private Date dateCreate;
 		
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="DMODI")
+	@Column(name="dmodi")
 	private Date dateModi;
 
 	public String getId() {

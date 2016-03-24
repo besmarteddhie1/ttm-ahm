@@ -4,9 +4,6 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
-import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
-import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
@@ -46,6 +43,17 @@ class WebMvcConfig extends WebMvcConfigurationSupport {
         messageSource.setCacheSeconds(5);
         return messageSource;
     }
+    
+    /*
+    @Bean
+    public ViewResolver getViewResolver(){
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/");
+        resolver.setSuffix(".htm");
+        return resolver;
+    } 
+    */
+   
 
     @Bean
     public TemplateResolver templateResolver() {
@@ -74,6 +82,7 @@ class WebMvcConfig extends WebMvcConfigurationSupport {
         return thymeleafViewResolver;
     }
 
+
     @Override
     public Validator getValidator() {
         LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
@@ -101,15 +110,5 @@ class WebMvcConfig extends WebMvcConfigurationSupport {
             return "forward:/resources/images/favicon.ico";
         }
     }
-    
-    @Bean
-    public RepositoryRestConfigurer repositoryRestConfigurer() {
-    	return new RepositoryRestConfigurerAdapter() {
-
-    		@Override
-    		public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
-    			config.setBasePath("/api");
-    		}
-    	};
-    }	    
+      
 }

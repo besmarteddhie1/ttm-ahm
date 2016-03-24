@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.ahm.jx.ttm.entities.AhmPartner;
 
 @Repository
-@RepositoryRestResource(path = "v1/ahmpartners")
+@RepositoryRestResource(path = "ahmpartners")
 public interface AhmPartnerDao extends JpaRepository<AhmPartner, String> {
 	
 	AhmPartner findOneByIdDealer(@Param("iddealer") String idDealer);
