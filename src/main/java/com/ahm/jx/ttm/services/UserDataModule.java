@@ -56,6 +56,7 @@ public class UserDataModule implements Serializable {
     @RequestMapping(value = "menus", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
+    @Transactional
     public List<UamMenu> activeMenu() {
     	if (!checkMe()) return null;
     	activeUser = userDao.findOneByUserName(this.currentUser);
