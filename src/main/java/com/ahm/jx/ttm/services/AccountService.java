@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,70 +16,59 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ahm.jx.ttm.dao.UamRoleDao;
-import com.ahm.jx.ttm.dao.UamUserDao;
-import com.ahm.jx.ttm.entities.UamRole;
-import com.ahm.jx.ttm.entities.UamUser;
-import com.ahm.jx.ttm.entities.UamUserRole;
+import com.ahm.jx.ttm.dao.AccountDao;
+import com.ahm.jx.ttm.entities.Account;
 
 @Service
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class AccountService implements UserDetailsService {
 	
 	@Autowired
-	private UamUserDao userRepository;
-	
-	@Autowired
-	private UamRoleDao roleRepository;	
+	private AccountDao accountRepository;
 
-	private Md5PasswordEncoder passwordEncoder = new Md5PasswordEncoder();
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@PostConstruct	
 	public void initialize() {
-		save(new UamUser("user", "demo"), "ROLE_USER");
-		save(new UamUser("admin", "admin"), "ROLE_ADMIN");
+		//save(new Account("user", "demo", "ROLE_USER"));
+		//save(new Account("admin", "admin", "ROLE_ADMIN"));
 	}
 
 	@Transactional
-	public UamUser save(UamUser account, String role) {
-		UamRole r = roleRepository.findOneByIdRole(role);
-		if (r != null) {
-			UamUserRole ur = new UamUserRole();
-			ur.setRole(r);
-			ur.setUser(account);
-			account.getUserRoles().add(ur);
-		}
-		account.setPassword(passwordEncoder.encodePassword(account.getPassword(), null));
-		userRepository.save(account);
+	public Account save(Account account) {
+		account.setPassword(passwordEncoder.encode(account.getPassword()));
+		accountRepository.save(account);
 		return account;
 	}
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UamUser account = userRepository.findOneByUserName(username);
-		if(account == null) {			
-			throw new UsernameNotFoundException(username + " in data not found");
+		Account account = accountRepository.findOneByEmail(username);
+		if(account == null) {
+			throw new UsernameNotFoundException("user not found");
 		}
 		return createUser(account);
 	}
 	
-	public void signin(UamUser account) {
+	public void signin(Account account) {
 		SecurityContextHolder.getContext().setAuthentication(authenticate(account));
 	}
 	
-	private Authentication authenticate(UamUser account) {
+	private Authentication authenticate(Account account) {
 		return new UsernamePasswordAuthenticationToken(createUser(account), null, Collections.singleton(createAuthority(account)));		
 	}
 	
-	private User createUser(UamUser account) {
-		return new User(account.getUserName(), account.getPassword(), Collections.singleton(createAuthority(account)));
+	private User createUser(Account account) {
+		return new User(account.getEmail(), account.getPassword(), Collections.singleton(createAuthority(account)));
 	}
 
-	private GrantedAuthority createAuthority(UamUser account) {
-		return new SimpleGrantedAuthority(account.getRoles().toString());
+	private GrantedAuthority createAuthority(Account account) {
+		return new SimpleGrantedAuthority(account.getRole());
 	}
 
 }
