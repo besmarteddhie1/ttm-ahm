@@ -9,6 +9,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -31,10 +32,11 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	DataSource dataSource;
 	
-	@Autowired
-	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+	@Override
+	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		
 	  auth.jdbcAuthentication().dataSource(dataSource)
+	  	.passwordEncoder(new Md5PasswordEncoder())
 		.usersByUsernameQuery(
 			"select vusername username, vpassword password, vstat enabled from ahmjxuam_mstusers where vusername=?")
 		.authoritiesByUsernameQuery(
@@ -56,6 +58,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new StandardPasswordEncoder();
 	}
 
+    /*
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
@@ -63,6 +66,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
             .userDetailsService(accountService)
             .passwordEncoder(passwordEncoder());
     }
+    */
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -103,4 +107,5 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+    
 }
