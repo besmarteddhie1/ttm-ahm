@@ -103,8 +103,8 @@ public class UamUser extends AhmBaseEntity {
 		this.roles = roles;
 	}
 
-	public List<UamMenu> getMenus() {
-		return new ArrayList<UamMenu>(mapMenu.values());
+	public List<UamMenu> getMenus() {		
+		return new ArrayList<UamMenu>(getMapMenu().values());
 	}
 
 	public AhmPartner getPartner() {
