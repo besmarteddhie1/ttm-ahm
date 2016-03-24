@@ -106,9 +106,9 @@ public class UamUser extends AhmBaseEntity {
 	}
 
 	public List<UamMenu> getMenus() {		
-		return new ArrayList<UamMenu>(getMapMenu().values());
-		/*
-		this.menus=null;
+		//return new ArrayList<UamMenu>(getMapMenu().values());
+
+		//this.menus = null;
 		if (this.menus == null) {
 			this.menus = new ArrayList<UamMenu>();
 			for (UamRole u: getRoles()) 
@@ -116,7 +116,7 @@ public class UamUser extends AhmBaseEntity {
 					this.menus.add(m);
 		}
 		return menus;
-		*/
+
 	} 
 
 	public AhmPartner getPartner() {
