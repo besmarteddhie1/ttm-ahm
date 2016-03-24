@@ -19,7 +19,6 @@ import org.hibernate.validator.constraints.Length;
 
 import com.ahm.jx.ttm.config.EntityDomain;
 
-
 @Entity
 @Table(name = "ahmjxuam_mstusers")
 public class UamUser extends AhmBaseEntity {
@@ -48,6 +47,9 @@ public class UamUser extends AhmBaseEntity {
         
     @Transient
     private Map<String, UamMenu> mapMenu;
+    
+    @Transient
+    private List<UamMenu> menus;    
     
     public UamUser() {
 	}
@@ -105,7 +107,17 @@ public class UamUser extends AhmBaseEntity {
 
 	public List<UamMenu> getMenus() {		
 		return new ArrayList<UamMenu>(getMapMenu().values());
-	}
+		/*
+		this.menus=null;
+		if (this.menus == null) {
+			this.menus = new ArrayList<UamMenu>();
+			for (UamRole u: getRoles()) 
+				for (UamMenu m: u.getMenus())
+					this.menus.add(m);
+		}
+		return menus;
+		*/
+	} 
 
 	public AhmPartner getPartner() {
 		return partner;

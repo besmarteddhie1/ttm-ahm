@@ -1,14 +1,10 @@
 
 package com.ahm.jx.ttm.entities;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.ahm.jx.ttm.config.EntityDomain;
@@ -49,8 +45,10 @@ public class UamMenu extends AhmBaseEntity {
     @JoinColumn(name = "vparent", referencedColumnName = "vid")
     private UamMenu parent;
 
+    /*
     @OneToMany(cascade=CascadeType.ALL, mappedBy="parent")
-    private List<UamMenu> child;
+    private List<UamMenu> child = new ArrayList<UamMenu>();
+    */
 
 	public String getIdMenu() {
 		return idMenu;
@@ -115,14 +113,5 @@ public class UamMenu extends AhmBaseEntity {
 	public void setParent(UamMenu parent) {
 		this.parent = parent;
 	}
-
-	public List<UamMenu> getChild() {
-		return child;
-	}
-
-	public void setChild(List<UamMenu> child) {
-		this.child = child;
-	}
-
 
 }

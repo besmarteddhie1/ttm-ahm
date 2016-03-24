@@ -77,7 +77,7 @@ public class UamRole extends AhmBaseEntity {
 	public List<UamMenu> getMenus() {
 		if (this.menus == null) {
 			this.menus = new ArrayList<UamMenu>();
-			for (UamRoleMenu u: roleMenu) 
+			for (UamRoleMenu u: getRoleMenu()) 
 				this.menus.add(u.getMenu());
 		}		
 		return menus;

@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,7 +20,7 @@ import com.ahm.jx.ttm.dao.UamUserDao;
 import com.ahm.jx.ttm.entities.UamMenu;
 import com.ahm.jx.ttm.entities.UamUser;
 
-@Component
+@Repository
 @Scope("session")
 @RequestMapping(value = "/api/udm")
 public class UserDataModule implements Serializable {
@@ -31,8 +31,6 @@ public class UserDataModule implements Serializable {
 	UamUserDao userDao;	
 	
 	String currentUser;
-	
-	UamUser activeUser = null;	
 	
 	@Transactional
 	public boolean checkMe() {
@@ -59,10 +57,13 @@ public class UserDataModule implements Serializable {
     @Transactional
     public List<UamMenu> activeMenu() {
     	if (!checkMe()) return null;
-    	activeUser = userDao.findOneByUserName(this.currentUser);
-    	System.out.println("Check " + activeUser.getMenus().size());
-    	if (activeUser == null) return new ArrayList<UamMenu>(); 
-        return activeUser.getMenus();
+    	UamUser usr = userDao.findOneByUserName(this.currentUser);
+    	System.out.println("Check 1 " +  this.currentUser + " ");
+    	if (usr == null) return new ArrayList<UamMenu>(); 
+    	System.out.println("Check 1 " +  this.currentUser + " " + usr.getUserRoles().size());
+    	System.out.println("Check 2 " +  this.currentUser + " " + usr.getRoles().size());
+    	System.out.println("Check 3 " +  this.currentUser + " " + usr.getMapMenu().size());    	
+        return usr.getMenus();
     }    
 		
 }
