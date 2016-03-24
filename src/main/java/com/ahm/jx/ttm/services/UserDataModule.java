@@ -60,6 +60,7 @@ public class UserDataModule implements Serializable {
     public List<UamMenu> activeMenu() {
     	if (!checkMe()) return null;
     	activeUser = userDao.findOneByUserName(this.currentUser);
+    	System.out.println("Check " + activeUser.getMenus().size());
     	if (activeUser == null) return new ArrayList<UamMenu>(); 
         return activeUser.getMenus();
     }    
