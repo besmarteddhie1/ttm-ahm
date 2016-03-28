@@ -422,16 +422,20 @@ function get_form(obj) {
         ctab = $('<div role="tabpanel" class="tab-pane" data-formid="'+id+'" id="tabpanel_'+id+'">Loading...</div>').appendTo($('.maincontent_containers.tab-content'));
         $('<li role="presentation" data-formid="'+id+'" id="tablink_'+id+'" ><a href="#tabpanel_'+id+'" class="tablink" aria-controls="'+title+'" role="tab" data-toggle="tab"><span class="'+menuicon+'"></span>'+title+' </a><a href="#" class="closetabLink" onclick="removeTab(this);"><span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></a></li>').appendTo($('.nav-tabs-container .nav-tabs'));
     } 
-    $('#tablink_'+id+' a.tablink').click();
+    
+    //$('#tablink_'+id+' a.tablink').click(); -- original, sepertinya salah.
+    $('#tabpanel_'+id+' a.tablink').click();
     listener_tabNav();
+    
     var postData = new Object();
     postData.menuId = ''+menuid;
     postData.appId = id;
-    _fw_post('/dashboard/appinfo', postData, function(data){
-        if(data.stat == '200'){
+    //_fw_post('/dashboard/appinfo', postData, function(data){
+    if (true) {
+        if (true) { // (data.stat == '200'){    	
             $.get( form_path + id + form_ext,{
                 'cb':(new Date).getTime()
-            }, function( data ) {
+            }, function(data) {
                 var tabPanel = $('#tabpanel_'+id);
                 $('#tabpanel_'+id).html( '<div class="main-app">'+data+'</div>' );
                 
@@ -443,8 +447,7 @@ function get_form(obj) {
                 } else {
                     $('#tabpanel_'+id).prepend('<div class="app-info"><div class="app-button"><button class="btn btn-default" onclick="refreshForm(this)"><span class="glyphicon glyphicon-refresh"></span></button><button class="btn btn-default dislike" name="buttonBookmark" onclick="bookmarkApps(this)"><span class="glyphicon glyphicon-thumbs-up"></span></button></div><ol class="breadcrumb"><li class="active"><span>'+title+'</span></li></ol></div>');
                 }
-                
-                
+                                
                // 
                 var appVer = $('#'+id).data('version');
                 $('#tabpanel_'+id).append('<div class="page-footer">'+id+' - Ver. '+appVer+'</div>');
@@ -461,17 +464,13 @@ function get_form(obj) {
                     add_custom_action(this);
                 });
 
-
                 //onkey enter
                 $(':input:not([type="button"],[type="submit"],button)', tabPanel).keydown(function (e) {
                     if (e.keyCode == 13) {
                         $('.btn.default:first', tabPanel).click();
                     }
                 });
-                 
-               
-
-
+                                
                 $.each($('table', tabPanel), function(){
 
                     //checkbox table event oncheck all
@@ -605,8 +604,6 @@ function get_form(obj) {
                         });
                     });
                 });
-
-
 
                 //lookup
                 $('.lookup', tabPanel).each(function() {
@@ -770,7 +767,8 @@ function get_form(obj) {
                 });
             });
         }
-    });
+    //});
+    };
 	
 }
 
