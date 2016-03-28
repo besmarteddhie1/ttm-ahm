@@ -24,7 +24,7 @@ public class UamMenu extends AhmBaseEntity {
     private String idMenu;
 
     @Column(name = "vtitle", length = EntityDomain.LENGTH_NAME, nullable = false)
-    private String tittle;
+    private String title;
 
     @Column(name = "vurl", length = 128, nullable = true)
     private String url;
@@ -58,12 +58,12 @@ public class UamMenu extends AhmBaseEntity {
 		this.idMenu = idMenu;
 	}
 
-	public String getTittle() {
-		return tittle;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTittle(String tittle) {
-		this.tittle = tittle;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getUrl() {

@@ -4,7 +4,7 @@ var form_change_password = "AHMDSUAM007";
 var timeout;
 var username;
 var token;
-var baseURL = "/ahmjxdsh000/rest";
+var baseURL = "/ahmjxdsh000/api";
 var baseURLRedirect = "/ahmjxdsh000";
 var updateData = [];
 var lastRequest;
@@ -20,7 +20,6 @@ $(document).ajaxComplete(
   function(event,request,settings){
     $('#loading-indicator').hide();
     var responseText = request.responseJSON;
-    //console.log(settings);
     if(responseText != undefined){
         if(responseText.stat == '401'){
              $('.ahm .login-outer').slideDown();
@@ -53,10 +52,6 @@ $(document).mouseup(
             }
             
         }
-        /*
-        if($(e.target).hasClass('btn-lookup') && $(e.target) == $('.btn-lookup', lookupVisible)){
-            slideUp = false;
-        }*/
         
         if(slideUp){
             $('.lookup-form').slideUp();
@@ -75,34 +70,41 @@ $(function() {
     var userData = new Object();
     userData.userName = "admin";
     userData.password = "admin";*/
+	$.ajax
+    ({
+        type: "GET",
+        url: baseURL+"/udm/whoami"
+    })
+    .done(function(user){
+//    	console.log("user",user);
+    	$('#username_login').html(user);
+    	$('#username').val(user);
+    })
+    .fail(function(){
+        console.log('failed user')
+    });
+	
     $.ajax
     ({
-        type: "POST",
-        url: baseURL+"/dashboard/dashboard",
-        contentType: "application/json",
-        dataType: 'json',
-        async: false//,
-        //data: JSON.stringify(userData)
+        type: "GET",
+        url: baseURL+"/udm/menus"
     })
     .done(function(data){
-        if(data.stat=="200"){                 
+        if(data){                 
             var menu_root = new Array();
             var htmlMenu = '';
-            
-            $('#username_login').html(data.userName);
-            $('#username').val(data.userName);
-            //find root parent (vparent null)
-            $.each(data.rows, function(key, value){
-                if(value.vparent == "null"){
+
+            $.each(data, function(key, value){
+                if(value.parent == null){
                     var rootObj = new Object();
-                    rootObj.menuId = value.vid;
-                    rootObj.menuName = value.vtitle;
+                    rootObj.menuId = value.id;
+                    rootObj.menuName = value.title;
                     htmlMenu += '<li class="treeview transition">'+
                     '<a href="#">'+
-                    '<i class="'+value.vicon+'"></i> <span>'+value.vtitle+'</span>'+
+                    '<i class="'+value.icon+'"></i> <span>'+value.title+'</span>'+
                     '<i class="glyphicon glyphicon-chevron-down icon-menu-expand" style="float:right"></i>'+
                     '</a>';
-                    htmlMenu = recursive_menu(rootObj, data.rows, htmlMenu);
+                    htmlMenu = recursive_menu(rootObj, data, htmlMenu);
                     htmlMenu += '</li>';
                     menu_root.push(rootObj);
                 } 
@@ -167,7 +169,7 @@ $(function() {
     })
     .fail(function(){
         //console.log('login failed')
-    });  
+    });
 	
 });
 
@@ -199,32 +201,6 @@ function getFormChangePassword(){
         var appVer = $('#'+id).data('version');
         $('#tabpanel_'+id).append('<div class="page-footer">'+id+' - Ver. '+appVer+'</div>');
     });
-}
-
-function logout(){
-    /*var userData = new Object();
-    userData.userName = "admin";
-    userData.password = "admin";*/
-    $.ajax
-    ({
-        type: "POST",
-        url: baseURL+"/dashboard/logout",
-        contentType: "application/json",
-        dataType: 'json',
-        async: false//,
-        //data: JSON.stringify(userData)
-    })
-    .done(function(data){
-        if(data.stat=="200"){
-            document.location = baseURLRedirect+'/login.htm';
-            
-        }   
-    })
-    .fail(function(){console.log('logout failed')});
-}
-
-function generate_menu(menu){
-    
 }
 
 function search_prepare(){
@@ -963,13 +939,15 @@ function generateTable(tableId, data, callback) {
 }
 */
 function recursive_menu(menu_obj, array_data, html_string){
+//	console.log("menu_obj", menu_obj);
+//	console.log("array_data", array_data);
     var menu_childs = new Array();
     html_string += '<ul class="treeview-menu" style="display: none;">';
     var menuGroup = [];
     var appGroup = [];
     
     $.each(array_data, function(key, value){
-        if(value.vapplicationId == "null"){
+        if(value.idApplication == null){
             menuGroup.push(this);
         } else {
             appGroup.push(this);
@@ -977,14 +955,15 @@ function recursive_menu(menu_obj, array_data, html_string){
     });
     
     $.each(menuGroup, function(key, value){
-        if(value.vparent == menu_obj.menuId){
+//    	console.log("value ==>", value);
+        if(value.parent == menu_obj.menuId){
             var menu_child_obj = new Object();
-            menu_child_obj.menuId = value.vid;
-            menu_child_obj.menuName = value.vtitle;
+            menu_child_obj.menuId = value.id;
+            menu_child_obj.menuName = value.title;
             
             html_string += '<li class="menu treeview transition">'+
             '<a href="#">'+
-            '<i class="'+value.vicon+'"></i> <span>'+value.vtitle+'</span>'+
+            '<i class="'+value.icon+'"></i> <span>'+value.title+'</span>'+
             '<i class="glyphicon glyphicon-chevron-down icon-menu-expand" style="float:right"></i>'+
             '</a>';
             html_string = recursive_menu(menu_child_obj, array_data, html_string);
@@ -996,15 +975,14 @@ function recursive_menu(menu_obj, array_data, html_string){
     });
     
     $.each(appGroup, function(key, value){
-        if(value.vparent == menu_obj.menuId){
+        if(value.parent.id == menu_obj.menuId){
             var menu_child_obj = new Object();
-            menu_child_obj.menuId = value.vid;
-            menu_child_obj.menuName = value.vtitle;
-            
+            menu_child_obj.menuId = value.id;
+            menu_child_obj.menuName = value.title;
             html_string += '<li class="menu transition">'+
-            '<a data-menuid="'+value.vid+'" data-formid="'+value.vurl+'" href="#" data-form-icon="'+value.vicon+'">'+
+            '<a data-menuid="'+value.id+'" data-formid="'+value.url+'" href="#" data-form-icon="'+value.icon+'">'+
             '<i class="glyphicon glyphicon-circle-o">'+
-            '</i>'+value.vtitle+
+            '</i>'+value.title+
             '</a>'+
             '</li>';                
                      
