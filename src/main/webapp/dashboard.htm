@@ -1,32 +1,29 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title th:text="#{view.index.title}">Welcome !</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    
-	<script type="text/javascript" src="resources/js/jQuery-2.1.3.min.js"></script>
-    <script type="text/javascript" src="resources/js/dropzone.js"></script>
-    <script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
+<html>
+    <head>
+        <script type="text/javascript" src="resources/js/jQuery-2.1.3.min.js"></script>
+        <script type="text/javascript" src="resources/js/dropzone.js"></script>
+        <script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
+        <!--<script type="text/javascript" src="resources/bootstrap3-editable/js/bootstrap-editable.js"></script>-->
 
 	<script type="text/javascript" src="resources/bootstrap-table/js/bootstrap-table.js"></script>
 
-	<script type="text/javascript" src="resources/bootstrap-datepicker/js/moment-with-locales.min.js"></script>
-	<script type="text/javascript" src="resources/bootstrap-datepicker/js/bootstrap-datetimepicker.min.js"></script>
-	<script type="text/javascript" src="resources/js/common.js?v=1.0.0"></script>
-        
-	<link href="resources/css/common.css" rel="stylesheet" type="text/css" />
-	<link href="resources/css/dropzone.css" rel="stylesheet" type="text/css" />
-	<link href="resources/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-	<link href="resources/bootstrap-table/css/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
-	<link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<link href="resources/bootstrap-datepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
-</head>
+        <script type="text/javascript" src="resources/bootstrap-datepicker/js/moment-with-locales.min.js"></script>
+        <script type="text/javascript" src="resources/bootstrap-datepicker/js/bootstrap-datetimepicker.min.js"></script>
+        <script type="text/javascript" src="resources/js/common.js?v=1.0.0"></script>
 
-<!-- On Load Body, menu di buka disini -->
-<body class="ahm" onload="onLoadFormState()">
-		
-	<div class="toptoolbar transition">
-		<a href="#" id="username_login" class="logout-button username"  data-toggle="dropdown">
+
+        <link href="resources/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="resources/css/dropzone.css" rel="stylesheet" type="text/css" />
+
+        <link href="resources/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+        <link href="resources/bootstrap-table/css/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
+        <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="resources/bootstrap-datepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+        <!--<link href="resources/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" type="text/css" />-->
+    </head>
+    <body class="ahm">
+        <div class="toptoolbar transition">
+            <a href="#" id="username_login" class="logout-button username"  data-toggle="dropdown">
                 <!--<span class="glyphicon glyphicon-off icon-toolbar transition"></span>-->
 		</a>
 		<ul class="dropdown-menu">

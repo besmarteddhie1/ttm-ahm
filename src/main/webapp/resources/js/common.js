@@ -22,7 +22,8 @@ $(document).ajaxComplete(
     var responseText = request.responseJSON;
     if(responseText != undefined){
         if(responseText.stat == '401'){
-             $('.ahm .login-outer').slideDown();
+            console.log("responseText", responseText);
+             // $('.ahm .login-outer').slideDown();
             lastRequest = settings;
         }
     }
@@ -412,6 +413,7 @@ window.actionEvents = {
 };
 
 function get_form(obj) {
+    console.log("get_form", obj);
     var id = $(obj).data("formid");
     var menuid = $(obj).data("menuid");
     var menuicon = $(obj).data("form-icon");
@@ -426,12 +428,12 @@ function get_form(obj) {
     $('#tablink_'+id+' a.tablink').click();
     listener_tabNav();
     
-    var postData = new Object();
-    postData.menuId = menuid;
+    /*var postData = new Object();
+    postData.menuId = ''+menuid;
     postData.appId = id;
-    //_fw_post('/dashboard/appinfo', postData, function(data){
-    if (true) {
-        if (false) { // (data.stat == '200'){    	
+    _fw_post('/dashboard/appinfo', postData, function(data){
+        console.log("appinfo rest ++>",data);
+        if(data.stat == '200'){*/
             $.get( form_path + id + form_ext,{
                 'cb':(new Date).getTime()
             }, function(data) {
@@ -439,13 +441,13 @@ function get_form(obj) {
                 $('#tabpanel_'+id).html( '<div class="main-app">'+data+'</div>' );
                 
                 $('.btn-lookup', tabPanel).addClass('btn-primary').html('<span class="glyphicon glyphicon-search"></span>');
-                console.log(bookmarkedApps);
-                console.log(id);
-                if($.inArray(id, bookmarkedApps) == -1) {
-                    $('#tabpanel_'+id).prepend('<div class="app-info"><div class="app-button"><button class="btn btn-default" onclick="refreshForm(this)"><span class="glyphicon glyphicon-refresh"></span></button><button class="btn btn-default" name="buttonBookmark" onclick="bookmarkApps(this)"><span class="glyphicon glyphicon-thumbs-up"></span></button></div><ol class="breadcrumb"><li class="active"><span>'+title+'</span></li></ol></div>');
-                } else {
+                //console.log(bookmarkedApps);
+                //console.log(id);
+                // if($.inArray(id, bookmarkedApps) == -1) {
+                    // $('#tabpanel_'+id).prepend('<div class="app-info"><div class="app-button"><button class="btn btn-default" onclick="refreshForm(this)"><span class="glyphicon glyphicon-refresh"></span></button><button class="btn btn-default" name="buttonBookmark" onclick="bookmarkApps(this)"><span class="glyphicon glyphicon-thumbs-up"></span></button></div><ol class="breadcrumb"><li class="active"><span>'+title+'</span></li></ol></div>');
+                // } else {
                     $('#tabpanel_'+id).prepend('<div class="app-info"><div class="app-button"><button class="btn btn-default" onclick="refreshForm(this)"><span class="glyphicon glyphicon-refresh"></span></button><button class="btn btn-default dislike" name="buttonBookmark" onclick="bookmarkApps(this)"><span class="glyphicon glyphicon-thumbs-up"></span></button></div><ol class="breadcrumb"><li class="active"><span>'+title+'</span></li></ol></div>');
-                }
+                // }
                                 
                // 
                 var appVer = $('#'+id).data('version');
@@ -765,9 +767,8 @@ function get_form(obj) {
                     })
                 });
             });
-        }
-    //});
-    };
+        // }
+    // });
 	
 }
 
