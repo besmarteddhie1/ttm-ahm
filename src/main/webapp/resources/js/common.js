@@ -4,7 +4,7 @@ var form_change_password = "AHMDSUAM007";
 var timeout;
 var username;
 var token;
-var baseURL = "/ahmjxdsh000/api";
+var baseURL = "/ahmjxdsh000";
 var baseURLRedirect = "/ahmjxdsh000";
 var updateData = [];
 var lastRequest;
@@ -73,7 +73,7 @@ $(function() {
 	$.ajax
     ({
         type: "GET",
-        url: baseURL+"/udm/whoami"
+        url: baseURL+"/api/udm/whoami"
     })
     .done(function(user){
 //    	console.log("user",user);
@@ -87,7 +87,7 @@ $(function() {
     $.ajax
     ({
         type: "GET",
-        url: baseURL+"/udm/menus"
+        url: baseURL+"/api/udm/menus"
     })
     .done(function(data){
         if(data){                 
@@ -423,16 +423,15 @@ function get_form(obj) {
         $('<li role="presentation" data-formid="'+id+'" id="tablink_'+id+'" ><a href="#tabpanel_'+id+'" class="tablink" aria-controls="'+title+'" role="tab" data-toggle="tab"><span class="'+menuicon+'"></span>'+title+' </a><a href="#" class="closetabLink" onclick="removeTab(this);"><span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></a></li>').appendTo($('.nav-tabs-container .nav-tabs'));
     } 
     
-    //$('#tablink_'+id+' a.tablink').click(); -- original, sepertinya salah.
-    $('#tabpanel_'+id+' a.tablink').click();
+    $('#tablink_'+id+' a.tablink').click();
     listener_tabNav();
     
     var postData = new Object();
-    postData.menuId = ''+menuid;
+    postData.menuId = menuid;
     postData.appId = id;
     //_fw_post('/dashboard/appinfo', postData, function(data){
     if (true) {
-        if (true) { // (data.stat == '200'){    	
+        if (false) { // (data.stat == '200'){    	
             $.get( form_path + id + form_ext,{
                 'cb':(new Date).getTime()
             }, function(data) {
@@ -1028,7 +1027,7 @@ function _fw_post(postUrl, postData, callback){
     $.ajax
     ({
         type: "POST",
-        url: baseURL+postUrl,
+        url: baseURL + postUrl,
         contentType: "application/json",
         dataType: 'json',
         async: false,
@@ -1252,7 +1251,7 @@ function _fw_relogin(user, pass){
     $.ajax
     ({
         type: "POST",
-        url: baseURL+"/dashboard/login",
+        url: baseURL + "/dashboard/login",
         contentType: "application/json",
         dataType: 'json',
         async: false,

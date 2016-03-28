@@ -1,4 +1,4 @@
-var baseURL = "/ahmjxdsh000/rest";
+var baseURL = "/ahmjxdsh000";
 
 function recursive_menu(menu_obj, array_data, html_string){
     var menu_childs = new Array();
