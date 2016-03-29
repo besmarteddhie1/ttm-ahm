@@ -72,13 +72,11 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http        	
             .authorizeRequests()
-            	.antMatchers(HttpMethod.POST, "/dashboard/**").permitAll()
-            	.antMatchers(HttpMethod.PUT, "/dashboard/**").permitAll()
-            	.antMatchers(HttpMethod.DELETE, "/dashboard/**").permitAll()
             	.antMatchers(HttpMethod.POST, "/api/**").permitAll()
             	.antMatchers(HttpMethod.PUT, "/api/**").permitAll()
             	.antMatchers(HttpMethod.DELETE, "/api/**").permitAll()
-                .antMatchers("/", "/favicon.ico", "/resources/**", "/signup", "/api/**", "/fragments/**", 
+            	.antMatchers(HttpMethod.GET, "/api/**").permitAll()
+                .antMatchers("/", "/favicon.ico", "/resources/**", "/signup", "/fragments/**", 
                 			 "/error", "/dashboard/**").permitAll()
                 .anyRequest().authenticated()
                 .and()

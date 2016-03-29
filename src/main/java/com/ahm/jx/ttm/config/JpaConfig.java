@@ -30,14 +30,19 @@ class JpaConfig {
 
     @Value("${dataSource.driverClassName}")
     private String driver;
+    
     @Value("${dataSource.url}")
     private String url;
+    
     @Value("${dataSource.username}")
     private String username;
+    
     @Value("${dataSource.password}")
     private String password;
+    
     @Value("${hibernate.dialect}")
     private String dialect;
+    
     @Value("${hibernate.hbm2ddl.auto}")
     private String hbm2ddlAuto;
 
@@ -48,6 +53,7 @@ class JpaConfig {
         config.setJdbcUrl(url);
         config.setUsername(username);
         config.setPassword(password);
+        
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");
         config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
@@ -70,6 +76,8 @@ class JpaConfig {
         Properties jpaProperties = new Properties();
         jpaProperties.put(org.hibernate.cfg.Environment.DIALECT, dialect);
         jpaProperties.put(org.hibernate.cfg.Environment.HBM2DDL_AUTO, hbm2ddlAuto);
+        jpaProperties.put(org.hibernate.cfg.Environment.SHOW_SQL, "true");
+        jpaProperties.put(org.hibernate.cfg.Environment.FORMAT_SQL, "true");
         entityManagerFactoryBean.setJpaProperties(jpaProperties);
 
         return entityManagerFactoryBean;
