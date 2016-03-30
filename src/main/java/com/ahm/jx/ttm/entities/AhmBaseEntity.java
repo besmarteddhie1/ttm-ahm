@@ -17,6 +17,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @MappedSuperclass
 public class AhmBaseEntity implements Serializable {
 
@@ -28,16 +30,18 @@ public class AhmBaseEntity implements Serializable {
 	@Column(name="vid", nullable = false)
 	private String id;
 	
+	@JsonIgnore
 	@Column(name="vcreaby")
 	private String createBy;
 	
+	@JsonIgnore
 	@Column(name="vmodiby")
 	private String modiBy;		
 	
 	@Version
 	@Column(name="iver")
 	private Integer lockVersion;
-	
+		
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="dcrea")
 	private Date dateCreate;
