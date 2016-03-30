@@ -25,7 +25,7 @@ public class AhmBaseEntity implements Serializable {
 	@Id
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
-	@Column(name="vid")
+	@Column(name="vid", nullable = false)
 	private String id;
 	
 	@Column(name="vcreaby")

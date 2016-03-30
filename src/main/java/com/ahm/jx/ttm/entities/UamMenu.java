@@ -3,12 +3,17 @@ package com.ahm.jx.ttm.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import com.ahm.jx.ttm.config.EntityDomain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
 
 /**
  *
@@ -44,7 +49,7 @@ public class UamMenu extends AhmBaseEntity {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "vparent", referencedColumnName = "vid")
+    @JoinColumn(name = "vparent")
     private UamMenu parent;
 
     /*
@@ -111,6 +116,11 @@ public class UamMenu extends AhmBaseEntity {
 	public UamMenu getParent() {
 		return parent;
 	}
+	
+	public String getParentIdMenu() {
+		if (this.parent != null) return parent.idMenu;
+		return null;
+	}	
 
 	public void setParent(UamMenu parent) {
 		this.parent = parent;

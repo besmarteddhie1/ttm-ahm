@@ -129,6 +129,12 @@ public class MenuController extends AbstractImplDao<UamMenu, String> {
 		return q.getResultList();
 		
 	}
+	
+	@RequestMapping(value = "getAll")
+	@ResponseBody
+	public List<UamMenu> getAll() {
+		return dao.findAll();
+	}	
 
-
+	
 }
