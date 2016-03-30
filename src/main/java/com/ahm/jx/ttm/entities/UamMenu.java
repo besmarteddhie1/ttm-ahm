@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.ahm.jx.ttm.config.EntityDomain;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  *
@@ -41,6 +42,7 @@ public class UamMenu extends AhmBaseEntity {
     @Column(name = "iorder", length = 3)
     private Integer iorder;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "vparent", referencedColumnName = "vid")
     private UamMenu parent;

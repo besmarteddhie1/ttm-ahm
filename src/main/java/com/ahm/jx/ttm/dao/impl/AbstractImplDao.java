@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.ahm.jx.ttm.entities.UamMenu;
+
 public abstract class AbstractImplDao<T, ID extends Serializable> implements JpaRepository<T, ID> {	
 	
 	protected abstract JpaRepository<T, ID> getRepository();
@@ -102,6 +104,6 @@ public abstract class AbstractImplDao<T, ID extends Serializable> implements Jpa
 		return getRepository().getOne(id);
 	}
 	
-	public abstract List<T> getByCriteria(String[] Fields, String[] values);
+	public abstract List<T> getByCriteria(String[] Fields, String filter, Integer pageNum, Integer rowNum);
 	
 }

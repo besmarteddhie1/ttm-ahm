@@ -65,9 +65,8 @@ public class MenuController extends AbstractImplDao<UamMenu, String> {
 	@RequestMapping(value = "show")
 	@ResponseBody
 	public List<UamMenu> getByCriteria() {
-		String[] values = {"010", "License", "uam"};
 		String[] fields = {"idMenu", "title", "url"};
-		return getByCriteria(fields, values);
+		return getByCriteria(fields, "1", 1, 10);
 	}	
 
 	
@@ -95,13 +94,14 @@ public class MenuController extends AbstractImplDao<UamMenu, String> {
 	}
 	
 	@Override
-	public List<UamMenu> getByCriteria(String[] fields, String[] values) {		
+	public List<UamMenu> getByCriteria(String[] fields, String filter, Integer pageNum, Integer rowNum) {
+		String[] values = filter.split("\\s+");
+						
 		CriteriaBuilder builder = em.getCriteriaBuilder();
 		CriteriaQuery<UamMenu> query = builder.createQuery(UamMenu.class);
 		Root<UamMenu> root = query.from(UamMenu.class);
 		
 		query.select(root);		
-		
 		List<Predicate> pv = new ArrayList<Predicate>();
 		
 		for (String s: values) {									
@@ -116,12 +116,19 @@ public class MenuController extends AbstractImplDao<UamMenu, String> {
 			Predicate vpv = builder.or(pf.toArray(apf));
 			pv.add(vpv);
 		}
-			
+								
 		Predicate[] apv = new Predicate[pv.size()];
-		query.where(builder.and(pv.toArray(apv)));
+		query.where(builder.and(pv.toArray(apv)));				
 		
+		System.out.println("Page Record Start : " + pageNum + "  >> " + ((pageNum - 1) * rowNum));		
 		TypedQuery<UamMenu> q = em.createQuery(query);
+		
+		q.setFirstResult((pageNum - 1) * rowNum);
+		q.setMaxResults(rowNum);
+		
 		return q.getResultList();
+		
 	}
+
 
 }
