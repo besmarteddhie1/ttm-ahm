@@ -91,12 +91,13 @@ $(function() {
         url: baseURL+"/api/udm/menus"
     })
     .done(function(data){
+    	console.log("daftar menu", data);
         if(data){                 
             var menu_root = new Array();
             var htmlMenu = '';
 
             $.each(data, function(key, value){
-                if(value.parent == null){
+                if(value.parentId == null){
                     var rootObj = new Object();
                     rootObj.menuId = value.id;
                     rootObj.menuName = value.title;
@@ -954,7 +955,7 @@ function recursive_menu(menu_obj, array_data, html_string){
     
     $.each(menuGroup, function(key, value){
 //    	console.log("value ==>", value);
-        if(value.parent == menu_obj.menuId){
+        if(value.parentId == menu_obj.menuId){
             var menu_child_obj = new Object();
             menu_child_obj.menuId = value.id;
             menu_child_obj.menuName = value.title;
@@ -973,7 +974,7 @@ function recursive_menu(menu_obj, array_data, html_string){
     });
     
     $.each(appGroup, function(key, value){
-        if(value.parent.id == menu_obj.menuId){
+        if(value.parentId == menu_obj.menuId){
             var menu_child_obj = new Object();
             menu_child_obj.menuId = value.id;
             menu_child_obj.menuName = value.title;
