@@ -1,9 +1,16 @@
 package com.ahm.jx.ttm.services;
 
 import java.io.Serializable;
+import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
+import org.apache.commons.codec.digest.Md5Crypt;
+import org.joda.time.DateTime;
+import org.joda.time.Period;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
@@ -32,6 +39,14 @@ public class UserDataModule implements Serializable {
 	
 	String currentUser;
 	
+	Date lastCheckLogin;
+	
+	
+	@PostConstruct
+	private void StartUp() {
+		lastCheckLogin = new Date();
+	}
+	
 	@Transactional
 	public boolean checkMe() {
 		if (currentUser == null) {
@@ -58,12 +73,21 @@ public class UserDataModule implements Serializable {
     public List<UamMenu> activeMenu() {
     	if (!checkMe()) return null;
     	UamUser usr = userDao.findOneByUserName(this.currentUser);
-    	System.out.println("Check 1 " +  this.currentUser + " ");
     	if (usr == null) return new ArrayList<UamMenu>(); 
-    	System.out.println("Check 1 " +  this.currentUser + " " + usr.getUserRoles().size());
-    	System.out.println("Check 2 " +  this.currentUser + " " + usr.getRoles().size());
-    	System.out.println("Check 3 " +  this.currentUser + " " + usr.getMapMenu().size());    	
         return usr.getMenus();
+    }
+    
+    public boolean TimeOut() {
+    	Period nl = new Period(new DateTime(), new DateTime(lastCheckLogin));
+    	return nl.getMinutes() >= 20;
+    }
+    
+    public boolean ValidLogin(String password) {
+    	checkMe();
+    	UamUser usr = userDao.findOneByUserName(this.currentUser);
+    	Boolean isTrue = usr.getPassword().equals(Md5Crypt.apr1Crypt(password, null));
+    	if (isTrue) lastCheckLogin = new Date();
+    	return isTrue;
     }    
 		
 }

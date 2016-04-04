@@ -6,10 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class HomeController {
+public class DashboardController {
 	
-	@RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
-	public String index(Principal principal) {
+	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
+	public String dashboard(Principal principal) {
 		return principal != null ? "dashboard" : "login";
 	}
 
