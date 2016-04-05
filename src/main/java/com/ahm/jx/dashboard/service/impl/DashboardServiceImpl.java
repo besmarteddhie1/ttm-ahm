@@ -318,7 +318,8 @@ public class DashboardServiceImpl implements DashboardService {
         DtoRespond dtoRespond = new DtoRespond();
         dtoRespond.setStat(CommonConstant._200);
         dtoRespond.setMsg(CommonConstant._200Msg);
-        /*
+        
+        /* TODO: Temp, Security Handled by Spring
         if (this.validateToken(token, httpServletRequest)) {
             String username = (String) httpServletRequest.getSession().getAttribute(CommonConstant.cookieDimsUser);
             if (this.authorization(username, appId)) {
