@@ -17,9 +17,9 @@ import java.util.Map;
  */
 public interface Uam003AhmjxuamMstservicesDao extends GenericDao<AhmjxuamMstservices, String> {
 
-    public int getPagingCountAhmjxuamMstservices(Map<String, Object> filters, boolean isLov);
+    public int getPagingCountAhmjxuamMstservices(Map<String, Object> filters);
 
-    public List<Uam003VoAhmjxuamMstservice> getPagingDataAhmjxuamMstservices(int first, int pageSize, String sortField, String sortOrder, Map<String, Object> filters, boolean isLov);
+    public List<Uam003VoAhmjxuamMstservice> getPagingDataAhmjxuamMstservices(int first, int pageSize, String sortField, String sortOrder, Map<String, Object> filters);
 
     public String getStatDesc(String vstat);
 

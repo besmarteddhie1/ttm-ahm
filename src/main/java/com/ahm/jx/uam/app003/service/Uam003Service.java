@@ -20,9 +20,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 public interface Uam003Service {
 
-    public int getPagingCountAhmjxuamMstservice(Map<String, Object> filters, boolean isLov);
+    public int getPagingCountAhmjxuamMstservice(Map<String, Object> filters);
 
-    public List<Uam003VoAhmjxuamMstservice> getPagingDataAhmjxuamMstservice(int first, int pageSize, String sortField, String sortOrder, Map<String, Object> filters, boolean isLov);
+    public List<Uam003VoAhmjxuamMstservice> getPagingDataAhmjxuamMstservice(int first, int pageSize, String sortField, String sortOrder, Map<String, Object> filters);
 
     public DtoRespond disableState(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, List<Uam003VoAhmjxuamMstservice> list, String token, String appId);
 
@@ -33,5 +33,7 @@ public interface Uam003Service {
     public DtoRespond update(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Uam003VoAhmjxuamMstservice uam003VoAhmjxuamMstservice, String token, String appId, Uam003VoAhmjxuamMstservice oldObj);
 
     public Uam003VoAhmjxuamMstservice getServiceById(String vid);
+    
+    public DtoRespondPaging getLovApp(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, DtoParamPaging dtoParamPaging, String token, String appId);
 
 }

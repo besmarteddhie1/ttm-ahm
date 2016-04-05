@@ -31,9 +31,10 @@ public class Uam003AhmjxuamMstservicesDaoImpl extends GenericHibernateDao<Ahmjxu
         implements Uam003AhmjxuamMstservicesDao {
 
     @Override
-    public int getPagingCountAhmjxuamMstservices(Map<String, Object> filters, boolean isLov) {
+    public int getPagingCountAhmjxuamMstservices(Map<String, Object> filters) {
         int result = 0;
         Criteria criteria = getCurrentSession().createCriteria(AhmjxuamMstservices.class, "ahmjxuamMstservices");
+        criteria.createAlias("ahmjxuamMstservices.ahmjxuamMstapps", "ahmjxuamMstapps");
 
         if (filters != null) {
             for (Map.Entry<String, Object> filter : filters.entrySet()) {
@@ -41,7 +42,7 @@ public class Uam003AhmjxuamMstservicesDaoImpl extends GenericHibernateDao<Ahmjxu
                     String valueStr = filter.getValue().toString();
                     criteria.add(
                             buildResctrictionsAndForAllProperty(
-                                    new String[]{"vsvcname", "vsvcdesc", "vurl"},
+                                    new String[]{"vsvcName", "vsvcDesc", "vurl"},
                                     AhmStringUtil.splitBySpace(valueStr)));
 
                 }
@@ -55,17 +56,18 @@ public class Uam003AhmjxuamMstservicesDaoImpl extends GenericHibernateDao<Ahmjxu
     }
 
     @Override
-    public List<Uam003VoAhmjxuamMstservice> getPagingDataAhmjxuamMstservices(int first, int pageSize, String sortField, String sortOrder, Map<String, Object> filters, boolean isLov) {
+    public List<Uam003VoAhmjxuamMstservice> getPagingDataAhmjxuamMstservices(int first, int pageSize, String sortField, String sortOrder, Map<String, Object> filters) {
         List<Uam003VoAhmjxuamMstservice> result = new ArrayList<Uam003VoAhmjxuamMstservice>();
         Criteria criteria = getCurrentSession().createCriteria(AhmjxuamMstservices.class, "ahmjxuamMstservices");
-
+        criteria.createAlias("ahmjxuamMstservices.ahmjxuamMstapps", "ahmjxuamMstapps");
+        
         if (filters != null) {
             for (Map.Entry<String, Object> filter : filters.entrySet()) {
                 if (filter.getKey().equalsIgnoreCase(CommonConstant.ANY)) {
                     String valueStr = filter.getValue().toString();
                     criteria.add(
                             buildResctrictionsAndForAllProperty(
-                                    new String[]{"vsvcname", "vsvcdesc", "vurl"},
+                                    new String[]{"vsvcName", "vsvcDesc", "vurl"},
                                     AhmStringUtil.splitBySpace(valueStr)));
 
                 }
@@ -75,17 +77,17 @@ public class Uam003AhmjxuamMstservicesDaoImpl extends GenericHibernateDao<Ahmjxu
         if (sortField != null) {
             System.out.println("sortField : " + sortField);
             if (sortOrder.equals(CommonConstant.ASC)) {
-                if (sortField.equals("vsvcname")) {
-                    criteria.addOrder(Order.asc("vsvcname").ignoreCase());
-                } else if (sortField.equals("vsvcdesc")) {
-                    criteria.addOrder(Order.asc("vsvcdesc").ignoreCase());
+                if (sortField.equals("vsvcName")) {
+                    criteria.addOrder(Order.asc("vsvcName").ignoreCase());
+                } else if (sortField.equals("vsvcDesc")) {
+                    criteria.addOrder(Order.asc("vsvcDesc").ignoreCase());
                 } else if (sortField.equals("vurl")) {
                     criteria.addOrder(Order.asc("vurl").ignoreCase());
                 }
-            } else if (sortField.equals("vsvcname")) {
-                criteria.addOrder(Order.desc("vsvcname").ignoreCase());
-            } else if (sortField.equals("vsvcdesc")) {
-                criteria.addOrder(Order.desc("vsvcdesc").ignoreCase());
+            } else if (sortField.equals("vsvcName")) {
+                criteria.addOrder(Order.desc("vsvcName").ignoreCase());
+            } else if (sortField.equals("vsvcDesc")) {
+                criteria.addOrder(Order.desc("vsvcDesc").ignoreCase());
             } else if (sortField.equals("vurl")) {
                 criteria.addOrder(Order.desc("vurl").ignoreCase());
             }
@@ -101,11 +103,12 @@ public class Uam003AhmjxuamMstservicesDaoImpl extends GenericHibernateDao<Ahmjxu
             Uam003VoAhmjxuamMstservice uam003VoAhmjxuamMstservice = new Uam003VoAhmjxuamMstservice();
             uam003VoAhmjxuamMstservice.setVid(ahmjxuamMstservices.getVid());
             uam003VoAhmjxuamMstservice.setIver(ahmjxuamMstservices.getIver());
-            uam003VoAhmjxuamMstservice.setVsvcname(ahmjxuamMstservices.getVsvcName());
-            uam003VoAhmjxuamMstservice.setVsvcdesc(ahmjxuamMstservices.getVsvcDesc());
+            uam003VoAhmjxuamMstservice.setVsvcName(ahmjxuamMstservices.getVsvcName());
+            uam003VoAhmjxuamMstservice.setVsvcDesc(ahmjxuamMstservices.getVsvcDesc());
             uam003VoAhmjxuamMstservice.setVurl(ahmjxuamMstservices.getVurl());
             uam003VoAhmjxuamMstservice.setVstat(getStatDesc(ahmjxuamMstservices.getVstat()));
             uam003VoAhmjxuamMstservice.setVidAhmjxuamMstapps(ahmjxuamMstservices.getVidAhmjxuamMstapps());
+            uam003VoAhmjxuamMstservice.setVname(ahmjxuamMstservices.getAhmjxuamMstapps().getVname());
 
             result.add(uam003VoAhmjxuamMstservice);
         }

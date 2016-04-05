@@ -391,6 +391,7 @@
     }
     function ahmjxuam004AddData(obj){
         var page = $(obj).closest('.subpage');
+        $(obj).length(15);
         _fw_validation_clear(obj);
         _fw_validation_add(obj, 'ahmjxuam004p02ApplicationId', 'required');
         _fw_validation_add(obj, 'ahmjxuam004p02MenuId', 'required');
@@ -456,7 +457,7 @@
         $('#ahmjxuam004p03VTitle').prop('disabled',false);
         $('#ahmjxuam004p03VUrl').prop('disabled',false);
         $('#ahmjxuam004p03VParent').prop('disabled',false); 
-        $('#ahmjxuamBtnSubmitUpdate').css('display','');     
+        $('#ahmjxuamBtnSubmitUpdate').css('display','');
         $('#ahmjxh1c006p02BtnReset').css('display','none');
     }
     

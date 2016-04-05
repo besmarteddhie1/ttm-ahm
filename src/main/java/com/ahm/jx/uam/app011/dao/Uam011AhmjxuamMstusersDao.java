@@ -7,8 +7,8 @@ package com.ahm.jx.uam.app011.dao;
 
 /**
  *
- * @author sigit
+ * @author ferdy
  */
 public interface Uam011AhmjxuamMstusersDao {
-
+	
 }

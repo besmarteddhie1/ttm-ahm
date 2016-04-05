@@ -6,11 +6,14 @@
 package com.ahm.jx.uam.app003.rest;
 
 import com.ahm.jx.common.constant.CommonConstant;
+import com.ahm.jx.common.rest.dto.DtoParamPaging;
 import com.ahm.jx.common.rest.dto.DtoRespond;
 import com.ahm.jx.common.rest.dto.DtoRespondPaging;
 import com.ahm.jx.dashboard.service.DashboardService;
 import com.ahm.jx.uam.app003.service.Uam003Service;
 import com.ahm.jx.uam.app003.vo.Uam003VoAhmjxuamMstservice;
+import com.ahm.jx.uam.app004.vo.Uam004VoAhmjxuamMstmenus;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -35,88 +38,111 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/uam003")
 public class Uam003Rest {
 
-    private final String appId = "AHMJXUAM003";
+	private final String appId = "AHMJXUAM003";
 
-    @Autowired
-    @Qualifier("uam003Service")
-    private Uam003Service uam003Service;
+	@Autowired
+	@Qualifier("uam003Service")
+	private Uam003Service uam003Service;
 
-    @Autowired
-    @Qualifier("dashboardService")
-    private DashboardService dashboardService;
+	@Autowired
+	@Qualifier("dashboardService")
+	private DashboardService dashboardService;
 
-    @RequestMapping(value = "paging", method = RequestMethod.POST,
+	@RequestMapping(value = "paging", method = RequestMethod.POST, 
+			consumes = {MediaType.APPLICATION_JSON_VALUE }, 
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody 
+	DtoRespondPaging pagingService(HttpServletRequest httpServletRequest,
+			HttpServletResponse httpServletResponse,
+			@CookieValue(value = CommonConstant.cookieDims, defaultValue = "") String cookieDims,
+			@RequestBody DtoParamPaging dtoParamPaging) {
+
+		DtoRespondPaging respondPaging = uam003Service.pagingService(httpServletRequest, httpServletResponse,
+				dtoParamPaging, cookieDims, appId);
+
+		return respondPaging;
+	}
+
+	@RequestMapping(value = "insert", method = RequestMethod.POST, consumes = {
+			MediaType.APPLICATION_JSON_VALUE }, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody DtoRespond insertService(HttpServletRequest httpServletRequest,
+			@RequestBody Uam003VoAhmjxuamMstservice uam003VoAhmjxuamMstservices,
+			HttpServletResponse httpServletResponse,
+			@CookieValue(value = CommonConstant.cookieDims, defaultValue = "") String cookieDims) {
+		DtoRespond dtoRespond = new DtoRespond();
+		try {
+			dtoRespond = uam003Service.insert(httpServletRequest, httpServletResponse, uam003VoAhmjxuamMstservices,
+					cookieDims, appId);
+		} catch (ConstraintViolationException dive) {
+			dive.printStackTrace();
+			dtoRespond.setDetailMsg("Gagal Insert Integrity Constraint");
+			dtoRespond.setStat(CommonConstant._500);
+			dtoRespond.setMsg(CommonConstant._500Msg);
+			return dtoRespond;
+		} catch (Exception e) {
+			e.printStackTrace();
+			dtoRespond.setStat(CommonConstant._500);
+			dtoRespond.setMsg(CommonConstant._500Msg);
+			dtoRespond.setDetailMsg(e.getMessage());
+			return dtoRespond;
+		}
+		return dtoRespond;
+	}
+
+	@RequestMapping(value = "update", method = RequestMethod.POST, consumes = {
+			MediaType.APPLICATION_JSON_VALUE }, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody DtoRespond updateService(HttpServletRequest httpServletRequest,
+			@RequestBody Uam003VoAhmjxuamMstservice uam003VoAhmjxuamMstservice, HttpServletResponse httpServletResponse,
+			@CookieValue(value = CommonConstant.cookieDims, defaultValue = "") String cookieDims) {
+		DtoRespond dtoRespond = new DtoRespond();
+		try {
+			Uam003VoAhmjxuamMstservice oldObj = uam003Service.getServiceById(uam003VoAhmjxuamMstservice.getVid());
+			if (oldObj != null) {
+				dtoRespond = uam003Service.update(httpServletRequest, httpServletResponse, uam003VoAhmjxuamMstservice,
+						cookieDims, appId, oldObj);
+			} else {
+				dtoRespond.setStat(CommonConstant._404);
+				dtoRespond.setMsg(CommonConstant._404Msg);
+			}
+			return dtoRespond;
+		} catch (HibernateOptimisticLockingFailureException holfe) {
+			holfe.printStackTrace();
+			Uam003VoAhmjxuamMstservice temp = uam003Service.getServiceById(uam003VoAhmjxuamMstservice.getVid());
+			if (temp != null) {
+				List<Uam003VoAhmjxuamMstservice> list = new ArrayList<Uam003VoAhmjxuamMstservice>();
+				list.add(temp);
+				dtoRespond.setRows(list);
+			}
+			dtoRespond.setStat(CommonConstant._409);
+			dtoRespond.setMsg(CommonConstant._409Msg);
+			dtoRespond.setDetailMsg("Update failed data was updated or deleted by another user");
+			return dtoRespond;
+		} catch (Exception e) {
+			e.printStackTrace();
+			dtoRespond.setMsg(e.getMessage());
+			dtoRespond.setStat(CommonConstant._0);
+			return dtoRespond;
+		}
+	}
+	
+	@RequestMapping(value = "disable", method = RequestMethod.POST,
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    DtoRespondPaging pagingRole(HttpServletRequest httpServletRequest,
-            HttpServletResponse httpServletResponse,
-            @CookieValue(value = CommonConstant.cookieDims, defaultValue = "") String cookieDims,
-            @RequestBody DtoRespondPaging dtoRespondPaging) {
-
-        DtoRespondPaging respondPaging = new DtoRespondPaging();
-
-        return respondPaging;
-    }
-
-    @RequestMapping(value = "insert", method = RequestMethod.POST,
-            consumes = {MediaType.APPLICATION_JSON_VALUE},
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody
-    DtoRespond insertMenu(HttpServletRequest httpServletRequest,
-            @RequestBody Uam003VoAhmjxuamMstservice uam003VoAhmjxuamMstservices,
+    DtoRespond disableState(HttpServletRequest httpServletRequest,
+            @RequestBody List<Uam003VoAhmjxuamMstservice> uam003VoAhmjxuamMstservices,
             HttpServletResponse httpServletResponse,
             @CookieValue(value = CommonConstant.cookieDims, defaultValue = "") String cookieDims) {
         DtoRespond dtoRespond = new DtoRespond();
         try {
-            dtoRespond = uam003Service.insert(httpServletRequest, httpServletResponse,
+            dtoRespond = uam003Service.disableState(httpServletRequest, httpServletResponse,
                     uam003VoAhmjxuamMstservices, cookieDims, appId);
-        } catch (ConstraintViolationException dive) {
-            dive.printStackTrace();
-            dtoRespond.setDetailMsg("Gagal Insert Integrity Constraint");
-            dtoRespond.setStat(CommonConstant._500);
-            dtoRespond.setMsg(CommonConstant._500Msg);
-            return dtoRespond;
-        } catch (Exception e) {
-            e.printStackTrace();
-            dtoRespond.setStat(CommonConstant._500);
-            dtoRespond.setMsg(CommonConstant._500Msg);
-            dtoRespond.setDetailMsg(e.getMessage());
-            return dtoRespond;
-        }
-        return dtoRespond;
-    }
-
-    @RequestMapping(value = "update", method = RequestMethod.POST,
-            consumes = {MediaType.APPLICATION_JSON_VALUE},
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody
-    DtoRespond updateMenus(HttpServletRequest httpServletRequest,
-            @RequestBody Uam003VoAhmjxuamMstservice uam003VoAhmjxuamMstservice,
-            HttpServletResponse httpServletResponse,
-            @CookieValue(value = CommonConstant.cookieDims, defaultValue = "") String cookieDims) {
-        DtoRespond dtoRespond = new DtoRespond();
-        try {
-            Uam003VoAhmjxuamMstservice oldObj = uam003Service.getServiceById(uam003VoAhmjxuamMstservice.getVid());
-            if (oldObj != null) {
-                dtoRespond = uam003Service.update(httpServletRequest, httpServletResponse,
-                        uam003VoAhmjxuamMstservice, cookieDims, appId, oldObj);
-            } else {
-                dtoRespond.setStat(CommonConstant._404);
-                dtoRespond.setMsg(CommonConstant._404Msg);
-            }
             return dtoRespond;
         } catch (HibernateOptimisticLockingFailureException holfe) {
             holfe.printStackTrace();
-            Uam003VoAhmjxuamMstservice temp = uam003Service.getServiceById(uam003VoAhmjxuamMstservice.getVid());
-            if (temp != null) {
-                List<Uam003VoAhmjxuamMstservice> list = new ArrayList<Uam003VoAhmjxuamMstservice>();
-                list.add(temp);
-                dtoRespond.setRows(list);
-            }
-            dtoRespond.setStat(CommonConstant._409);
-            dtoRespond.setMsg(CommonConstant._409Msg);
-            dtoRespond.setDetailMsg("Update failed data was updated or deleted by another user");
+            dtoRespond.setStat("409");
+            dtoRespond.setMsg("Conflict");
+            dtoRespond.setDetailMsg("Disable State failed data was updated or deleted by another user");
             return dtoRespond;
         } catch (Exception e) {
             e.printStackTrace();
@@ -124,6 +150,20 @@ public class Uam003Rest {
             dtoRespond.setStat(CommonConstant._0);
             return dtoRespond;
         }
+    }
+	
+	@RequestMapping(value = "lovapp", method = RequestMethod.POST,
+            consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody
+    DtoRespondPaging lovApp(HttpServletRequest httpServletRequest,
+            HttpServletResponse httpServletResponse,
+            @CookieValue(value = CommonConstant.cookieDims, defaultValue = "") String cookieDims,
+            @RequestBody DtoParamPaging dtoParamPaging) {
+        DtoRespondPaging dtoRespondPaging;
+        dtoRespondPaging = uam003Service.getLovApp(httpServletRequest, httpServletResponse, dtoParamPaging,
+                cookieDims, appId);
+        return dtoRespondPaging;
     }
 
 }

@@ -7,7 +7,6 @@ package com.ahm.jx.app000.dao;
 
 import com.ahm.jx.app000.model.AhmjxuamHdrrlaccess;
 import com.ahm.jx.common.dao.GenericDao;
-import com.ahm.jx.common.model.AbstractBaseEntity;
 
 /**
  *

@@ -2,7 +2,7 @@
     <div class="global_message">
 
     </div>
-    <div id="ahmjxuam007p01" class="subpage subpage-default" data-path="Maintain Menu Service">
+    <div id="ahmjxuam007p01" class="subpage subpage-default" data-path="Maintain Role Service">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group large-font">
@@ -28,8 +28,11 @@
                             <th data-field="vid" 
                                 data-sortable="true"
                                 data-visible="false"
-                                >ID Service</th>
-                            <th data-field="vusername" 
+                                >ID</th>
+                            <th data-field="vroleName" 
+                                data-sortable="true"
+                                >Role Name</th>
+                            <th data-field="vsvcName" 
                                 data-sortable="true"
                                 >Service Name</th>
                             <th data-field="vaction"
@@ -53,7 +56,7 @@
         <div id="table-container">
             <table 	id="ahmjxuam007p01SearchTable"
                     data-method="post"
-                    data-url="/uam002/paging"
+                    data-url="/uam007/paging"
                     data-content-type="application/json"
                     data-data-type="json"
                     data-query-params-type="limit"
@@ -76,8 +79,12 @@
                         <th data-field="vid" 
                             data-sortable="true"
                             data-visible="false"
-                            >ID Service</th>
-                        <th data-field="vusername" 
+                            >ID</th>
+                        <th data-field="vroleName" 
+                            data-sortable="true"
+                            data-visible="true"
+                            >Role Name</th>
+                        <th data-field="vsvcName" 
                             data-sortable="true"
                             data-visible="true"
                             >Service Name</th>
@@ -89,7 +96,7 @@
 
 
     </div>
-    <div id="ahmjxuam007p02" class="subpage" data-path="Maintain Menu Service/Add Menu Service">
+    <div id="ahmjxuam007p02" class="subpage" data-path="Maintain Role Service/Add Role Service">
         <form class="form-horizontal">
         <!--
             <div class="form-group large-font">
@@ -101,7 +108,7 @@
             -->
             
             <div class="form-group large-font">
-                <label for="ahmjxuam007p02IdMenu" class="col-sm-2 control-label">Menu <span style="color:red">*)  </span></label>
+                <label for="ahmjxuam007p02IdRole" class="col-sm-2 control-label">Role <span style="color:red">*)  </span></label>
                 <div class="lookup-wrapper col-sm-6" >
                     <div class="input-group lookup" 
                          data-url="/uam002/lovdealer"
@@ -110,10 +117,10 @@
                          ,{"id":"vname","name":"Nama Dealer","visible":"true","sortable":"true"}]'
                          data-callback='{"ahmjxuam007p02IdDealer":"vid","ahmjxuam007p02Dealer":"vdealercode"}'
                          >
-                        <input id="ahmjxuam007p02IdMenu" name="ahmjxuam007p02IdDealer" type="hidden"/>
-                        <input id="ahmjxuam007p02Menu" name="ahmjxuam007p02Dealer" class="form-control input-lookup" placeholder="LOV Menu...." data-field-id="vid">
+                        <input id="ahmjxuam007p02IdRole" name="ahmjxuam007p02IdDealer" type="hidden"/>
+                        <input id="ahmjxuam007p02Role" name="ahmjxuam007p02Dealer" class="form-control input-lookup" placeholder="LOV Role...." data-field-id="vid">
                         <span class="input-group-btn">
-                            <button id="ahmjxuam007p02Menubtn" class="btn btn-default large-button btn-lookup" type="button">...</button>
+                            <button id="ahmjxuam007p02Rolebtn" class="btn btn-default large-button btn-lookup" type="button">...</button>
                         </span>
                     </div>
                 </div>  
@@ -152,35 +159,48 @@
                 <input type="hidden" name="iver" data-field="iver"/>
 
                 <div>
-                    <label for="ahmjxuam007p03Viduser" class="col-sm-2 control-label">Service ID</label>
+                    <label for="ahmjxuam007p03Viduser" class="col-sm-2 control-label">ID</label>
                     <div class="col-sm-6">
                         <input id="ahmjxuam007p03Vidservice" name="vid" class="form-control" data-field="vid" disabled="disabled">
                     </div>
                 </div>
             </div>
             <div class="form-group large-font">
-                <div>
-                    <label for="ahmjxuam007p03Vservicename" class="col-sm-2 control-label">Service Name</label>
-                    <div class="col-sm-6">
-                        <input id="ahmjxuam007p03Vservicename" name="vservicename" class="form-control" data-field="vservicename" disabled="disabled">
+                <label for="ahmjxuam007p02IdRole" class="col-sm-2 control-label">Role <span style="color:red">*)  </span></label>
+                <div class="lookup-wrapper col-sm-6" >
+                    <div class="input-group lookup" 
+                         data-url="/uam002/lovdealer"
+                         data-lookup-pre-func="ahmjxuam007LookupDealer" 
+                         data-columns='[{"id":"vid","name":"vid","visible":"false","sortable":"false"},{"id":"vdealercode","name":"Kode Dealer","visible":"true","sortable":"true"}
+                         ,{"id":"vname","name":"Nama Dealer","visible":"true","sortable":"true"}]'
+                         data-callback='{"ahmjxuam007p02IdDealer":"vid","ahmjxuam007p02Dealer":"vdealercode"}'
+                         >
+                        <input id="ahmjxuam007p02IdRole" name="ahmjxuam007p02IdDealer" type="hidden"/>
+                        <input id="ahmjxuam007p02Role" name="ahmjxuam007p02Dealer" class="form-control input-lookup" placeholder="LOV Role...." data-field-id="vid">
+                        <span class="input-group-btn">
+                            <button id="ahmjxuam007p02Rolebtn" class="btn btn-default large-button btn-lookup" type="button">...</button>
+                        </span>
                     </div>
-                </div>
+                </div>  
             </div>
-            <!--
             <div class="form-group large-font">
-                <label class="col-sm-2 control-label">Status</label>
-                <div class="col-sm-6">
-
-                    <label class="radio-inline">
-                        <input type="radio" name="vstat" value="AKTIF" data-field="vstat"> Aktif
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="vstat" value="TIDAK AKTIF" data-field="vstat"> Tidak Aktif
-                    </label>
-
-                </div>
+                <label for="ahmjxuam007p02IdService" class="col-sm-2 control-label">Service <span style="color:red">*)  </span></label>
+                <div class="lookup-wrapper col-sm-6" >
+                    <div class="input-group lookup" 
+                         data-url="/uam002/lovdealer"
+                         data-lookup-pre-func="ahmjxuam007LookupDealer" 
+                         data-columns='[{"id":"vid","name":"vid","visible":"false","sortable":"false"},{"id":"vdealercode","name":"Kode Dealer","visible":"true","sortable":"true"}
+                         ,{"id":"vname","name":"Nama Dealer","visible":"true","sortable":"true"}]'
+                         data-callback='{"ahmjxuam007p02IdDealer":"vid","ahmjxuam007p02Dealer":"vdealercode"}'
+                         >
+                        <input id="ahmjxuam007p02IdService" name="ahmjxuam007p02IdDealer" type="hidden"/>
+                        <input id="ahmjxuam007p02Service" name="ahmjxuam007p02Dealer" class="form-control input-lookup" placeholder="LOV Service...." data-field-id="vid">
+                        <span class="input-group-btn">
+                            <button id="ahmjxuam007p02Servicebtn" class="btn btn-default large-button btn-lookup" type="button">...</button>
+                        </span>
+                    </div>
+                </div>  
             </div>
-            -->
 
 
             <div class="col-sm-offset-2 col-sm-6 form-group-button">
@@ -196,7 +216,7 @@
     </div>
 
 
-    <div id="ahmjxuam007p04" class="subpage" data-path="Maintain Menu Service/Konfirmasi Delete Menu Service">
+    <div id="ahmjxuam007p04" class="subpage" data-path="Maintain Role Service/Konfirmasi Delete Role Service">
         <table 	id="ahmjxuam007p04DisableTable">
 
             <thead>
@@ -204,17 +224,15 @@
                     <th data-field="vid" 
                         data-sortable="true"
                         data-visible="false"
-                        >User ID</th>
-                    <th data-field="iver" 
+                        >ID</th>
+                    <th data-field="vroleName" 
                         data-sortable="true"
-                        data-visible="false"
-                        >Iver</th>
-                    <th data-field="vusername" 
+                        data-visible="true"
+                        >Role Name</th>
+                    <th data-field="vsvcName" 
                         data-sortable="true"
-                        >Username</th>
-                    <th data-field="vstat" 
-                        data-sortable="true" 
-                        >Status</th>
+                        data-visible="true"
+                        >Service Name</th>
                 </tr>
             </thead>
 
@@ -229,7 +247,7 @@
 
 
 
-    <div id="ahmjxuam007p05" class="subpage" data-path="Maintain Role Serice/Konfirmasi Reset Password">
+    <!-- <div id="ahmjxuam007p05" class="subpage" data-path="Maintain Role Serice/Konfirmasi Reset Password">
         <table id="ahmjxuam007p05ResetTable">
 
             <thead>
@@ -237,17 +255,15 @@
                     <th data-field="vid" 
                         data-sortable="true"
                         data-visible="false"
-                        >User ID</th>
-                    <th data-field="iver" 
+                        >ID</th>
+                    <th data-field="vroleName" 
                         data-sortable="true"
-                        data-visible="false"
-                        >Iver</th>
-                    <th data-field="vusername" 
+                        data-visible="true"
+                        >Role Name</th>
+                    <th data-field="vsvcName" 
                         data-sortable="true"
-                        >Username</th>
-                    <th data-field="vstat" 
-                        data-sortable="true" 
-                        >Status</th>
+                        data-visible="true"
+                        >Service Name</th>
                 </tr>
             </thead>
 
@@ -257,7 +273,7 @@
             <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam007ResetData(this);">Reset</button>
             <button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam007p01');return false;">Back</button>
         </div>
-    </div>
+    </div> -->
 </div>
 <script type="text/javascript">
     function stateFormatter(value, row, index) {

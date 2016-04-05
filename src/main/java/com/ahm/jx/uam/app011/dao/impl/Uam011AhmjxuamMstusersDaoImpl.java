@@ -7,7 +7,7 @@ package com.ahm.jx.uam.app011.dao.impl;
 
 /**
  *
- * @author sigit
+ * @author ferdy
  */
 public class Uam011AhmjxuamMstusersDaoImpl {
 

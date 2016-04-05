@@ -13,94 +13,104 @@ import java.util.Date;
  */
 public class Uam003VoAhmjxuamMstservice {
 
-    private String vid;
+	private String vid;
 
-    private Integer iver;
+	private Integer iver;
 
-    private String vcrea;
+	private String vcrea;
 
-    private Date dcrea;
+	private Date dcrea;
 
-    private String vsvcname;
+	private String vsvcName;
 
-    private String vsvcdesc;
+	private String vsvcDesc;
 
-    private String vurl;
+	private String vurl;
 
-    private String vstat;
+	private String vstat;
 
-    private String vidAhmjxuamMstapps;
+	private String vidAhmjxuamMstapps;
 
-    public String getVid() {
-        return vid;
-    }
+	private String vname;
 
-    public void setVid(String vid) {
-        this.vid = vid;
-    }
+	public String getVid() {
+		return vid;
+	}
 
-    public Integer getIver() {
-        return iver;
-    }
+	public void setVid(String vid) {
+		this.vid = vid;
+	}
 
-    public void setIver(Integer iver) {
-        this.iver = iver;
-    }
+	public Integer getIver() {
+		return iver;
+	}
 
-    public String getVcrea() {
-        return vcrea;
-    }
+	public void setIver(Integer iver) {
+		this.iver = iver;
+	}
 
-    public void setVcrea(String vcrea) {
-        this.vcrea = vcrea;
-    }
+	public String getVcrea() {
+		return vcrea;
+	}
 
-    public Date getDcrea() {
-        return dcrea;
-    }
+	public void setVcrea(String vcrea) {
+		this.vcrea = vcrea;
+	}
 
-    public void setDcrea(Date dcrea) {
-        this.dcrea = dcrea;
-    }
+	public Date getDcrea() {
+		return dcrea;
+	}
 
-    public String getVsvcname() {
-        return vsvcname;
-    }
+	public void setDcrea(Date dcrea) {
+		this.dcrea = dcrea;
+	}
 
-    public void setVsvcname(String vsvcname) {
-        this.vsvcname = vsvcname;
-    }
+	public String getVsvcName() {
+		return vsvcName;
+	}
 
-    public String getVsvcdesc() {
-        return vsvcdesc;
-    }
+	public void setVsvcName(String vsvcName) {
+		this.vsvcName = vsvcName;
+	}
 
-    public void setVsvcdesc(String vsvcdesc) {
-        this.vsvcdesc = vsvcdesc;
-    }
+	public String getVsvcDesc() {
+		return vsvcDesc;
+	}
 
-    public String getVurl() {
-        return vurl;
-    }
+	public void setVsvcDesc(String vsvcDesc) {
+		this.vsvcDesc = vsvcDesc;
+	}
 
-    public void setVurl(String vurl) {
-        this.vurl = vurl;
-    }
+	public String getVurl() {
+		return vurl;
+	}
 
-    public String getVstat() {
-        return vstat;
-    }
+	public void setVurl(String vurl) {
+		this.vurl = vurl;
+	}
 
-    public void setVstat(String vstat) {
-        this.vstat = vstat;
-    }
+	public String getVstat() {
+		return vstat;
+	}
 
-    public String getVidAhmjxuamMstapps() {
-        return vidAhmjxuamMstapps;
-    }
+	public void setVstat(String vstat) {
+		this.vstat = vstat;
+	}
 
-    public void setVidAhmjxuamMstapps(String vidAhmjxuamMstapps) {
-        this.vidAhmjxuamMstapps = vidAhmjxuamMstapps;
-    }
+	public String getVidAhmjxuamMstapps() {
+		return vidAhmjxuamMstapps;
+	}
+
+	public void setVidAhmjxuamMstapps(String vidAhmjxuamMstapps) {
+		this.vidAhmjxuamMstapps = vidAhmjxuamMstapps;
+	}
+
+	public String getVname() {
+		return vname;
+	}
+
+	public void setVname(String vname) {
+		this.vname = vname;
+	}
 
 }

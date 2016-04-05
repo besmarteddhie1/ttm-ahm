@@ -27,7 +27,7 @@ import com.ahm.jx.uam.app004.dao.Uam004AhmjxuamMstmenusDao;
  * @author Elisa
  */
 @Service("uam004Service")
-@Transactional(readOnly = true)
+@Transactional(readOnly = false)
 public class Uam004ServiceImpl implements Uam004Service {
 
     @Autowired

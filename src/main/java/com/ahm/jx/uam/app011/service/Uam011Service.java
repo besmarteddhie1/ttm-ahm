@@ -5,10 +5,20 @@
  */
 package com.ahm.jx.uam.app011.service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.ahm.jx.common.rest.dto.DtoRespond;
+import com.ahm.jx.uam.app011.vo.Uam011VoAhmjxuamMstusers;
+
 /**
  *
- * @author sigit
+ * @author ferdy
  */
 public interface Uam011Service {
+	
+    public DtoRespond forgotUsername(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Uam011VoAhmjxuamMstusers uam011VoAhmjxuamMstusers, String appId);
+
+    public DtoRespond forgotPassword(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Uam011VoAhmjxuamMstusers uam011VoAhmjxuamMstusers, String appId);
 
 }

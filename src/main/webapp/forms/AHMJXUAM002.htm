@@ -58,7 +58,7 @@
                     data-side-pagination="server"
                     data-pagination="true"
                     data-custom-action="edit"
-                    data-edit-func="ahmjxuam002Edit"
+                    data-edit-func="ahmjxuam002PrepareEdit"
                     data-checkbox-table="ahmjxuam002p01TableDisable"
                     data-unique-id="vid"
                     >
@@ -240,7 +240,7 @@
         $('button[name="btnAddNew"]', page).hide();
         $('button[name="btnSubmit"]', page).show();
     }
-    function ahmjxuam002Edit(obj, row, index){
+    function ahmjxuam002PrepareEdit(obj, row, index){
         _fw_subpage(obj, 'ahmjxuam002p03', row);
     }
     

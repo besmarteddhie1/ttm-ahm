@@ -4,29 +4,9 @@
  */
 package com.ahm.jx.dashboard.service.impl;
 
-import java.io.File;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.StringTokenizer;
-import java.util.UUID;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.ahm.jx.app000.dao.AhmdsbscDtlsettingDao;
 import com.ahm.jx.app000.model.AhmjxuamMstpartner;
+import com.ahm.jx.app000.model.AhmjxuamMstmenus;
 import com.ahm.jx.app000.model.AhmjxuamMstusers;
 import com.ahm.jx.app000.model.AhmjxuamTxnbookmark;
 import com.ahm.jx.app000.vo.VoAhmdsbscDtlsetting;
@@ -41,10 +21,10 @@ import com.ahm.jx.common.rest.dto.DtoRespondPaging;
 import com.ahm.jx.common.util.AhmStringUtil;
 import com.ahm.jx.common.util.RestUtil;
 import com.ahm.jx.common.util.RsaSignatureUtils;
+import com.ahm.jx.dashboard.dao.DashboardAhmjxuamMstpartnerDao;
 import com.ahm.jx.dashboard.dao.DashboardAhmdsbscTxnappcountDao;
 import com.ahm.jx.dashboard.dao.DashboardAhmjxuamHdrrlaccessDao;
 import com.ahm.jx.dashboard.dao.DashboardAhmjxuamMstmenusDao;
-import com.ahm.jx.dashboard.dao.DashboardAhmjxuamMstpartnerDao;
 import com.ahm.jx.dashboard.dao.DashboardAhmjxuamMstusersDao;
 import com.ahm.jx.dashboard.dao.DashboardAhmjxuamTxnbookmarkDao;
 import com.ahm.jx.dashboard.service.DashboardService;
@@ -53,13 +33,30 @@ import com.ahm.jx.dashboard.vo.VoBookmark;
 import com.ahm.jx.dashboard.vo.VoChangePassword;
 import com.ahm.jx.dashboard.vo.VoCounterApp;
 import com.twmacinta.util.MD5;
-
+import java.io.File;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.StringTokenizer;
+import java.util.UUID;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRParameter;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -72,31 +69,25 @@ public class DashboardServiceImpl implements DashboardService {
     @Autowired
     @Qualifier("dashboardAhmjxuamMstusersDao")
     private DashboardAhmjxuamMstusersDao dashboardAhmjxuamMstusersDao;
-    
     @Autowired
     @Qualifier("dashboardAhmdsbscTxnappcountDao")
     private DashboardAhmdsbscTxnappcountDao dashboardAhmdsbscTxnappcountDao;
-    
     @Autowired
     @Qualifier("dashboardAhmjxuamMstmenusDao")
     private DashboardAhmjxuamMstmenusDao dashboardAhmjxuamMstmenusDao;
-    
     @Autowired
     @Qualifier("dashboardAhmjxuamHdrrlaccessDao")
     private DashboardAhmjxuamHdrrlaccessDao dashboardAhmjxuamHdrrlaccessDao;
-    
     @Autowired
     @Qualifier("dashboardAhmjxuamMstpartnerDao")
     private DashboardAhmjxuamMstpartnerDao dashboardAhmjxuamMstpartnerDao;
-    
     @Autowired
     @Qualifier("dashboardAhmjxuamTxnbookmarkDao")
     private DashboardAhmjxuamTxnbookmarkDao dashboardAhmjxuamTxnbookmarkDao;
-    
     @Autowired
     @Qualifier("ahmdsbscDtlsettingDao")
     private AhmdsbscDtlsettingDao ahmdsbscDtlsettingDao;
-    
+
     public List<VoAhmjxuamMstmenus> getMenuByUser(String userName) {
         return dashboardAhmjxuamMstusersDao.getMenuByUser(userName);
     }

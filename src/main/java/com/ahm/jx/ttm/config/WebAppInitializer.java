@@ -3,7 +3,6 @@ package com.ahm.jx.ttm.config;
 import javax.servlet.Filter;
 import javax.servlet.ServletRegistration;
 
-import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -22,7 +21,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[] {RepositoryRestMvcConfiguration.class};
+        return new Class<?>[] {};
     }    
 
 

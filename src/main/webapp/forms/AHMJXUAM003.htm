@@ -28,10 +28,10 @@
                             <th data-field="vsvcName" 
                                 data-sortable="true"
                                 >Nama Service</th>
-                            <th data-field="vsvcName" 
+                            <th data-field="vurl" 
                                 data-sortable="true"
                                 >URL Service</th>
-                            <th data-field="vsvcName" 
+                            <th data-field="vname" 
                                 data-sortable="true"
                                 >Application</th>
                             <th data-field="vaction"
@@ -82,14 +82,14 @@
                             data-sortable="true"
                             data-visible="true"
                             >Nama Service</th>
-                        <th data-field="vsvcName" 
+                        <th data-field="vurl" 
                             data-sortable="true"
                             data-visible="true"
                             >URL Service</th>
                         <th data-field="vsvcDesc" 
                             data-sortable="true"
                             >Deskripsi Service</th>
-                        <th data-field="vsvcName" 
+                        <th data-field="vname" 
                             data-sortable="true"
                             data-visible="true"
                             >Application</th>
@@ -112,30 +112,34 @@
                     <input id="ahmjxuam003p02VsvcName" name="vsvcName" class="form-control">
                 </div>
             </div>
-            <div class="form-group large-font">Service 1
+            <div class="form-group large-font">
                 <label for="ahmjxuam003p02Vurl" class="col-sm-2 control-label">URL Service <span style="color:red">*)</span></label>
                 <div class="col-sm-6">
                     <input id="ahmjxuam003p02Vurl" name="vurl" class="form-control">
                 </div>
             </div>
-            
+            <div class="form-group large-font">
+                <label for="ahmjxuam003p02IdApp" class="col-sm-2 control-label">Application <span style="color:red">*)  </span></label>
+                <div class="lookup-wrapper col-sm-6" >
+                    <div class="input-group lookup" 
+                         data-url="/uam003/lovapp"
+                         data-lookup-pre-func="ahmjxuam003LookupApp" 
+                         data-columns='[{"id":"vid","name":"vid","visible":"false","sortable":"false"},
+                         {"id":"vname","name":"Nama App","visible":"true","sortable":"true"}]'
+                         data-callback='{"ahmjxuam003p02IdApp":"vid","ahmjxuam003p02App":"vname"}'
+                         >
+                        <input id="ahmjxuam003p02IdApp" name="vidAhmjxuamMstapps" type="hidden" data-field="vidAhmjxuamMstapps"/>
+                        <input id="ahmjxuam003p02App" name="vname" class="form-control input-lookup" placeholder="LOV...." data-field-id="vid">
+                        <span class="input-group-btn">
+                            <button id="ahmjxuam001p02Appbtn" class="btn btn-default large-button btn-lookup" type="button">...</button>
+                        </span>
+                    </div>
+                </div>  
+            </div>
             <div class="form-group large-font">
                 <label for="ahmjxuam003p02VsvcDesc" class="col-sm-2 control-label">Deskripsi Service </label>
                 <div class="col-sm-6">
                     <input id="ahmjxuam003p02VsvcDesc" name="vsvcDesc" class="form-control">
-                </div>
-            </div>
-            <div class="form-group large-font">
-                <label class="col-sm-2 control-label">Status</label>
-                <div class="col-sm-6">
-
-                    <label class="radio-inline">
-                        <input type="radio" name="vstat" value="AKTIF" data-field="vstat"> Aktif
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="vstat" value="TIDAK AKTIF" data-field="vstat"> Tidak Aktif
-                    </label>
-
                 </div>
             </div>
             <div class="col-sm-offset-2 col-sm-6 form-group-button">
@@ -157,12 +161,29 @@
                 </div>
             </div>
             <div class="form-group large-font">
-                <label for="ahmjxuam003p02Vurl" class="col-sm-2 control-label">URL Service <span style="color:red">*)</span></label>
+                <label for="ahmjxuam003p03Vurl" class="col-sm-2 control-label">URL Service <span style="color:red">*)</span></label>
                 <div class="col-sm-6">
-                    <input id="ahmjxuam003p02Vurl" name="vurl" class="form-control">
+                    <input id="ahmjxuam003p03Vurl" name="vurl" class="form-control" data-field="vurl">
                 </div>
+            </div>            
+            <div class="form-group large-font">
+                <label for="ahmjxuam003p03IdApp" class="col-sm-2 control-label">Application <span style="color:red">*)  </span></label>
+                <div class="lookup-wrapper col-sm-6" >
+                    <div class="input-group lookup" 
+                         data-url="/uam003/lovapp"
+                         data-lookup-pre-func="ahmjxuam003LookupApp" 
+                         data-columns='[{"id":"vid","name":"vid","visible":"false","sortable":"false"},
+                         {"id":"vname","name":"Nama App","visible":"true","sortable":"true"}]'
+                         data-callback='{"ahmjxuam003p03IdApp":"vid","ahmjxuam003p03App":"vname"}'
+                         >
+                        <input id="ahmjxuam003p03IdApp" name="vidAhmjxuamMstapps" type="hidden" data-field="vidAhmjxuamMstapps" data-field-id="vid"/>
+                        <input id="ahmjxuam003p03App" name="vname" class="form-control input-lookup" placeholder="LOV...." data-field="vname" data-field-id="vname">
+                        <span class="input-group-btn">
+                            <button id="ahmjxuam003p03Appbtn" class="btn btn-default large-button btn-lookup" type="button">...</button>
+                        </span>
+                    </div>
+                </div>  
             </div>
-            
             <div class="form-group large-font">
                 <label for="ahmjxuam003p03VsvcDesc" class="col-sm-2 control-label">Deskripsi Service </label>
                 <div class="col-sm-6">
@@ -207,7 +228,7 @@
                     <th data-field="vsvcName" 
                         data-sortable="true"
                         >Nama Service</th>
-                    <th data-field="vsvcName" 
+                    <th data-field="vurl" 
                         data-sortable="true"
                         >URL Service</th>
                     <th data-field="vsvcName" 
@@ -239,6 +260,18 @@
         return value;
     }
     
+    function ahmjxuam003LookupApp(params){
+        params.search = {"any": $('#ahmjxuam003p02App').val()};
+        if(params.sort == undefined){
+            return{
+                limit : params.limit,
+                offset : params.offset,
+                search : params.search
+            }
+        }
+        return params;
+    }
+    
     function ahmjxuam003Presearch(params){
         params.search = {"any": $('#ahmjxuam003p01Search').val()};
         if(params.sort == undefined){
@@ -250,6 +283,7 @@
         }
         return params;
     }
+    
     function ahmjxuam003Add(obj){
         var page = $('#ahmjxuam003p02');
         $('input, select', page).prop('disabled',false);
@@ -258,8 +292,10 @@
         $('button[name="btnAddNew"]', page).hide();
         $('button[name="btnSubmit"]', page).show();
     }
+    
     function ahmjxuam003Edit(obj, row, index){
         _fw_subpage(obj, 'ahmjxuam003p03', row);
+        console.log(row);
     }
     
     function ahmjxuam003DisableKonfirm(obj){
@@ -299,11 +335,15 @@
         var page = $(obj).closest('.subpage');
         _fw_validation_clear(obj);
         _fw_validation_add(obj, 'ahmjxuam003p02VsvcName', 'required');
-        _fw_validation_add(obj, 'ahmjxuam003p02VsvcDesc', 'required');
+        _fw_validation_add(obj, 'ahmjxuam003p02Vurl', 'required');
+        _fw_validation_add(obj, 'ahmjxuam003p02IdApp', 'required');
         if(_fw_validation_validate(obj)){
             var vo = new Object();
             vo.vsvcName = $('input[name="vsvcName"]', page).val();
+            vo.vurl = $('input[name="vurl"]', page).val();
             vo.vsvcDesc = $('input[name="vsvcDesc"]', page).val();
+            vo.vidAhmjxuamMstapps = $('input[name="vidAhmjxuamMstapps"]', page).val();
+            vo.vstat = $('input[name="vstat"]:checked', page).val();
         
             _fw_post('/uam003/insert', vo, function(data){
                 if(data.stat=="200"){
@@ -330,9 +370,11 @@
     }
 
     function ahmjxuam003Update(obj){
+    	console.log("ahmjxuam003Update" + obj);
         var page = $(obj).closest('.subpage');
         _fw_validation_clear(obj);
         _fw_validation_add(obj, 'ahmjxuam003p03VsvcName', 'required');
+        _fw_validation_add(obj, 'ahmjxuam003p03Vurl', 'required');
         _fw_validation_add(obj, 'ahmjxuam003p03VsvcDesc', 'text area');
         if(_fw_validation_validate(obj)){
             var vo = new Object();
@@ -340,7 +382,10 @@
             vo.iver = $('input[name="iver"]', page).val();
             vo.vsvcName = $('input[name="vsvcName"]', page).val();
             vo.vsvcDesc = $('input[name="vsvcDesc"]', page).val();
+            vo.vurl = $('input[name="vurl"]', page).val();
             vo.vstat = $('input[name="vstat"]:checked', page).val();
+            vo.vidAhmjxuamMstapps = $('input[name="vidAhmjxuamMstapps"]', page).val();
+            console.log("vstat: " + vo.vstat);
             _fw_post('/uam003/update', vo, function(data){
                 if(data.stat=="200"){
                 
