@@ -377,6 +377,8 @@
             vo.vusername = $('input[name="vusername"]', page).val();
             vo.vstat = $('input[name="vstat"]:checked', page).val();
             _fw_post('/uam001/update', vo, function(data){
+            	console.log('vo',vo);
+            	console.log('update',data);
                 if(data.stat=="200"){
                 
                     //_fw_subpage(obj, 'ahmdsh1c008p01');

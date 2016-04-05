@@ -22,6 +22,7 @@
         <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
         <version.spring>4.1.6.RELEASE</version.spring>
         <assertj-core-version>3.3.0</assertj-core-version>
+        <version.java>1.8</version.java>
     </properties>
 
     <dependencies>
@@ -308,8 +309,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${version.java}</source>
+                    <target>${version.java}</target>
                     <compilerArguments>
                         <endorseddirs>${endorsed.dir}</endorseddirs>
                     </compilerArguments>

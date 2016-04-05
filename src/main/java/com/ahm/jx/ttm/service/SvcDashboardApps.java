@@ -1,12 +1,28 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.ahm.jx.dashboard.service.impl;
+package com.ahm.jx.ttm.service;
+
+import java.io.File;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.StringTokenizer;
+import java.util.UUID;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ahm.jx.app000.dao.AhmdsbscDtlsettingDao;
 import com.ahm.jx.app000.model.AhmjxuamMstpartner;
-import com.ahm.jx.app000.model.AhmjxuamMstmenus;
 import com.ahm.jx.app000.model.AhmjxuamMstusers;
 import com.ahm.jx.app000.model.AhmjxuamTxnbookmark;
 import com.ahm.jx.app000.vo.VoAhmdsbscDtlsetting;
@@ -21,10 +37,10 @@ import com.ahm.jx.common.rest.dto.DtoRespondPaging;
 import com.ahm.jx.common.util.AhmStringUtil;
 import com.ahm.jx.common.util.RestUtil;
 import com.ahm.jx.common.util.RsaSignatureUtils;
-import com.ahm.jx.dashboard.dao.DashboardAhmjxuamMstpartnerDao;
 import com.ahm.jx.dashboard.dao.DashboardAhmdsbscTxnappcountDao;
 import com.ahm.jx.dashboard.dao.DashboardAhmjxuamHdrrlaccessDao;
 import com.ahm.jx.dashboard.dao.DashboardAhmjxuamMstmenusDao;
+import com.ahm.jx.dashboard.dao.DashboardAhmjxuamMstpartnerDao;
 import com.ahm.jx.dashboard.dao.DashboardAhmjxuamMstusersDao;
 import com.ahm.jx.dashboard.dao.DashboardAhmjxuamTxnbookmarkDao;
 import com.ahm.jx.dashboard.service.DashboardService;
@@ -32,49 +48,20 @@ import com.ahm.jx.dashboard.vo.VoAppInfo;
 import com.ahm.jx.dashboard.vo.VoBookmark;
 import com.ahm.jx.dashboard.vo.VoChangePassword;
 import com.ahm.jx.dashboard.vo.VoCounterApp;
-import com.ahm.jx.ttm.dao.UamUserDao;
-import com.ahm.jx.ttm.entities.UamUser;
 import com.twmacinta.util.MD5;
-import java.io.File;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.StringTokenizer;
-import java.util.UUID;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRParameter;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-/**
- *
- * @author achmad.ha
- */
-
-@Service("dashboardService")
+@Service("xdashboardService")
 @Transactional(readOnly = true)
-public class DashboardServiceImpl implements DashboardService {
+public class SvcDashboardApps implements DashboardService {
 
-	@Autowired
-	UamUserDao userDao;
-	
-	@Autowired
+    @Autowired
     @Qualifier("dashboardAhmjxuamMstusersDao")
     private DashboardAhmjxuamMstusersDao dashboardAhmjxuamMstusersDao;
     
@@ -155,22 +142,9 @@ public class DashboardServiceImpl implements DashboardService {
         return dtoRespond;
     }
 
-    @Transactional
     public DtoRespondLogin dashboardInformation(HttpServletRequest httpServletRequest,
             HttpServletResponse httpServletResponse, String token) {
-    	
-    	Authentication principal = SecurityContextHolder.getContext().getAuthentication();
-    	UamUser user = userDao.findOneByUserName(principal.getName());
-    	
-        //List<VoAhmjxuamMstmenus> list = getMenuByUser(username);
-        
         DtoRespondLogin dtoRespondLogin = new DtoRespondLogin();
-        dtoRespondLogin.setStat(CommonConstant._200);
-        dtoRespondLogin.setMsg(CommonConstant._200Msg);
-        dtoRespondLogin.setRows(user.getMenus());
-        dtoRespondLogin.setUserName(user.getUserName());
-        
-        /*
         if (validateToken(token, httpServletRequest)) {
             String username = getUsername(httpServletRequest);
             List<VoAhmjxuamMstmenus> list = getMenuByUser(username);
@@ -185,7 +159,6 @@ public class DashboardServiceImpl implements DashboardService {
             dtoRespondLogin.setStat(CommonConstant._401);
             dtoRespondLogin.setMsg(CommonConstant._401Msg);
         }
-        */
         return dtoRespondLogin;
     }
 

@@ -1563,6 +1563,8 @@
             contentType: this.options.contentType,
             dataType: this.options.dataType,
             success: function (res) {
+            	console.log('url',this.url);
+            	console.log('res',res);
                 res = calculateObjectValue(that.options, that.options.responseHandler, [res], res);
 
                 that.load(res);

@@ -66,8 +66,10 @@ public class Uam001ServiceImpl implements Uam001Service {
             HttpServletResponse httpServletResponse, DtoParamPaging dtoParamPaging,
             String token, String appId) {
         DtoRespondPaging dtoRespondPaging;
+        
         dtoRespondPaging = dashboardService.authenticationAndAuthorizationPaging(httpServletRequest, httpServletResponse,
                 token, appId);
+        
         if (dtoRespondPaging.getStat().equals(CommonConstant._200)) {
             int count = getPagingCountAhmjxuamMstuser(dtoParamPaging.getSearch());
             List<Uam001VoAhmjxuamMstuser> listData = getPagingDataAhmjxuamMstuser(dtoParamPaging.getOffset(),

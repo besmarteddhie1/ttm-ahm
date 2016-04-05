@@ -1,7 +1,6 @@
 package com.ahm.jx.ttm.services;
 
 import java.io.Serializable;
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
