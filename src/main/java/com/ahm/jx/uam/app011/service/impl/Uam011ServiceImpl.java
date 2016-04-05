@@ -36,9 +36,9 @@ import com.twmacinta.util.MD5;
 @Transactional(readOnly = true)
 public class Uam011ServiceImpl implements Uam011Service{
 
-	 @Autowired
-	 @Qualifier("uam011AhmjxuamMstusersDao")
-	 private Uam011AhmjxuamMstusersDao uam011AhmjxuamMstusersDao;
+//	 @Autowired
+//	 @Qualifier("uam011AhmjxuamMstusersDao")
+//	 private Uam011AhmjxuamMstusersDao uam011AhmjxuamMstusersDao;
 	
     @Transactional(readOnly = false)
     public DtoRespond forgotUsername(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Uam011VoAhmjxuamMstusers uam011VoAhmjxuamMstusers,  String appId) {

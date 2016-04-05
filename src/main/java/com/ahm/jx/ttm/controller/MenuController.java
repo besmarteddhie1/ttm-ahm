@@ -68,7 +68,6 @@ public class MenuController extends AbstractImplDao<UamMenu, String> {
 		String[] fields = {"idMenu", "title", "url"};
 		return getByCriteria(fields, "1", 1, 10);
 	}	
-
 	
 	public List<UamMenu> getBy(String[] fields, String[] values) {		
 		CriteriaBuilder builder = em.getCriteriaBuilder();

@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence.properties" })
-@ComponentScan({"com.ahm.jx.ttm"})
+@ComponentScan({"com.ahm.jx"})
 public class PersistenceConfig {
      	
 	@Autowired
@@ -25,7 +25,7 @@ public class PersistenceConfig {
 	@Bean(name = "sessionFactory")
 	public SessionFactory getSessionFactory() {	 
 	    LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(ds);	 
-	    sessionBuilder.scanPackages("com.ahm.jx.ttm");	 
+	    sessionBuilder.scanPackages("com.ahm.jx");	 
 	    return sessionBuilder.buildSessionFactory();
 	}
 	 
