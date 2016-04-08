@@ -36,7 +36,7 @@ public class UserDataModule implements Serializable {
 	@Autowired
 	UamUserDao userDao;	
 	
-	String currentUser;
+	private String currentUser;
 	
 	Date lastCheckLogin;
 	
@@ -46,23 +46,12 @@ public class UserDataModule implements Serializable {
 		lastCheckLogin = new Date();
 	}
 	
-	@Transactional
-	public boolean checkMe() {
-		if (currentUser == null) {
-			Authentication principal = SecurityContextHolder.getContext().getAuthentication();
-			if (principal == null) return false;
-			currentUser = principal.getName();
-		}
-		return true;
-	}
-	
     @RequestMapping(value = "whoami", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
     @Transactional
     public String currentUser() {
-    	if (!checkMe()) return "";
-        return this.currentUser;
+        return getCurrentUser();
     }
     
     @RequestMapping(value = "menus", method = RequestMethod.GET)
@@ -70,8 +59,7 @@ public class UserDataModule implements Serializable {
     @ResponseBody
     @Transactional
     public List<UamMenu> activeMenu() {
-    	if (!checkMe()) return null;
-    	UamUser usr = userDao.findOneByUserName(this.currentUser);
+    	UamUser usr = userDao.findOneByUserName(getCurrentUser());
     	if (usr == null) return new ArrayList<UamMenu>(); 
         return usr.getMenus();
     }
@@ -82,11 +70,20 @@ public class UserDataModule implements Serializable {
     }
     
     public boolean ValidLogin(String password) {
-    	checkMe();
-    	UamUser usr = userDao.findOneByUserName(this.currentUser);
+    	UamUser usr = userDao.findOneByUserName(getCurrentUser());
     	Boolean isTrue = usr.getPassword().equals(Md5Crypt.apr1Crypt(password, null));
     	if (isTrue) lastCheckLogin = new Date();
     	return isTrue;
-    }    
+    }
+    
+	public String getCurrentUser() {
+		Authentication principal = SecurityContextHolder.getContext().getAuthentication();
+		if (principal != null) currentUser = principal.getName();		
+		return currentUser;
+	}
+
+	public void setCurrentUser(String currentUser) {
+		this.currentUser = currentUser;
+	}    
 		
 }
