@@ -39,7 +39,7 @@ public class AhmjxmstProduct extends AhmMappedEntity {
 	@Where(clause="current_timestamp between dtfrom and dtthru")
 	private List<AhmjxmstProductClassification> classification = new ArrayList<AhmjxmstProductClassification>();
 	
-	public AhmjxmstProductClassification setCategory(AhmjxmstCategory c) {
+	public AhmjxmstProductClassification setCategory(AhmjxmstProductCategory c) {
 		for (AhmjxmstProductClassification o: classification) {
 			if (o.getCategory().getCategoryType().equals(c.getCategoryType())) {
 				if (o.getCategory().equals(c)) return o;
@@ -54,7 +54,7 @@ public class AhmjxmstProduct extends AhmMappedEntity {
 		return o;
 	}
 	
-	public AhmjxmstCategory getCategory(Integer typeCat) {
+	public AhmjxmstProductCategory getCategory(Integer typeCat) {
 		for (AhmjxmstProductClassification o: classification) 
 			if (o.getCategory().getCategoryType().getIdCategoryType().equals(typeCat))
 				return o.getCategory();		

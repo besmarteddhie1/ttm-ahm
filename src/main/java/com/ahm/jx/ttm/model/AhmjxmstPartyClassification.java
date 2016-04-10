@@ -12,26 +12,34 @@ import javax.persistence.Table;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-@Table(name="ahmjxmst_product_classification")
-public class AhmjxmstProductClassification extends AhmMappedEntity {
+@Table(name="ahmjxmst_party_classification")
+public class AhmjxmstPartyClassification extends AhmMappedEntity {
 
-	private static final long serialVersionUID = -2500926500169885029L;
-	
+	private static final long serialVersionUID = -7335123782514036295L;
+
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="idprodcla")
+	@Column(name="idparcla")
 	private Integer idClassification;
 		
 	@ManyToOne
 	@JoinColumn(name="idcategory")
-	private AhmjxmstProductCategory category;
+	private AhmjxmstPartyCategory category;
 	
 	@ManyToOne
-	@JoinColumn(name="idproduct")
-	private AhmjxmstProduct product;
+	@JoinColumn(name="idparty")
+	private AhmjxmstParty party;
 	
 	@Embedded
 	private DataPeriod periods;
 	
+	public AhmjxmstParty getParty() {
+		return party;
+	}
+
+	public void setParty(AhmjxmstParty party) {
+		this.party = party;
+	}
+
 	public Integer getIdClassification() {
 		return idClassification;
 	}
@@ -40,21 +48,14 @@ public class AhmjxmstProductClassification extends AhmMappedEntity {
 		this.idClassification = idClassification;
 	}
 
-	public AhmjxmstProductCategory getCategory() {
+	public AhmjxmstPartyCategory getCategory() {
 		return category;
 	}
 
-	public void setCategory(AhmjxmstProductCategory category) {
+	public void setCategory(AhmjxmstPartyCategory category) {
 		this.category = category;
 	}
 
-	public AhmjxmstProduct getProduct() {
-		return product;
-	}
-
-	public void setProduct(AhmjxmstProduct product) {
-		this.product = product;
-	}
 	
 	public DataPeriod getPeriods() {
 		return periods;
@@ -73,8 +74,8 @@ public class AhmjxmstProductClassification extends AhmMappedEntity {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof AhmjxmstProductClassification)) return false;
-		AhmjxmstProductClassification other = (AhmjxmstProductClassification) obj;
+		if (!(obj instanceof AhmjxmstPartyClassification)) return false;
+		AhmjxmstPartyClassification other = (AhmjxmstPartyClassification) obj;
 		return new EqualsBuilder()
 			.append( getIdClassification(), other.getIdClassification() )
 			.isEquals();
