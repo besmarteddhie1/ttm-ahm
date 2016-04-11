@@ -14,6 +14,8 @@ public class AhmjxmstPartyCategoryType extends AhmMappedEntity {
 
 	private static final long serialVersionUID = -2500926500169885028L;
 	
+	public static final int TYPE_SALES_FORCE = 50;
+	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idCategoryType;
 		
