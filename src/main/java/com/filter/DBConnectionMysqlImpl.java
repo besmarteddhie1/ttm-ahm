@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class DBConnectionMysqlImpl extends DBConnection {
     
 	private String DB_DRIVER = "com.mysql.jdbc.Driver";
-	private String DB_CONNECTION = "jdbc:mysql://localhost:3306/ttm";
+	private String DB_CONNECTION = "jdbc:mysql://localhost:3306/ttm_ahm";
 	private String DB_USER = "ttm";  
 	private String DB_PASSWORD = "nopassword";
 
