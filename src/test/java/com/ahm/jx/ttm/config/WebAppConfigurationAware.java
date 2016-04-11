@@ -16,9 +16,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("test")
 @WebAppConfiguration
-@ContextConfiguration(classes = {
-        ApplicationConfig.class
-})
+@ContextConfiguration(classes = {ApplicationConfig.class})
 public abstract class WebAppConfigurationAware {
 
     @Inject
