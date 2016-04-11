@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -17,6 +18,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Where;
 
+@Entity
 @Table(name="ahmjxmst_party")
 @Inheritance(strategy=InheritanceType.JOINED)
 public class AhmjxmstParty extends AhmMappedEntity {
