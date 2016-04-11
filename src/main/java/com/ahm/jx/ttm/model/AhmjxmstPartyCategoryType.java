@@ -1,14 +1,22 @@
 package com.ahm.jx.ttm.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="ahmjxmst_party_category_type")
@@ -25,9 +33,14 @@ public class AhmjxmstPartyCategoryType extends AhmMappedEntity {
 	@Column(name="vdescription")
 	private String description;
 	
+	@OneToMany(fetch=FetchType.EAGER)
+	@JoinColumn(name="idcattype")
+	@JsonManagedReference
+	private List<AhmjxmstPartyCategory> categories = new ArrayList<AhmjxmstPartyCategory>();	
+	
 	@Column(name="idprncattyp")
 	private Integer parentCategoryType;	
-	
+		
 	public Integer getIdCategoryType() {
 		return idCategoryType;
 	}
@@ -50,6 +63,14 @@ public class AhmjxmstPartyCategoryType extends AhmMappedEntity {
 
 	public void setParentCategoryType(Integer parentCategoryType) {
 		this.parentCategoryType = parentCategoryType;
+	}
+
+	public List<AhmjxmstPartyCategory> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<AhmjxmstPartyCategory> categories) {
+		this.categories = categories;
 	}
 
 	@Override

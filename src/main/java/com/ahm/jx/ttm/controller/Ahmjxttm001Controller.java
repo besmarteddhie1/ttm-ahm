@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ahm.jx.ttm.dao.AhmjxmstPartyCategoryDao;
+import com.ahm.jx.ttm.dao.AhmjxmstPartyCategoryTypeDao;
 import com.ahm.jx.ttm.dao.AhmjxmstProductCategoryDao;
 import com.ahm.jx.ttm.model.AhmjxmstPartyCategory;
 import com.ahm.jx.ttm.model.AhmjxmstPartyCategoryType;
@@ -22,13 +23,16 @@ public class Ahmjxttm001Controller {
 	AhmjxmstPartyCategoryDao partyCategoryRepo;
 	
 	@Autowired
+	AhmjxmstPartyCategoryTypeDao partyCategoryTypeRepo;	
+	
+	@Autowired
 	AhmjxmstProductCategoryDao productCategoryRepo;
 	
 	@RequestMapping(value="sf", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public List<AhmjxmstPartyCategory> getSalesForce() {
+	public List<AhmjxmstPartyCategoryType> getSalesForce() {
 		System.out.println("TEST");
-		return partyCategoryRepo.queryByParentCategory(AhmjxmstPartyCategoryType.TYPE_SALES_FORCE);
+		return partyCategoryTypeRepo.queryByParentCategory(AhmjxmstPartyCategoryType.TYPE_SALES_FORCE);
 	}
 	
 	@RequestMapping(value="sf", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
