@@ -19,6 +19,7 @@ public class AhmjxmstPartyCategoryType extends AhmMappedEntity {
 	public static final int TYPE_SALES_FORCE = 50;
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="idcattype")
 	private Integer idCategoryType;
 		
 	@Column(name="vdescription")

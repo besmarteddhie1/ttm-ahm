@@ -18,6 +18,7 @@ public class AhmjxmstProductCategoryType extends AhmMappedEntity {
 	private static final long serialVersionUID = -2500926500169885028L;
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="idcattype")
 	private Integer idCategoryType;
 		
 	@Column(name="vdescription")
