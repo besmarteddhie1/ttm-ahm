@@ -1,6 +1,7 @@
 package com.ahm.jx.ttm.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +12,7 @@ import javax.persistence.Table;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+@Entity
 @Table(name="ahmjxmst_party_category")
 public class AhmjxmstPartyCategory extends AhmMappedEntity {
 
@@ -20,13 +22,13 @@ public class AhmjxmstPartyCategory extends AhmMappedEntity {
 	@Column(name="idcategory")
 	private Integer idCategory;
 		
-	@Column(name="description")
+	@Column(name="vdescription")
 	private String description;
 
 	@ManyToOne
 	@JoinColumn(name="idcattype")
 	private AhmjxmstPartyCategoryType categoryType;
-
+		
 	public Integer getIdCategory() {
 		return idCategory;
 	}
@@ -42,7 +44,6 @@ public class AhmjxmstPartyCategory extends AhmMappedEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 
 	public AhmjxmstPartyCategoryType getCategoryType() {
 		return categoryType;
