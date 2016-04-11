@@ -17,7 +17,7 @@ public class AhmjxmstProductCategoryType extends AhmMappedEntity {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idCategoryType;
 		
-	@Column(name="description")
+	@Column(name="vdescription")
 	private String description;
 	
 	@Column(name="idprncattyp")

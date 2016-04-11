@@ -20,7 +20,7 @@ public class AhmjxmstPartyCategory extends AhmMappedEntity {
 	@Column(name="idcategory")
 	private Integer idCategory;
 		
-	@Column(name="description")
+	@Column(name="vdescription")
 	private String description;
 
 	@ManyToOne
