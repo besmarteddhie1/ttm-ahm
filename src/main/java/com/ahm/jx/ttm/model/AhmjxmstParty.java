@@ -39,7 +39,7 @@ public class AhmjxmstParty extends AhmMappedEntity {
 		this.idParty = idParty;
 	}
 
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="product")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="party")
 	@Where(clause="current_timestamp between dtfrom and dtthru")
 	private List<AhmjxmstPartyClassification> classification = new ArrayList<AhmjxmstPartyClassification>();
 	

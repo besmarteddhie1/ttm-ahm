@@ -28,7 +28,7 @@ public class AhmjxmstPartyCategory extends AhmMappedEntity {
 	@ManyToOne
 	@JoinColumn(name="idcattype")
 	private AhmjxmstPartyCategoryType categoryType;
-	
+		
 	public Integer getIdCategory() {
 		return idCategory;
 	}
@@ -51,11 +51,6 @@ public class AhmjxmstPartyCategory extends AhmMappedEntity {
 
 	public void setCategoryType(AhmjxmstPartyCategoryType categoryType) {
 		this.categoryType = categoryType;
-	}
-
-	public Integer getParentCategoryType() {
-		if (categoryType == null) return 0;
-		return categoryType.getParentCategoryType();
 	}
 
 	@Override

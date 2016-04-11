@@ -4,18 +4,19 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ahm.jx.ttm.dao.AhmjxmstPartyCategoryDao;
 import com.ahm.jx.ttm.dao.AhmjxmstProductCategoryDao;
 import com.ahm.jx.ttm.model.AhmjxmstPartyCategory;
 import com.ahm.jx.ttm.model.AhmjxmstPartyCategoryType;
 
-@RestController
+@Controller
 @RequestMapping(value="/ttm001")
-public class Ahmjxttm001 {
+public class Ahmjxttm001Controller {
 	
 	@Autowired
 	AhmjxmstPartyCategoryDao partyCategoryRepo;
@@ -24,11 +25,14 @@ public class Ahmjxttm001 {
 	AhmjxmstProductCategoryDao productCategoryRepo;
 	
 	@RequestMapping(value="sf", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
 	public List<AhmjxmstPartyCategory> getSalesForce() {
-		return partyCategoryRepo.findByParentCategoryType(AhmjxmstPartyCategoryType.TYPE_SALES_FORCE);
+		System.out.println("TEST");
+		return partyCategoryRepo.queryByParentCategory(AhmjxmstPartyCategoryType.TYPE_SALES_FORCE);
 	}
 	
 	@RequestMapping(value="sf", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
 	public AhmjxmstPartyCategory setSalesForce(AhmjxmstPartyCategory entity) {
 		return partyCategoryRepo.save(entity);
 	}	
