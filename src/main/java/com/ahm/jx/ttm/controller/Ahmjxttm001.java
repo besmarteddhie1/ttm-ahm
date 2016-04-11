@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ahm.jx.ttm.dao.AhmjxmstPartyCategoryDao;
 import com.ahm.jx.ttm.dao.AhmjxmstProductCategoryDao;
 import com.ahm.jx.ttm.model.AhmjxmstPartyCategory;
+import com.ahm.jx.ttm.model.AhmjxmstPartyCategoryType;
 
 @RestController
 @RequestMapping(value="/ttm001")
@@ -22,7 +23,7 @@ public class Ahmjxttm001 {
 	
 	@RequestMapping(value="sf")
 	public List<AhmjxmstPartyCategory> getSalesForce() {
-		return partyCategoryRepo.findAll();
+		return partyCategoryRepo.findByParentCategoryType(AhmjxmstPartyCategoryType.TYPE_SALES_FORCE);
 	}
 	
 }
