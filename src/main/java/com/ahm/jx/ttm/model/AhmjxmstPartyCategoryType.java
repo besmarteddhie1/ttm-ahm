@@ -9,8 +9,8 @@ import javax.persistence.Table;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-@Table(name="ahmjxmst_product_category_type")
-public class AhmjxmstCategoryType extends AhmMappedEntity {
+@Table(name="ahmjxmst_party_category_type")
+public class AhmjxmstPartyCategoryType extends AhmMappedEntity {
 
 	private static final long serialVersionUID = -2500926500169885028L;
 	
@@ -56,8 +56,8 @@ public class AhmjxmstCategoryType extends AhmMappedEntity {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof AhmjxmstCategoryType)) return false;
-		AhmjxmstCategoryType other = (AhmjxmstCategoryType) obj;
+		if (!(obj instanceof AhmjxmstPartyCategoryType)) return false;
+		AhmjxmstPartyCategoryType other = (AhmjxmstPartyCategoryType) obj;
 		return new EqualsBuilder()
 			.append( getIdCategoryType(), other.getIdCategoryType() )
 			.isEquals();

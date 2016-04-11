@@ -12,7 +12,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Table(name="ahmjxmst_product_category")
-public class AhmjxmstCategory extends AhmMappedEntity {
+public class AhmjxmstProductCategory extends AhmMappedEntity {
 
 	private static final long serialVersionUID = -2500926500169885029L;
 	
@@ -25,7 +25,7 @@ public class AhmjxmstCategory extends AhmMappedEntity {
 
 	@ManyToOne
 	@JoinColumn(name="idcattype")
-	private AhmjxmstCategoryType categoryType;
+	private AhmjxmstProductCategoryType categoryType;
 
 	public Integer getIdCategory() {
 		return idCategory;
@@ -44,11 +44,11 @@ public class AhmjxmstCategory extends AhmMappedEntity {
 	}
 
 
-	public AhmjxmstCategoryType getCategoryType() {
+	public AhmjxmstProductCategoryType getCategoryType() {
 		return categoryType;
 	}
 
-	public void setCategoryType(AhmjxmstCategoryType categoryType) {
+	public void setCategoryType(AhmjxmstProductCategoryType categoryType) {
 		this.categoryType = categoryType;
 	}
 
@@ -61,8 +61,8 @@ public class AhmjxmstCategory extends AhmMappedEntity {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof AhmjxmstCategory)) return false;
-		AhmjxmstCategory other = (AhmjxmstCategory) obj;
+		if (!(obj instanceof AhmjxmstProductCategory)) return false;
+		AhmjxmstProductCategory other = (AhmjxmstProductCategory) obj;
 		return new EqualsBuilder()
 			.append( getIdCategory(), other.getIdCategory() )
 			.isEquals();
