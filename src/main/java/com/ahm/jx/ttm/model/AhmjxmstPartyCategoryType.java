@@ -23,8 +23,7 @@ public class AhmjxmstPartyCategoryType extends BaseEntity {
 
 	private static final long serialVersionUID = -2500926500169885028L;
 	
-	public static final int TYPE_SALES_FORCE = 50;
-	
+	public static final int TYPE_SALES_FORCE = 50;	
 	public static final int TYPE_DEALER_SALES_CLASSIFICATION = 101;
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -32,12 +31,12 @@ public class AhmjxmstPartyCategoryType extends BaseEntity {
 	private Integer idCategoryType;
 		
 	@Column(name="vdescription")
-	private String description;
+	private String description;	
 	
 	@OneToMany
 	@JoinColumn(name="idcattype")
 	@JsonManagedReference
-	private List<AhmjxmstPartyCategory> categories = new ArrayList<AhmjxmstPartyCategory>();	
+	private List<AhmjxmstPartyCategory> categories = new ArrayList<AhmjxmstPartyCategory>();
 	
 	@Column(name="idprncattyp")
 	private Integer parentCategoryType;	
