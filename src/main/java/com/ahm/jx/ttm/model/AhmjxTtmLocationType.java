@@ -11,24 +11,24 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-@Table(name="ahmjxttm_ring_type")
+@Table(name="ahmjxttm_location_type")
 public class AhmjxTtmLocationType extends BaseEntity {
 
 	private static final long serialVersionUID = 6855387447315081927L;
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="idring")
-	private Integer idRing;
+	@Column(name="idloctype")
+	private Integer idLocationType;
 		
 	@Column(name="vdescription")
-	private String description;
-	
-	public Integer getIdRing() {
-		return idRing;
+	private String description;	
+
+	public Integer getIdLocationType() {
+		return idLocationType;
 	}
 
-	public void setIdRing(Integer idRing) {
-		this.idRing = idRing;
+	public void setIdLocationType(Integer idLocationType) {
+		this.idLocationType = idLocationType;
 	}
 
 	public String getDescription() {
@@ -42,7 +42,7 @@ public class AhmjxTtmLocationType extends BaseEntity {
 	@Override
 	public int hashCode() {
 		return new HashCodeBuilder()
-			.append(getIdRing())
+			.append(getIdLocationType())
 			.toHashCode();
 	}
 	
@@ -51,7 +51,7 @@ public class AhmjxTtmLocationType extends BaseEntity {
 		if (!(obj instanceof AhmjxTtmLocationType)) return false;
 		AhmjxTtmLocationType other = (AhmjxTtmLocationType) obj;
 		return new EqualsBuilder()
-			.append( getIdRing(), other.getIdRing() )
+			.append( getIdLocationType(), other.getIdLocationType() )
 			.isEquals();
 	}		
 
