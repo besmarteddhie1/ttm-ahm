@@ -25,10 +25,10 @@ public class AhmjxUamUser extends AhmBaseEntity {
 	private static final long serialVersionUID = -3594793515100006127L;
 
 	@Length(max=EntityDomain.LENGTH_NAME)
-	@Column(name = "VUSERNAME", length = EntityDomain.LENGTH_NAME, nullable = false, unique = true)
+	@Column(name = "vusername", length = EntityDomain.LENGTH_NAME, nullable = false, unique = true)
     private String userName;
 
-    @Column(name = "VPASSWORD")
+    @Column(name = "vpassword")
     private String password;    
     
     @ManyToOne

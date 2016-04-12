@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 @Entity
 @Table(name = "ahmjxuam_mstapps")
 public class AhmjxUamApps extends AhmBaseEntity {
@@ -26,7 +24,6 @@ public class AhmjxUamApps extends AhmBaseEntity {
     private String status;
 
     @OneToMany(mappedBy = "apps", cascade=CascadeType.ALL)
-    @JsonBackReference
     private List<AhmjxUamService> services;
         
 }

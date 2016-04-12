@@ -3,22 +3,24 @@ package com.ahm.jx.ttm.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name="ahmjxmst_party_category_type")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="idCategoryType")
 public class AhmjxmstPartyCategoryType extends BaseEntity {
 
 	private static final long serialVersionUID = -2500926500169885028L;
@@ -33,9 +35,7 @@ public class AhmjxmstPartyCategoryType extends BaseEntity {
 	@Column(name="vdescription")
 	private String description;	
 	
-	@OneToMany
-	@JoinColumn(name="idcattype")
-	@JsonManagedReference
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="categoryType")
 	private List<AhmjxmstPartyCategory> categories = new ArrayList<AhmjxmstPartyCategory>();
 	
 	@Column(name="idprncattyp")

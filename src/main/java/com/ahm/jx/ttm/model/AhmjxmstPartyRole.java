@@ -10,8 +10,6 @@ import javax.persistence.Table;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 @Entity
 @Table(name="ahmjxmst_party_role")
 public class AhmjxmstPartyRole extends BaseEntity {
@@ -24,7 +22,6 @@ public class AhmjxmstPartyRole extends BaseEntity {
 	@MapsId("idParty")
 	@ManyToOne
     @JoinColumn(name="idparty")
-	@JsonBackReference
     private AhmjxmstParty party;
 	
 	public PartyRoleId getIdPartyRole() {
