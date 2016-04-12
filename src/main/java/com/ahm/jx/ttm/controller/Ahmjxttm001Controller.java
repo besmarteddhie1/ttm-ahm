@@ -34,14 +34,23 @@ public class Ahmjxttm001Controller {
 	@Transactional
 	public List<AhmjxmstPartyCategoryType> getSalesForce() {
 		List<AhmjxmstPartyCategoryType> d = partyCategoryTypeRepo.findByParentCategoryType(AhmjxmstPartyCategoryType.TYPE_SALES_FORCE);
-		for (AhmjxmstPartyCategoryType a: d) a.getCategories().size();
+		for (AhmjxmstPartyCategoryType a: d) a.getCategories().size();		
 		return d;
 	}
 	
-	@RequestMapping(value="sf", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="dc", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@Transactional
+	public List<AhmjxmstPartyCategory> getDealerClassfication() {
+		List<AhmjxmstPartyCategory> d = partyCategoryRepo.queryByCategoryType(AhmjxmstPartyCategoryType.TYPE_DEALER_SALES_CLASSIFICATION);		
+		return d;
+	}	
+	
+	@RequestMapping(value="parcatupd", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public AhmjxmstPartyCategory setSalesForce(AhmjxmstPartyCategory entity) {
 		return partyCategoryRepo.save(entity);
-	}	
+	}
+		
 	
 }

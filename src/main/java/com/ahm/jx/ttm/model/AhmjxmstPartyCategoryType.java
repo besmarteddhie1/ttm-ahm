@@ -25,6 +25,8 @@ public class AhmjxmstPartyCategoryType extends BaseEntity {
 	
 	public static final int TYPE_SALES_FORCE = 50;
 	
+	public static final int TYPE_DEALER_SALES_CLASSIFICATION = 101;
+	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idcattype")
 	private Integer idCategoryType;

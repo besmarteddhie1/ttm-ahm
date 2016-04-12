@@ -12,6 +12,7 @@ import com.ahm.jx.ttm.model.AhmjxmstPartyCategory;
 @Repository
 public interface AhmjxmstPartyCategoryRepository extends JpaRepository<AhmjxmstPartyCategory, Integer> {
 	
-	@Query("select r from AhmjxmstPartyCategory r left join r.categoryType t where t.parentCategoryType = :idprntcat")
-	List<AhmjxmstPartyCategory> queryByParentCategory(@Param("idprntcat") Integer parentCatType);	
+	@Query("select r from AhmjxmstPartyCategory r where r.categoryType.idCategoryType = :idcat")
+	List<AhmjxmstPartyCategory> queryByCategoryType(@Param("idcat") Integer idcat);	
+	
 }
