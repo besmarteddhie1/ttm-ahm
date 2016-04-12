@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="ahmjxmst_party_category_type")
-public class AhmjxmstPartyCategoryType extends AhmMappedEntity {
+public class AhmjxmstPartyCategoryType extends BaseEntity {
 
 	private static final long serialVersionUID = -2500926500169885028L;
 	

@@ -15,7 +15,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
 @Table(name="ahmjxmst_product_classification")
-public class AhmjxmstProductClassification extends AhmMappedEntity {
+public class AhmjxmstProductClassification extends BaseEntity {
 
 	private static final long serialVersionUID = -2500926500169885029L;
 	

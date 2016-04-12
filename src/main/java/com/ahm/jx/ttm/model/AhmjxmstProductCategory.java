@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name="ahmjxmst_product_category")
-public class AhmjxmstProductCategory extends AhmMappedEntity {
+public class AhmjxmstProductCategory extends BaseEntity {
 
 	private static final long serialVersionUID = -2500926500169885029L;
 	

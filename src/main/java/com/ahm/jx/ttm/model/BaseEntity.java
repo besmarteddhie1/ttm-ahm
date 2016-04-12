@@ -7,7 +7,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
 @MappedSuperclass
-public class AhmMappedEntity implements Serializable {
+public class BaseEntity implements Serializable {
 	
 	private static final long serialVersionUID = 4937288612298227896L;
 	

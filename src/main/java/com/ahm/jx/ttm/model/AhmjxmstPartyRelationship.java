@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Inheritance(strategy=InheritanceType.JOINED)
 @Where(clause = "current_timestamp between dtfrom and dtthru")
 @Cacheable(true)
-public class AhmjxmstPartyRelationship extends AhmMappedEntity {
+public class AhmjxmstPartyRelationship extends BaseEntity {
 	
 	private static final long serialVersionUID = 349047101370812998L;
 	
