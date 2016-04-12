@@ -12,10 +12,12 @@ import javax.persistence.Table;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name="ahmjxmst_product_category")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="idCategory")
 public class AhmjxmstProductCategory extends BaseEntity {
 
 	private static final long serialVersionUID = -2500926500169885029L;
@@ -32,7 +34,6 @@ public class AhmjxmstProductCategory extends BaseEntity {
 
 	@ManyToOne
 	@JoinColumn(name="idcattype", insertable=false, updatable=false)
-	@JsonBackReference
 	private AhmjxmstProductCategoryType categoryType;
 
 	public Integer getIdCategory() {

@@ -19,8 +19,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Where;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 /*
  	@TableGenerator(name = "seq_party_relationship", table = "SEQUENCES", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_NUMBER",
 		pkColumnValue = "SEQUENCE", allocationSize=1)
@@ -56,14 +54,12 @@ public class AhmjxmstPartyRelationship extends BaseEntity {
 	@JoinColumns({
 		@JoinColumn(name="idpartyfrom", referencedColumnName="idparty"),
 		@JoinColumn(name="idroletypefrom", referencedColumnName="idroletype")})
-	@JsonBackReference
 	private AhmjxmstPartyRole roleFrom;
     
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumns({
 		@JoinColumn(name="idpartyto", referencedColumnName="idparty"),
 		@JoinColumn(name="idroletypeto", referencedColumnName="idroletype")})
-	@JsonBackReference
 	private AhmjxmstPartyRole roleTo;
 	
 	@Embedded

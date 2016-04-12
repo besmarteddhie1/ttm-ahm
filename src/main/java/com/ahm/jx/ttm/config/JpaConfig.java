@@ -67,7 +67,8 @@ class JpaConfig {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
 
-        String entities = ClassUtils.getPackageName(Application.class);
+        //String entities = ClassUtils.getPackageName(Application.class);
+        String entities = "com.ahm.jx.ttm.model";
         String converters = ClassUtils.getPackageName(Jsr310JpaConverters.class);
         entityManagerFactoryBean.setPackagesToScan(entities, converters);
 

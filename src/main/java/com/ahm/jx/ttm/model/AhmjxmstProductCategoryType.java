@@ -15,11 +15,13 @@ import javax.persistence.Table;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
 @Entity
 @Table(name="ahmjxmst_product_category_type")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="idCategoryType")
 public class AhmjxmstProductCategoryType extends BaseEntity {
 
 	private static final long serialVersionUID = -2500926500169885028L;
@@ -38,7 +40,6 @@ public class AhmjxmstProductCategoryType extends BaseEntity {
 	
 	@OneToMany
 	@JoinColumn(name="idcattype")
-	@JsonManagedReference
 	private List<AhmjxmstProductCategory> categories = new ArrayList<AhmjxmstProductCategory>();	
 	
 	public Integer getIdCategoryType() {
