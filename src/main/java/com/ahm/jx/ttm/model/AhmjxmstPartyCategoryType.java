@@ -31,8 +31,7 @@ public class AhmjxmstPartyCategoryType extends BaseEntity {
 	private Integer idCategoryType;
 		
 	@Column(name="vdescription")
-	private String description;
-	
+	private String description;	
 	
 	@OneToMany
 	@JoinColumn(name="idcattype")

@@ -31,7 +31,7 @@ public class AhmjxmstProductCategory extends BaseEntity {
 	private Integer idCategoryType;	
 
 	@ManyToOne
-	@JoinColumn(name="idcattype")
+	@JoinColumn(name="idcattype", insertable=false, updatable=false)
 	@JsonBackReference
 	private AhmjxmstProductCategoryType categoryType;
 

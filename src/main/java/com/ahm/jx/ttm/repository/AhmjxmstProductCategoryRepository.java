@@ -7,11 +7,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.ahm.jx.ttm.model.AhmjxmstProductCategory;
-import com.ahm.jx.ttm.model.AhmjxmstProductCategoryType;
 
 @Repository
 public interface AhmjxmstProductCategoryRepository extends JpaRepository<AhmjxmstProductCategory, Integer> {
 	
-	List<AhmjxmstProductCategoryType> findByParentCategoryType(@Param("idprntcat") Integer parentCatType);
+	List<AhmjxmstProductCategory> findByIdCategoryType(@Param("idprntcat") Integer parentCatType);
 	
 }

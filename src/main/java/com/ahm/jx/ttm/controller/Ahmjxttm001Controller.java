@@ -23,6 +23,7 @@ import com.ahm.jx.ttm.repository.AhmjxTtmWeTypeRepository;
 import com.ahm.jx.ttm.repository.AhmjxmstPartyCategoryRepository;
 import com.ahm.jx.ttm.repository.AhmjxmstPartyCategoryTypeRepository;
 import com.ahm.jx.ttm.repository.AhmjxmstProductCategoryRepository;
+import com.ahm.jx.ttm.repository.AhmjxmstProductCategoryTypeRepository;
 
 @Controller
 @RequestMapping(value="/ttm001")
@@ -44,13 +45,16 @@ public class Ahmjxttm001Controller {
 	AhmjxmstProductCategoryRepository productCategoryRepo;
 	
 	@Autowired
+	AhmjxmstProductCategoryTypeRepository productCategoryTypeRepo;	
+	
+	@Autowired
 	AhmjxTtmWeTypeRepository weTypeRepo;
 	
 	@RequestMapping(value="sp", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@Transactional
 	public List<AhmjxmstProductCategoryType> getSegmentasiProduct() {
-		List<AhmjxmstProductCategoryType> d = productCategoryRepo.findByParentCategoryType(AhmjxmstPartyCategoryType.TYPE_SALES_FORCE);
+		List<AhmjxmstProductCategoryType> d = productCategoryTypeRepo.findByParentCategoryType(AhmjxmstProductCategoryType.TYPE_CUB);
 		for (AhmjxmstProductCategoryType a: d) a.getCategories().size();		
 		return d;
 	}	
