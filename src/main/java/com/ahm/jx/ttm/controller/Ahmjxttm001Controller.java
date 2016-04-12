@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,9 +31,11 @@ public class Ahmjxttm001Controller {
 	
 	@RequestMapping(value="sf", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
+	@Transactional
 	public List<AhmjxmstPartyCategoryType> getSalesForce() {
-		System.out.println("TEST");
-		return partyCategoryTypeRepo.queryByParentCategory(AhmjxmstPartyCategoryType.TYPE_SALES_FORCE);
+		List<AhmjxmstPartyCategoryType> d = partyCategoryTypeRepo.queryByParentCategory(AhmjxmstPartyCategoryType.TYPE_SALES_FORCE);
+		for (AhmjxmstPartyCategoryType a: d) a.getCategories().size();
+		return d;
 	}
 	
 	@RequestMapping(value="sf", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)

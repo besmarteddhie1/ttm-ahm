@@ -33,7 +33,7 @@ public class AhmjxmstPartyCategoryType extends AhmMappedEntity {
 	@Column(name="vdescription")
 	private String description;
 	
-	@OneToMany(fetch=FetchType.EAGER)
+	@OneToMany
 	@JoinColumn(name="idcattype")
 	@JsonManagedReference
 	private List<AhmjxmstPartyCategory> categories = new ArrayList<AhmjxmstPartyCategory>();	
