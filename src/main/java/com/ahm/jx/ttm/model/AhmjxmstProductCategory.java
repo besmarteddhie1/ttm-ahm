@@ -26,6 +26,9 @@ public class AhmjxmstProductCategory extends BaseEntity {
 		
 	@Column(name="vdescription")
 	private String description;
+	
+	@Column(name="idcattype")
+	private Integer idCategoryType;	
 
 	@ManyToOne
 	@JoinColumn(name="idcattype")
@@ -48,6 +51,14 @@ public class AhmjxmstProductCategory extends BaseEntity {
 		this.description = description;
 	}
 
+
+	public Integer getIdCategoryType() {
+		return idCategoryType;
+	}
+
+	public void setIdCategoryType(Integer idCategoryType) {
+		this.idCategoryType = idCategoryType;
+	}
 
 	public AhmjxmstProductCategoryType getCategoryType() {
 		return categoryType;

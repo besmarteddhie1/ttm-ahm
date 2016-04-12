@@ -26,9 +26,12 @@ public class AhmjxmstPartyCategory extends BaseEntity {
 		
 	@Column(name="vdescription")
 	private String description;
+	
+	@Column(name="idcattype")
+	private Integer idCategoryType;			
 
 	@ManyToOne
-	@JoinColumn(name="idcattype")
+	@JoinColumn(name="idcattype", updatable=false, insertable=false)
 	@JsonBackReference
 	private AhmjxmstPartyCategoryType categoryType;
 		
@@ -46,6 +49,14 @@ public class AhmjxmstPartyCategory extends BaseEntity {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Integer getIdCategoryType() {
+		return idCategoryType;
+	}
+
+	public void setIdCategoryType(Integer idCategoryType) {
+		this.idCategoryType = idCategoryType;
 	}
 
 	public AhmjxmstPartyCategoryType getCategoryType() {
