@@ -18,7 +18,68 @@
   <div class="tab-content">
      <div id="menu1" class="tab-pane fade in active">
       <h3>Klasifikasi Dealer</h3>
-	  
+	   <div class="form-group-button">
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxttmkdAdd(this);return false;">Add</button>
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxttmkdUpdate(this);return false;">Update</button>
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxttmkdDelete(this);return false;">Delete</button>
+            
+        </div>
+        <br/>
+        <div id="table-container">
+            <table 	id="ahmjxttmkdTable"
+                    data-method="get"
+                    data-url="/ttm001/ring"
+                    data-content-type="application/json"
+                    data-data-type="json"
+    
+                    data-response-handler="loadData"
+       
+                    data-unique-id="@id"
+                    >
+                <thead>
+                    <tr>
+                        <th data-field="state" 
+                            data-checkbox="true"
+                            data-formatter="stateFormatter"></th>
+                        <th data-field="@id" 
+                            data-sortable="true"
+                            data-visible="false"
+                            >ID</th>
+                        <th data-field="description" 
+                            data-sortable="true"
+                            data-visible="true"
+                            >Name</th>
+                        
+                    </tr>
+                </thead>
+
+            </table>
+        </div>
+        
+        <div id="ahmjxttmkd" class="subpage" data-path="Maintain Klasifikasi Dealer">
+        <table 	id="ahmjxttmkdDisableTable"
+                >
+            <thead>
+                    <tr>
+                        <th data-field="state" 
+                            data-checkbox="true"
+                            data-formatter="stateFormatter"></th>
+                        <th data-field="@id" 
+                            data-sortable="true"
+                            data-visible="false"
+                            >ID</th>
+                        <th data-field="description" 
+                            data-sortable="true"
+                            data-visible="false"
+                            >Name</th>
+                        
+                    </tr>
+                </thead>
+
+        </table>
+        <br/>
+      
+    </div>
     </div>
     <div id="menu2" class="tab-pane fade">
       <h3>Penamaan Ring 1</h3>
@@ -154,9 +215,25 @@
     });
 
 
-      function addNode(){
-			console.log("tes");
-          };
+      function addNode(x){
+		
+		var dataAdd = {'idcattype':'51','idcategory':'52','vdescription':'test'};
+			
+       $.ajax
+          ({
+              type: "POST",
+              url: baseURL+"/ttm001/parcatupd",
+              contentType: "application/json",
+              dataType: 'json',
+              async: false,
+              data:JSON.stringify(dataAdd)
+          })
+          .done(function(response){
+              console.log('post==>',response);
+              
+             })
+			
+      };
 	
 
  
