@@ -38,7 +38,7 @@
         <property name="packagesToScan" >
             <list>
                 <value>com.ahm.jx.app000.model</value>
-                <value>com.ahm.jx.ttm.entities</value>
+                <value>com.ahm.jx.ttm.model</value>
             </list>
         </property>
         

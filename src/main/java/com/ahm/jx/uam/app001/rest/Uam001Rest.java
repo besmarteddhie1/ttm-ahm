@@ -67,7 +67,6 @@ public class Uam001Rest {
             @CookieValue(value = CommonConstant.cookieDims, defaultValue = "") String cookieDims) {
         DtoRespond dtoRespond = new DtoRespond();
         try {
-            System.out.println("Versi Rest insert Data trial : " + uam001VoAhmjxuamMstUser.getVstat() + "--" + uam001VoAhmjxuamMstUser.getVusername() + "--" + uam001VoAhmjxuamMstUser.getVpassword());
             dtoRespond = uam001Service.insert(httpServletRequest, httpServletResponse,
                     uam001VoAhmjxuamMstUser, cookieDims, appId);
         } catch (ConstraintViolationException dive) {
