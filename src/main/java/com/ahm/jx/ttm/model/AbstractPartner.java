@@ -1,4 +1,4 @@
-package com.ahm.jx.ttm.entities;
+package com.ahm.jx.ttm.model;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Inheritance;

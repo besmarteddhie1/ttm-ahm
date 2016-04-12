@@ -17,7 +17,6 @@ import javax.persistence.Transient;
 import org.hibernate.validator.constraints.Length;
 
 import com.ahm.jx.ttm.config.EntityDomain;
-import com.ahm.jx.ttm.entities.AhmPartner;
 
 @Entity
 @Table(name = "ahmjxuam_mstusers")

@@ -1,4 +1,4 @@
-package com.ahm.jx.ttm.entities;
+package com.ahm.jx.ttm.utils;
 
 import java.io.Serializable;
 import java.util.ArrayList;

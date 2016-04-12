@@ -1,5 +1,5 @@
 
-package com.ahm.jx.ttm.entities;
+package com.ahm.jx.ttm.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package com.ahm.jx.ttm.dao;
+package com.ahm.jx.ttm.repository;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
-import com.ahm.jx.ttm.entities.Account;
+import com.ahm.jx.ttm.model.Account;
 
 @Repository
 @RepositoryRestResource(path = "accounts")
