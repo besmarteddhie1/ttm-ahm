@@ -1,10 +1,11 @@
-package com.ahm.jx.ttm.dao;
+package com.ahm.jx.ttm.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
 import com.ahm.jx.ttm.model.AhmjxmstProductCategory;
 
 @Repository
-public interface AhmjxmstProductCategoryDao extends JpaRepository<AhmjxmstProductCategory, Integer> {
-
+public interface AhmjxmstProductCategoryRepository extends JpaRepository<AhmjxmstProductCategory, Integer> {
+	
 }

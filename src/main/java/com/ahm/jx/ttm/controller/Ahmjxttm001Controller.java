@@ -10,30 +10,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ahm.jx.ttm.dao.AhmjxmstPartyCategoryDao;
-import com.ahm.jx.ttm.dao.AhmjxmstPartyCategoryTypeDao;
-import com.ahm.jx.ttm.dao.AhmjxmstProductCategoryDao;
 import com.ahm.jx.ttm.model.AhmjxmstPartyCategory;
 import com.ahm.jx.ttm.model.AhmjxmstPartyCategoryType;
+import com.ahm.jx.ttm.repository.AhmjxmstPartyCategoryRepository;
+import com.ahm.jx.ttm.repository.AhmjxmstPartyCategoryTypeRepository;
+import com.ahm.jx.ttm.repository.AhmjxmstProductCategoryRepository;
 
 @Controller
 @RequestMapping(value="/ttm001")
 public class Ahmjxttm001Controller {
 	
 	@Autowired
-	AhmjxmstPartyCategoryDao partyCategoryRepo;
+	AhmjxmstPartyCategoryRepository partyCategoryRepo;
 	
 	@Autowired
-	AhmjxmstPartyCategoryTypeDao partyCategoryTypeRepo;	
+	AhmjxmstPartyCategoryTypeRepository partyCategoryTypeRepo;	
 	
 	@Autowired
-	AhmjxmstProductCategoryDao productCategoryRepo;
+	AhmjxmstProductCategoryRepository productCategoryRepo;
 	
 	@RequestMapping(value="sf", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@Transactional
 	public List<AhmjxmstPartyCategoryType> getSalesForce() {
-		List<AhmjxmstPartyCategoryType> d = partyCategoryTypeRepo.queryByParentCategory(AhmjxmstPartyCategoryType.TYPE_SALES_FORCE);
+		List<AhmjxmstPartyCategoryType> d = partyCategoryTypeRepo.findByParentCategoryType(AhmjxmstPartyCategoryType.TYPE_SALES_FORCE);
 		for (AhmjxmstPartyCategoryType a: d) a.getCategories().size();
 		return d;
 	}

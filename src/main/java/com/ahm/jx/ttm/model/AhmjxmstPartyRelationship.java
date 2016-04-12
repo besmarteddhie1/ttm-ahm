@@ -6,28 +6,34 @@ import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Where;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+/*
+ 	@TableGenerator(name = "seq_party_relationship", table = "SEQUENCES", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_NUMBER",
+		pkColumnValue = "SEQUENCE", allocationSize=1)
+ 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "EVENT_GEN")
+ 	
+	@SequenceGenerator(name="seq_party_relationship", sequenceName="seq_party_relationship", initialValue=1, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_party_relationship") 	
+ */
+
+
 @Entity
 @Table(name="ahmjxmst_party_relationship") 
 @Inheritance(strategy=InheritanceType.JOINED)
-@SequenceGenerator(name="seq_party_relationship", 
-		sequenceName="seq_party_relationship", 
-		initialValue=1, allocationSize=1)
 @Where(clause = "current_timestamp between dtfrom and dtthru")
 @Cacheable(true)
 public class AhmjxmstPartyRelationship extends AhmMappedEntity {
@@ -35,9 +41,10 @@ public class AhmjxmstPartyRelationship extends AhmMappedEntity {
 	private static final long serialVersionUID = 349047101370812998L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_party_relationship")
+	@GeneratedValue(generator = "uuid2")
+	@GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name="idrelation")	
-	private Integer idRelation;
+	private String idRelation;
 	
     @Column(name="idreltype")
 	private Integer idRelationType;
@@ -81,11 +88,11 @@ public class AhmjxmstPartyRelationship extends AhmMappedEntity {
 	public AhmjxmstPartyRelationship() {
     }
 
-	public Integer getIdRelation() {
+	public String getIdRelation() {
 		return idRelation;
 	}
 
-	public void setIdRelation(Integer idRelation) {
+	public void setIdRelation(String idRelation) {
 		this.idRelation = idRelation;
 	}
 
