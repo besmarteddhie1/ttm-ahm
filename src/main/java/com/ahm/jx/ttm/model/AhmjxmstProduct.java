@@ -18,12 +18,10 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Where;
 
-import com.ahm.jx.ttm.entities.AhmBaseEntity;
-
 @Entity
 @Table(name="ahmjxmst_product")
 @Inheritance(strategy=InheritanceType.JOINED)
-public class AhmjxmstProduct extends AhmBaseEntity {
+public class AhmjxmstProduct extends BaseEntity {
 
 	private static final long serialVersionUID = -2500926500169885028L;
 	

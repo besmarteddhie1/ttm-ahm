@@ -5,12 +5,12 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
-import com.ahm.jx.ttm.entities.UamUser;
+import com.ahm.jx.ttm.model.AhmjxUamUser;
 
 @Repository
 @RepositoryRestResource(collectionResourceRel = "uamusers", path = "uamusers")
-public interface UamUserDao extends JpaRepository<UamUser, String> {
+public interface UamUserDao extends JpaRepository<AhmjxUamUser, String> {
 	
-	UamUser findOneByUserName(@Param("name") String userName);
+	AhmjxUamUser findOneByUserName(@Param("name") String userName);
 	
 }

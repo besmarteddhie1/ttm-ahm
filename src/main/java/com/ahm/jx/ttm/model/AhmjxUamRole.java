@@ -1,4 +1,4 @@
-package com.ahm.jx.ttm.entities;
+package com.ahm.jx.ttm.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,29 +10,32 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.ahm.jx.ttm.model.AhmBaseEntity;
+import com.ahm.jx.ttm.model.AhmjxUamMenu;
+
 @Entity
 @Table(name="ahmjxuam_mstroles")
-public class UamRole extends AhmBaseEntity {
+public class AhmjxUamRole extends AhmBaseEntity {
     
 	private static final long serialVersionUID = 4847222996650784545L;
 
-	@Column(name="VROLES_ID",length = 20, nullable = false, unique = true) 
+	@Column(name="vroles_id",length = 20, nullable = false, unique = true) 
     private String idRole;
     
-    @Column(name="VROLES_NAME", length = 30) 
+    @Column(name="vroles_name", length = 30) 
     private String name;
     
-    @Column(name="VROLES_DESC",length = 255) 
+    @Column(name="vroles_desc",length = 255) 
     private String description;    
     
-    @Column(name="VROLES_STATUS",length = 1) 
+    @Column(name="vrole_status",length = 1) 
     private Boolean status;
     
     @OneToMany(cascade=CascadeType.ALL, mappedBy="role")
-    private List<UamRoleMenu> roleMenu;
+    private List<AhmjxUamRoleMenu> roleMenu;
     
     @Transient
-    private List<UamMenu> menus;    
+    private List<AhmjxUamMenu> menus;    
 
 	public String getIdRole() {
 		return idRole;
@@ -66,24 +69,24 @@ public class UamRole extends AhmBaseEntity {
 		this.status = status;
 	}
 
-	public List<UamRoleMenu> getRoleMenu() {
+	public List<AhmjxUamRoleMenu> getRoleMenu() {
 		return roleMenu;
 	}
 
-	public void setRoleMenu(List<UamRoleMenu> roleMenu) {
+	public void setRoleMenu(List<AhmjxUamRoleMenu> roleMenu) {
 		this.roleMenu = roleMenu;
 	}
 
-	public List<UamMenu> getMenus() {
+	public List<AhmjxUamMenu> getMenus() {
 		if (this.menus == null) {
-			this.menus = new ArrayList<UamMenu>();
-			for (UamRoleMenu u: getRoleMenu()) 
+			this.menus = new ArrayList<AhmjxUamMenu>();
+			for (AhmjxUamRoleMenu u: getRoleMenu()) 
 				this.menus.add(u.getMenu());
 		}		
 		return menus;
 	}
 
-	public void setMenus(List<UamMenu> menus) {
+	public void setMenus(List<AhmjxUamMenu> menus) {
 		this.menus = menus;
 	}
     

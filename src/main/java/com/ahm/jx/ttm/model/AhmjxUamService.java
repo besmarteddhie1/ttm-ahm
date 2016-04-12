@@ -6,8 +6,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.ahm.jx.ttm.entities.AhmBaseEntity;
-
 @Entity
 @Table(name = "ahmjxuam_mstservices")
 public class AhmjxUamService extends AhmBaseEntity {

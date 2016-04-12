@@ -8,8 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.ahm.jx.ttm.entities.UamMenu;
-
 public abstract class AbstractImplDao<T, ID extends Serializable> implements JpaRepository<T, ID> {	
 	
 	protected abstract JpaRepository<T, ID> getRepository();

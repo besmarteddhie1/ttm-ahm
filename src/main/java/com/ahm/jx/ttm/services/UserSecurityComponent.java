@@ -14,7 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import com.ahm.jx.ttm.dao.UamUserDao;
-import com.ahm.jx.ttm.entities.UamUser;
+import com.ahm.jx.ttm.model.AhmjxUamUser;
 
 @Component
 public class UserSecurityComponent implements Serializable {
@@ -40,7 +40,7 @@ public class UserSecurityComponent implements Serializable {
     }
     
     public boolean ValidLogin(String password) {
-    	UamUser usr = userDao.findOneByUserName(getCurrentUser());
+    	AhmjxUamUser usr = userDao.findOneByUserName(getCurrentUser());
     	Boolean isTrue = usr.getPassword().equals(Md5Crypt.apr1Crypt(password, null));
     	if (isTrue) lastCheckLogin = new Date();
     	return isTrue;

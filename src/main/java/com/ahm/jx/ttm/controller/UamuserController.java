@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.ahm.jx.ttm.dao.UamUserDao;
-import com.ahm.jx.ttm.entities.UamUser;
+import com.ahm.jx.ttm.model.AhmjxUamUser;
 
 @Controller
 public class UamuserController {
@@ -34,7 +34,7 @@ public class UamuserController {
    @RequestMapping(value = "uamuser/", method = RequestMethod.GET)
    @ResponseStatus(value = HttpStatus.OK)
    @ResponseBody
-   public List<UamUser> userGetAll() {
+   public List<AhmjxUamUser> userGetAll() {
 	   
    System.out.println("aaa"+ uamuserRepository.findAll());
        return uamuserRepository.findAll();
@@ -43,7 +43,7 @@ public class UamuserController {
    @RequestMapping(value = "uamuser/{name}", method = RequestMethod.GET)
    @ResponseStatus(value = HttpStatus.OK)
    @ResponseBody
-   public UamUser user(@PathVariable("name") String userName) {
+   public AhmjxUamUser user(@PathVariable("name") String userName) {
        return uamuserRepository.findOneByUserName(userName);
    }
 }
