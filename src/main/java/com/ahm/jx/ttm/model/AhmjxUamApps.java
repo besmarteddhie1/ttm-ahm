@@ -1,4 +1,4 @@
-package com.ahm.jx.ttm.entities;
+package com.ahm.jx.ttm.model;
 
 import java.util.List;
 
@@ -8,24 +8,25 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
-@Table(name = "AHMJXUAM_MSTAPPS")
-public class UamApps extends AhmBaseEntity {
+@Table(name = "ahmjxuam_mstapps")
+public class AhmjxUamApps extends AhmBaseEntity {
 	
 	private static final long serialVersionUID = -2830096505388982211L;
 
-	@Column(name = "VNAME")
+	@Column(name = "vname")
     private String appName;
 
-    @Column(name = "VDESC")
+    @Column(name = "vdesc")
     private String appDesc;
 
-    @Column(name = "VSTAT", length = 1)
+    @Column(name = "vstat", length = 1)
     private String status;
 
     @OneToMany(mappedBy = "apps", cascade=CascadeType.ALL)
-    private List<UamService> services;
-    
-    
-
+    @JsonBackReference
+    private List<AhmjxUamService> services;
+        
 }

@@ -1,4 +1,4 @@
-package com.ahm.jx.ttm.entities;
+package com.ahm.jx.ttm.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,26 +7,25 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "AHMJXUAM_MSTSERVICES")
-public class UamService extends AhmBaseEntity {
+@Table(name = "ahmjxuam_mstservices")
+public class AhmjxUamService extends AhmBaseEntity {
 
 	private static final long serialVersionUID = -2243681982762120954L;
 	
-	@Column(name = "VURL")
+	@Column(name = "vurl")
     private String url;
 
-    @Column(name = "VSVCNAME")
+    @Column(name = "vsvcname")
     private String serviceName;
 
-    @Column(name = "VSVCDESC")
+    @Column(name = "vsvdesc")
     private String serviceDesc;
 
-    @Column(name = "VSTAT", length = 1)
+    @Column(name = "vstat", length = 1)
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "VID_AHMJXUAM_MSTAPPS", referencedColumnName = "VID")
-    private UamApps apps;
-
+    @JoinColumn(name = "vid_ahmjxuam_mstapps", referencedColumnName = "vid")
+    private AhmjxUamApps apps;
 
 }

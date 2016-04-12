@@ -21,7 +21,7 @@ import org.hibernate.annotations.Where;
 @Entity
 @Table(name="ahmjxmst_party")
 @Inheritance(strategy=InheritanceType.JOINED)
-public class AhmjxmstParty extends AhmMappedEntity {
+public class AhmjxmstParty extends BaseEntity {
 
 	private static final long serialVersionUID = -8438400975266936737L;
 	

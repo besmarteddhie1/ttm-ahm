@@ -21,12 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ahm.jx.ttm.dao.UamMenuDao;
 import com.ahm.jx.ttm.dao.impl.AbstractImplDao;
-import com.ahm.jx.ttm.entities.UamMenu;
+import com.ahm.jx.ttm.model.AhmjxUamMenu;
 
 
 @RestController
 @RequestMapping("/api/menu")
-public class MenuController extends AbstractImplDao<UamMenu, String> {	
+public class MenuController extends AbstractImplDao<AhmjxUamMenu, String> {	
 	
 	@PersistenceContext
 	protected EntityManager em;
@@ -35,24 +35,24 @@ public class MenuController extends AbstractImplDao<UamMenu, String> {
 	UamMenuDao dao;
 	
 	@Override
-	protected JpaRepository<UamMenu, String> getRepository() {
+	protected JpaRepository<AhmjxUamMenu, String> getRepository() {
 		return dao;
 	}	
 	
-	public UamMenu findOneByIdMenu(String idMenu) {
+	public AhmjxUamMenu findOneByIdMenu(String idMenu) {
 		return dao.findOneByIdMenu(idMenu);
 	}
 
-	public UamMenu findOneByIdApplication(String idApplication) {
+	public AhmjxUamMenu findOneByIdApplication(String idApplication) {
 		return dao.findOneByIdApplication(idApplication);
 	}
 	
 	@RequestMapping(value = "filter")
 	@ResponseBody
-	public UamMenu getFilter(@RequestParam("id") String filter) {
-		UamMenu m = null;
+	public AhmjxUamMenu getFilter(@RequestParam("id") String filter) {
+		AhmjxUamMenu m = null;
 		try {
-			m = em.createQuery("select r from UamMenu r where r.idMenu = :idMenu ", UamMenu.class)
+			m = em.createQuery("select r from UamMenu r where r.idMenu = :idMenu ", AhmjxUamMenu.class)
 				.setParameter("idMenu", filter)
 				.getSingleResult();
 		} catch (NoResultException ex) {			
@@ -64,15 +64,15 @@ public class MenuController extends AbstractImplDao<UamMenu, String> {
 	
 	@RequestMapping(value = "show")
 	@ResponseBody
-	public List<UamMenu> getByCriteria() {
+	public List<AhmjxUamMenu> getByCriteria() {
 		String[] fields = {"idMenu", "title", "url"};
 		return getByCriteria(fields, "1", 1, 10);
 	}	
 	
-	public List<UamMenu> getBy(String[] fields, String[] values) {		
+	public List<AhmjxUamMenu> getBy(String[] fields, String[] values) {		
 		CriteriaBuilder builder = em.getCriteriaBuilder();
-		CriteriaQuery<UamMenu> query = builder.createQuery(UamMenu.class);
-		Root<UamMenu> root = query.from(UamMenu.class);
+		CriteriaQuery<AhmjxUamMenu> query = builder.createQuery(AhmjxUamMenu.class);
+		Root<AhmjxUamMenu> root = query.from(AhmjxUamMenu.class);
 		
 		query.select(root);
 		
@@ -88,17 +88,17 @@ public class MenuController extends AbstractImplDao<UamMenu, String> {
 		
 		query.where(builder.and(v1, v2));		
 					
-		TypedQuery<UamMenu> q = em.createQuery(query);
+		TypedQuery<AhmjxUamMenu> q = em.createQuery(query);
 		return q.getResultList();
 	}
 	
 	@Override
-	public List<UamMenu> getByCriteria(String[] fields, String filter, Integer pageNum, Integer rowNum) {
+	public List<AhmjxUamMenu> getByCriteria(String[] fields, String filter, Integer pageNum, Integer rowNum) {
 		String[] values = filter.split("\\s+");
 						
 		CriteriaBuilder builder = em.getCriteriaBuilder();
-		CriteriaQuery<UamMenu> query = builder.createQuery(UamMenu.class);
-		Root<UamMenu> root = query.from(UamMenu.class);
+		CriteriaQuery<AhmjxUamMenu> query = builder.createQuery(AhmjxUamMenu.class);
+		Root<AhmjxUamMenu> root = query.from(AhmjxUamMenu.class);
 		
 		query.select(root);		
 		List<Predicate> pv = new ArrayList<Predicate>();
@@ -120,7 +120,7 @@ public class MenuController extends AbstractImplDao<UamMenu, String> {
 		query.where(builder.and(pv.toArray(apv)));				
 		
 		System.out.println("Page Record Start : " + pageNum + "  >> " + ((pageNum - 1) * rowNum));		
-		TypedQuery<UamMenu> q = em.createQuery(query);
+		TypedQuery<AhmjxUamMenu> q = em.createQuery(query);
 		
 		q.setFirstResult((pageNum - 1) * rowNum);
 		q.setMaxResults(rowNum);
@@ -131,7 +131,7 @@ public class MenuController extends AbstractImplDao<UamMenu, String> {
 	
 	@RequestMapping(value = "getAll")
 	@ResponseBody
-	public List<UamMenu> getAll() {
+	public List<AhmjxUamMenu> getAll() {
 		return dao.findAll();
 	}	
 

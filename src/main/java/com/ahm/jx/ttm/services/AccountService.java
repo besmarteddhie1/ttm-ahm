@@ -20,8 +20,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ahm.jx.ttm.dao.AccountDao;
-import com.ahm.jx.ttm.entities.Account;
+import com.ahm.jx.ttm.model.Account;
+import com.ahm.jx.ttm.repository.AccountDao;
 
 @Service
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)

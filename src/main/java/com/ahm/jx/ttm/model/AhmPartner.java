@@ -1,9 +1,11 @@
 
-package com.ahm.jx.ttm.entities;
+package com.ahm.jx.ttm.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import com.ahm.jx.ttm.model.AhmBaseEntity;
 
 /*
  * Table ini berisi data Dealer, untuk H1, H2 dan H3 coba di redesign

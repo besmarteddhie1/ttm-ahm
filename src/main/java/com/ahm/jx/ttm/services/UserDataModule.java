@@ -23,8 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.ahm.jx.ttm.dao.UamUserDao;
-import com.ahm.jx.ttm.entities.UamMenu;
-import com.ahm.jx.ttm.entities.UamUser;
+import com.ahm.jx.ttm.model.AhmjxUamMenu;
+import com.ahm.jx.ttm.model.AhmjxUamUser;
 
 @Repository
 @Scope("session")
@@ -58,9 +58,9 @@ public class UserDataModule implements Serializable {
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
     @Transactional
-    public List<UamMenu> activeMenu() {
-    	UamUser usr = userDao.findOneByUserName(getCurrentUser());
-    	if (usr == null) return new ArrayList<UamMenu>(); 
+    public List<AhmjxUamMenu> activeMenu() {
+    	AhmjxUamUser usr = userDao.findOneByUserName(getCurrentUser());
+    	if (usr == null) return new ArrayList<AhmjxUamMenu>(); 
         return usr.getMenus();
     }
     
@@ -70,7 +70,7 @@ public class UserDataModule implements Serializable {
     }
     
     public boolean ValidLogin(String password) {
-    	UamUser usr = userDao.findOneByUserName(getCurrentUser());
+    	AhmjxUamUser usr = userDao.findOneByUserName(getCurrentUser());
     	Boolean isTrue = usr.getPassword().equals(Md5Crypt.apr1Crypt(password, null));
     	if (isTrue) lastCheckLogin = new Date();
     	return isTrue;

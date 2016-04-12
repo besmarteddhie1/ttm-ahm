@@ -5,13 +5,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
-import com.ahm.jx.ttm.entities.UamMenu;
+import com.ahm.jx.ttm.model.AhmjxUamMenu;
 
 @Repository
 @RepositoryRestResource(path = "uammenus")
-public interface UamMenuDao extends JpaRepository<UamMenu, String> {
+public interface UamMenuDao extends JpaRepository<AhmjxUamMenu, String> {
 	
-	UamMenu findOneByIdMenu(@Param("idmenu") String idMenu);
+	AhmjxUamMenu findOneByIdMenu(@Param("idmenu") String idMenu);
 	
-	UamMenu findOneByIdApplication(@Param("idapps") String idApplication);	
+	AhmjxUamMenu findOneByIdApplication(@Param("idapps") String idApplication);	
 }

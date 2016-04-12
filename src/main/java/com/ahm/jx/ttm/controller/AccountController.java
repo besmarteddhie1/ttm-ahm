@@ -7,15 +7,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.ahm.jx.ttm.dao.AccountDao;
-import com.ahm.jx.ttm.entities.Account;
-
-import org.springframework.web.bind.annotation.PathVariable;
+import com.ahm.jx.ttm.model.Account;
+import com.ahm.jx.ttm.repository.AccountDao;
 
 @Controller
 class AccountController {

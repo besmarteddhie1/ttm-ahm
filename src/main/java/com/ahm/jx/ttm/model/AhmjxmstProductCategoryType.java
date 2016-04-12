@@ -1,19 +1,26 @@
 package com.ahm.jx.ttm.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name="ahmjxmst_product_category_type")
-public class AhmjxmstProductCategoryType extends AhmMappedEntity {
+public class AhmjxmstProductCategoryType extends BaseEntity {
 
 	private static final long serialVersionUID = -2500926500169885028L;
 	
@@ -25,7 +32,12 @@ public class AhmjxmstProductCategoryType extends AhmMappedEntity {
 	private String description;
 	
 	@Column(name="idprncattyp")
-	private Integer parentCategoryType;	
+	private Integer parentCategoryType;
+	
+	@OneToMany
+	@JoinColumn(name="idcattype")
+	@JsonManagedReference
+	private List<AhmjxmstProductCategory> categories = new ArrayList<AhmjxmstProductCategory>();	
 	
 	public Integer getIdCategoryType() {
 		return idCategoryType;
@@ -49,6 +61,14 @@ public class AhmjxmstProductCategoryType extends AhmMappedEntity {
 
 	public void setParentCategoryType(Integer parentCategoryType) {
 		this.parentCategoryType = parentCategoryType;
+	}
+
+	public List<AhmjxmstProductCategory> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<AhmjxmstProductCategory> categories) {
+		this.categories = categories;
 	}
 
 	@Override

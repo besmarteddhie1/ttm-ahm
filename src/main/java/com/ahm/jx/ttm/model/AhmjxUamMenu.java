@@ -1,5 +1,5 @@
 
-package com.ahm.jx.ttm.entities;
+package com.ahm.jx.ttm.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "ahmjxuam_mstmenus")
-public class UamMenu extends AhmBaseEntity {
+public class AhmjxUamMenu extends AhmBaseEntity {
 
 	private static final long serialVersionUID = 5743125358008818944L;
 
@@ -45,7 +45,7 @@ public class UamMenu extends AhmBaseEntity {
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "vparent")
-    private UamMenu parent;
+    private AhmjxUamMenu parent;
 
     /*
     @OneToMany(cascade=CascadeType.ALL, mappedBy="parent")
@@ -108,7 +108,7 @@ public class UamMenu extends AhmBaseEntity {
 		this.iorder = iorder;
 	}
 
-	public UamMenu getParent() {
+	public AhmjxUamMenu getParent() {
 		return parent;
 	}
 	
@@ -117,7 +117,7 @@ public class UamMenu extends AhmBaseEntity {
 		return null;
 	}	
 
-	public void setParent(UamMenu parent) {
+	public void setParent(AhmjxUamMenu parent) {
 		this.parent = parent;
 	}
 

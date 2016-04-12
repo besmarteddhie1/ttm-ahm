@@ -1,5 +1,4 @@
-
-package com.ahm.jx.ttm.entities;
+package com.ahm.jx.ttm.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +20,7 @@ import com.ahm.jx.ttm.config.EntityDomain;
 
 @Entity
 @Table(name = "ahmjxuam_mstusers")
-public class UamUser extends AhmBaseEntity {
+public class AhmjxUamUser extends AhmBaseEntity {
 
 	private static final long serialVersionUID = -3594793515100006127L;
 
@@ -40,31 +39,31 @@ public class UamUser extends AhmBaseEntity {
     private Boolean status;
     
     @OneToMany(cascade=CascadeType.ALL, mappedBy="user")
-    private List<UamUserRole> userRoles = new ArrayList<UamUserRole>();
+    private List<AhmjxUamUserRole> userRoles = new ArrayList<AhmjxUamUserRole>();
     
     @Transient
-    private List<UamRole> roles;
+    private List<AhmjxUamRole> roles;
         
     @Transient
-    private Map<String, UamMenu> mapMenu;
+    private Map<String, AhmjxUamMenu> mapMenu;
     
     @Transient
-    private List<UamMenu> menus;    
+    private List<AhmjxUamMenu> menus;    
     
-    public UamUser() {
+    public AhmjxUamUser() {
 	}
     
-    public UamUser(String userName, String password) {
+    public AhmjxUamUser(String userName, String password) {
     	this.userName = userName;
     	this.password = password;
     	this.status = true;
 	}
 
-	public List<UamUserRole> getUserRoles() {
+	public List<AhmjxUamUserRole> getUserRoles() {
 		return userRoles;
 	}
 
-	public void setUserRoles(List<UamUserRole> userRoles) {
+	public void setUserRoles(List<AhmjxUamUserRole> userRoles) {
 		this.userRoles = userRoles;
 	}
 
@@ -92,27 +91,27 @@ public class UamUser extends AhmBaseEntity {
 		this.status = status;
 	}
 
-	public List<UamRole> getRoles() {
+	public List<AhmjxUamRole> getRoles() {
 		if (this.roles == null) {
-			this.roles = new ArrayList<UamRole>();
-			for (UamUserRole u: this.getUserRoles()) 
+			this.roles = new ArrayList<AhmjxUamRole>();
+			for (AhmjxUamUserRole u: this.getUserRoles()) 
 				if (u.getStatus()) this.roles.add(u.getRole());
 		}
 		return roles;
 	}
 
-	public void setRoles(List<UamRole> roles) {
+	public void setRoles(List<AhmjxUamRole> roles) {
 		this.roles = roles;
 	}
 
-	public List<UamMenu> getMenus() {		
+	public List<AhmjxUamMenu> getMenus() {		
 		//return new ArrayList<UamMenu>(getMapMenu().values());
 
 		//this.menus = null;
 		if (this.menus == null) {
-			this.menus = new ArrayList<UamMenu>();
-			for (UamRole u: getRoles()) 
-				for (UamMenu m: u.getMenus())
+			this.menus = new ArrayList<AhmjxUamMenu>();
+			for (AhmjxUamRole u: getRoles()) 
+				for (AhmjxUamMenu m: u.getMenus())
 					this.menus.add(m);
 		}
 		return menus;
@@ -127,18 +126,18 @@ public class UamUser extends AhmBaseEntity {
 		this.partner = partner;
 	}
 
-	public Map<String, UamMenu> getMapMenu() {
+	public Map<String, AhmjxUamMenu> getMapMenu() {
 		if (this.mapMenu == null) {
-			this.mapMenu = new HashMap<String, UamMenu>();
-			for (UamRole u: getRoles()) 
-				for (UamMenu m: u.getMenus())
+			this.mapMenu = new HashMap<String, AhmjxUamMenu>();
+			for (AhmjxUamRole u: getRoles()) 
+				for (AhmjxUamMenu m: u.getMenus())
 					if (mapMenu.containsKey(m.getIdMenu()))
 						this.mapMenu.put(m.getIdMenu(), m);
 		}		
 		return mapMenu;
 	}
 
-	public void setMapMenu(Map<String, UamMenu> mapMenu) {
+	public void setMapMenu(Map<String, AhmjxUamMenu> mapMenu) {
 		this.mapMenu = mapMenu;
 	}    
     

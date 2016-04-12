@@ -1,23 +1,21 @@
 package com.ahm.jx.ttm.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Version;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @MappedSuperclass
-public class AhmMappedEntity implements Serializable {
+public class BaseEntity implements Serializable {
 	
 	private static final long serialVersionUID = 4937288612298227896L;
-
+	
+	/*
+	@Version
+	@Column(name="iver")
+	private Integer lockVersion;
+	
 	@JsonIgnore
 	@Column(name="vcreaby")
 	private String createBy;
@@ -25,11 +23,7 @@ public class AhmMappedEntity implements Serializable {
 	@JsonIgnore
 	@Column(name="vmodiby")
 	private String modiBy;		
-	
-	@Version
-	@Column(name="iver")
-	private Integer lockVersion;
-		
+			
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="dcrea")
 	private Date dateCreate;
@@ -77,12 +71,13 @@ public class AhmMappedEntity implements Serializable {
 	public void setDateModi(Date dateModi) {
 		this.dateModi = dateModi;
 	}
+	*/
 	
 	@PrePersist
 	@PreUpdate
 	protected void preUpdate() {
-		if (dateCreate == null) dateCreate = new Date();
-		dateModi = new Date();
+		//if (dateCreate == null) dateCreate = new Date();
+		//dateModi = new Date();
 	}
 		
 }

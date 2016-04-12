@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,11 +19,13 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="ahmjxmst_party_category_type")
-public class AhmjxmstPartyCategoryType extends AhmMappedEntity {
+public class AhmjxmstPartyCategoryType extends BaseEntity {
 
 	private static final long serialVersionUID = -2500926500169885028L;
 	
 	public static final int TYPE_SALES_FORCE = 50;
+	
+	public static final int TYPE_DEALER_SALES_CLASSIFICATION = 101;
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idcattype")
@@ -33,7 +34,7 @@ public class AhmjxmstPartyCategoryType extends AhmMappedEntity {
 	@Column(name="vdescription")
 	private String description;
 	
-	@OneToMany(fetch=FetchType.EAGER)
+	@OneToMany
 	@JoinColumn(name="idcattype")
 	@JsonManagedReference
 	private List<AhmjxmstPartyCategory> categories = new ArrayList<AhmjxmstPartyCategory>();	
