@@ -18,7 +18,7 @@ public class RestMvcConfiguration extends RepositoryRestMvcConfiguration {
 	public RepositoryRestConfiguration config() {
 	    RepositoryRestConfiguration config = super.config();
 	    config.setBasePath("/api");
-	    config.setDefaultPageSize(5);
+	    config.setDefaultPageSize(10);
 	    config.setDefaultMediaType(MediaType.APPLICATION_JSON);	    
 	    config.exposeIdsFor(
 	    		AhmjxmstPartyCategoryType.class, 
