@@ -221,16 +221,7 @@ $(function(){
 
  
 
-    var SOURCE = [
-          		{title: "node 1", children: [
-          			{title: "node 1.1"},
-          			{title: "node 1.2"}
-          		 ]},
-          		{title: "node 2",  children: [
-          			{title: "node 2.1"},
-          			{title: "node 2.2"}
-          		 ]}
-          	],
+    var SOURCE = 
           	 CLIPBOARD = null;
 
       $(function(){
@@ -271,7 +262,7 @@ $(function(){
             menu: [
               {title: "Edit <kbd>[F2]</kbd>", cmd: "rename", uiIcon: "ui-icon-pencil" },
               {title: "Delete <kbd>[Del]</kbd>", cmd: "remove", uiIcon: "ui-icon-trash" },
-              {title: "Add <kbd>[Ctrl+N]</kbd>", cmd: "addSibling", uiIcon: "ui-icon-plus" },
+              {title: "Add <kbd>[Ctrl+N]</kbd>", cmd: "add", uiIcon: "ui-icon-plus" },
              ],
             beforeOpen: function(event, ui) {
               var node = $.ui.fancytree.getNode(ui.target);
