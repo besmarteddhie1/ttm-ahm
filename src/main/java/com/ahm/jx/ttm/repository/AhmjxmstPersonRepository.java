@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.ahm.jx.ttm.model.AhmjxmstPerson;
 
 @Repository
-public interface AhmjxmstPersonRepository extends JpaRepository<AhmjxmstPerson, Integer> {
+public interface AhmjxmstPersonRepository extends JpaRepository<AhmjxmstPerson, String> {
 	
 }

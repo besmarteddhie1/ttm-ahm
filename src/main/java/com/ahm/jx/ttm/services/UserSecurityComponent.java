@@ -1,4 +1,4 @@
-package com.ahm.jx.ttm.service;
+package com.ahm.jx.ttm.services;
 
 import java.io.Serializable;
 import java.util.Date;
