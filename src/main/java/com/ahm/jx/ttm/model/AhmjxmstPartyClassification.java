@@ -2,6 +2,7 @@ package com.ahm.jx.ttm.model;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +13,7 @@ import javax.persistence.Table;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+@Entity
 @Table(name="ahmjxmst_party_classification")
 public class AhmjxmstPartyClassification extends AhmMappedEntity {
 

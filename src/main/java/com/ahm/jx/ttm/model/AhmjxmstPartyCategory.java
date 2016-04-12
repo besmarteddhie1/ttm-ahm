@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="ahmjxmst_party_category")
 public class AhmjxmstPartyCategory extends AhmMappedEntity {
@@ -27,6 +29,7 @@ public class AhmjxmstPartyCategory extends AhmMappedEntity {
 
 	@ManyToOne
 	@JoinColumn(name="idcattype")
+	@JsonBackReference
 	private AhmjxmstPartyCategoryType categoryType;
 		
 	public Integer getIdCategory() {

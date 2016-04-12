@@ -1,8 +1,10 @@
 package com.ahm.jx.ttm.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Table;
 
+@Entity
 @Table(name="ahmjxmst_motor")
 public class AhmjxmstMotor extends AhmjxmstProduct {
 
