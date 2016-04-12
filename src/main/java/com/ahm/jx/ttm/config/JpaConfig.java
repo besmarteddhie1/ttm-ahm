@@ -18,14 +18,13 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.ClassUtils;
 
-import com.ahm.jx.Application;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 @EnableTransactionManagement
 @PropertySource("classpath:persistence.properties")
-@EnableJpaRepositories(basePackageClasses = Application.class)
+@EnableJpaRepositories("com.ahm.jx.ttm.model")
 class JpaConfig {
 
     @Value("${dataSource.driverClassName}")
@@ -67,7 +66,8 @@ class JpaConfig {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
 
-        String entities = ClassUtils.getPackageName(Application.class);
+        //String entities = ClassUtils.getPackageName(Application.class);
+        String entities = "com.ahm.jx.ttm.model";        
         String converters = ClassUtils.getPackageName(Jsr310JpaConverters.class);
         entityManagerFactoryBean.setPackagesToScan(entities, converters);
 
