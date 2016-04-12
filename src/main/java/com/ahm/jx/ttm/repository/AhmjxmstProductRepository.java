@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.ahm.jx.ttm.model.AhmjxmstProduct;
 
 @Repository
-public interface AhmjxmstProductRepository extends JpaRepository<AhmjxmstProduct, Integer> {
+public interface AhmjxmstProductRepository extends JpaRepository<AhmjxmstProduct, String> {
 	
 }
