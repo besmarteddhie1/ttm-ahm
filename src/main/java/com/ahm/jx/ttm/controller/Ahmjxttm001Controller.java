@@ -15,6 +15,8 @@ import com.ahm.jx.ttm.model.AhmjxTtmRingType;
 import com.ahm.jx.ttm.model.AhmjxTtmWeType;
 import com.ahm.jx.ttm.model.AhmjxmstPartyCategory;
 import com.ahm.jx.ttm.model.AhmjxmstPartyCategoryType;
+import com.ahm.jx.ttm.model.AhmjxmstProductCategory;
+import com.ahm.jx.ttm.model.AhmjxmstProductCategoryType;
 import com.ahm.jx.ttm.repository.AhmjxTtmLocationTypeRepository;
 import com.ahm.jx.ttm.repository.AhmjxTtmRingTypeRepository;
 import com.ahm.jx.ttm.repository.AhmjxTtmWeTypeRepository;
@@ -42,7 +44,23 @@ public class Ahmjxttm001Controller {
 	AhmjxmstProductCategoryRepository productCategoryRepo;
 	
 	@Autowired
-	AhmjxTtmWeTypeRepository weTypeRepo;	
+	AhmjxTtmWeTypeRepository weTypeRepo;
+	
+	@RequestMapping(value="sp", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@Transactional
+	public List<AhmjxmstProductCategoryType> getSegmentasiProduct() {
+		List<AhmjxmstProductCategoryType> d = productCategoryRepo.findByParentCategoryType(AhmjxmstPartyCategoryType.TYPE_SALES_FORCE);
+		for (AhmjxmstProductCategoryType a: d) a.getCategories().size();		
+		return d;
+	}	
+	
+	//Product Category Update
+	@RequestMapping(value="procatupd", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public AhmjxmstProductCategory setProductCategoryUpdate(AhmjxmstProductCategory entity) {
+		return productCategoryRepo.save(entity);
+	}	
 	
 	@RequestMapping(value="sf", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
@@ -59,7 +77,9 @@ public class Ahmjxttm001Controller {
 	public List<AhmjxmstPartyCategory> getDealerClassfication() {
 		List<AhmjxmstPartyCategory> d = partyCategoryRepo.queryByCategoryType(AhmjxmstPartyCategoryType.TYPE_DEALER_SALES_CLASSIFICATION);		
 		return d;
-	}	
+	}
+	
+	//Party Category Update
 	
 	@RequestMapping(value="parcatupd", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
