@@ -89,8 +89,6 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .logoutSuccessUrl("/login?logout")
                 .and()
-            .httpBasic()
-             	.and()                
             .rememberMe()
                 .rememberMeServices(rememberMeServices())
                 .key("remember-me-key")
