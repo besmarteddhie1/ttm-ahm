@@ -1,3 +1,9 @@
+/*	 
+* AHM Applikasi menggunakan Hibernate Session Factory
+* Dilakukan casting dari JPA EntityManagerFactory ke Hibernate EntityManagerFactory
+* Untuk membuat session Factory dan transactionManager 
+*/
+
 package com.ahm.jx.ttm.config;
 
 import java.util.Properties;
@@ -5,6 +11,8 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.jpa.HibernateEntityManagerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -61,31 +69,40 @@ class JpaConfig {
 
         return new HikariDataSource(config);
     }
-
+    
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
-        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
-        entityManagerFactoryBean.setDataSource(dataSource);
-
-        String entities = ClassUtils.getPackageName(Application.class);
-        //String entities = "com.ahm.jx.ttm.model";
-        String converters = ClassUtils.getPackageName(Jsr310JpaConverters.class);
-        entityManagerFactoryBean.setPackagesToScan(entities, converters);
-
-        entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-
+    public EntityManagerFactory entityManagerFactory() {
+    	HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+    	
         Properties jpaProperties = new Properties();
         jpaProperties.put(org.hibernate.cfg.Environment.DIALECT, dialect);
         jpaProperties.put(org.hibernate.cfg.Environment.HBM2DDL_AUTO, hbm2ddlAuto);
         jpaProperties.put(org.hibernate.cfg.Environment.SHOW_SQL, "true");
         jpaProperties.put(org.hibernate.cfg.Environment.FORMAT_SQL, "true");
-        entityManagerFactoryBean.setJpaProperties(jpaProperties);
+        
+        LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+        factory.setDataSource(dataSource());
 
-        return entityManagerFactoryBean;
-    }
+        String entities = ClassUtils.getPackageName(Application.class);
+        String converters = ClassUtils.getPackageName(Jsr310JpaConverters.class);
+        
+        factory.setPackagesToScan(entities, converters);
+        factory.setJpaVendorAdapter(vendorAdapter);
+        factory.setJpaProperties(jpaProperties);
+        factory.afterPropertiesSet();
+        
+        return factory.getObject();
+    }    
 
-    @Bean
+    @Bean(name = "transactionManager")
     public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
-        return new JpaTransactionManager(entityManagerFactory);
+    	JpaTransactionManager tx = new JpaTransactionManager();
+    	tx.setEntityManagerFactory(entityManagerFactory);
+        return tx;
     }
+    
+	@Bean(name = "sessionFactory")
+	public SessionFactory getSessionFactory() {	 
+		return ((HibernateEntityManagerFactory) entityManagerFactory()).getSessionFactory();
+	}
 }
