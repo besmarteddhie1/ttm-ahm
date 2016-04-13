@@ -7,9 +7,9 @@
 	
 	<!-- Map all errors to Spring MVC handler method. See CustomErrorController.generalError() -->
 	
-	<error-page>
+	<!-- <error-page>
     	<location>/generalError</location>
-	</error-page>
+	</error-page> -->
 	
 	
 </web-app>
