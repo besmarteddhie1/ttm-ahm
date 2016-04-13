@@ -1,165 +1,223 @@
-
-
 <div id="AHMJXUAM099" class="div-app" data-version="1.0">
-    <div class="global_message">
+	<div class="global_message">
 
-    </div>
-  
-  <div class="container">
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#menu1">Klasifikasi Dealer</a></li>
-    <li><a href="#menu2">Penamaan Ring</a></li>
-    <li><a href="#menu3">Penamaan Salesforce</a></li>
-    <li><a href="#menu4">Aktivitas Marketing</a></li>
-    <li><a href="#menu4">Kategori Lokasi Mkt Act</a></li>
-    
-  </ul>
+	</div>
 
-  <div class="tab-content">
-     <div id="menu1" class="tab-pane fade in active">
-      <h3>Klasifikasi Dealer</h3>
-	  
-    </div>
-    <div id="menu2" class="tab-pane fade">
-      <h3>Penamaan Ring 1</h3>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-    <div id="menu3" class="tab-pane fade">
-      <h3>Penamaan Salesforce</h3>
+	<div class="row">
+		<div class="col-md-12">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#menu1">Klasifikasi Dealer</a></li>
+				<li><a href="#menu2">Penamaan Ring</a></li>
+				<li><a href="#menu3">Penamaan Salesforce</a></li>
+				<li><a href="#menu4">Aktivitas Marketing</a></li>
+				<li><a href="#menu5">Kategori Lokasi Mkt Act</a></li>
 
-			<table id="tree">
-			
-			</table>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="tab-content">
+				<div id="menu1" class="tab-pane fade in active">
+					<h3>Klasifikasi Dealer</h3>
+
+					<div class="col-md-12">
+						<div id="table-container">
+							<table id="ahmjxuam001p01SearchTable"
+							data-method="get"
+							data-url="/ttm001/sf"
+							data-content-type="application/json"
+							data-data-type="json"
+							data-query-params-type="limit"
+							data-query-params="ahmjxuam001Presearch"
+							data-response-handler="loadData"
+							data-side-pagination="server"
+							data-pagination="true"
+							data-custom-action="edit"
+							data-edit-func="ahmjxuam001PrepareEdit"
+							data-checkbox-table="ahmjxuam001p01TableDelete"
+							data-unique-id="vid">
+							<thead>
+								<tr>
+
+									<th data-field="state" 
+									data-checkbox="true"
+									data-formatter="stateFormatter"></th>
+
+									<th data-field="vid" 
+									data-sortable="true"
+									data-visible="false"
+									>ID User</th>
+									<th data-field="vusername" 
+									data-sortable="true"
+									data-visible="true"
+									>Username</th>
+									<th data-field="vpassword" 
+									data-sortable="true"
+									data-visible="false"
+									>Password</th>
+									<th data-field="iver" 
+									data-sortable="true"
+									data-visible="false"
+									>Iver</th>
+									<th data-field="vstat" 
+									data-sortable="true" 
+									data-visible="true"
+									>Status</th>
+								</tr>
+							</thead>
+
+						</table>
+					</div>
+				</div>
+
+			</div>
+
+
+			<div id="menu2" class="tab-pane fade">
+				<h3>Penamaan Ring 1</h3>
+				<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
+			<div id="menu3" class="tab-pane fade">
+				<h3>Penamaan Salesforce</h3>
+
+				<table id="tree">
+
+				</table>
+
+
+			</div>
+			<div id="menu4" class="tab-pane fade">
+				<h3>Aktivitas Marketing</h3>
+				<p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+			</div>
+
+			<div id="menu5" class="tab-pane fade">
+				<h3>Kategori Lokasi Mkt Act</h3>
+				<p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+			</div>
+		</div> <!-- end of tab-content -->
 		
-		
-    </div>
-    <div id="menu4" class="tab-pane fade">
-      <h3>Aktivitas Marketing</h3>
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-    </div>
-    
-    <div id="menu5" class="tab-pane fade">
-      <h3>Kategori Lokasi Mkt Act</h3>
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-    </div>
-  </div>
+	</div>
 </div>
-  
-  </div>
-  
+
+
+</div>
+
 <script type="text/javascript">
 
-    var SOURCE= CLIPBOARD = null;;
+	var SOURCE= CLIPBOARD = null;;
 
-      $(function(){
-              	
-        $(".nav-tabs a").click(function(){
-        	$(this).tab('show');
-       	});
+	$(function(){
 
-        $.ajax
-        ({
-            type: "GET",
-            url: baseURL+"/ttm001/sf",
-            contentType: "application/json",
-            dataType: 'json',
-            async: false,
-            data: JSON.stringify()
-        })
-        .done(function(data){
-            console.log('data==>',JSON.stringify(data));
-            var parsed = JSON.parse(JSON.stringify(data), function(k, v) {
-                if (k === "description") 
-                    this.title = v;
-                else if (k === "categories")
-                    this.children = v;
-                else
-                    return v;
-            });
+		$(".nav-tabs a").click(function(){
+			$(this).tab('show');
+		});
 
-            SOURCE = parsed;	
-           })
+		$.ajax
+		({
+			type: "GET",
+			url: baseURL+"/ttm001/sf",
+			contentType: "application/json",
+			dataType: 'json',
+			async: false,
+			data: JSON.stringify()
+		})
+		.done(function(data){
+			console.log('data==>',JSON.stringify(data));
+			var parsed = JSON.parse(JSON.stringify(data), function(k, v) {
+				if (k === "description") 
+					this.title = v;
+				else if (k === "categories")
+					this.children = v;
+				else
+					return v;
+			});
 
-        $("#tree").fancytree({
-        	source: SOURCE,
-        }).on("nodeCommand", function(event, data){
-            // Custom event handler that is triggered by keydown-handler and
-            // context menu:
-            var refNode, moveMode,
-              tree = $(this).fancytree("getTree"),
-              node = tree.getActiveNode();
+			SOURCE = parsed;	
+		})
 
-            switch( data.cmd ) {
-            case "moveUp":
-              refNode = node.getPrevSibling();
-              if( refNode ) {
-                node.moveTo(refNode, "before");
-                node.setActive();
-              }
-              break;
-            case "edit":
-              node.editStart();
-              break;
-            case "delete":
-              refNode = node.getNextSibling() || node.getPrevSibling() || node.getParent();
-              node.remove();
-              if( refNode ) {
-                refNode.setActive();
-              }
-              break;
-            case "add":
-             // node.editCreateNode("after", "");
-             addNode(node);
-              break;  
-            default:
-              alert("Unhandled command: " + data.cmd);
-              return;
-            }
-          }).on("keydown", function(e){
-            var cmd = null;
+		$("#tree").fancytree({
+			source: SOURCE,
+		}).on("nodeCommand", function(event, data){
+			// Custom event handler that is triggered by keydown-handler and
+			// context menu:
+			var refNode, moveMode,
+			tree = $(this).fancytree("getTree"),
+			node = tree.getActiveNode();
 
-            // console.log(e.type, $.ui.fancytree.eventToString(e));
-            switch( $.ui.fancytree.eventToString(e) ) {}
-            
-            if( cmd ){
-              $(this).trigger("nodeCommand", {cmd: cmd});
-              // e.preventDefault();
-              // e.stopPropagation();
-              return false;
-            }
-          });;
+			switch( data.cmd ) {
+				case "moveUp":
+				refNode = node.getPrevSibling();
+				if( refNode ) {
+					node.moveTo(refNode, "before");
+					node.setActive();
+				}
+				break;
+				case "edit":
+				node.editStart();
+				break;
+				case "delete":
+				refNode = node.getNextSibling() || node.getPrevSibling() || node.getParent();
+				node.remove();
+				if( refNode ) {
+					refNode.setActive();
+				}
+				break;
+				case "add":
+			// node.editCreateNode("after", "");
+			addNode(node);
+			break;  
+			default:
+			alert("Unhandled command: " + data.cmd);
+			return;
+		}
+	}).on("keydown", function(e){
+		var cmd = null;
 
-        $("#tree").contextmenu({
-            delegate: "span.fancytree-node",
-            menu: [
-              {title: "Add ", cmd: "add", uiIcon: "ui-icon-plus" },
-              {title: "Edit", cmd: "edit", uiIcon: "ui-icon-pencil" },
-              {title: "Delete", cmd: "delete", uiIcon: "ui-icon-trash" },
-             ],
-            beforeOpen: function(event, ui) {
-              var node = $.ui.fancytree.getNode(ui.target);
-              $("#tree").contextmenu("enableEntry", "paste", !!CLIPBOARD);
-              node.setActive();
-            },
-            select: function(event, ui) {
-              var that = this;
-              // delay the event, so the menu can close and the click event does
-              // not interfere with the edit control
-              setTimeout(function(){
-                $(that).trigger("nodeCommand", {cmd: ui.cmd});
-              }, 100);
-            }
-          });
-      		
-    });
+			// console.log(e.type, $.ui.fancytree.eventToString(e));
+			switch( $.ui.fancytree.eventToString(e) ) {}
+			
+			if( cmd ){
+				$(this).trigger("nodeCommand", {cmd: cmd});
+			  // e.preventDefault();
+			  // e.stopPropagation();
+			  return false;
+			}
+		});;
+
+	$("#tree").contextmenu({
+		delegate: "span.fancytree-node",
+		menu: [
+		{title: "Add ", cmd: "add", uiIcon: "ui-icon-plus" },
+		{title: "Edit", cmd: "edit", uiIcon: "ui-icon-pencil" },
+		{title: "Delete", cmd: "delete", uiIcon: "ui-icon-trash" },
+		],
+		beforeOpen: function(event, ui) {
+			var node = $.ui.fancytree.getNode(ui.target);
+			$("#tree").contextmenu("enableEntry", "paste", !!CLIPBOARD);
+			node.setActive();
+		},
+		select: function(event, ui) {
+			var that = this;
+			  // delay the event, so the menu can close and the click event does
+			  // not interfere with the edit control
+			  setTimeout(function(){
+			  	$(that).trigger("nodeCommand", {cmd: ui.cmd});
+			  }, 100);
+			}
+		});
+
+});
 
 
-      function addNode(){
-			console.log("tes");
-          };
-	
+function addNode(){
+	console.log("tes");
+};
 
- 
+
+
 
 </script>
 
