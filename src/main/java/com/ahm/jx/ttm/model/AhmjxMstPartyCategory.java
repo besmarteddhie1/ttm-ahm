@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @Table(name="ahmjxmst_party_category")
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="idCategory")
-public class AhmjxmstPartyCategory extends BaseEntity {
+public class AhmjxMstPartyCategory extends BaseEntity {
 
 	private static final long serialVersionUID = -2500926500169885029L;
 	
@@ -34,7 +34,7 @@ public class AhmjxmstPartyCategory extends BaseEntity {
 
 	@ManyToOne
 	@JoinColumn(name="idcattype")
-	private AhmjxmstPartyCategoryType categoryType;
+	private AhmjxMstPartyCategoryType categoryType;
 		
 	public Integer getIdCategory() {
 		return idCategory;
@@ -60,11 +60,11 @@ public class AhmjxmstPartyCategory extends BaseEntity {
 		this.idCategoryType = idCategoryType;
 	}
 
-	public AhmjxmstPartyCategoryType getCategoryType() {
+	public AhmjxMstPartyCategoryType getCategoryType() {
 		return categoryType;
 	}
 
-	public void setCategoryType(AhmjxmstPartyCategoryType categoryType) {
+	public void setCategoryType(AhmjxMstPartyCategoryType categoryType) {
 		this.categoryType = categoryType;
 	}
 
@@ -77,8 +77,8 @@ public class AhmjxmstPartyCategory extends BaseEntity {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof AhmjxmstPartyCategory)) return false;
-		AhmjxmstPartyCategory other = (AhmjxmstPartyCategory) obj;
+		if (!(obj instanceof AhmjxMstPartyCategory)) return false;
+		AhmjxMstPartyCategory other = (AhmjxMstPartyCategory) obj;
 		return new EqualsBuilder()
 			.append( getIdCategory(), other.getIdCategory() )
 			.isEquals();

@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @Table(name="ahmjxmst_party_category_type")
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="idCategoryType")
-public class AhmjxmstPartyCategoryType extends BaseEntity {
+public class AhmjxMstPartyCategoryType extends BaseEntity {
 
 	private static final long serialVersionUID = -2500926500169885028L;
 	
@@ -37,13 +37,13 @@ public class AhmjxmstPartyCategoryType extends BaseEntity {
 	private String description;	
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="categoryType")
-	private List<AhmjxmstPartyCategory> categories = new ArrayList<AhmjxmstPartyCategory>();
+	private List<AhmjxMstPartyCategory> categories = new ArrayList<AhmjxMstPartyCategory>();
 	
 	@Column(name="idprncattyp")
 	private Integer parentCategoryType;	
 	
 	@Transient
-	private List<AhmjxmstPartyCategory> values;
+	private List<AhmjxMstPartyCategory> values;
 		
 	public Integer getIdCategoryType() {
 		return idCategoryType;
@@ -69,22 +69,22 @@ public class AhmjxmstPartyCategoryType extends BaseEntity {
 		this.parentCategoryType = parentCategoryType;
 	}
 
-	public List<AhmjxmstPartyCategory> getCategories() {
+	public List<AhmjxMstPartyCategory> getCategories() {
 		return categories;
 	}
 
-	public void setCategories(List<AhmjxmstPartyCategory> categories) {
+	public void setCategories(List<AhmjxMstPartyCategory> categories) {
 		this.categories = categories;
 	}
 
-	public List<AhmjxmstPartyCategory> getValues() {
+	public List<AhmjxMstPartyCategory> getValues() {
 		if (values == null) {
 			values = getCategories();			
 		}
 		return values;
 	}
 
-	public void setValues(List<AhmjxmstPartyCategory> values) {
+	public void setValues(List<AhmjxMstPartyCategory> values) {
 		this.values = values;
 	}
 
@@ -97,8 +97,8 @@ public class AhmjxmstPartyCategoryType extends BaseEntity {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof AhmjxmstPartyCategoryType)) return false;
-		AhmjxmstPartyCategoryType other = (AhmjxmstPartyCategoryType) obj;
+		if (!(obj instanceof AhmjxMstPartyCategoryType)) return false;
+		AhmjxMstPartyCategoryType other = (AhmjxMstPartyCategoryType) obj;
 		return new EqualsBuilder()
 			.append( getIdCategoryType(), other.getIdCategoryType() )
 			.isEquals();

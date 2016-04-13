@@ -10,42 +10,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ahm.jx.ttm.model.AhmjxTtmLocationType;
+import com.ahm.jx.ttm.model.AhmjxMstFacilityType;
+import com.ahm.jx.ttm.model.AhmjxMstPartyCategory;
+import com.ahm.jx.ttm.model.AhmjxMstPartyCategoryType;
+import com.ahm.jx.ttm.model.AhmjxMstProductCategory;
+import com.ahm.jx.ttm.model.AhmjxMstProductCategoryType;
 import com.ahm.jx.ttm.model.AhmjxTtmRingType;
 import com.ahm.jx.ttm.model.AhmjxTtmWeType;
-import com.ahm.jx.ttm.model.AhmjxmstPartyCategory;
-import com.ahm.jx.ttm.model.AhmjxmstPartyCategoryType;
-import com.ahm.jx.ttm.model.AhmjxmstProductCategory;
-import com.ahm.jx.ttm.model.AhmjxmstProductCategoryType;
-import com.ahm.jx.ttm.repository.AhmjxTtmLocationTypeRepository;
+import com.ahm.jx.ttm.repository.AhmjxMstFacilityTypeRepository;
+import com.ahm.jx.ttm.repository.AhmjxMstPartyCategoryRepository;
+import com.ahm.jx.ttm.repository.AhmjxMstPartyCategoryTypeRepository;
+import com.ahm.jx.ttm.repository.AhmjxMstProductCategoryRepository;
+import com.ahm.jx.ttm.repository.AhmjxMstProductCategoryTypeRepository;
 import com.ahm.jx.ttm.repository.AhmjxTtmRingTypeRepository;
 import com.ahm.jx.ttm.repository.AhmjxTtmWeTypeRepository;
-import com.ahm.jx.ttm.repository.AhmjxmstPartyCategoryRepository;
-import com.ahm.jx.ttm.repository.AhmjxmstPartyCategoryTypeRepository;
-import com.ahm.jx.ttm.repository.AhmjxmstProductCategoryRepository;
-import com.ahm.jx.ttm.repository.AhmjxmstProductCategoryTypeRepository;
 
 @Controller
 @RequestMapping(value="/ttm001")
 public class Ahmjxttm001Controller {
 	
 	@Autowired
-	AhmjxmstPartyCategoryRepository partyCategoryRepo;
+	AhmjxMstPartyCategoryRepository partyCategoryRepo;
 	
 	@Autowired
 	AhmjxTtmRingTypeRepository ringTypeRepo;
 	
 	@Autowired
-	AhmjxTtmLocationTypeRepository locTypeRepo;	
+	AhmjxMstFacilityTypeRepository facilityTypeRepo;	
 	
 	@Autowired
-	AhmjxmstPartyCategoryTypeRepository partyCategoryTypeRepo;	
+	AhmjxMstPartyCategoryTypeRepository partyCategoryTypeRepo;	
 	
 	@Autowired
-	AhmjxmstProductCategoryRepository productCategoryRepo;
+	AhmjxMstProductCategoryRepository productCategoryRepo;
 	
 	@Autowired
-	AhmjxmstProductCategoryTypeRepository productCategoryTypeRepo;	
+	AhmjxMstProductCategoryTypeRepository productCategoryTypeRepo;	
 	
 	@Autowired
 	AhmjxTtmWeTypeRepository weTypeRepo;
@@ -53,25 +53,25 @@ public class Ahmjxttm001Controller {
 	@RequestMapping(value="sp", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@Transactional
-	public List<AhmjxmstProductCategoryType> getSegmentasiProduct() {
-		List<AhmjxmstProductCategoryType> d = productCategoryTypeRepo.findByParentCategoryType(AhmjxmstProductCategoryType.TYPE_CUB);
-		for (AhmjxmstProductCategoryType a: d) a.getCategories().size();		
+	public List<AhmjxMstProductCategoryType> getSegmentasiProduct() {
+		List<AhmjxMstProductCategoryType> d = productCategoryTypeRepo.findByParentCategoryType(AhmjxMstProductCategoryType.TYPE_CUB);
+		for (AhmjxMstProductCategoryType a: d) a.getCategories().size();		
 		return d;
 	}	
 	
 	//Product Category Update
 	@RequestMapping(value="procatupd", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public AhmjxmstProductCategory setProductCategoryUpdate(AhmjxmstProductCategory entity) {
+	public AhmjxMstProductCategory setProductCategoryUpdate(AhmjxMstProductCategory entity) {
 		return productCategoryRepo.save(entity);
 	}	
 	
 	@RequestMapping(value="sf", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@Transactional
-	public List<AhmjxmstPartyCategoryType> getSalesForce() {
-		List<AhmjxmstPartyCategoryType> d = partyCategoryTypeRepo.findByParentCategoryType(AhmjxmstPartyCategoryType.TYPE_SALES_FORCE);
-		for (AhmjxmstPartyCategoryType a: d) a.getCategories().size();		
+	public List<AhmjxMstPartyCategoryType> getSalesForce() {
+		List<AhmjxMstPartyCategoryType> d = partyCategoryTypeRepo.findByParentCategoryType(AhmjxMstPartyCategoryType.TYPE_SALES_FORCE);
+		for (AhmjxMstPartyCategoryType a: d) a.getCategories().size();		
 		return d;
 	}
 		
@@ -79,8 +79,8 @@ public class Ahmjxttm001Controller {
 	@RequestMapping(value="dc", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@Transactional
-	public List<AhmjxmstPartyCategory> getDealerClassfication() {
-		List<AhmjxmstPartyCategory> d = partyCategoryRepo.queryByCategoryType(AhmjxmstPartyCategoryType.TYPE_DEALER_SALES_CLASSIFICATION);		
+	public List<AhmjxMstPartyCategory> getDealerClassfication() {
+		List<AhmjxMstPartyCategory> d = partyCategoryRepo.queryByCategoryType(AhmjxMstPartyCategoryType.TYPE_DEALER_SALES_CLASSIFICATION);		
 		return d;
 	}
 	
@@ -88,7 +88,7 @@ public class Ahmjxttm001Controller {
 	
 	@RequestMapping(value="parcatupd", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public AhmjxmstPartyCategory setSalesForce(AhmjxmstPartyCategory entity) {
+	public AhmjxMstPartyCategory setSalesForce(AhmjxMstPartyCategory entity) {
 		return partyCategoryRepo.save(entity);
 	}
 	
@@ -110,16 +110,16 @@ public class Ahmjxttm001Controller {
 	@RequestMapping(value="loc", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@Transactional
-	public List<AhmjxTtmLocationType> getLocType() {
-		List<AhmjxTtmLocationType> d = locTypeRepo.findAll();		
+	public List<AhmjxMstFacilityType> getLocType() {
+		List<AhmjxMstFacilityType> d = facilityTypeRepo.findAll();		
 		return d;
 	}
 	
 	@RequestMapping(value="loc", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@Transactional
-	public AhmjxTtmLocationType setLocType(AhmjxTtmLocationType entity) {		
-		return locTypeRepo.save(entity);
+	public AhmjxMstFacilityType setLocType(AhmjxMstFacilityType entity) {		
+		return facilityTypeRepo.save(entity);
 	}
 	
 	@RequestMapping(value="wet", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

@@ -11,24 +11,24 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-@Table(name="ahmjxttm_location_type")
-public class AhmjxTtmLocationType extends BaseEntity {
+@Table(name="ahmjxmst_facility_type")
+public class AhmjxMstFacilityType extends BaseEntity {
 
 	private static final long serialVersionUID = 6855387447315081927L;
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="idloctype")
-	private Integer idLocationType;
+	@Column(name="idfactype")
+	private Integer idFacilityType;
 		
 	@Column(name="vdescription")
 	private String description;	
 
-	public Integer getIdLocationType() {
-		return idLocationType;
+	public Integer getIdFacilityType() {
+		return idFacilityType;
 	}
 
-	public void setIdLocationType(Integer idLocationType) {
-		this.idLocationType = idLocationType;
+	public void setIdFacilityType(Integer idLocationType) {
+		this.idFacilityType = idLocationType;
 	}
 
 	public String getDescription() {
@@ -42,16 +42,16 @@ public class AhmjxTtmLocationType extends BaseEntity {
 	@Override
 	public int hashCode() {
 		return new HashCodeBuilder()
-			.append(getIdLocationType())
+			.append(getIdFacilityType())
 			.toHashCode();
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof AhmjxTtmLocationType)) return false;
-		AhmjxTtmLocationType other = (AhmjxTtmLocationType) obj;
+		if (!(obj instanceof AhmjxMstFacilityType)) return false;
+		AhmjxMstFacilityType other = (AhmjxMstFacilityType) obj;
 		return new EqualsBuilder()
-			.append( getIdLocationType(), other.getIdLocationType() )
+			.append( getIdFacilityType(), other.getIdFacilityType() )
 			.isEquals();
 	}		
 

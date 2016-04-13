@@ -11,8 +11,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-@Table(name="ahmjxmst_party_role")
-public class AhmjxmstPartyRole extends BaseEntity {
+@Table(name="AhmjxMst_party_role")
+public class AhmjxMstPartyRole extends BaseEntity {
 	
 	private static final long serialVersionUID = -4908805860847567141L;
 	
@@ -22,7 +22,7 @@ public class AhmjxmstPartyRole extends BaseEntity {
 	@MapsId("idParty")
 	@ManyToOne
     @JoinColumn(name="idparty")
-    private AhmjxmstParty party;
+    private AhmjxMstParty party;
 	
 	public PartyRoleId getIdPartyRole() {
 		return idPartyRole;
@@ -32,18 +32,18 @@ public class AhmjxmstPartyRole extends BaseEntity {
 		this.idPartyRole = idPartyRole;
 	}
 
-	public void setParty(AhmjxmstParty party) {
+	public void setParty(AhmjxMstParty party) {
 		this.party = party;
 	}
 
-	public AhmjxmstPartyRole() {
+	public AhmjxMstPartyRole() {
 	}
 	
 
 	@Override
 	public boolean equals(Object obj) {		
-		if (!(obj instanceof AhmjxmstPartyRole)) return false;
-		AhmjxmstPartyRole other = (AhmjxmstPartyRole) obj;
+		if (!(obj instanceof AhmjxMstPartyRole)) return false;
+		AhmjxMstPartyRole other = (AhmjxMstPartyRole) obj;
 		return new EqualsBuilder()
 			.append(getIdPartyRole(), other.getIdPartyRole())
 			.isEquals();

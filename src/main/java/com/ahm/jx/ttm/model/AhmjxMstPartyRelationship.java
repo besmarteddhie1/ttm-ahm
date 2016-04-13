@@ -30,11 +30,11 @@ import org.hibernate.annotations.Where;
 
 
 @Entity
-@Table(name="ahmjxmst_party_relationship") 
+@Table(name="AhmjxMst_party_relationship") 
 @Inheritance(strategy=InheritanceType.JOINED)
 @Where(clause = "current_timestamp between dtfrom and dtthru")
 @Cacheable(true)
-public class AhmjxmstPartyRelationship extends BaseEntity {
+public class AhmjxMstPartyRelationship extends BaseEntity {
 	
 	private static final long serialVersionUID = 349047101370812998L;
 	
@@ -54,34 +54,34 @@ public class AhmjxmstPartyRelationship extends BaseEntity {
 	@JoinColumns({
 		@JoinColumn(name="idpartyfrom", referencedColumnName="idparty"),
 		@JoinColumn(name="idroletypefrom", referencedColumnName="idroletype")})
-	private AhmjxmstPartyRole roleFrom;
+	private AhmjxMstPartyRole roleFrom;
     
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumns({
 		@JoinColumn(name="idpartyto", referencedColumnName="idparty"),
 		@JoinColumn(name="idroletypeto", referencedColumnName="idroletype")})
-	private AhmjxmstPartyRole roleTo;
+	private AhmjxMstPartyRole roleTo;
 	
 	@Embedded
     private DataPeriod dataPeriod;	
 	
-    public AhmjxmstPartyRole getRoleFrom() {
+    public AhmjxMstPartyRole getRoleFrom() {
 		return roleFrom;
 	}
 
-	public void setRoleFrom(AhmjxmstPartyRole partyRoleFrom) {
+	public void setRoleFrom(AhmjxMstPartyRole partyRoleFrom) {
 		this.roleFrom = partyRoleFrom;
 	}
 
-	public AhmjxmstPartyRole getRoleTo() {
+	public AhmjxMstPartyRole getRoleTo() {
 		return roleTo;
 	}
 
-	public void setRoleTo(AhmjxmstPartyRole roleTo) {
+	public void setRoleTo(AhmjxMstPartyRole roleTo) {
 		this.roleTo = roleTo;
 	}
 
-	public AhmjxmstPartyRelationship() {
+	public AhmjxMstPartyRelationship() {
     }
 
 	public String getIdRelation() {
@@ -131,8 +131,8 @@ public class AhmjxmstPartyRelationship extends BaseEntity {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof AhmjxmstPartyRelationship)) return false;
-		AhmjxmstPartyRelationship other = (AhmjxmstPartyRelationship) obj;
+		if (!(obj instanceof AhmjxMstPartyRelationship)) return false;
+		AhmjxMstPartyRelationship other = (AhmjxMstPartyRelationship) obj;
 		return new EqualsBuilder()
 			.append( getIdRelation(), other.getIdRelation() )
 			.isEquals();

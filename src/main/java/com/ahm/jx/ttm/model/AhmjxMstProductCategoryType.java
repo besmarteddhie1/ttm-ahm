@@ -20,9 +20,9 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
 @Entity
-@Table(name="ahmjxmst_product_category_type")
+@Table(name="AhmjxMst_product_category_type")
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="idCategoryType")
-public class AhmjxmstProductCategoryType extends BaseEntity {
+public class AhmjxMstProductCategoryType extends BaseEntity {
 
 	private static final long serialVersionUID = -2500926500169885028L;
 	
@@ -40,7 +40,7 @@ public class AhmjxmstProductCategoryType extends BaseEntity {
 	
 	@OneToMany
 	@JoinColumn(name="idcattype")
-	private List<AhmjxmstProductCategory> categories = new ArrayList<AhmjxmstProductCategory>();	
+	private List<AhmjxMstProductCategory> categories = new ArrayList<AhmjxMstProductCategory>();	
 	
 	public Integer getIdCategoryType() {
 		return idCategoryType;
@@ -66,11 +66,11 @@ public class AhmjxmstProductCategoryType extends BaseEntity {
 		this.parentCategoryType = parentCategoryType;
 	}
 
-	public List<AhmjxmstProductCategory> getCategories() {
+	public List<AhmjxMstProductCategory> getCategories() {
 		return categories;
 	}
 
-	public void setCategories(List<AhmjxmstProductCategory> categories) {
+	public void setCategories(List<AhmjxMstProductCategory> categories) {
 		this.categories = categories;
 	}
 
@@ -83,8 +83,8 @@ public class AhmjxmstProductCategoryType extends BaseEntity {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof AhmjxmstProductCategoryType)) return false;
-		AhmjxmstProductCategoryType other = (AhmjxmstProductCategoryType) obj;
+		if (!(obj instanceof AhmjxMstProductCategoryType)) return false;
+		AhmjxMstProductCategoryType other = (AhmjxMstProductCategoryType) obj;
 		return new EqualsBuilder()
 			.append( getIdCategoryType(), other.getIdCategoryType() )
 			.isEquals();

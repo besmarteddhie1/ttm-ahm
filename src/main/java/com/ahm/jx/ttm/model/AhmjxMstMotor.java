@@ -5,8 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ahmjxmst_motor")
-public class AhmjxmstMotor extends AhmjxmstProduct {
+@Table(name="AhmjxMst_motor")
+public class AhmjxMstMotor extends AhmjxMstProduct {
 
 	private static final long serialVersionUID = -3122944560658360341L;
 	

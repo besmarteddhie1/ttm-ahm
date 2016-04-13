@@ -6,11 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import com.ahm.jx.ttm.model.AhmjxmstProductCategoryType;
+import com.ahm.jx.ttm.model.AhmjxMstProductCategoryType;
 
 @RepositoryRestResource(collectionResourceRel = "productcategorytype", path = "productcategorytype")
-public interface AhmjxmstProductCategoryTypeRepository extends JpaRepository<AhmjxmstProductCategoryType, Integer> {
+public interface AhmjxMstProductCategoryTypeRepository extends JpaRepository<AhmjxMstProductCategoryType, Integer> {
 	
-	List<AhmjxmstProductCategoryType> findByParentCategoryType(@Param("idprntcat") Integer parentCatType);
+	List<AhmjxMstProductCategoryType> findByParentCategoryType(@Param("idprntcat") Integer parentCatType);
 
 }

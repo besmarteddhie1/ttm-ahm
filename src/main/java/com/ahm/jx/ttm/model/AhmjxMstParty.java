@@ -21,7 +21,7 @@ import org.hibernate.annotations.Where;
 @Entity
 @Table(name="ahmjxmst_party")
 @Inheritance(strategy=InheritanceType.JOINED)
-public class AhmjxmstParty extends BaseEntity {
+public class AhmjxMstParty extends BaseEntity {
 
 	private static final long serialVersionUID = -8438400975266936737L;
 	
@@ -41,32 +41,32 @@ public class AhmjxmstParty extends BaseEntity {
 
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="party")
 	@Where(clause="current_timestamp between dtfrom and dtthru")
-	private List<AhmjxmstPartyClassification> classification = new ArrayList<AhmjxmstPartyClassification>();
+	private List<AhmjxMstPartyClassification> classification = new ArrayList<AhmjxMstPartyClassification>();
 	
-	public AhmjxmstPartyClassification setCategory(AhmjxmstPartyCategory c) {
-		for (AhmjxmstPartyClassification o: classification) {
+	public AhmjxMstPartyClassification setCategory(AhmjxMstPartyCategory c) {
+		for (AhmjxMstPartyClassification o: classification) {
 			if (o.getCategory().getCategoryType().equals(c.getCategoryType())) {
 				if (o.getCategory().equals(c)) return o;
 				o.getPeriods().endPeriod();
 			}
 		}
 		
-		AhmjxmstPartyClassification o = new AhmjxmstPartyClassification();
+		AhmjxMstPartyClassification o = new AhmjxMstPartyClassification();
 		o.setParty(this);
 		o.setCategory(c);
 		o.setPeriods(new DataPeriod());
 		return o;
 	}
 	
-	public AhmjxmstPartyCategory getCategory(Integer typeCat) {
-		for (AhmjxmstPartyClassification o: classification) 
+	public AhmjxMstPartyCategory getCategory(Integer typeCat) {
+		for (AhmjxMstPartyClassification o: classification) 
 			if (o.getCategory().getCategoryType().getIdCategoryType().equals(typeCat))
 				return o.getCategory();		
 		return null;
 	}	
 
 
-	public void setClassification(List<AhmjxmstPartyClassification> classification) {
+	public void setClassification(List<AhmjxMstPartyClassification> classification) {
 		this.classification = classification;
 	}	
 	
@@ -79,8 +79,8 @@ public class AhmjxmstParty extends BaseEntity {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof AhmjxmstParty)) return false;
-		AhmjxmstParty other = (AhmjxmstParty) obj;
+		if (!(obj instanceof AhmjxMstParty)) return false;
+		AhmjxMstParty other = (AhmjxMstParty) obj;
 		return new EqualsBuilder()
 			.append( getIdParty(), other.getIdParty() )
 			.isEquals();

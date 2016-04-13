@@ -5,11 +5,11 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 import org.springframework.http.MediaType;
 
-import com.ahm.jx.ttm.model.AhmjxmstOrganization;
-import com.ahm.jx.ttm.model.AhmjxmstPartyCategory;
-import com.ahm.jx.ttm.model.AhmjxmstPartyCategoryType;
-import com.ahm.jx.ttm.model.AhmjxmstPerson;
-import com.ahm.jx.ttm.model.AhmjxmstProductCategoryType;
+import com.ahm.jx.ttm.model.AhmjxMstOrganization;
+import com.ahm.jx.ttm.model.AhmjxMstPartyCategory;
+import com.ahm.jx.ttm.model.AhmjxMstPartyCategoryType;
+import com.ahm.jx.ttm.model.AhmjxMstPerson;
+import com.ahm.jx.ttm.model.AhmjxMstProductCategoryType;
 
 @Configuration
 public class RestMvcConfiguration extends RepositoryRestMvcConfiguration {
@@ -21,11 +21,11 @@ public class RestMvcConfiguration extends RepositoryRestMvcConfiguration {
 	    config.setDefaultPageSize(10);
 	    config.setDefaultMediaType(MediaType.APPLICATION_JSON);	    
 	    config.exposeIdsFor(
-	    		AhmjxmstPartyCategoryType.class, 
-	    		AhmjxmstPartyCategory.class,
-	    		AhmjxmstPerson.class,
-	    		AhmjxmstOrganization.class,
-	    		AhmjxmstProductCategoryType.class);
+	    		AhmjxMstPartyCategoryType.class, 
+	    		AhmjxMstPartyCategory.class,
+	    		AhmjxMstPerson.class,
+	    		AhmjxMstOrganization.class,
+	    		AhmjxMstProductCategoryType.class);
 	    return config;
 	}
 }

@@ -19,9 +19,9 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Where;
 
 @Entity
-@Table(name="ahmjxmst_product")
+@Table(name="AhmjxMst_product")
 @Inheritance(strategy=InheritanceType.JOINED)
-public class AhmjxmstProduct extends BaseEntity {
+public class AhmjxMstProduct extends BaseEntity {
 
 	private static final long serialVersionUID = -2500926500169885028L;
 	
@@ -39,25 +39,25 @@ public class AhmjxmstProduct extends BaseEntity {
 
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="product")
 	@Where(clause="current_timestamp between dtfrom and dtthru")
-	private List<AhmjxmstProductClassification> classification = new ArrayList<AhmjxmstProductClassification>();
+	private List<AhmjxMstProductClassification> classification = new ArrayList<AhmjxMstProductClassification>();
 	
-	public AhmjxmstProductClassification setCategory(AhmjxmstProductCategory c) {
-		for (AhmjxmstProductClassification o: classification) {
+	public AhmjxMstProductClassification setCategory(AhmjxMstProductCategory c) {
+		for (AhmjxMstProductClassification o: classification) {
 			if (o.getCategory().getCategoryType().equals(c.getCategoryType())) {
 				if (o.getCategory().equals(c)) return o;
 				o.getPeriods().endPeriod();
 			}
 		}
 		
-		AhmjxmstProductClassification o = new AhmjxmstProductClassification();
+		AhmjxMstProductClassification o = new AhmjxMstProductClassification();
 		o.setProduct(this);
 		o.setCategory(c);
 		o.setPeriods(new DataPeriod());
 		return o;
 	}
 	
-	public AhmjxmstProductCategory getCategory(Integer typeCat) {
-		for (AhmjxmstProductClassification o: classification) 
+	public AhmjxMstProductCategory getCategory(Integer typeCat) {
+		for (AhmjxMstProductClassification o: classification) 
 			if (o.getCategory().getCategoryType().getIdCategoryType().equals(typeCat))
 				return o.getCategory();		
 		return null;
@@ -87,11 +87,11 @@ public class AhmjxmstProduct extends BaseEntity {
 		this.description = description;
 	}
 	
-	public List<AhmjxmstProductClassification> getClassification() {
+	public List<AhmjxMstProductClassification> getClassification() {
 		return classification;
 	}
 
-	public void setClassification(List<AhmjxmstProductClassification> classification) {
+	public void setClassification(List<AhmjxMstProductClassification> classification) {
 		this.classification = classification;
 	}	
 	
@@ -104,8 +104,8 @@ public class AhmjxmstProduct extends BaseEntity {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof AhmjxmstProduct)) return false;
-		AhmjxmstProduct other = (AhmjxmstProduct) obj;
+		if (!(obj instanceof AhmjxMstProduct)) return false;
+		AhmjxMstProduct other = (AhmjxMstProduct) obj;
 		return new EqualsBuilder()
 			.append( getIdProduct(), other.getIdProduct() )
 			.isEquals();
