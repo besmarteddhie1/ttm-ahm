@@ -74,6 +74,7 @@ public class Ahmjxttm001Controller {
 		for (AhmjxmstPartyCategoryType a: d) a.getCategories().size();		
 		return d;
 	}
+		
 	
 	@RequestMapping(value="dc", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody

@@ -887,3 +887,10 @@ thead tr {
         }
 }
 
+
+
+/* Mod by Sigit */
+.div-app .nav-tabs>li>a.inner-tab {
+    padding: 10px !important;
+}
+/* End of mod*/
