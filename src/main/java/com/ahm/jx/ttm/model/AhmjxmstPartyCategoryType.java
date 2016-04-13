@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -40,6 +41,9 @@ public class AhmjxmstPartyCategoryType extends BaseEntity {
 	
 	@Column(name="idprncattyp")
 	private Integer parentCategoryType;	
+	
+	@Transient
+	private List<AhmjxmstPartyCategory> values;
 		
 	public Integer getIdCategoryType() {
 		return idCategoryType;
@@ -71,6 +75,17 @@ public class AhmjxmstPartyCategoryType extends BaseEntity {
 
 	public void setCategories(List<AhmjxmstPartyCategory> categories) {
 		this.categories = categories;
+	}
+
+	public List<AhmjxmstPartyCategory> getValues() {
+		if (values == null) {
+			values = getCategories();			
+		}
+		return values;
+	}
+
+	public void setValues(List<AhmjxmstPartyCategory> values) {
+		this.values = values;
 	}
 
 	@Override
