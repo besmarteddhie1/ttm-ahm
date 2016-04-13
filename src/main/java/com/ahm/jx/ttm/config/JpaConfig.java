@@ -18,7 +18,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.ClassUtils;
 
-import com.ahm.jx.Application;
+import com.ahm.jx.ttm.Application;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -67,8 +67,8 @@ class JpaConfig {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
 
-        //String entities = ClassUtils.getPackageName(Application.class);
-        String entities = "com.ahm.jx.ttm.model";
+        String entities = ClassUtils.getPackageName(Application.class);
+        //String entities = "com.ahm.jx.ttm.model";
         String converters = ClassUtils.getPackageName(Jsr310JpaConverters.class);
         entityManagerFactoryBean.setPackagesToScan(entities, converters);
 

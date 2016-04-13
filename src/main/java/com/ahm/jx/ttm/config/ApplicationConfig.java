@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
-import com.ahm.jx.Application;
+import com.ahm.jx.ttm.Application;
 
 @Configuration
 @PropertySource("classpath:application.properties")
