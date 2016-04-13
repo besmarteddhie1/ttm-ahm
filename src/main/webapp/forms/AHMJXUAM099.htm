@@ -6,11 +6,11 @@
 	<div class="row">
 		<div class="col-md-12">
 			<ul class="nav nav-tabs">
-				<li class="active"><a href="#menu1">Klasifikasi Dealer</a></li>
-				<li><a href="#menu2">Penamaan Ring</a></li>
-				<li><a href="#menu3">Penamaan Salesforce</a></li>
-				<li><a href="#menu4">Aktivitas Marketing</a></li>
-				<li><a href="#menu5">Kategori Lokasi Mkt Act</a></li>
+				<li class="active"><a href="#menu1" class="inner-tab">Klasifikasi Dealer</a></li>
+				<li><a href="#menu2" class="inner-tab">Penamaan Ring</a></li>
+				<li><a href="#menu3" class="inner-tab">Penamaan Salesforce</a></li>
+				<li><a href="#menu4" class="inner-tab">Aktivitas Marketing</a></li>
+				<li><a href="#menu5" class="inner-tab">Kategori Lokasi Mkt Act</a></li>
 
 			</ul>
 		</div>
@@ -19,10 +19,19 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="tab-content">
-				<div id="menu1" class="tab-pane fade in active">
-					<h3>Klasifikasi Dealer</h3>
 
-					<div class="col-md-12">
+				<!-- ---------- KLASIFIKASI DEALER ---------- -->
+				<div id="menu1" class="tab-pane fade in active">
+					<div id="menu1p01" class="subpage subpage-default">
+						<h3>Klasifikasi Dealer</h3>
+
+						<div class="form-group-button pull-right">
+							<button class="btn btn-default btn-primary large-button" onclick="menu1Add(this);return false;">Tambah</button>
+							<button class="btn btn-default btn-primary large-button" onclick="menu1Edit(this);return false;">Ubah</button>
+							<button class="btn btn-default btn-primary large-button" onclick="menu1Hapus(this);return false;">Hapus</button>
+						</div>
+
+
 						<div id="table-container">
 							<table id="ahmjxuam001p01SearchTable"
 							data-method="get"
@@ -40,70 +49,343 @@
 							data-unique-id="vid">
 							<thead>
 								<tr>
-
-									<th data-field="state" 
-									data-checkbox="true"
-									data-formatter="stateFormatter"></th>
-
-									<th data-field="vid" 
-									data-sortable="true"
-									data-visible="false"
-									>ID User</th>
-									<th data-field="vusername" 
-									data-sortable="true"
-									data-visible="true"
-									>Username</th>
-									<th data-field="vpassword" 
-									data-sortable="true"
-									data-visible="false"
-									>Password</th>
-									<th data-field="iver" 
-									data-sortable="true"
-									data-visible="false"
-									>Iver</th>
-									<th data-field="vstat" 
-									data-sortable="true" 
-									data-visible="true"
-									>Status</th>
+									<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
+									<th data-field="vid" data-sortable="true" data-visible="false">ID User</th>
+									<th data-field="iver" data-sortable="true" data-visible="false">Iver</th>
+									<th data-field="vstat" data-sortable="true" data-visible="true">Class</th>
+									<th data-field="vstat" data-sortable="true" data-visible="true">Minimal Sales / Month</th>
 								</tr>
 							</thead>
 
 						</table>
 					</div>
+
+				</div>
+
+				<div id="menu1p02" class="subpage">
+					<form class="form-horizontal">
+						<div class="form-group large-font">
+							<label for="menu1p02Vname" class="col-sm-3 control-label">Class <span style="color:red">*)</span></label>
+							<div class="col-sm-6">
+								<input id="menu1p02Vname" name="vname" class="form-control">
+							</div>
+						</div>
+						<div class="form-group large-font">
+							<label for="menu1p02Vdesc" class="col-sm-3 control-label">Average Unit Sales / Bulan </label>
+							<div class="col-sm-6">
+								<input id="menu1p02Vdesc" name="vdesc" class="form-control">
+							</div>
+						</div>
+						<div class="col-sm-offset-2 col-sm-6 form-group-button">
+							<button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="menu1AddNew(this);return false;" style="display: none">Add New</button>
+							<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu1AddData(this);return false;">Submit</button>
+							<button class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
+							<button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'menu1p01');return false;">Back</button>
+						</div>
+					</form>
+				</div>
+				<div id="menu1p03" class="subpage">
+					<form class="form-horizontal">
+						<input type="hidden" name="vid" data-field="vid"/>
+						<input type="hidden" name="iver" data-field="iver"/>
+						<div class="form-group large-font">
+							<label for="menu1p02Vname" class="col-sm-3 control-label">Class <span style="color:red">*)</span></label>
+							<div class="col-sm-6">
+								<input id="menu1p02Vname" name="vname" class="form-control">
+							</div>
+						</div>
+						<div class="form-group large-font">
+							<label for="menu1p02Vdesc" class="col-sm-3 control-label">Average Unit Sales / Bulan </label>
+							<div class="col-sm-6">
+								<input id="menu1p02Vdesc" name="vdesc" class="form-control">
+							</div>
+						</div>
+						<div class="col-sm-offset-2 col-sm-6 form-group-button">
+							<button class="btn btn-default btn-primary large-button" onclick="menu1Update(this);return false;">Submit</button>
+							<button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'menu1');return false;">Back</button>
+						</div>
+
+					</form>
+
+				</div>
+			</div>
+
+			<!-- ---------- PENAMAAN RING ---------- -->
+			<div id="menu2" class="tab-pane fade">
+				<div id="menu2p01" class="subpage subpage-default">
+					<h3>Penamaan Ring</h3>
+
+					<div class="form-group-button pull-right">
+						<button class="btn btn-default btn-primary large-button" onclick="menu2Add(this);return false;">Tambah</button>
+						<button class="btn btn-default btn-primary large-button" onclick="menu2Edit(this);return false;">Ubah</button>
+						<button class="btn btn-default btn-primary large-button" onclick="menu2Hapus(this);return false;">Hapus</button>
+					</div>
+
+
+					<div id="table-container">
+						<table id="ahmjxuam001p01SearchTable"
+						data-method="get"
+						data-url="/ttm001/sf"
+						data-content-type="application/json"
+						data-data-type="json"
+						data-query-params-type="limit"
+						data-query-params="ahmjxuam001Presearch"
+						data-response-handler="loadData"
+						data-side-pagination="server"
+						data-pagination="true"
+						data-custom-action="edit"
+						data-edit-func="ahmjxuam001PrepareEdit"
+						data-checkbox-table="ahmjxuam001p01TableDelete"
+						data-unique-id="vid">
+						<thead>
+							<tr>
+								<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
+								<th data-field="vid" data-sortable="true" data-visible="false">ID User</th>
+								<th data-field="iver" data-sortable="true" data-visible="false">Iver</th>
+								<th data-field="vstat" data-sortable="true" data-visible="true">Nama Ring</th>
+							</tr>
+						</thead>
+
+					</table>
 				</div>
 
 			</div>
 
-
-			<div id="menu2" class="tab-pane fade">
-				<h3>Penamaan Ring 1</h3>
-				<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			<div id="menu2p02" class="subpage">
+				<form class="form-horizontal">
+					<div class="form-group large-font">
+						<label for="menu2p02Vname" class="col-sm-3 control-label">Nama Ring <span style="color:red">*)</span></label>
+						<div class="col-sm-6">
+							<input id="menu2p02Vname" name="vname" class="form-control">
+						</div>
+					</div>
+					<div class="col-sm-offset-2 col-sm-6 form-group-button">
+						<button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="menu2AddNew(this);return false;" style="display: none">Add New</button>
+						<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu2AddData(this);return false;">Submit</button>
+						<button class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
+						<button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'menu2p01');return false;">Back</button>
+					</div>
+				</form>
 			</div>
-			<div id="menu3" class="tab-pane fade">
-				<h3>Penamaan Salesforce</h3>
+			<div id="menu2p03" class="subpage">
+				<form class="form-horizontal">
+					<input type="hidden" name="vid" data-field="vid"/>
+					<input type="hidden" name="iver" data-field="iver"/>
+					<div class="form-group large-font">
+						<label for="menu2p02Vname" class="col-sm-3 control-label">Nama Ring <span style="color:red">*)</span></label>
+						<div class="col-sm-6">
+							<input id="menu2p02Vname" name="vname" class="form-control">
+						</div>
+					</div>
+					<div class="col-sm-offset-2 col-sm-6 form-group-button">
+						<button class="btn btn-default btn-primary large-button" onclick="menu2Update(this);return false;">Submit</button>
+						<button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'menu1');return false;">Back</button>
+					</div>
 
-				<table id="tree">
+				</form>
+
+			</div>
+		</div>
+
+		<!-- ---------- PENAMAAN SALESFORCE ---------- -->
+		<div id="menu3" class="tab-pane fade">
+			<h3>Penamaan Salesforce</h3>
+
+			<table id="tree">
+
+			</table>
+		</div>
+
+		<!-- ---------- AKTIVITAS MARKETING ---------- -->
+		<div id="menu4" class="tab-pane fade">
+			<div id="menu4p01" class="subpage subpage-default">
+				<h3>Aktivitas Marketing</h3>
+
+				<div class="form-group-button pull-right">
+					<button class="btn btn-default btn-primary large-button" onclick="menu4Add(this);return false;">Tambah</button>
+					<button class="btn btn-default btn-primary large-button" onclick="menu4Edit(this);return false;">Ubah</button>
+					<button class="btn btn-default btn-primary large-button" onclick="menu4Hapus(this);return false;">Hapus</button>
+				</div>
+
+
+				<div id="table-container">
+					<table id="ahmjxuam001p01SearchTable"
+					data-method="get"
+					data-url="/ttm001/sf"
+					data-content-type="application/json"
+					data-data-type="json"
+					data-query-params-type="limit"
+					data-query-params="ahmjxuam001Presearch"
+					data-response-handler="loadData"
+					data-side-pagination="server"
+					data-pagination="true"
+					data-custom-action="edit"
+					data-edit-func="ahmjxuam001PrepareEdit"
+					data-checkbox-table="ahmjxuam001p01TableDelete"
+					data-unique-id="vid">
+					<thead>
+						<tr>
+							<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
+							<th data-field="vid" data-sortable="true" data-visible="false">ID User</th>
+							<th data-field="iver" data-sortable="true" data-visible="false">Iver</th>
+							<th data-field="vstat" data-sortable="true" data-visible="true">Tipe Aktivitas</th>
+						</tr>
+					</thead>
 
 				</table>
-
-
-			</div>
-			<div id="menu4" class="tab-pane fade">
-				<h3>Aktivitas Marketing</h3>
-				<p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
 			</div>
 
-			<div id="menu5" class="tab-pane fade">
-				<h3>Kategori Lokasi Mkt Act</h3>
-				<p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+		</div>
+
+		<div id="menu4p02" class="subpage">
+			<form class="form-horizontal">
+				<div class="form-group large-font">
+					<label for="menu4p02Vname" class="col-sm-3 control-label">Tipe Aktivitas <span style="color:red">*)</span></label>
+					<div class="col-sm-6">
+						<input id="menu4p02Vname" name="vname" class="form-control">
+					</div>
+				</div>
+				<div class="col-sm-offset-2 col-sm-6 form-group-button">
+					<button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="menu4AddNew(this);return false;" style="display: none">Add New</button>
+					<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu4AddData(this);return false;">Submit</button>
+					<button class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
+					<button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'menu4p01');return false;">Back</button>
+				</div>
+			</form>
+		</div>
+		<div id="menu4p03" class="subpage">
+			<form class="form-horizontal">
+				<input type="hidden" name="vid" data-field="vid"/>
+				<input type="hidden" name="iver" data-field="iver"/>
+				<div class="form-group large-font">
+					<label for="menu4p02Vname" class="col-sm-3 control-label">Tipe Aktivitas <span style="color:red">*)</span></label>
+					<div class="col-sm-6">
+						<input id="menu4p02Vname" name="vname" class="form-control">
+					</div>
+				</div>
+				<div class="col-sm-offset-2 col-sm-6 form-group-button">
+					<button class="btn btn-default btn-primary large-button" onclick="menu4Update(this);return false;">Submit</button>
+					<button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'menu1');return false;">Back</button>
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+
+	<!-- ---------- KATEGORI LOKASI MARKETING ACTIVITY ---------- -->
+	<div id="menu5" class="tab-pane fade">
+		<div id="menu5p01" class="subpage subpage-default">
+			<h3>Kategori Lokasi Mkt Act</h3>
+
+			<div class="form-group-button pull-right">
+				<button class="btn btn-default btn-primary large-button" onclick="menu5Add(this);return false;">Tambah</button>
+				<button class="btn btn-default btn-primary large-button" onclick="menu5Edit(this);return false;">Ubah</button>
+				<button class="btn btn-default btn-primary large-button" onclick="menu5Hapus(this);return false;">Hapus</button>
 			</div>
-		</div> <!-- end of tab-content -->
-		
+
+
+			<div id="table-container">
+				<table id="ahmjxuam001p01SearchTable"
+				data-method="get"
+				data-url="/ttm001/sf"
+				data-content-type="application/json"
+				data-data-type="json"
+				data-query-params-type="limit"
+				data-query-params="ahmjxuam001Presearch"
+				data-response-handler="loadData"
+				data-side-pagination="server"
+				data-pagination="true"
+				data-custom-action="edit"
+				data-edit-func="ahmjxuam001PrepareEdit"
+				data-checkbox-table="ahmjxuam001p01TableDelete"
+				data-unique-id="vid">
+				<thead>
+					<tr>
+						<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
+						<th data-field="vid" data-sortable="true" data-visible="false">ID User</th>
+						<th data-field="iver" data-sortable="true" data-visible="false">Iver</th>
+						<th data-field="vstat" data-sortable="true" data-visible="true">Kategori</th>
+						<th data-field="vstat" data-sortable="true" data-visible="true">Keterangan</th>
+					</tr>
+				</thead>
+
+			</table>
+		</div>
+
+	</div>
+
+	<div id="menu5p02" class="subpage">
+		<form class="form-horizontal">
+			<div class="form-group large-font">
+				<label for="menu5p02Vname" class="col-sm-3 control-label">Kategori <span style="color:red">*)</span></label>
+				<div class="col-sm-6">
+					<input id="menu5p02Vname" name="vname" class="form-control">
+				</div>
+			</div>
+			<div class="form-group large-font">
+				<label for="menu5p02Vdesc" class="col-sm-3 control-label">Keterangan </label>
+				<div class="col-sm-6">
+					<input id="menu5p02Vdesc" name="vdesc" class="form-control">
+				</div>
+			</div>
+			<div class="col-sm-offset-2 col-sm-6 form-group-button">
+				<button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="menu5AddNew(this);return false;" style="display: none">Add New</button>
+				<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu5AddData(this);return false;">Submit</button>
+				<button class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
+				<button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'menu5p01');return false;">Back</button>
+			</div>
+		</form>
+	</div>
+	<div id="menu5p03" class="subpage">
+		<form class="form-horizontal">
+			<input type="hidden" name="vid" data-field="vid"/>
+			<input type="hidden" name="iver" data-field="iver"/>
+			<div class="form-group large-font">
+				<label for="menu5p02Vname" class="col-sm-3 control-label">Kategori <span style="color:red">*)</span></label>
+				<div class="col-sm-6">
+					<input id="menu5p02Vname" name="vname" class="form-control">
+				</div>
+			</div>
+			<div class="form-group large-font">
+				<label for="menu5p02Vdesc" class="col-sm-3 control-label">Keterangan </label>
+				<div class="col-sm-6">
+					<input id="menu5p02Vdesc" name="vdesc" class="form-control">
+				</div>
+			</div>
+			<div class="col-sm-offset-2 col-sm-6 form-group-button">
+				<button class="btn btn-default btn-primary large-button" onclick="menu5Update(this);return false;">Submit</button>
+				<button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'menu1');return false;">Back</button>
+			</div>
+
+		</form>
+
 	</div>
 </div>
+</div> <!-- end of tab-content -->
+
+</div>
+</div>
 
 
 </div>
+
+<script type="text/javascript">
+	
+	function menu1Add(obj){
+		var page = $('#menu1p02');
+		$('input, select', page).prop('disabled',false);
+		_fw_reset_subpage(page);
+		_fw_subpage(obj, 'menu1p02');
+		$('button[name="btnAddNew"]', page).hide();
+		$('button[name="btnSubmit"]', page).show();
+	}
+
+	function menu1Edit(obj, row, index){
+		_fw_subpage(obj, 'menu1p03', row);
+	}
+</script>
+
 
 <script type="text/javascript">
 
