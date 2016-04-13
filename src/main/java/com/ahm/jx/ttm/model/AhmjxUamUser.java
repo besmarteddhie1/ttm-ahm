@@ -33,7 +33,7 @@ public class AhmjxUamUser extends AhmBaseEntity {
     
     @ManyToOne
     @JoinColumn(name="VID_AHMJXUAM_MSTPARTNER", referencedColumnName="vid")    
-    private AhmPartner partner;
+    private AhmjxUamPartner partner;
     
     @Column(name = "vstat")
     private Boolean status;
@@ -118,11 +118,11 @@ public class AhmjxUamUser extends AhmBaseEntity {
 
 	} 
 
-	public AhmPartner getPartner() {
+	public AhmjxUamPartner getPartner() {
 		return partner;
 	}
 
-	public void setPartner(AhmPartner partner) {
+	public void setPartner(AhmjxUamPartner partner) {
 		this.partner = partner;
 	}
 

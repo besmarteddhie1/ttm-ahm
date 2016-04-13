@@ -14,7 +14,7 @@ import com.ahm.jx.ttm.model.AhmBaseEntity;
 
 @Entity
 @Table(name = "ahmjxuam_mstpartner")
-public class AhmPartner extends AhmBaseEntity {
+public class AhmjxUamPartner extends AhmBaseEntity {
 
 	private static final long serialVersionUID = 1123754243149467367L;
 
