@@ -63,7 +63,6 @@ public class Ahmjxttm001Controller {
 	//Product Category Update
 	@RequestMapping(value="procatupd", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	@Transactional
 	public AhmjxMstProductCategory setProductCategoryUpdate(@RequestBody AhmjxMstProductCategory entity) {
 		return productCategoryRepo.save(entity);
 	}	
@@ -90,7 +89,6 @@ public class Ahmjxttm001Controller {
 	
 	@RequestMapping(value="parcatupd", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	@Transactional
 	public AhmjxMstPartyCategory setSalesForce(@RequestBody AhmjxMstPartyCategory entity) {
 		return partyCategoryRepo.save(entity);
 	}
@@ -105,7 +103,6 @@ public class Ahmjxttm001Controller {
 	
 	@RequestMapping(value="ring", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	@Transactional
 	public AhmjxTtmRingType setRingType(@RequestBody AhmjxTtmRingType entity) {		
 		return ringTypeRepo.save(entity);
 	}	
@@ -120,7 +117,6 @@ public class Ahmjxttm001Controller {
 	
 	@RequestMapping(value="loc", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	@Transactional
 	public AhmjxMstFacilityType setLocType(@RequestBody AhmjxMstFacilityType entity) {		
 		return facilityTypeRepo.save(entity);
 	}
@@ -135,7 +131,6 @@ public class Ahmjxttm001Controller {
 	
 	@RequestMapping(value="wet", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	@Transactional
 	public AhmjxTtmWeType setWeType(@RequestBody AhmjxTtmWeType entity) {		
 		return weTypeRepo.save(entity);
 	}	
