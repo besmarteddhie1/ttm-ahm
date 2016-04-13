@@ -21,7 +21,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
 
 @Configuration
-@EnableWebMvc
+//@EnableWebMvc
 class WebMvcConfig extends WebMvcConfigurationSupport {
 
     private static final String MESSAGE_SOURCE = "/i18n/messages";
