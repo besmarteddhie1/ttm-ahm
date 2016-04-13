@@ -13,6 +13,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
@@ -30,8 +31,9 @@ public class AhmjxMstPartyCategory extends BaseEntity {
 	private String description;
 	
 	@Column(name="idcattype", updatable=false, insertable=false)
-	private Integer idCategoryType;			
+	private Integer idCategoryType;	
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="idcattype")
 	private AhmjxMstPartyCategoryType categoryType;
