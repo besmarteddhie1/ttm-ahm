@@ -31,29 +31,19 @@
 							<button class="btn btn-default btn-primary large-button" onclick="menu1Hapus(this);return false;">Hapus</button>
 						</div>
 
-
 						<div id="table-container">
 							<table id="ahmjxuam001p01SearchTable"
 							data-method="get"
 							data-url="/ttm001/sf"
 							data-content-type="application/json"
-							data-data-type="json"
-							data-query-params-type="limit"
-							data-query-params="ahmjxuam001Presearch"
-							data-response-handler="loadData"
-							data-side-pagination="server"
-							data-pagination="true"
-							data-custom-action="edit"
-							data-edit-func="ahmjxuam001PrepareEdit"
-							data-checkbox-table="ahmjxuam001p01TableDelete"
-							data-unique-id="vid">
+							data-data-type="json">
 							<thead>
 								<tr>
 									<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
 									<th data-field="vid" data-sortable="true" data-visible="false">ID User</th>
 									<th data-field="iver" data-sortable="true" data-visible="false">Iver</th>
-									<th data-field="vstat" data-sortable="true" data-visible="true">Class</th>
-									<th data-field="vstat" data-sortable="true" data-visible="true">Minimal Sales / Month</th>
+									<th data-field="description" data-sortable="true" data-visible="true">Class</th>
+									<th data-field="isalesqty" data-sortable="true" data-visible="true">Minimal Sales / Month</th>
 								</tr>
 							</thead>
 
@@ -123,26 +113,16 @@
 
 
 					<div id="table-container">
-						<table id="ahmjxuam001p01SearchTable"
+						<table id="menu2p01SearchTable"
 						data-method="get"
-						data-url="/ttm001/sf"
+						data-url="/ttm001/ring"
 						data-content-type="application/json"
-						data-data-type="json"
-						data-query-params-type="limit"
-						data-query-params="ahmjxuam001Presearch"
-						data-response-handler="loadData"
-						data-side-pagination="server"
-						data-pagination="true"
-						data-custom-action="edit"
-						data-edit-func="ahmjxuam001PrepareEdit"
-						data-checkbox-table="ahmjxuam001p01TableDelete"
-						data-unique-id="vid">
+						data-data-type="json">
 						<thead>
 							<tr>
 								<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
-								<th data-field="vid" data-sortable="true" data-visible="false">ID User</th>
-								<th data-field="iver" data-sortable="true" data-visible="false">Iver</th>
-								<th data-field="vstat" data-sortable="true" data-visible="true">Nama Ring</th>
+								<th data-field="idRing" data-sortable="true" data-visible="false">ID Ring</th>
+								<th data-field="description" data-sortable="true" data-visible="true">Nama Ring</th>
 							</tr>
 						</thead>
 
@@ -209,26 +189,17 @@
 
 
 				<div id="table-container">
-					<table id="ahmjxuam001p01SearchTable"
+					<table id="menu4p01SearchTable"
 					data-method="get"
-					data-url="/ttm001/sf"
+					data-url="/ttm001/wet"
 					data-content-type="application/json"
-					data-data-type="json"
-					data-query-params-type="limit"
-					data-query-params="ahmjxuam001Presearch"
-					data-response-handler="loadData"
-					data-side-pagination="server"
-					data-pagination="true"
-					data-custom-action="edit"
-					data-edit-func="ahmjxuam001PrepareEdit"
-					data-checkbox-table="ahmjxuam001p01TableDelete"
-					data-unique-id="vid">
+					data-data-type="json">
 					<thead>
 						<tr>
 							<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
 							<th data-field="vid" data-sortable="true" data-visible="false">ID User</th>
 							<th data-field="iver" data-sortable="true" data-visible="false">Iver</th>
-							<th data-field="vstat" data-sortable="true" data-visible="true">Tipe Aktivitas</th>
+							<th data-field="description" data-sortable="true" data-visible="true">Tipe Aktivitas</th>
 						</tr>
 					</thead>
 
@@ -286,27 +257,18 @@
 
 
 			<div id="table-container">
-				<table id="ahmjxuam001p01SearchTable"
+				<table id="menu5p01SearchTable"
 				data-method="get"
-				data-url="/ttm001/sf"
+				data-url="/ttm001/loc"
 				data-content-type="application/json"
-				data-data-type="json"
-				data-query-params-type="limit"
-				data-query-params="ahmjxuam001Presearch"
-				data-response-handler="loadData"
-				data-side-pagination="server"
-				data-pagination="true"
-				data-custom-action="edit"
-				data-edit-func="ahmjxuam001PrepareEdit"
-				data-checkbox-table="ahmjxuam001p01TableDelete"
-				data-unique-id="vid">
+				data-data-type="json">
 				<thead>
 					<tr>
 						<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
 						<th data-field="vid" data-sortable="true" data-visible="false">ID User</th>
 						<th data-field="iver" data-sortable="true" data-visible="false">Iver</th>
 						<th data-field="vstat" data-sortable="true" data-visible="true">Kategori</th>
-						<th data-field="vstat" data-sortable="true" data-visible="true">Keterangan</th>
+						<th data-field="description" data-sortable="true" data-visible="true">Keterangan</th>
 					</tr>
 				</thead>
 
@@ -372,7 +334,18 @@
 
 <script type="text/javascript">
 	
-	function menu1Add(obj){
+	function menu1Presearch(params){
+        params.search = {"any": $('#menu1p01Search').val()};
+        if(params.sort == undefined){
+            return{
+                limit : params.limit,
+                offset : params.offset,
+                search : params.search
+            }
+        }
+        return params;
+    }
+    function menu1Add(obj){
 		var page = $('#menu1p02');
 		$('input, select', page).prop('disabled',false);
 		_fw_reset_subpage(page);
@@ -380,9 +353,35 @@
 		$('button[name="btnAddNew"]', page).hide();
 		$('button[name="btnSubmit"]', page).show();
 	}
-
 	function menu1Edit(obj, row, index){
 		_fw_subpage(obj, 'menu1p03', row);
+	}
+</script>
+
+
+<script type="text/javascript">
+	
+	function menu2Presearch(params){
+        params.search = {"any": $('#menu2p01Search').val()};
+        if(params.sort == undefined){
+            return{
+                limit : params.limit,
+                offset : params.offset,
+                search : params.search
+            }
+        }
+        return params;
+    }
+    function menu2Add(obj){
+		var page = $('#menu2p02');
+		$('input, select', page).prop('disabled',false);
+		_fw_reset_subpage(page);
+		_fw_subpage(obj, 'menu2p02');
+		$('button[name="btnAddNew"]', page).hide();
+		$('button[name="btnSubmit"]', page).show();
+	}
+	function menu2Edit(obj, row, index){
+		_fw_subpage(obj, 'menu2p03', row);
 	}
 </script>
 
