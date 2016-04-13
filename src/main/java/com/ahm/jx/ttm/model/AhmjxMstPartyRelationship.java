@@ -30,7 +30,7 @@ import org.hibernate.annotations.Where;
 
 
 @Entity
-@Table(name="AhmjxMst_party_relationship") 
+@Table(name="ahmjxmst_party_relationship") 
 @Inheritance(strategy=InheritanceType.JOINED)
 @Where(clause = "current_timestamp between dtfrom and dtthru")
 @Cacheable(true)

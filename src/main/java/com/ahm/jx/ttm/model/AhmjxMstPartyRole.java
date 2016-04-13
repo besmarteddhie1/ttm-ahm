@@ -11,7 +11,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-@Table(name="AhmjxMst_party_role")
+@Table(name="ahmjxmst_party_role")
 public class AhmjxMstPartyRole extends BaseEntity {
 	
 	private static final long serialVersionUID = -4908805860847567141L;

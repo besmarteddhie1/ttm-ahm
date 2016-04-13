@@ -19,7 +19,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Where;
 
 @Entity
-@Table(name="AhmjxMst_product")
+@Table(name="ahmjxmst_product")
 @Inheritance(strategy=InheritanceType.JOINED)
 public class AhmjxMstProduct extends BaseEntity {
 

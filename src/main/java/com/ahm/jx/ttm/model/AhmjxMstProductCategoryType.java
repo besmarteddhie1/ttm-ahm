@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
 @Entity
-@Table(name="AhmjxMst_product_category_type")
+@Table(name="ahmjxmst_product_category_type")
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="idCategoryType")
 public class AhmjxMstProductCategoryType extends BaseEntity {
 

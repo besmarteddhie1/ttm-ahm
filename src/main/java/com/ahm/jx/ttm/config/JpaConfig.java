@@ -95,9 +95,9 @@ class JpaConfig {
     }    
 
     @Bean(name = "transactionManager")
-    public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+    public PlatformTransactionManager transactionManager() {
     	JpaTransactionManager tx = new JpaTransactionManager();
-    	tx.setEntityManagerFactory(entityManagerFactory);
+    	tx.setEntityManagerFactory(entityManagerFactory());
         return tx;
     }
     
