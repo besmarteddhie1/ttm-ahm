@@ -53,7 +53,10 @@ class JpaConfig {
     
     @Value("${hibernate.hbm2ddl.auto}")
     private String hbm2ddlAuto;
-
+    
+    @Value("${dataSource.poolsize}")
+    private Integer poolSize;
+    
     @Bean
     public DataSource dataSource() {
         HikariConfig config = new HikariConfig();
@@ -61,6 +64,7 @@ class JpaConfig {
         config.setJdbcUrl(url);
         config.setUsername(username);
         config.setPassword(password);
+        config.setMaximumPoolSize(poolSize);
         
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");
