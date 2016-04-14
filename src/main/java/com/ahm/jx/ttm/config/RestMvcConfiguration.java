@@ -3,6 +3,7 @@ package com.ahm.jx.ttm.config;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.http.MediaType;
 
 import com.ahm.jx.ttm.model.AhmjxMstOrganization;
@@ -12,6 +13,7 @@ import com.ahm.jx.ttm.model.AhmjxMstPerson;
 import com.ahm.jx.ttm.model.AhmjxMstProductCategoryType;
 
 @Configuration
+@EnableSpringDataWebSupport
 public class RestMvcConfiguration extends RepositoryRestMvcConfiguration {
 	
 	@Override

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,7 +27,7 @@ import com.ahm.jx.ttm.repository.AhmjxTtmRingTypeRepository;
 import com.ahm.jx.ttm.repository.AhmjxTtmWeTypeRepository;
 
 @Controller
-@RequestMapping(value="/ttm001")
+@RequestMapping(value="/api/ttm001")
 public class Ahmjxttm001Controller {
 	
 	@Autowired
@@ -62,7 +63,7 @@ public class Ahmjxttm001Controller {
 	//Product Category Update
 	@RequestMapping(value="procatupd", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public AhmjxMstProductCategory setProductCategoryUpdate(AhmjxMstProductCategory entity) {
+	public AhmjxMstProductCategory setProductCategoryUpdate(@RequestBody AhmjxMstProductCategory entity) {
 		return productCategoryRepo.save(entity);
 	}	
 	
@@ -80,7 +81,7 @@ public class Ahmjxttm001Controller {
 	@ResponseBody
 	@Transactional
 	public List<AhmjxMstPartyCategory> getDealerClassfication() {
-		List<AhmjxMstPartyCategory> d = partyCategoryRepo.queryByCategoryType(AhmjxMstPartyCategoryType.TYPE_DEALER_SALES_CLASSIFICATION);		
+		List<AhmjxMstPartyCategory> d = partyCategoryRepo.findByIdCategoryType(AhmjxMstPartyCategoryType.TYPE_DEALER_SALES_CLASSIFICATION);		
 		return d;
 	}
 	
@@ -88,7 +89,7 @@ public class Ahmjxttm001Controller {
 	
 	@RequestMapping(value="parcatupd", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public AhmjxMstPartyCategory setSalesForce(AhmjxMstPartyCategory entity) {
+	public AhmjxMstPartyCategory setSalesForce(@RequestBody AhmjxMstPartyCategory entity) {
 		return partyCategoryRepo.save(entity);
 	}
 	
@@ -102,8 +103,7 @@ public class Ahmjxttm001Controller {
 	
 	@RequestMapping(value="ring", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	@Transactional
-	public AhmjxTtmRingType setRingType(AhmjxTtmRingType entity) {		
+	public AhmjxTtmRingType setRingType(@RequestBody AhmjxTtmRingType entity) {		
 		return ringTypeRepo.save(entity);
 	}	
 	
@@ -117,8 +117,7 @@ public class Ahmjxttm001Controller {
 	
 	@RequestMapping(value="loc", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	@Transactional
-	public AhmjxMstFacilityType setLocType(AhmjxMstFacilityType entity) {		
+	public AhmjxMstFacilityType setLocType(@RequestBody AhmjxMstFacilityType entity) {		
 		return facilityTypeRepo.save(entity);
 	}
 	
@@ -132,8 +131,7 @@ public class Ahmjxttm001Controller {
 	
 	@RequestMapping(value="wet", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	@Transactional
-	public AhmjxTtmWeType setWeType(AhmjxTtmWeType entity) {		
+	public AhmjxTtmWeType setWeType(@RequestBody AhmjxTtmWeType entity) {		
 		return weTypeRepo.save(entity);
 	}	
 	

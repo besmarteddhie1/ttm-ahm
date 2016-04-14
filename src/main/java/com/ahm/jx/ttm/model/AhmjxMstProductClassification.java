@@ -14,7 +14,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-@Table(name="AhmjxMst_product_classification")
+@Table(name="ahmjxmst_product_classification")
 public class AhmjxMstProductClassification extends BaseEntity {
 
 	private static final long serialVersionUID = -2500926500169885029L;

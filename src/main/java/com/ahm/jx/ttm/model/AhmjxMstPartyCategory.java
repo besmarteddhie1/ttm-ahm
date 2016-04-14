@@ -23,14 +23,15 @@ public class AhmjxMstPartyCategory extends BaseEntity {
 
 	private static final long serialVersionUID = -2500926500169885029L;
 	
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idcategory")
 	private Integer idCategory;
 		
 	@Column(name="vdescription")
 	private String description;
 	
-	@Column(name="idcattype", updatable=false, insertable=false)
+	@Column(name="idcattype")
 	private Integer idCategoryType;	
 
 	@Column(name="isalesqty")
@@ -38,7 +39,7 @@ public class AhmjxMstPartyCategory extends BaseEntity {
 
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="idcattype")
+	@JoinColumn(name="idcattype", updatable=false, insertable=false)
 	private AhmjxMstPartyCategoryType categoryType;
 		
 	public Integer getIdCategory() {

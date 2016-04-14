@@ -1,4 +1,4 @@
-package com.ahm.jx.ttm.services;
+package com.ahm.jx.ttm.service;
 
 import java.util.Collections;
 

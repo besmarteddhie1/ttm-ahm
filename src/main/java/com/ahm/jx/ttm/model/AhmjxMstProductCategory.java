@@ -13,10 +13,11 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-@Table(name="AhmjxMst_product_category")
+@Table(name="ahmjxmst_product_category")
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="idCategory")
 public class AhmjxMstProductCategory extends BaseEntity {
 
@@ -32,6 +33,7 @@ public class AhmjxMstProductCategory extends BaseEntity {
 	@Column(name="idcattype")
 	private Integer idCategoryType;	
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="idcattype", insertable=false, updatable=false)
 	private AhmjxMstProductCategoryType categoryType;
