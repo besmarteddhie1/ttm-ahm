@@ -33,6 +33,9 @@ public class AhmjxMstPartyCategory extends BaseEntity {
 	@Column(name="idcattype", updatable=false, insertable=false)
 	private Integer idCategoryType;	
 
+	@Column(name="isalesqty")
+	private Integer salesQty;
+
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="idcattype")
@@ -68,6 +71,14 @@ public class AhmjxMstPartyCategory extends BaseEntity {
 
 	public void setCategoryType(AhmjxMstPartyCategoryType categoryType) {
 		this.categoryType = categoryType;
+	}	
+
+	public Integer getSalesQty() {
+		return salesQty;
+	}
+
+	public void setSalesQty(Integer salesQty) {
+		this.salesQty = salesQty;
 	}
 
 	@Override
