@@ -34,7 +34,7 @@
 						<div id="table-container">
 							<table id="ahmjxuam001p01SearchTable"
 							data-method="get"
-							data-url="/ttm001/sf"
+							data-url="/api/ttm001/sf"
 							data-content-type="application/json"
 							data-data-type="json">
 							<thead>
@@ -388,83 +388,83 @@
 
 <script type="text/javascript">
 
-	var SOURCE= CLIPBOARD = null;;
+	var xdata;
+	var SOURCE= CLIPBOARD = null;
 
 	$(function(){
-
 		$(".nav-tabs a").click(function(){
-			$(this).tab('show');
-		});
+		$(this).tab('show');
+	});
 
-		$.ajax
-		({
-			type: "GET",
-			url: baseURL+"/ttm001/sf",
-			contentType: "application/json",
-			dataType: 'json',
-			async: false,
-			data: JSON.stringify()
-		})
+	$.ajax({type: "GET",url: baseURL+"/api/ttm001/sf",contentType: "application/json",
+			dataType: 'json',async: false,data: JSON.stringify()})
 		.done(function(data){
-			console.log('data==>',JSON.stringify(data));
 			var parsed = JSON.parse(JSON.stringify(data), function(k, v) {
 				if (k === "description") 
 					this.title = v;
 				else if (k === "categories")
 					this.children = v;
 				else
-					return v;
-			});
+					return v;}
+			);
+			SOURCE = parsed;
+	}) ; 
 
-			SOURCE = parsed;	
-		})
-
-		$("#tree").fancytree({
-			source: SOURCE,
-		}).on("nodeCommand", function(event, data){
-			// Custom event handler that is triggered by keydown-handler and
-			// context menu:
-			var refNode, moveMode,
-			tree = $(this).fancytree("getTree"),
-			node = tree.getActiveNode();
-
-			switch( data.cmd ) {
-				case "moveUp":
-				refNode = node.getPrevSibling();
-				if( refNode ) {
-					node.moveTo(refNode, "before");
-					node.setActive();
-				}
-				break;
-				case "edit":
-				node.editStart();
-				break;
-				case "delete":
-				refNode = node.getNextSibling() || node.getPrevSibling() || node.getParent();
-				node.remove();
-				if( refNode ) {
-					refNode.setActive();
-				}
-				break;
-				case "add":
-			// node.editCreateNode("after", "");
-			addNode(node);
-			break;  
-			default:
-			alert("Unhandled command: " + data.cmd);
-			return;
+	$("#tree").fancytree({
+		source: SOURCE,
+		extensions: ["edit"],
+		edit: {
+			triggerStart: ["f2", "shift+click", "mac+enter"],
+			close: function(event, data) {
+				if( data.save ){
+            		// Quick-enter: add new nodes until we hit [enter] on an empty title
+					addNode(data.node.title);
+            		//$("#tree").trigger("nodeCommand", {cmd: "addSibling"});
+            		}
+        		}
+	},
+	}).on("nodeCommand", function(event, data){
+		// Custom event handler that is triggered by keydown-handler and
+		// context menu:
+		var refNode, moveMode,
+		tree = $(this).fancytree("getTree"),
+		node = tree.getActiveNode();
+		switch( data.cmd ) {
+		case "moveUp":
+			refNode = node.getPrevSibling();
+			if( refNode ) {
+				node.moveTo(refNode, "before");
+				node.setActive();}
+		break;
+		case "edit":
+			xdata = node;
+			node.editStart();
+		break;
+		case "delete":
+			refNode = node.getNextSibling() || node.getPrevSibling() || node.getParent();
+			deleteNode(node);
+			node.remove();
+			if( refNode ) {
+				refNode.setActive();
+			}
+		break;
+		case "add":
+			node.data.idCategoryType= null;
+			xdata = node;
+			node.editCreateNode("after", "");
+		break;  
+		default:
+		return;
 		}
 	}).on("keydown", function(e){
 		var cmd = null;
-
-			// console.log(e.type, $.ui.fancytree.eventToString(e));
-			switch( $.ui.fancytree.eventToString(e) ) {}
-			
-			if( cmd ){
-				$(this).trigger("nodeCommand", {cmd: cmd});
+		// console.log(e.type, $.ui.fancytree.eventToString(e));
+		switch( $.ui.fancytree.eventToString(e) ) {}
+		if( cmd ){
+			$(this).trigger("nodeCommand", {cmd: cmd});
 			  // e.preventDefault();
 			  // e.stopPropagation();
-			  return false;
+		  	return false;
 			}
 		});;
 
@@ -480,25 +480,89 @@
 			$("#tree").contextmenu("enableEntry", "paste", !!CLIPBOARD);
 			node.setActive();
 		},
-		select: function(event, ui) {
-			var that = this;
-			  // delay the event, so the menu can close and the click event does
-			  // not interfere with the edit control
-			  setTimeout(function(){
-			  	$(that).trigger("nodeCommand", {cmd: ui.cmd});
-			  }, 100);
-			}
+
+	select: function(event, ui) {
+	var that = this;
+	  // delay the event, so the menu can close and the click event does
+	  // not interfere with the edit control
+	  setTimeout(function(){
+	  $(that).trigger("nodeCommand", {cmd: ui.cmd});
+	  }, 100);
+		}
 		});
+	});
 
-});
+  function addNode(x){
 
+	  console.log("xdata.data.length==>",xdata);
+	  if (xdata.data.values!=undefined){
+		  var dataAdd = {'parentCategoryType':xdata.data.parentCategoryType,'description':x,"idCategoryType":xdata.data.idCategoryType};
+		  var urlx = baseURL+"/api/partycategorytype";
+	  }
+	  else 
+	  {
+		  if (xdata.data.idCategoryType!=null){var xidcategory = xdata.data.idCategory;}
+		  else {var xidcategory = null;}
+		  
+		  var dataAdd = {'idCategoryType':xdata.parent.data.idCategoryType,'description':x,'idCategory':xidcategory};
+		  var urlx = baseURL+"/api/partycategory";
+	  }
+      $.ajax
+          ({
+              type: "POST",
+              url: urlx,
+              contentType: "application/json",
+              dataType: 'json',
+              async: false,
+              data:JSON.stringify(dataAdd)
+          })
+          .done(function(response){
+          	$.ajax
+		      ({
+			      type: "GET",
+			      url: baseURL+"/api/ttm001/sf",
+			      contentType: "application/json",
+			      dataType: 'json',
+			      async: false,
+			      data: JSON.stringify()
+		      })
+		      .done(function(data){
+		      	var parsed = JSON.parse(JSON.stringify(data), function(k, v) {
+		      		if (k === "description") 
+		      			this.title = v;
+		      		else if (k === "categories")
+		      			this.children = v;
+		      		else
+		      			return v;
+		      		});
+		      	xdata1 = parsed;
+				}) ;
+  		 
+              var tree = $('#tree').fancytree('getTree');
+              tree.reload(xdata1); 
+             })
+      }; 
 
-function addNode(){
-	console.log("tes");
-};
-
-
-
+   function deleteNode(x){
+	   if (x.data.values!=undefined){
+		  var urlx = baseURL+"/api/partycategorytype/"+x.data.idCategoryType;
+		}
+		else 
+		{
+		  var urlx = baseURL+"/api/partycategory/"+x.data.idCategory;
+		}
+           $.ajax
+              ({
+                  type: "DELETE",
+                  url: urlx,
+                  contentType: "application/json",
+                  dataType: 'json',
+                  async: false,
+                  data:JSON.stringify()
+              })
+              .done(function(response){
+                 })
+          };
 
 </script>
 
