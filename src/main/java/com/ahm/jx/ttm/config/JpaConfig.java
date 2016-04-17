@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -29,6 +30,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.ClassUtils;
 
 import com.ahm.jx.Application;
+import com.ahm.jx.ttm.utils.AuditorAwareImpl;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -36,7 +38,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @EnableTransactionManagement
 @PropertySource("classpath:persistence.properties")
 @EnableJpaRepositories(basePackageClasses = Application.class)
-@EnableJpaAuditing(auditorAwareRef = "customAuditorAware")
+@EnableJpaAuditing(auditorAwareRef = "auditorProvider")
 class JpaConfig {
 
     @Value("${dataSource.driverClassName}")
@@ -115,5 +117,11 @@ class JpaConfig {
 	public SessionFactory getSessionFactory(EntityManagerFactory factory) {	 
 		return ((HibernateEntityManagerFactory) factory).getSessionFactory();
 	}
+    
+    //Audting module
+    @Bean
+    AuditorAware<String> auditorProvider() {
+        return new AuditorAwareImpl();
+    }    
         
 }
