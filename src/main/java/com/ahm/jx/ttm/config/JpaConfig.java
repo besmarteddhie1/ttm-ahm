@@ -13,11 +13,13 @@ import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.jpa.HibernateEntityManagerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -34,6 +36,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @EnableTransactionManagement
 @PropertySource("classpath:persistence.properties")
 @EnableJpaRepositories(basePackageClasses = Application.class)
+@EnableJpaAuditing(auditorAwareRef = "customAuditorAware")
 class JpaConfig {
 
     @Value("${dataSource.driverClassName}")
@@ -74,8 +77,9 @@ class JpaConfig {
         return new HikariDataSource(config);
     }
     
+    @Autowired
     @Bean
-    public EntityManagerFactory entityManagerFactory() {
+    public EntityManagerFactory entityManagerFactory(DataSource dataSource) {
     	HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
     	
         Properties jpaProperties = new Properties();
@@ -85,7 +89,7 @@ class JpaConfig {
         jpaProperties.put(org.hibernate.cfg.Environment.FORMAT_SQL, "true");
         
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-        factory.setDataSource(dataSource());
+        factory.setDataSource(dataSource);
 
         String entities = ClassUtils.getPackageName(Application.class);
         String converters = ClassUtils.getPackageName(Jsr310JpaConverters.class);
@@ -98,15 +102,18 @@ class JpaConfig {
         return factory.getObject();
     }    
 
+    @Autowired
     @Bean(name = "transactionManager")
-    public PlatformTransactionManager transactionManager() {
+    public PlatformTransactionManager transactionManager(EntityManagerFactory factory) {
     	JpaTransactionManager tx = new JpaTransactionManager();
-    	tx.setEntityManagerFactory(entityManagerFactory());
+    	tx.setEntityManagerFactory(factory);
         return tx;
     }
     
-	@Bean(name = "sessionFactory")
-	public SessionFactory getSessionFactory() {	 
-		return ((HibernateEntityManagerFactory) entityManagerFactory()).getSessionFactory();
+    @Autowired
+	@Bean(name = "sessionFactory")	
+	public SessionFactory getSessionFactory(EntityManagerFactory factory) {	 
+		return ((HibernateEntityManagerFactory) factory).getSessionFactory();
 	}
+        
 }
