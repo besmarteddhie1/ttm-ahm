@@ -19,7 +19,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @MappedSuperclass
@@ -33,12 +32,10 @@ public class BaseEntity implements Serializable {
 	@Column(name="iver")
 	private Integer lockVersion;
 	
-	@JsonIgnore
 	@Column(name="vcreaby")
 	@CreatedBy
 	private String createBy;
 	
-	@JsonIgnore
 	@Column(name="vmodiby")
 	@LastModifiedBy
 	private String modiBy;		

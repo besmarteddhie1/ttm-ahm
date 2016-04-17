@@ -5,6 +5,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -69,10 +70,10 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http        	
             .authorizeRequests()
-            	//.antMatchers(HttpMethod.POST, "/api/**").permitAll()
-            	//.antMatchers(HttpMethod.PUT, "/api/**").permitAll()
-            	//.antMatchers(HttpMethod.DELETE, "/api/**").permitAll()
-            	//.antMatchers(HttpMethod.GET, "/api/**").permitAll()
+            	.antMatchers(HttpMethod.POST, "/api/**").permitAll()
+            	.antMatchers(HttpMethod.PUT, "/api/**").permitAll()
+            	.antMatchers(HttpMethod.DELETE, "/api/**").permitAll()
+            	.antMatchers(HttpMethod.GET, "/api/**").permitAll()
                 .antMatchers("/", "/favicon.ico", "/resources/**", "/error").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -82,14 +83,14 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login?error=1")
                 .loginProcessingUrl("/authenticate")
                 .usernameParameter("username").passwordParameter("password")
-                .and()
-//            .httpBasic()
-//            	.and()                
+                .and()                
             .logout()
                 .logoutUrl("/logout")
                 .permitAll()
                 .logoutSuccessUrl("/login?logout")
                 .and()
+            //.httpBasic()
+            //	.and()                
             .rememberMe()
                 .rememberMeServices(rememberMeServices())
                 .key("remember-me-key")

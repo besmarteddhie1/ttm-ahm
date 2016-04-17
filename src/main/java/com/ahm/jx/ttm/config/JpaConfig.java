@@ -12,7 +12,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.jpa.HibernateEntityManagerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -22,6 +21,8 @@ import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -105,20 +106,30 @@ class JpaConfig {
     }    
 
     @Autowired
-    @Bean(name = "transactionManager")
+    @Bean
     public PlatformTransactionManager transactionManager(EntityManagerFactory factory) {
     	JpaTransactionManager tx = new JpaTransactionManager();
     	tx.setEntityManagerFactory(factory);
         return tx;
     }
+        
+    //Required by Vanilla Code
+	@Autowired
+	@Bean(name = "sessionFactory")
+	public SessionFactory getSessionFactory(DataSource ds) {	 
+	    LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(ds);	 
+	    sessionBuilder.scanPackages("com.ahm.jx.app000");	 
+	    return sessionBuilder.buildSessionFactory();
+	}    
+	
+	//Required by Vanilla Code
+	@Autowired
+	@Bean(name = "transactionManager")
+	public HibernateTransactionManager getTransactionManager(SessionFactory factory) throws Exception {
+		return new HibernateTransactionManager(factory);
+	}	
     
-    @Autowired
-	@Bean(name = "sessionFactory")	
-	public SessionFactory getSessionFactory(EntityManagerFactory factory) {	 
-		return ((HibernateEntityManagerFactory) factory).getSessionFactory();
-	}
-    
-    //Audting module
+    //Auditing module
     @Bean
     AuditorAware<String> auditorProvider() {
         return new AuditorAwareImpl();
