@@ -1,12 +1,20 @@
 package com.ahm.jx.ttm.config;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.core.annotation.Order;
+import org.springframework.security.access.AccessDecisionManager;
+import org.springframework.security.access.AccessDecisionVoter;
+import org.springframework.security.access.vote.AffirmativeBased;
+import org.springframework.security.access.vote.AuthenticatedVoter;
+import org.springframework.security.access.vote.RoleVoter;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -22,16 +30,16 @@ import com.ahm.jx.ttm.service.AccountService;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
-class SecurityConfig extends WebSecurityConfigurerAdapter {
+class SecurityConfig {
 
     @Autowired
     private AccountService accountService;
     
 	@Autowired
 	DataSource dataSource;
-	
-	@Override
-	public void configure(AuthenticationManagerBuilder auth) throws Exception {
+		
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		
 	  auth.jdbcAuthentication().dataSource(dataSource)
 	  	.passwordEncoder(new Md5PasswordEncoder())
@@ -56,24 +64,41 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new StandardPasswordEncoder();
 	}
 
-    /*
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-            .eraseCredentials(true)
-            .userDetailsService(accountService)
-            .passwordEncoder(passwordEncoder());
+    @Bean
+    public AccessDecisionManager defaultAccessDecisionManager() {
+        List<AccessDecisionVoter<?>> voters = new ArrayList<AccessDecisionVoter<?>>();
+        voters.add(new RoleVoter());
+        voters.add(new AuthenticatedVoter());
+        AccessDecisionManager result = new AffirmativeBased(voters);
+        return result;
     }
-    */
+    
+    @Configuration
+    @Order(2)
+    public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
+        protected void configure(HttpSecurity http) throws Exception {
+            http
+                .antMatcher("/api/**")
+                .authorizeRequests()
+                	.anyRequest().authenticated()
+                	.and()                	
+                .httpBasic()
+                	.and()
+                .csrf()
+             		.disable();                	
+        }
+    }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http        	
+    @Configuration
+    public static class FormLoginWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
+    	
+    	@Inject
+    	TokenBasedRememberMeServices rememberMe;
+    	
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+            http        	
             .authorizeRequests()
-            	.antMatchers(HttpMethod.POST, "/api/**").permitAll()
-            	.antMatchers(HttpMethod.PUT, "/api/**").permitAll()
-            	.antMatchers(HttpMethod.DELETE, "/api/**").permitAll()
-            	.antMatchers(HttpMethod.GET, "/api/**").permitAll()
                 .antMatchers("/", "/favicon.ico", "/resources/**", "/error").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -89,20 +114,13 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .logoutSuccessUrl("/login?logout")
                 .and()
-            //.httpBasic()
-            //	.and()                
             .rememberMe()
-                .rememberMeServices(rememberMeServices())
+                .rememberMeServices(rememberMe)
                 .key("remember-me-key")
                 .and()
              .csrf()
              	.disable();
-    }
-
-    @Bean(name = "authenticationManager")
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
+        }
+    }    
     
 }
