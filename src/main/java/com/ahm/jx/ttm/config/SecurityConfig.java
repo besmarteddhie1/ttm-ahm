@@ -99,7 +99,7 @@ class SecurityConfig {
         protected void configure(HttpSecurity http) throws Exception {
             http        	
             .authorizeRequests()
-                .antMatchers("/", "/favicon.ico", "/resources/**", "/error").permitAll()
+                .antMatchers("/", "/favicon.ico", "/resources/**", "/error", "/forgot*").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
