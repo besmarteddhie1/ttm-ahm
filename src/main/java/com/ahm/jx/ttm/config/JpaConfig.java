@@ -1,9 +1,3 @@
-/*	 
-* AHM Applikasi menggunakan Hibernate Session Factory
-* Dilakukan casting dari JPA EntityManagerFactory ke Hibernate EntityManagerFactory
-* Untuk membuat session Factory dan transactionManager 
-*/
-
 package com.ahm.jx.ttm.config;
 
 import java.util.Properties;

@@ -78,12 +78,12 @@ class SecurityConfig {
     public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
         protected void configure(HttpSecurity http) throws Exception {
             http
-                .antMatcher("/api/**")
+                .antMatcher("/api/**")	
                 .authorizeRequests()
                 	.anyRequest().authenticated()
                 	.and()                	
                 .httpBasic()
-                	.and()
+                	.and()             	
                 .csrf()
              		.disable();                	
         }
