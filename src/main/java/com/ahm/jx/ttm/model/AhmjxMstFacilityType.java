@@ -19,6 +19,9 @@ public class AhmjxMstFacilityType extends BaseEntity {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idfactype")
 	private Integer idFacilityType;
+	
+	@Column(name="vcategory")
+	private String category;	
 		
 	@Column(name="vdescription")
 	private String description;	
@@ -29,6 +32,14 @@ public class AhmjxMstFacilityType extends BaseEntity {
 
 	public void setIdFacilityType(Integer idLocationType) {
 		this.idFacilityType = idLocationType;
+	}	
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public String getDescription() {

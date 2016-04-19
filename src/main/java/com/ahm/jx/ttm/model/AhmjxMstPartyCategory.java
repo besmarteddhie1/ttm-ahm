@@ -27,6 +27,9 @@ public class AhmjxMstPartyCategory extends BaseEntity {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idcategory")
 	private Integer idCategory;
+	
+	@Column(name="idprncat")
+	private String idParentCategory;
 		
 	@Column(name="vdescription")
 	private String description;
@@ -48,6 +51,14 @@ public class AhmjxMstPartyCategory extends BaseEntity {
 
 	public void setIdCategory(Integer idCategory) {
 		this.idCategory = idCategory;
+	}	
+
+	public String getIdParentCategory() {
+		return idParentCategory;
+	}
+
+	public void setIdParentCategory(String idParentCategory) {
+		this.idParentCategory = idParentCategory;
 	}
 
 	public String getDescription() {
