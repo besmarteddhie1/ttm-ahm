@@ -1,9 +1,3 @@
-/*	 
-* AHM Applikasi menggunakan Hibernate Session Factory
-* Dilakukan casting dari JPA EntityManagerFactory ke Hibernate EntityManagerFactory
-* Untuk membuat session Factory dan transactionManager 
-*/
-
 package com.ahm.jx.ttm.config;
 
 import java.util.Properties;
@@ -12,13 +6,17 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.jpa.HibernateEntityManagerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -27,6 +25,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.ClassUtils;
 
 import com.ahm.jx.Application;
+import com.ahm.jx.ttm.utils.AuditorAwareImpl;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -34,6 +33,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @EnableTransactionManagement
 @PropertySource("classpath:persistence.properties")
 @EnableJpaRepositories(basePackageClasses = Application.class)
+@EnableJpaAuditing(auditorAwareRef = "auditorProvider")
 class JpaConfig {
 
     @Value("${dataSource.driverClassName}")
@@ -74,8 +74,9 @@ class JpaConfig {
         return new HikariDataSource(config);
     }
     
+    @Autowired
     @Bean
-    public EntityManagerFactory entityManagerFactory() {
+    public EntityManagerFactory entityManagerFactory(DataSource dataSource) {
     	HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
     	
         Properties jpaProperties = new Properties();
@@ -85,7 +86,7 @@ class JpaConfig {
         jpaProperties.put(org.hibernate.cfg.Environment.FORMAT_SQL, "true");
         
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-        factory.setDataSource(dataSource());
+        factory.setDataSource(dataSource);
 
         String entities = ClassUtils.getPackageName(Application.class);
         String converters = ClassUtils.getPackageName(Jsr310JpaConverters.class);
@@ -98,15 +99,34 @@ class JpaConfig {
         return factory.getObject();
     }    
 
-    @Bean(name = "transactionManager")
-    public PlatformTransactionManager transactionManager() {
+    @Autowired
+    @Bean
+    public PlatformTransactionManager transactionManager(EntityManagerFactory factory) {
     	JpaTransactionManager tx = new JpaTransactionManager();
-    	tx.setEntityManagerFactory(entityManagerFactory());
+    	tx.setEntityManagerFactory(factory);
         return tx;
     }
-    
+        
+    //Required by Vanilla Code
+	@Autowired
 	@Bean(name = "sessionFactory")
-	public SessionFactory getSessionFactory() {	 
-		return ((HibernateEntityManagerFactory) entityManagerFactory()).getSessionFactory();
-	}
+	public SessionFactory getSessionFactory(DataSource ds) {	 
+	    LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(ds);	 
+	    sessionBuilder.scanPackages("com.ahm.jx.app000");	 
+	    return sessionBuilder.buildSessionFactory();
+	}    
+	
+	//Required by Vanilla Code
+	@Autowired
+	@Bean(name = "transactionManager")
+	public HibernateTransactionManager getTransactionManager(SessionFactory factory) throws Exception {
+		return new HibernateTransactionManager(factory);
+	}	
+    
+    //Auditing module
+    @Bean
+    AuditorAware<String> auditorProvider() {
+        return new AuditorAwareImpl();
+    }    
+        
 }
