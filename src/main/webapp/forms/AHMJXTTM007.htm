@@ -1,0 +1,474 @@
+<div id="AHMJXUAM007" class="div-app" data-version="1.0">
+    <div class="global_message">
+
+    </div>
+    <div id="ahmjxuam001p01" class="subpage subpage-default" data-path="Maintain User">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group large-font">
+                    <label>Search</label>
+                    <div class="input-group">
+                        <input id="ahmjxuam001p01Search" type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary large-button default" type="button" 
+                                    onclick="$('#ahmjxuam001p01SearchTable').bootstrapTable('refresh');">Search</button>
+                        </span>
+                    </div>
+                </div><!-- 
+                <div class="form-group large-font">
+                    <label>Search User</label>
+                    <div class="input-group">
+                        <input id="ahmjxuam001p01Search" type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default large-button" type="button" onclick="function(){$('#table-form').bootstrapTable('refresh', {silent: true});}">Search</button>
+                            <button class="btn btn-primary large-button" type="button" onclick="$('#ahmjxuam001p01SearchTable').bootstrapTable('refresh');">Search</button>
+                        </span>
+                    </div>
+                </div> -->
+            </div>
+            <div class="col-md-6">
+
+                <table id="ahmjxuam001p01TableDelete" 
+                       data-source-id="ahmjxuam001p01SearchTable" 
+                       data-unique-id="vid"
+                       data-pagination="true"
+                       data-page-size="5">
+                    <thead>
+                        <tr>
+                            <th data-field="vid" 
+                                data-sortable="true"
+                                data-visible="false"
+                                >ID User</th>
+                            <th data-field="vusername" 
+                                data-sortable="true"
+                                >Username</th>
+                            <th data-field="vaction"
+                                data-formatter="actionRemoveFormatter"
+                                data-events="actionEvents">Action
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+        </div>
+        <div class="form-group-button">
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam001PrepareAdd(this);return false;">Add</button>
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam001DisableKonfirm(this);return false;">Disable</button>
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam001ResetKonfirm(this);return false;">Reset Password</button>
+        </div>
+        <br/>
+        <div id="table-container">
+            <table 	id="ahmjxuam001p01SearchTable"
+                    data-method="post"
+                    data-url="/uam001/paging"
+                    data-content-type="application/json"
+                    data-data-type="json"
+                    data-query-params-type="limit"
+                    data-query-params="ahmjxuam001Presearch"
+                    data-response-handler="loadData"
+                    data-side-pagination="server"
+                    data-pagination="true"
+                    data-custom-action="edit"
+                    data-edit-func="ahmjxuam001PrepareEdit"
+                    data-checkbox-table="ahmjxuam001p01TableDelete"
+                    data-unique-id="vid"
+                    >
+                <thead>
+                    <tr>
+
+                        <th data-field="state" 
+                            data-checkbox="true"
+                            data-formatter="stateFormatter"></th>
+
+                        <th data-field="vid" 
+                            data-sortable="true"
+                            data-visible="false"
+                            >ID User</th>
+                        <th data-field="vusername" 
+                            data-sortable="true"
+                            data-visible="true"
+                            >Username</th>
+                        <th data-field="vpassword" 
+                            data-sortable="true"
+                            data-visible="false"
+                            >Password</th>
+                        <th data-field="iver" 
+                            data-sortable="true"
+                            data-visible="false"
+                            >Iver</th>
+                        <th data-field="vstat" 
+                            data-sortable="true" 
+                            data-visible="true"
+                            >Status</th>
+                    </tr>
+                </thead>
+
+            </table>
+        </div>
+
+
+    </div>
+    <div id="ahmjxuam001p02" class="subpage" data-path="Maintain User/Add New User">
+        <form class="form-horizontal">
+            <div class="form-group large-font">
+                <label for="ahmjxuam001p02Vfullname" class="col-sm-2 control-label">Fullname <span style="color:red">*)  </span></label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam001p02Vfullname" name="vfullname" class="form-control" maxlength="25">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam001p02IdPartner" class="col-sm-2 control-label">Partner <span style="color:red">*)  </span></label>
+                <div class="lookup-wrapper col-sm-6" >
+                    <div class="input-group lookup" 
+                         data-url="/uam001/lovdealer"
+                         data-lookup-pre-func="ahmjxuam001LookupDealer" 
+                         data-columns='[{"id":"vid","name":"vid","visible":"false","sortable":"false"},{"id":"vdealercode","name":"Kode Dealer","visible":"true","sortable":"true"}
+                         ,{"id":"vname","name":"Nama Dealer","visible":"true","sortable":"true"}]'
+                         data-callback='{"ahmjxuam001p02IdDealer":"vid","ahmjxuam001p02Dealer":"vdealercode"}'
+                         >
+                        <input id="ahmjxuam001p02IdPartner" name="ahmjxuam001p02IdPartner" type="hidden"/>
+                        <input id="ahmjxuam001p02Partner" name="ahmjxuam001p02Partner" class="form-control input-lookup" placeholder="LOV...." data-field-id="vid">
+                        <span class="input-group-btn">
+                            <button id="ahmjxuam001p02Partnerbtn" class="btn btn-default large-button btn-lookup" type="button">...</button>
+                        </span>
+                    </div>
+                </div>  
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam001p02Vemail" class="col-sm-2 control-label">Email <span style="color:red">*)  </span></label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam001p02Vemail" name="vemail" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam001p02Vphone" class="col-sm-2 control-label">Phone </label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam001p02Vphone" name="vphone" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam001p02Vaddress" class="col-sm-2 control-label">Address </label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam001p02address" name="vaddress" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam001p02Vttl" class="col-sm-2 control-label">TTL </label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam001p02Vttl" name="vttl" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-offset-2 col-sm-10 form-group-button">
+                <button id="btnAddNew" class="btn btn-default btn-primary large-button" style="display: none" onclick="ahmjxuam001PrepareAdd(this);return false;">Add New</button>
+                <button  id="btnSubmit" class="btn btn-default btn-primary large-button" onclick="ahmjxuam001AddData(this);return false;">Submit</button>
+                <button id="btnReset" class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
+                <button  class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam001p01');$('#ahmjxuam001p01SearchTable').bootstrapTable('refresh');return false;">Back</button>
+            </div>
+        </form>
+    </div>
+    <div id="ahmjxuam001p03" class="subpage" data-path="Maintain User/Edit Data User">
+        <form class="form-horizontal">
+            <div class="form-group large-font">
+                <input type="hidden" name="iver" data-field="iver"/>
+
+                <div>
+                    <label for="ahmjxuam001p03Viduser" class="col-sm-2 control-label">User ID</label>
+                    <div class="col-sm-6">
+                        <input id="ahmjxuam001p03Viduser" name="vid" class="form-control" data-field="vid" disabled="disabled">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <div>
+                    <label for="ahmjxuam001p03Vusername" class="col-sm-2 control-label">Username </label>
+                    <div class="col-sm-6">
+                        <input id="ahmjxuam001p03Vusername" name="vusername" class="form-control" data-field="vusername" disabled="disabled">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label class="col-sm-2 control-label">Status</label>
+                <div class="col-sm-6">
+
+                    <label class="radio-inline">
+                        <input type="radio" name="vstat" value="AKTIF" data-field="vstat"> Aktif
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="vstat" value="TIDAK AKTIF" data-field="vstat"> Tidak Aktif
+                    </label>
+
+                </div>
+            </div>
+
+
+            <div class="col-sm-offset-2 col-sm-6 form-group-button">
+                <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam001Update(this);return false;">Submit</button>
+                <button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam001p01');$('#ahmjxuam001p01SearchTable').bootstrapTable('refresh');return false;">Back</button>
+            </div>
+
+            <input id="ahmjxuam001p03Viduser" type="hidden" name="vid" data-field="vid"/>
+            <input id="ahmjxuam001p03Iver" type="hidden" name="iver" data-field="iver"/>
+
+        </form>
+
+    </div>
+
+
+    <div id="ahmdshuam001p04" class="subpage" data-path="Maintain User/Konfirmasi Disable User">
+        <table 	id="ahmjxuam001p04DisableTable">
+
+            <thead>
+                <tr>
+                    <th data-field="vid" 
+                        data-sortable="true"
+                        data-visible="false"
+                        >User ID</th>
+                    <th data-field="iver" 
+                        data-sortable="true"
+                        data-visible="false"
+                        >Iver</th>
+                    <th data-field="vusername" 
+                        data-sortable="true"
+                        >Username</th>
+                    <th data-field="vstat" 
+                        data-sortable="true" 
+                        >Status</th>
+                </tr>
+            </thead>
+
+        </table>
+        <br/>
+        <div class="form-group-button">
+            <button id="btnDisable" name="btnDisable" class="btn btn-default btn-primary large-button" onclick="ahmjxuam001DisableData(this); return false;">Disable</button>
+            <button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam001p01');return false;">Back</button>
+
+        </div>
+    </div>
+
+
+
+    <div id="ahmdshuam001p05" class="subpage" data-path="Maintain User/Konfirmasi Reset Password">
+        <table id="ahmjxuam001p05ResetTable">
+
+            <thead>
+                <tr>
+                    <th data-field="vid" 
+                        data-sortable="true"
+                        data-visible="false"
+                        >User ID</th>
+                    <th data-field="iver" 
+                        data-sortable="true"
+                        data-visible="false"
+                        >Iver</th>
+                    <th data-field="vusername" 
+                        data-sortable="true"
+                        >Username</th>
+                    <th data-field="vstat" 
+                        data-sortable="true" 
+                        >Status</th>
+                </tr>
+            </thead>
+
+        </table>
+        <br/>
+        <div class="form-group-button">
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam001ResetData(this);">Reset</button>
+            <button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam001p01');return false;">Back</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function stateFormatter(value, row, index) {
+        if (row.vstat === "TIDAK AKTIF") {
+            return {
+                disabled: true
+            };
+        }
+        return value;
+    }
+     
+    function ahmjxuam001LookupDealer(params){
+        params.search = {"any": $('#ahmjxuam001p02Dealer').val()};
+        if(params.sort == undefined){
+            return{
+                limit : params.limit,
+                offset : params.offset,
+                search : params.search
+            }
+        }
+        return params;
+    }
+    function ahmjxuam001Presearch(params){
+        params.search = {"any": $('#ahmjxuam001p01Search').val()};
+        if(params.sort == undefined){
+            return{
+                limit : params.limit,
+                offset : params.offset,
+                search : params.search
+            }
+        }
+        return params;
+    }
+    function ahmjxuam001PrepareAdd(obj){
+        var page = $('#ahmjxuam001p02');
+        $('input, select', page).prop('disabled',false);   
+        _fw_reset_subpage(page);
+        _fw_subpage(obj, 'ahmjxuam001p02');
+        $('button[id="btnAddNew"]', page).hide();
+        $('button[id="btnSubmit"]', page).show();
+        $('button[id="btnReset"]', page).show();
+        $('button[id="ahmjxuam001p02Dealerbtn"]',page).prop('disabled',false);
+        
+                             
+    }
+                            
+    function ahmjxuam001AddData(obj){
+        var page = $(obj).closest('.subpage');
+        _fw_validation_clear(obj);
+        _fw_validation_add(obj, 'ahmjxuam001p02Vfullname', 'required');
+        _fw_validation_add(obj, 'ahmjxuam001p02IdPartner', 'required');
+        _fw_validation_add(obj, 'ahmjxuam001p02Vemail', 'required');
+        //            _fw_validation_add(obj, 'ahmjxuam001p02Vretype', 'required');
+           
+            
+        if(_fw_validation_validate(obj)){
+            var vo = new Object();
+            vo.vusername = $('input[id="ahmjxuam001p02Partner"]', page).val()+'.'+$('input[name="vfullname"]', page).val();
+            vo.vidDlr = $('input[id="ahmjxuam001p02IdPartner"]', page).val();
+                                                     
+            _fw_post('/uam001/insert', vo, function(data){
+                if(data.stat=="200"){
+                               
+                    $('input, select',page).prop('disabled',true);
+                    $('button[name="btnAddNew"]',page).show();
+                    $('button[name="btnSubmit"]',page).hide();
+                    $('button[name="btnReset"]',page).hide();
+                    _fw_setMessage(obj,1,data);
+                    $('#ahmjxuam001p01SearchTable').bootstrapTable('refresh');
+                } else {
+                    _fw_setMessage(obj, 0, data);
+                }
+            });
+        
+        }
+    }
+    function ahmjxuam001AfterAddSuccess(obj,data){
+        $('#ahmjxuam001p02Vusername').prop('disabled',true);
+        $('#ahmjxuam001p02Dealer').prop('disabled',true);
+        
+        $('button[id="btnDisable"]',page).hide();
+        $('button[id="ahmjxuam001p02Dealerbtn"]',page).prop('disabled',true);        
+        _fw_setMessage(obj, 1, data);    
+            
+    }
+        
+    function ahmjxuam001PrepareEdit(obj, row, index){
+        _fw_subpage(obj, 'ahmjxuam001p03', row);    
+    }
+    function ahmjxuam001Update(obj){
+        var page = $(obj).closest('.subpage');
+        _fw_validation_clear(obj);
+            
+        if(_fw_validation_validate(obj)){
+            var vo = new Object();
+            vo.vid = $('input[name="vid"]', page).val();
+            vo.iver = $('input[name="iver"]', page).val();
+            vo.vusername = $('input[name="vusername"]', page).val();
+            vo.vstat = $('input[name="vstat"]:checked', page).val();
+            _fw_post('/uam001/update', vo, function(data){
+            	console.log('vo',vo);
+            	console.log('update',data);
+                if(data.stat=="200"){
+                
+                    //_fw_subpage(obj, 'ahmdsh1c008p01');
+                    _fw_setMessage(obj, 1, data);
+                    var iver = parseInt(vo.iver)+1;
+                    $('input[name="iver"]', page).val(iver);
+                    $('#ahmjxuam001p01SearchTable').bootstrapTable('refresh');
+                } else {
+                    //_fw_setMessage(obj, 0, data);
+                    console.log('update-error');
+                    _fw_setMessage(obj, '0', data);
+                
+                }
+            });
+        }
+    }
+    function ahmjxuam001DisableKonfirm(obj){
+        var disabledRows = $('#ahmjxuam001p01TableDelete').bootstrapTable('getData');
+        if(disabledRows.length > 0) {
+            $('#ahmjxuam001p04DisableTable').bootstrapTable('destroy');
+            $('#ahmjxuam001p04DisableTable').bootstrapTable({data:disabledRows});
+        
+            _fw_subpage(obj, 'ahmdshuam001p04');
+        } else {
+            alert('no data selected');
+        }
+    }
+    function ahmjxuam001DisableData(obj){
+        var disabledRows = $('#ahmjxuam001p04DisableTable').bootstrapTable('getData');
+        var disabled = [];
+        var vid = [];
+        var listVo = [];
+        $.each(disabledRows, function(){
+            var row = this;            
+            disabled.push({'vid': row.vid});
+            vid.push(row.vid);
+        });
+        _fw_post('/uam001/disable', disabled, function(data){
+            if(data.stat=="200"){
+                
+                _fw_setMessage(obj, 1, data);
+                $('#ahmjxuam001p01TableDelete').bootstrapTable('remove', {field: 'vid', values: vid});
+                $('#ahmjxuam001p01SearchTable').bootstrapTable('refresh');
+            } else {
+                _fw_setMessage(obj, 0, data);
+            }
+        });
+    }
+    function ahmjxuam001AfterDisableSuccess(obj,data){
+        $('').css('display',''); 
+        $('#ahmdsh1c006p02BtnSubmit').css('display','none');     
+        $('#ahmdsh1c006p02BtnReset').css('display','none');         
+        _fw_setMessage(obj, 1, data);    
+            
+    }    
+    function ahmjxuam001ResetKonfirm(obj){
+        var disabledRows = $('#ahmjxuam001p01TableDelete').bootstrapTable('getData');
+        if(disabledRows.length > 0) {
+            $('#ahmjxuam001p05ResetTable').bootstrapTable('destroy');
+            $('#ahmjxuam001p05ResetTable').bootstrapTable({data:disabledRows});
+        
+            _fw_subpage(obj, 'ahmdshuam001p05');
+        } else {
+            alert('no data selected');
+        }
+    }
+    function ahmjxuam001ResetData(obj){
+        var disabledRows = $('#ahmjxuam001p05ResetTable').bootstrapTable('getData');
+        var disabled = [];
+        var vid = [];
+        var listVo = [];
+        $.each(disabledRows, function(){
+            var row = this;            
+            disabled.push({'vid': row.vid});
+            //disabled.push({'vpassword':row.vpassword});
+            vid.push(row.vid);
+        });
+        console.log(disabled);
+        _fw_post('/uam001/reset', disabled, function(data){
+            if(data.stat=="200"){
+                $('#ahmjxuam001p01TableDelete').bootstrapTable('remove', {field: 'vid', values: vid});
+                $('#ahmjxuam001p01SearchTable').bootstrapTable('refresh');
+                _fw_subpage(obj,'ahmjxuam001p01');
+                _fw_setMessage(obj, 1, data);
+            } else {
+                _fw_setMessage(obj, 0, data);
+            }
+        });
+    }
+        
+            
+</script>
+
