@@ -27,12 +27,18 @@ public class AhmjxMstPartyCategory extends BaseEntity {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idcategory")
 	private Integer idCategory;
+	
+	@Column(name="idprncat")
+	private String idParentCategory;
 		
 	@Column(name="vdescription")
 	private String description;
 	
 	@Column(name="idcattype")
 	private Integer idCategoryType;	
+
+	@Column(name="isalesqty")
+	private Integer salesQty;
 
 	@JsonIgnore
 	@ManyToOne
@@ -45,6 +51,14 @@ public class AhmjxMstPartyCategory extends BaseEntity {
 
 	public void setIdCategory(Integer idCategory) {
 		this.idCategory = idCategory;
+	}	
+
+	public String getIdParentCategory() {
+		return idParentCategory;
+	}
+
+	public void setIdParentCategory(String idParentCategory) {
+		this.idParentCategory = idParentCategory;
 	}
 
 	public String getDescription() {
@@ -69,6 +83,14 @@ public class AhmjxMstPartyCategory extends BaseEntity {
 
 	public void setCategoryType(AhmjxMstPartyCategoryType categoryType) {
 		this.categoryType = categoryType;
+	}	
+
+	public Integer getSalesQty() {
+		return salesQty;
+	}
+
+	public void setSalesQty(Integer salesQty) {
+		this.salesQty = salesQty;
 	}
 
 	@Override

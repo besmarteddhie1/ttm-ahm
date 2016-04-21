@@ -23,6 +23,9 @@ public class AhmjxTtmRingType extends BaseEntity {
 	@Column(name="vdescription")
 	private String description;
 	
+	@Column(name="iradius")
+	private Integer radius;
+	
 	public Integer getIdRing() {
 		return idRing;
 	}
@@ -37,6 +40,14 @@ public class AhmjxTtmRingType extends BaseEntity {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}	
+
+	public Integer getRadius() {
+		return radius;
+	}
+
+	public void setRadius(Integer radius) {
+		this.radius = radius;
 	}
 
 	@Override

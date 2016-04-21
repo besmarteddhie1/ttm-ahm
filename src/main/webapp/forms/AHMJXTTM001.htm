@@ -28,7 +28,7 @@
 						<div class="form-group-button pull-right">
 							<button class="btn btn-default btn-primary large-button" onclick="menu1Add(this);return false;">Tambah</button>
 							<button class="btn btn-default btn-primary large-button" onclick="menu1Edit(this);return false;">Ubah</button>
-							<button class="btn btn-default btn-primary large-button" onclick="hapusMenu1(data-field);">Hapus</button>
+							<button class="btn btn-default btn-primary large-button" onclick="menu1Hapus(this);">Hapus</button>
 						</div>
 
 						<div id="table-container">
@@ -357,7 +357,7 @@
 		_fw_subpage(obj, 'menu1p03', row);
 	}
 
-	function hapusMenu1(obj)
+	function menu1Hapus(obj)
 	{
 		console.log("hapus=>",obj);
 	}
