@@ -24,40 +24,61 @@
 				<div id="menu1" class="tab-pane fade in active">
 					<div id="menu1p01" class="subpage subpage-default" data-path="">
 						<!-- <h3>Klasifikasi Dealer</h3> -->
-        				
-        				<div class="row">
-							<div class="form-group-button pull-right">
-								<button class="btn btn-default btn-primary large-button" onclick="menu1Add(this);return false;">Tambah</button>
-								<button class="btn btn-default btn-primary large-button" onclick="menu1Edit(this);return false;">Ubah</button>
-								<button class="btn btn-default btn-primary large-button" onclick="menu1DisableKonfirm(this);return false;">Hapus</button>
+						
+						<div class="row">
+							<div class="col-md-6">
+				                <div class="form-group large-font">
+				                    <label>Search</label>
+				                    <div class="input-group">
+				                        <input id="ahmjxuam001p01Search" type="text" class="form-control" placeholder="Search...">
+				                        <span class="input-group-btn">
+				                            <button class="btn btn-primary large-button default" type="button" 
+				                                    onclick="$('#ahmjxuam001p01SearchTable').bootstrapTable('refresh');">Search</button>
+				                        </span>
+				                    </div>
+				                </div><!-- 
+				                <div class="form-group large-font">
+				                    <label>Search User</label>
+				                    <div class="input-group">
+				                        <input id="ahmjxuam001p01Search" type="text" class="form-control" placeholder="Search...">
+				                        <span class="input-group-btn">
+				                            <button class="btn btn-default large-button" type="button" onclick="function(){$('#table-form').bootstrapTable('refresh', {silent: true});}">Search</button>
+				                            <button class="btn btn-primary large-button" type="button" onclick="$('#ahmjxuam001p01SearchTable').bootstrapTable('refresh');">Search</button>
+				                        </span>
+				                    </div>
+				                </div> -->
+				            </div>
+							<div class="col-md-6">
+								<table id="menu1TableDisable" 
+									   data-source-id="menu1Table" 
+									   data-unique-id="idCategory"
+									   data-pagination="true"
+									   data-page-size="5">
+									<thead>
+										<tr>
+											<th data-field="description" 
+												data-sortable="true"
+												>Description</th>
+											<th data-field="salesQty" 
+												data-sortable="true"
+												>Minimal Sales / Month</th>
+											<th data-field="vname" 
+												data-sortable="true"
+												>Application</th>
+											<th data-field="vaction"
+												data-formatter="actionRemoveFormatter"
+												data-events="actionEvents">Action
+											</th>
+										</tr>
+									</thead>
+								</table>
 							</div>
 						</div>
-
-						<div class="col-md-6">
-			                <table id="menu1TableDisable" 
-			                       data-source-id="menu1Table" 
-			                       data-unique-id="vid"
-			                       data-pagination="true"
-			                       data-page-size="5">
-			                    <thead>
-			                        <tr>
-			                            <th data-field="description" 
-			                                data-sortable="true"
-			                                >Description</th>
-			                            <th data-field="salesQty" 
-			                                data-sortable="true"
-			                                >Minimal Sales / Month</th>
-			                            <th data-field="vname" 
-			                                data-sortable="true"
-			                                >Application</th>
-			                            <th data-field="vaction"
-			                                data-formatter="actionRemoveFormatter"
-			                                data-events="actionEvents">Action
-			                            </th>
-			                        </tr>
-			                    </thead>
-			                </table>
-			            </div>
+						<div class="form-group-button pull-left">
+							<button class="btn btn-default btn-primary large-button" onclick="menu1Add(this);return false;">Tambah</button>
+							<button class="btn btn-default btn-primary large-button" onclick="menu1Edit(this);return false;">Ubah</button>
+							<button class="btn btn-default btn-primary large-button" onclick="menu1DisableKonfirm(this);return false;">Hapus</button>
+						</div>
 
 						<div id="table-container">
 							<table id="menu1Table"
@@ -65,10 +86,13 @@
 							data-url="/api/ttm001/dc"
 							data-content-type="application/json"
 							data-data-type="json"
-		                    data-custom-action="edit, delete"
-		                    data-edit-func="menu1Edit"
-                		    data-checkbox-table="menu1TableDisable"
-		                    data-unique-id="idCategory">
+							data-pagination="true"
+							data-page-size="10"
+							data-page-list="[10,25,50]"
+							data-custom-action="edit, delete"
+							data-edit-func="menu1Edit"
+							data-checkbox-table="menu1TableDisable"
+							data-unique-id="idCategory">
 							<thead>
 								<tr>
 									<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
@@ -133,29 +157,29 @@
 				</div>
 				
 				<div id="menu1p04" class="subpage" data-path="">
-			        <table id="menu1DisableTable">
-			            <thead>
-			                <tr>
-			                    <th data-field="idCategory" 
-			                        data-sortable="true"
-			                        data-visible="false"
-			                        >ID</th>
-			                    <th data-field="description" 
-			                        data-sortable="true"
-			                        >Description</th>
-			                    <th data-field="salesQty" 
-			                        data-sortable="true"
-			                        >Minimal Sales / Month</th>
-			                </tr>
-			            </thead>
+					<table id="menu1DisableTable">
+						<thead>
+							<tr>
+								<th data-field="idCategory" 
+									data-sortable="true"
+									data-visible="false"
+									>ID</th>
+								<th data-field="description" 
+									data-sortable="true"
+									>Description</th>
+								<th data-field="salesQty" 
+									data-sortable="true"
+									>Minimal Sales / Month</th>
+							</tr>
+						</thead>
 			
-			        </table>
-			        <br/>
-			        <div class="form-group-button">
-			            <button class="btn btn-default btn-primary large-button" onclick="menu1DisableData(this)">Disable</button>
-			            <button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu1p01'); return false;">Back</button>
-			        </div>
-			    </div>
+					</table>
+					<br/>
+					<div class="form-group-button">
+						<button class="btn btn-default btn-primary large-button" onclick="menu1DisableData(this)">Disable</button>
+						<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu1p01'); return false;">Back</button>
+					</div>
+				</div>
 			</div>
 
 			<!-- ---------- PENAMAAN RING ---------- -->
@@ -175,10 +199,10 @@
 						data-url="/api/ttm001/ring"
 						data-content-type="application/json"
 						data-data-type="json"
-		                data-custom-action="edit"
-		                data-edit-func="menu2Edit"
-                		data-checkbox-table="menu2TableDisable"
-		                data-unique-id="idRing">
+						data-custom-action="edit"
+						data-edit-func="menu2Edit"
+						data-checkbox-table="menu2TableDisable"
+						data-unique-id="idRing">
 						<thead>
 							<tr>
 								<!-- <th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th> -->
@@ -256,10 +280,10 @@
 					data-url="/api/ttm001/wet"
 					data-content-type="application/json"
 					data-data-type="json"
-		            data-custom-action="edit"
-		            data-edit-func="menu4Edit"
-                	data-checkbox-table="menu4TableDisable"
-                	data-unique-id="idWeType">
+					data-custom-action="edit"
+					data-edit-func="menu4Edit"
+					data-checkbox-table="menu4TableDisable"
+					data-unique-id="idWeType">
 					<thead>
 						<tr>
 							<!-- <th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th> -->
@@ -326,10 +350,10 @@
 				data-url="/api/ttm001/loc"
 				data-content-type="application/json"
 				data-data-type="json"
-		        data-custom-action="edit"
-		        data-edit-func="menu5Edit"
-                data-checkbox-table="menu1TableDisable"
-                data-unique-id="idFacilityType">
+				data-custom-action="edit"
+				data-edit-func="menu5Edit"
+				data-checkbox-table="menu1TableDisable"
+				data-unique-id="idFacilityType">
 				<thead>
 					<tr>
 						<!-- <th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th> -->
@@ -427,20 +451,20 @@
 
 	function menu1AddData(obj){
 		var page = $(obj).closest('.subpage');
-        _fw_validation_clear(obj);
-        _fw_validation_add(obj, 'menu1p02Description', 'required');
-        _fw_validation_add(obj, 'menu1p02SalesQty', 'required');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu1p02Description', 'required');
+		_fw_validation_add(obj, 'menu1p02SalesQty', 'required');
 
-        if(_fw_validation_validate(obj)){
-            var vo = new Object();
-            //vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
-            //vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
-            vo.idCategoryType = 101;
-            vo.idParentCategory = 0;
-            vo.description = $('input[id="menu1p02Description"]', page).val();
-            vo.salesQty = $('input[id="menu1p02SalesQty"]', page).val();
-            
-            console.log(vo);
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+			//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+			vo.idCategoryType = 101;
+			vo.idParentCategory = 0;
+			vo.description = $('input[id="menu1p02Description"]', page).val();
+			vo.salesQty = $('input[id="menu1p02SalesQty"]', page).val();
+			
+			console.log(vo);
 
 			$.ajax
 			({
@@ -452,7 +476,7 @@
 				success:function(data){
 					console.log(data);
 					_fw_setMessage(obj,1,"Success");
-                    $('#menu1Table').bootstrapTable('refresh');
+					$('#menu1Table').bootstrapTable('refresh');
 				  },
 			});
 		}
@@ -464,21 +488,21 @@
 	
 	function menu1EditData(obj){
 		var page = $(obj).closest('.subpage');
-        _fw_validation_clear(obj);
-        _fw_validation_add(obj, 'menu1p03Description', 'required');
-        _fw_validation_add(obj, 'menu1p03SalesQty', 'required');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu1p03Description', 'required');
+		_fw_validation_add(obj, 'menu1p03SalesQty', 'required');
 
-        if(_fw_validation_validate(obj)){
-            var vo = new Object();
-            //vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
-            //vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
-            vo.idCategory = $('input[name="idCategory"]', page).val();;
-            vo.idCategoryType = 101;
-            vo.idParentCategory = 0;
-            vo.description = $('input[id="menu1p03Description"]', page).val();
-            vo.salesQty = $('input[id="menu1p03SalesQty"]', page).val();
-            
-            console.log(vo);
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+			//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+			vo.idCategory = $('input[name="idCategory"]', page).val();;
+			vo.idCategoryType = 101;
+			vo.idParentCategory = 0;
+			vo.description = $('input[id="menu1p03Description"]', page).val();
+			vo.salesQty = $('input[id="menu1p03SalesQty"]', page).val();
+			
+			console.log(vo);
 
 			$.ajax
 			({
@@ -490,48 +514,48 @@
 				success:function(data){
 					console.log(data);
 					_fw_setMessage(obj,1,"Success");
-                    $('#menu1Table').bootstrapTable('refresh');
+					$('#menu1Table').bootstrapTable('refresh');
 				  },
 			});
 		}
 	}
-    
-    function menu1DisableKonfirm(obj){
-        var disabledRows = $('#menu1Table').bootstrapTable('getData');
-        console.log("deletelaksjdlkajsd");
-        if(disabledRows.length > 0) {
-            $('#menu1DisableTable').bootstrapTable('destroy');
-            $('#menu1DisableTable').bootstrapTable({data:disabledRows});
-        
-            _subpage(obj, 'menu1p04');
-        } else {
-            alert('no data selected');
-        }
-    }
-    
-    function menu1DisableData(obj){
-        var disabledRows = $('#ahmjxuam003p04DisableTable').bootstrapTable('getData');
-        var disabled = [];
-        var vid = [];
-        var listVo = [];
-        $.each(disabledRows, function(){
-            var row = this;
-            
-            disabled.push({'vid': row.vid});
-            vid.push(row.vid);
-        });
-        _fw_post('/uam003/disable', disabled, function(data){
-            if(data.stat=="200"){
-                _fw_setMessage(obj, 1, data);
-                $('#ahmjxuam003p01TableDisable').bootstrapTable('remove', {field: 'vid', values: vid});
-                $('#ahmjxuam003p01SearchTable').bootstrapTable('refresh');
-            } else {
-                _fw_setMessage(obj, 0, data);
-            }
-        });
-    }
+	
+	function menu1DisableKonfirm(obj){
+		var disabledRows = $('#menu1TableDisable').bootstrapTable('getData');
+		console.log("deletelaksjdlkajsd");
+		if(disabledRows.length > 0) {
+			$('#menu1DisableTable').bootstrapTable('destroy');
+			$('#menu1DisableTable').bootstrapTable({data:disabledRows});
+		
+			_subpage(obj, 'menu1p04');
+		} else {
+			alert('no data selected');
+		}
+	}
+	
+	function menu1DisableData(obj){
+		var disabledRows = $('#ahmjxuam003p04DisableTable').bootstrapTable('getData');
+		var disabled = [];
+		var vid = [];
+		var listVo = [];
+		$.each(disabledRows, function(){
+			var row = this;
+			
+			disabled.push({'vid': row.vid});
+			vid.push(row.vid);
+		});
+		_fw_post('/uam003/disable', disabled, function(data){
+			if(data.stat=="200"){
+				_fw_setMessage(obj, 1, data);
+				$('#ahmjxuam003p01TableDisable').bootstrapTable('remove', {field: 'vid', values: vid});
+				$('#ahmjxuam003p01SearchTable').bootstrapTable('refresh');
+			} else {
+				_fw_setMessage(obj, 0, data);
+			}
+		});
+	}
 
-    function menu1Delete(obj, row, index){
+	function menu1Delete(obj, row, index){
 		console.log("deleted");
 		console.log($("#menu1Table > "));
 	}
@@ -568,15 +592,15 @@
 
 	function menu2AddData(obj){
 		var page = $(obj).closest('.subpage');
-        _fw_validation_clear(obj);
-        _fw_validation_add(obj, 'menu2p02Description', 'required');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu2p02Description', 'required');
 
-        if(_fw_validation_validate(obj)){
-            var vo = new Object();
-            vo.description = $('input[id="menu2p02description"]', page).val();
-            vo.radius = 0;
-            
-            console.log(vo);
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			vo.description = $('input[id="menu2p02description"]', page).val();
+			vo.radius = 0;
+			
+			console.log(vo);
 
 			$.ajax
 			({
@@ -588,7 +612,7 @@
 				success:function(data){
 					console.log(data);
 					_fw_setMessage(obj,1,"Success");
-                    $('#menu2Table').bootstrapTable('refresh');
+					$('#menu2Table').bootstrapTable('refresh');
 				  },
 			});
 		}
@@ -600,18 +624,18 @@
 	
 	function menu2EditData(obj){
 		var page = $(obj).closest('.subpage');
-        _fw_validation_clear(obj);
-        _fw_validation_add(obj, 'menu2p03Description', 'required');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu2p03Description', 'required');
 
-        if(_fw_validation_validate(obj)){
-            var vo = new Object();
-            //vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
-            //vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
-            vo.idRing = $('input[name="idRing"]', page).val();;
-            vo.description = $('input[id="menu2p03Description"]', page).val();
-            vo.radius = 0;
-            
-            console.log(vo);
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+			//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+			vo.idRing = $('input[name="idRing"]', page).val();;
+			vo.description = $('input[id="menu2p03Description"]', page).val();
+			vo.radius = 0;
+			
+			console.log(vo);
 
 			$.ajax
 			({
@@ -623,45 +647,45 @@
 				success:function(data){
 					console.log(data);
 					_fw_setMessage(obj,1,"Success");
-                    $('#menu2Table').bootstrapTable('refresh');
+					$('#menu2Table').bootstrapTable('refresh');
 				  },
 			});
 		}
 	}
-    
-    function menu2DisableKonfirm(obj){
-        var disabledRows = $('#menu2TableDisable').bootstrapTable('getData');
-        if(disabledRows.length > 0) {
-            $('#menu2DisableTable').bootstrapTable('destroy');
-            $('#menu2DisableTable').bootstrapTable({data:disabledRows});
-        
-            _subpage(obj, 'menu2p04');
-        } else {
-            alert('no data selected');
-        }
-    }
-    
-    function menu2DisableData(obj){
-        var disabledRows = $('#ahmjxuam003p04DisableTable').bootstrapTable('getData');
-        var disabled = [];
-        var vid = [];
-        var listVo = [];
-        $.each(disabledRows, function(){
-            var row = this;
-            
-            disabled.push({'vid': row.vid});
-            vid.push(row.vid);
-        });
-        _fw_post('/uam003/disable', disabled, function(data){
-            if(data.stat=="200"){
-                _fw_setMessage(obj, 1, data);
-                $('#ahmjxuam003p01TableDisable').bootstrapTable('remove', {field: 'vid', values: vid});
-                $('#ahmjxuam003p01SearchTable').bootstrapTable('refresh');
-            } else {
-                _fw_setMessage(obj, 0, data);
-            }
-        });
-    }
+	
+	function menu2DisableKonfirm(obj){
+		var disabledRows = $('#menu2TableDisable').bootstrapTable('getData');
+		if(disabledRows.length > 0) {
+			$('#menu2DisableTable').bootstrapTable('destroy');
+			$('#menu2DisableTable').bootstrapTable({data:disabledRows});
+		
+			_subpage(obj, 'menu2p04');
+		} else {
+			alert('no data selected');
+		}
+	}
+	
+	function menu2DisableData(obj){
+		var disabledRows = $('#ahmjxuam003p04DisableTable').bootstrapTable('getData');
+		var disabled = [];
+		var vid = [];
+		var listVo = [];
+		$.each(disabledRows, function(){
+			var row = this;
+			
+			disabled.push({'vid': row.vid});
+			vid.push(row.vid);
+		});
+		_fw_post('/uam003/disable', disabled, function(data){
+			if(data.stat=="200"){
+				_fw_setMessage(obj, 1, data);
+				$('#ahmjxuam003p01TableDisable').bootstrapTable('remove', {field: 'vid', values: vid});
+				$('#ahmjxuam003p01SearchTable').bootstrapTable('refresh');
+			} else {
+				_fw_setMessage(obj, 0, data);
+			}
+		});
+	}
 </script>
 
 <!-- ---------------------------------------------------------------------- -->
@@ -695,15 +719,15 @@
 
 	function menu4AddData(obj){
 		var page = $(obj).closest('.subpage');
-        _fw_validation_clear(obj);
-        _fw_validation_add(obj, 'menu4p02Description', 'required');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu4p02Description', 'required');
 
-        if(_fw_validation_validate(obj)){
-            var vo = new Object();
-            vo.description = $('input[id="menu4p02Description"]', page).val();
-            vo.radius = 0;
-            
-            console.log(vo);
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			vo.description = $('input[id="menu4p02Description"]', page).val();
+			vo.radius = 0;
+			
+			console.log(vo);
 
 			$.ajax
 			({
@@ -715,7 +739,7 @@
 				success:function(data){
 					console.log(data);
 					_fw_setMessage(obj,1,"Success");
-                    $('#menu4Table').bootstrapTable('refresh');
+					$('#menu4Table').bootstrapTable('refresh');
 				  },
 			});
 		}
@@ -727,18 +751,18 @@
 	
 	function menu4EditData(obj){
 		var page = $(obj).closest('.subpage');
-        _fw_validation_clear(obj);
-        _fw_validation_add(obj, 'menu4p03Description', 'required');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu4p03Description', 'required');
 
-        if(_fw_validation_validate(obj)){
-            var vo = new Object();
-            //vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
-            //vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
-            vo.idWeType = $('input[name="idWeType"]', page).val();;
-            vo.description = $('input[id="menu4p03Description"]', page).val();
-            vo.radius = 0;
-            
-            console.log(vo);
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+			//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+			vo.idWeType = $('input[name="idWeType"]', page).val();;
+			vo.description = $('input[id="menu4p03Description"]', page).val();
+			vo.radius = 0;
+			
+			console.log(vo);
 
 			$.ajax
 			({
@@ -750,45 +774,45 @@
 				success:function(data){
 					console.log(data);
 					_fw_setMessage(obj,1,"Success");
-                    $('#menu4Table').bootstrapTable('refresh');
+					$('#menu4Table').bootstrapTable('refresh');
 				  },
 			});
 		}
 	}
-    
-    function menu4DisableKonfirm(obj){
-        var disabledRows = $('#menu4TableDisable').bootstrapTable('getData');
-        if(disabledRows.length > 0) {
-            $('#menu4DisableTable').bootstrapTable('destroy');
-            $('#menu4DisableTable').bootstrapTable({data:disabledRows});
-        
-            _subpage(obj, 'menu4p04');
-        } else {
-            alert('no data selected');
-        }
-    }
-    
-    function menu4DisableData(obj){
-        var disabledRows = $('#ahmjxuam003p04DisableTable').bootstrapTable('getData');
-        var disabled = [];
-        var vid = [];
-        var listVo = [];
-        $.each(disabledRows, function(){
-            var row = this;
-            
-            disabled.push({'vid': row.vid});
-            vid.push(row.vid);
-        });
-        _fw_post('/uam003/disable', disabled, function(data){
-            if(data.stat=="200"){
-                _fw_setMessage(obj, 1, data);
-                $('#ahmjxuam003p01TableDisable').bootstrapTable('remove', {field: 'vid', values: vid});
-                $('#ahmjxuam003p01SearchTable').bootstrapTable('refresh');
-            } else {
-                _fw_setMessage(obj, 0, data);
-            }
-        });
-    }
+	
+	function menu4DisableKonfirm(obj){
+		var disabledRows = $('#menu4TableDisable').bootstrapTable('getData');
+		if(disabledRows.length > 0) {
+			$('#menu4DisableTable').bootstrapTable('destroy');
+			$('#menu4DisableTable').bootstrapTable({data:disabledRows});
+		
+			_subpage(obj, 'menu4p04');
+		} else {
+			alert('no data selected');
+		}
+	}
+	
+	function menu4DisableData(obj){
+		var disabledRows = $('#ahmjxuam003p04DisableTable').bootstrapTable('getData');
+		var disabled = [];
+		var vid = [];
+		var listVo = [];
+		$.each(disabledRows, function(){
+			var row = this;
+			
+			disabled.push({'vid': row.vid});
+			vid.push(row.vid);
+		});
+		_fw_post('/uam003/disable', disabled, function(data){
+			if(data.stat=="200"){
+				_fw_setMessage(obj, 1, data);
+				$('#ahmjxuam003p01TableDisable').bootstrapTable('remove', {field: 'vid', values: vid});
+				$('#ahmjxuam003p01SearchTable').bootstrapTable('refresh');
+			} else {
+				_fw_setMessage(obj, 0, data);
+			}
+		});
+	}
 </script>
 
 <!-- ---------------------------------------------------------------------- -->
@@ -822,16 +846,16 @@
 
 	function menu5AddData(obj){
 		var page = $(obj).closest('.subpage');
-        _fw_validation_clear(obj);
-        _fw_validation_add(obj, 'menu5p02Category', 'required');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu5p02Category', 'required');
 
-        if(_fw_validation_validate(obj)){
-            var vo = new Object();
-            vo.category = $('input[id="menu5p02Category"]', page).val();
-            vo.description = $('input[id="menu5p02Description"]', page).val();
-            vo.radius = 0;
-            
-            console.log(vo);
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			vo.category = $('input[id="menu5p02Category"]', page).val();
+			vo.description = $('input[id="menu5p02Description"]', page).val();
+			vo.radius = 0;
+			
+			console.log(vo);
 
 			$.ajax
 			({
@@ -843,7 +867,7 @@
 				success:function(data){
 					console.log(data);
 					_fw_setMessage(obj,1,"Success");
-                    $('#menu5Table').bootstrapTable('refresh');
+					$('#menu5Table').bootstrapTable('refresh');
 				  },
 			});
 		}
@@ -855,18 +879,18 @@
 	
 	function menu5EditData(obj){
 		var page = $(obj).closest('.subpage');
-        _fw_validation_clear(obj);
-        _fw_validation_add(obj, 'menu5p03Category', 'required');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu5p03Category', 'required');
 
-        if(_fw_validation_validate(obj)){
-            var vo = new Object();
-            //vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
-            //vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
-            vo.idFacilityType = $('input[name="idFacilityType"]', page).val();
-            vo.category = $('input[id="menu5p03Category"]', page).val();
-            vo.description = $('input[id="menu5p03Description"]', page).val();
-            
-            console.log(vo);
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+			//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+			vo.idFacilityType = $('input[name="idFacilityType"]', page).val();
+			vo.category = $('input[id="menu5p03Category"]', page).val();
+			vo.description = $('input[id="menu5p03Description"]', page).val();
+			
+			console.log(vo);
 
 			$.ajax
 			({
@@ -878,45 +902,45 @@
 				success:function(data){
 					console.log(data);
 					_fw_setMessage(obj,1,"Success");
-                    $('#menu5Table').bootstrapTable('refresh');
+					$('#menu5Table').bootstrapTable('refresh');
 				  },
 			});
 		}
 	}
-    
-    function menu5DisableKonfirm(obj){
-        var disabledRows = $('#menu5TableDisable').bootstrapTable('getData');
-        if(disabledRows.length > 0) {
-            $('#menu5DisableTable').bootstrapTable('destroy');
-            $('#menu5DisableTable').bootstrapTable({data:disabledRows});
-        
-            _subpage(obj, 'menu5p04');
-        } else {
-            alert('no data selected');
-        }
-    }
-    
-    function menu5DisableData(obj){
-        var disabledRows = $('#ahmjxuam003p04DisableTable').bootstrapTable('getData');
-        var disabled = [];
-        var vid = [];
-        var listVo = [];
-        $.each(disabledRows, function(){
-            var row = this;
-            
-            disabled.push({'vid': row.vid});
-            vid.push(row.vid);
-        });
-        _fw_post('/uam003/disable', disabled, function(data){
-            if(data.stat=="200"){
-                _fw_setMessage(obj, 1, data);
-                $('#ahmjxuam003p01TableDisable').bootstrapTable('remove', {field: 'vid', values: vid});
-                $('#ahmjxuam003p01SearchTable').bootstrapTable('refresh');
-            } else {
-                _fw_setMessage(obj, 0, data);
-            }
-        });
-    }
+	
+	function menu5DisableKonfirm(obj){
+		var disabledRows = $('#menu5TableDisable').bootstrapTable('getData');
+		if(disabledRows.length > 0) {
+			$('#menu5DisableTable').bootstrapTable('destroy');
+			$('#menu5DisableTable').bootstrapTable({data:disabledRows});
+		
+			_subpage(obj, 'menu5p04');
+		} else {
+			alert('no data selected');
+		}
+	}
+	
+	function menu5DisableData(obj){
+		var disabledRows = $('#ahmjxuam003p04DisableTable').bootstrapTable('getData');
+		var disabled = [];
+		var vid = [];
+		var listVo = [];
+		$.each(disabledRows, function(){
+			var row = this;
+			
+			disabled.push({'vid': row.vid});
+			vid.push(row.vid);
+		});
+		_fw_post('/uam003/disable', disabled, function(data){
+			if(data.stat=="200"){
+				_fw_setMessage(obj, 1, data);
+				$('#ahmjxuam003p01TableDisable').bootstrapTable('remove', {field: 'vid', values: vid});
+				$('#ahmjxuam003p01SearchTable').bootstrapTable('refresh');
+			} else {
+				_fw_setMessage(obj, 0, data);
+			}
+		});
+	}
 </script>
 
 <!-- ---------------------------------------------------------------------- -->
@@ -952,11 +976,11 @@
 			triggerStart: ["f2", "shift+click", "mac+enter"],
 			close: function(event, data) {
 				if( data.save ){
-            		// Quick-enter: add new nodes until we hit [enter] on an empty title
+					// Quick-enter: add new nodes until we hit [enter] on an empty title
 					addNode(data.node.title);
-            		//$("#tree").trigger("nodeCommand", {cmd: "addSibling"});
-            		}
-        		}
+					//$("#tree").trigger("nodeCommand", {cmd: "addSibling"});
+					}
+				}
 	},
 	}).on("nodeCommand", function(event, data){
 		// Custom event handler that is triggered by keydown-handler and
@@ -999,7 +1023,7 @@
 			$(this).trigger("nodeCommand", {cmd: cmd});
 			  // e.preventDefault();
 			  // e.stopPropagation();
-		  	return false;
+			return false;
 			}
 		});;
 
@@ -1042,41 +1066,41 @@
 		  var dataAdd = {'idCategoryType':xdata.parent.data.idCategoryType,'description':x,'idCategory':xidcategory};
 		  var urlx = baseURL+"/api/partycategory";
 	  }
-      $.ajax
-          ({
-              type: "POST",
-              url: urlx,
-              contentType: "application/json",
-              dataType: 'json',
-              async: false,
-              data:JSON.stringify(dataAdd)
-          })
-          .done(function(response){
-          	$.ajax
-		      ({
-			      type: "GET",
-			      url: baseURL+"/api/ttm001/sf",
-			      contentType: "application/json",
-			      dataType: 'json',
-			      async: false,
-			      data: JSON.stringify()
-		      })
-		      .done(function(data){
-		      	var parsed = JSON.parse(JSON.stringify(data), function(k, v) {
-		      		if (k === "description") 
-		      			this.title = v;
-		      		else if (k === "categories")
-		      			this.children = v;
-		      		else
-		      			return v;
-		      		});
-		      	xdata1 = parsed;
+	  $.ajax
+		  ({
+			  type: "POST",
+			  url: urlx,
+			  contentType: "application/json",
+			  dataType: 'json',
+			  async: false,
+			  data:JSON.stringify(dataAdd)
+		  })
+		  .done(function(response){
+			$.ajax
+			  ({
+				  type: "GET",
+				  url: baseURL+"/api/ttm001/sf",
+				  contentType: "application/json",
+				  dataType: 'json',
+				  async: false,
+				  data: JSON.stringify()
+			  })
+			  .done(function(data){
+				var parsed = JSON.parse(JSON.stringify(data), function(k, v) {
+					if (k === "description") 
+						this.title = v;
+					else if (k === "categories")
+						this.children = v;
+					else
+						return v;
+					});
+				xdata1 = parsed;
 				}) ;
-  		 
-              var tree = $('#tree').fancytree('getTree');
-              tree.reload(xdata1); 
-             })
-      }; 
+		 
+			  var tree = $('#tree').fancytree('getTree');
+			  tree.reload(xdata1); 
+			 })
+	  }; 
 
    function deleteNode(x){
 	   if (x.data.values!=undefined){
@@ -1086,18 +1110,18 @@
 		{
 		  var urlx = baseURL+"/api/partycategory/"+x.data.idCategory;
 		}
-           $.ajax
-              ({
-                  type: "DELETE",
-                  url: urlx,
-                  contentType: "application/json",
-                  dataType: 'json',
-                  async: false,
-                  data:JSON.stringify()
-              })
-              .done(function(response){
-                 })
-          };
+		   $.ajax
+			  ({
+				  type: "DELETE",
+				  url: urlx,
+				  contentType: "application/json",
+				  dataType: 'json',
+				  async: false,
+				  data:JSON.stringify()
+			  })
+			  .done(function(response){
+				 })
+		  };
 
 </script>
 
@@ -1105,19 +1129,19 @@
 
 <script type="text/javascript">
 	function _subpage(obj, id, row){
-    _fw_setMessage(obj);
-    var parent = $(obj).closest('.menu*');
-    console.log(parent);
-    if(parent.html() == undefined) {
-        parent = $(obj).closest('.tab-pane');
-    }
-    $('.subpage.subpage-default', parent).removeClass('subpage-default');
-    var targetSubpage = $('#'+id);
-    _fw_validation_clear(targetSubpage);
-    $(targetSubpage).addClass('subpage-default');
-    
-    automaticFill(row, targetSubpage);
-    
+	_fw_setMessage(obj);
+	var parent = $(obj).closest('.menu*');
+	console.log(parent);
+	if(parent.html() == undefined) {
+		parent = $(obj).closest('.tab-pane');
+	}
+	$('.subpage.subpage-default', parent).removeClass('subpage-default');
+	var targetSubpage = $('#'+id);
+	_fw_validation_clear(targetSubpage);
+	$(targetSubpage).addClass('subpage-default');
+	
+	automaticFill(row, targetSubpage);
+	
 }
 </script>
 
