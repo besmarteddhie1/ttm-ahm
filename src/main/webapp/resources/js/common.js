@@ -1080,7 +1080,7 @@ function _fw_reset_subpage(obj){
 }
 
 function _fw_setMessage(obj, status, msg, errorCallback) {
-    console.log("Umar",msg);
+    // console.log("Umar",msg);
     var subpageId = $(obj).closest('.subpage').attr('id');
     //console.log(typeof(msg));
     var appObj = $(obj).closest('.div-app');
