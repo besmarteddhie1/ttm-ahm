@@ -29,7 +29,7 @@ public class AhmjxMstPartyCategory extends BaseEntity {
 	private Integer idCategory;
 	
 	@Column(name="idprncat")
-	private String idParentCategory;
+	private Integer idParentCategory;
 		
 	@Column(name="vdescription")
 	private String description;
@@ -53,11 +53,11 @@ public class AhmjxMstPartyCategory extends BaseEntity {
 		this.idCategory = idCategory;
 	}	
 
-	public String getIdParentCategory() {
+	public Integer getIdParentCategory() {
 		return idParentCategory;
 	}
 
-	public void setIdParentCategory(String idParentCategory) {
+	public void setIdParentCategory(Integer idParentCategory) {
 		this.idParentCategory = idParentCategory;
 	}
 

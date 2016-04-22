@@ -13,4 +13,6 @@ public interface AhmjxMstProductCategoryRepository extends JpaRepository<AhmjxMs
 	
 	List<AhmjxMstProductCategory> findByIdCategoryType(@Param("idprntcat") Integer parentCatType);
 	
+	List<AhmjxMstProductCategory> findByDescriptionLike(@Param("desc") String desc);	
+	
 }
