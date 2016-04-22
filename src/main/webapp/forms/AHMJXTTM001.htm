@@ -22,28 +22,48 @@
 
 				<!-- ---------- KLASIFIKASI DEALER ---------- -->
 				<div id="menu1" class="tab-pane fade in active">
-					<div id="menu1p01" class="subpage subpage-default">
-						<h3>Klasifikasi Dealer</h3>
-
-						<div class="form-group-button pull-right">
+					<div id="menu1p01" class="subpage subpage-default" data-path="">
+						<!-- <h3>Klasifikasi Dealer</h3> -->
+						
+						<div class="row hidden" >
+							
+							<div class="col-md-6" >
+								<table id="menu1TableDisable" 
+									   data-source-id="menu1Table" 
+									   data-unique-id="idCategory"
+									   data-pagination="true"
+									   data-page-size="5">
+									<thead>
+									</thead>
+								</table>
+							</div>
+						</div>
+						<div class="form-group-button pull-left">
 							<button class="btn btn-default btn-primary large-button" onclick="menu1Add(this);return false;">Tambah</button>
 							<button class="btn btn-default btn-primary large-button" onclick="menu1Edit(this);return false;">Ubah</button>
-							<button class="btn btn-default btn-primary large-button" onclick="menu1Hapus(this);">Hapus</button>
+							<button class="btn btn-default btn-primary large-button" onclick="menu1Delete(this);return false;">Hapus</button>
 						</div>
 
 						<div id="table-container">
-							<table id="ahmjxuam001p01SearchTable"
+							<table id="menu1Table"
 							data-method="get"
-							data-url="/api/ttm001/sf"
+							data-url="/api/ttm001/dc"
 							data-content-type="application/json"
-							data-data-type="json">
+							data-data-type="json"
+							data-pagination="true"
+							data-page-size="10"
+							data-page-list="[10,25,50]"
+							data-custom-action="edit, delete"
+							data-edit-func="menu1Edit"
+							data-checkbox-table="menu1TableDisable"
+							data-unique-id="idCategory">
 							<thead>
 								<tr>
 									<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
-									<th data-field="vid" data-sortable="true" data-visible="false">ID User</th>
+									<th data-field="idCategory" data-sortable="true" data-visible="false">ID Category</th>
 									<th data-field="iver" data-sortable="true" data-visible="false">Iver</th>
 									<th data-field="description" data-sortable="true" data-visible="true">Class</th>
-									<th data-field="isalesqty" data-sortable="true" data-visible="true">Minimal Sales / Month</th>
+									<th data-field="salesQty" data-sortable="true" data-visible="true">Minimal Sales / Month</th>
 								</tr>
 							</thead>
 
@@ -52,58 +72,84 @@
 
 				</div>
 
-				<div id="menu1p02" class="subpage">
+				<div id="menu1p02" class="subpage" data-path="">
 					<form class="form-horizontal">
+						<input id="menu1p02idCategoryType" type="hidden" name="idCategoryType" value="51">
+						<input id="menu1p02idParentCategory" type="hidden" name="idParentCategory" value="0">
 						<div class="form-group large-font">
-							<label for="menu1p02Vname" class="col-sm-3 control-label">Class <span style="color:red">*)</span></label>
+							<label for="menu1p02Description" class="col-sm-3 control-label">Class <span style="color:red">*)</span></label>
 							<div class="col-sm-6">
-								<input id="menu1p02Vname" name="vname" class="form-control">
+								<input id="menu1p02Description" name="description" class="form-control">
 							</div>
 						</div>
 						<div class="form-group large-font">
-							<label for="menu1p02Vdesc" class="col-sm-3 control-label">Average Unit Sales / Bulan </label>
+							<label for="menu1p02SalesQty" class="col-sm-3 control-label">Average Unit Sales / Bulan </label>
 							<div class="col-sm-6">
-								<input id="menu1p02Vdesc" name="vdesc" class="form-control">
+								<input id="menu1p02SalesQty" name="salesQty" class="form-control">
 							</div>
 						</div>
 						<div class="col-sm-offset-2 col-sm-6 form-group-button">
 							<button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="menu1AddNew(this);return false;" style="display: none">Add New</button>
 							<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu1AddData(this);return false;">Submit</button>
 							<button class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
-							<button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'menu1p01');return false;">Back</button>
+							<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu1p01');return false;">Back</button>
 						</div>
 					</form>
 				</div>
-				<div id="menu1p03" class="subpage">
+				<div id="menu1p03" class="subpage" data-path="">
 					<form class="form-horizontal">
-						<input type="hidden" name="vid" data-field="vid"/>
-						<input type="hidden" name="iver" data-field="iver"/>
+						<input type="hidden" name="idCategory" data-field="idCategory"/>
 						<div class="form-group large-font">
-							<label for="menu1p02Vname" class="col-sm-3 control-label">Class <span style="color:red">*)</span></label>
+							<label for="menu1p03Description" class="col-sm-3 control-label">Class <span style="color:red">*)</span></label>
 							<div class="col-sm-6">
-								<input id="menu1p02Vname" name="vname" class="form-control">
+								<input id="menu1p03Description" name="description" class="form-control"data-field="description" >
 							</div>
 						</div>
 						<div class="form-group large-font">
-							<label for="menu1p02Vdesc" class="col-sm-3 control-label">Average Unit Sales / Bulan </label>
+							<label for="menu1p03SalesQty" class="col-sm-3 control-label">Average Unit Sales / Bulan </label>
 							<div class="col-sm-6">
-								<input id="menu1p02Vdesc" name="vdesc" class="form-control">
+								<input id="menu1p03SalesQty" name="salesQty" class="form-control" data-field="salesQty" >
 							</div>
 						</div>
 						<div class="col-sm-offset-2 col-sm-6 form-group-button">
-							<button class="btn btn-default btn-primary large-button" onclick="menu1Update(this);return false;">Submit</button>
-							<button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'menu1');return false;">Back</button>
+							<button class="btn btn-default btn-primary large-button" onclick="menu1EditData(this);return false;">Submit</button>
+							<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu1p01');return false;">Back</button>
 						</div>
 
 					</form>
 
+				</div>
+				
+				<div id="menu1p04" class="subpage" data-path="">
+					<table id="menu1DisableTable">
+						<thead>
+							<tr>
+								<th data-field="idCategory" 
+									data-sortable="true"
+									data-visible="true"
+									>ID</th>
+								<th data-field="description" 
+									data-sortable="true"
+									>Description</th>
+								<th data-field="salesQty" 
+									data-sortable="true"
+									>Minimal Sales / Month</th>
+							</tr>
+						</thead>
+			
+					</table>
+					<br/>
+					<div class="form-group-button">
+						<button class="btn btn-default btn-primary large-button" onclick="menu1DeleteData(this)">Delete</button>
+						<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu1p01'); return false;">Back</button>
+					</div>
 				</div>
 			</div>
 
 			<!-- ---------- PENAMAAN RING ---------- -->
 			<div id="menu2" class="tab-pane fade">
-				<div id="menu2p01" class="subpage subpage-default">
-					<h3>Penamaan Ring</h3>
+				<div id="menu2p01" class="subpage subpage-default" data-path="">
+					<!-- <h3>Penamaan Ring</h3> -->
 
 					<div class="form-group-button pull-right">
 						<button class="btn btn-default btn-primary large-button" onclick="menu2Add(this);return false;">Tambah</button>
@@ -111,17 +157,21 @@
 						<button class="btn btn-default btn-primary large-button" onclick="menu2Hapus(this);return false;">Hapus</button>
 					</div>
 
-
 					<div id="table-container">
-						<table id="menu2p01SearchTable"
+						<table id="menu2Table"
 						data-method="get"
-						data-url="/ttm001/ring"
+						data-url="/api/ttm001/ring"
 						data-content-type="application/json"
-						data-data-type="json">
+						data-data-type="json"
+						data-custom-action="edit"
+						data-edit-func="menu2Edit"
+						data-checkbox-table="menu2TableDisable"
+						data-unique-id="idRing">
 						<thead>
 							<tr>
-								<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
+								<!-- <th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th> -->
 								<th data-field="idRing" data-sortable="true" data-visible="false">ID Ring</th>
+								<th data-field="radius" data-sortable="true" data-visible="false">Radius</th>
 								<th data-field="description" data-sortable="true" data-visible="true">Nama Ring</th>
 							</tr>
 						</thead>
@@ -131,35 +181,35 @@
 
 			</div>
 
-			<div id="menu2p02" class="subpage">
+			<div id="menu2p02" class="subpage" data-path="">
 				<form class="form-horizontal">
 					<div class="form-group large-font">
-						<label for="menu2p02Vname" class="col-sm-3 control-label">Nama Ring <span style="color:red">*)</span></label>
+						<label for="menu2p02description" class="col-sm-3 control-label">Nama Ring <span style="color:red">*)</span></label>
 						<div class="col-sm-6">
-							<input id="menu2p02Vname" name="vname" class="form-control">
+							<input id="menu2p02description" name="description" class="form-control">
 						</div>
 					</div>
 					<div class="col-sm-offset-2 col-sm-6 form-group-button">
 						<button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="menu2AddNew(this);return false;" style="display: none">Add New</button>
 						<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu2AddData(this);return false;">Submit</button>
 						<button class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
-						<button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'menu2p01');return false;">Back</button>
+						<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu2p01');return false;">Back</button>
 					</div>
 				</form>
 			</div>
-			<div id="menu2p03" class="subpage">
+			<div id="menu2p03" class="subpage" data-path="">
 				<form class="form-horizontal">
-					<input type="hidden" name="vid" data-field="vid"/>
-					<input type="hidden" name="iver" data-field="iver"/>
+					<input type="hidden" name="idRing" data-field="idRing"/>
+					<input type="hidden" name="radius" data-field="radius"/>
 					<div class="form-group large-font">
-						<label for="menu2p02Vname" class="col-sm-3 control-label">Nama Ring <span style="color:red">*)</span></label>
+						<label for="menu2p03Description" class="col-sm-3 control-label">Nama Ring <span style="color:red">*)</span></label>
 						<div class="col-sm-6">
-							<input id="menu2p02Vname" name="vname" class="form-control">
+							<input id="menu2p03Description" name="description" class="form-control" data-field="description">
 						</div>
 					</div>
 					<div class="col-sm-offset-2 col-sm-6 form-group-button">
-						<button class="btn btn-default btn-primary large-button" onclick="menu2Update(this);return false;">Submit</button>
-						<button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'menu1');return false;">Back</button>
+						<button class="btn btn-default btn-primary large-button" onclick="menu2EditData(this);return false;">Submit</button>
+						<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu2p01');return false;">Back</button>
 					</div>
 
 				</form>
@@ -169,7 +219,7 @@
 
 		<!-- ---------- PENAMAAN SALESFORCE ---------- -->
 		<div id="menu3" class="tab-pane fade">
-			<h3>Penamaan Salesforce</h3>
+			<!-- <h3>Penamaan Salesforce</h3> -->
 
 			<table id="tree">
 
@@ -178,8 +228,8 @@
 
 		<!-- ---------- AKTIVITAS MARKETING ---------- -->
 		<div id="menu4" class="tab-pane fade">
-			<div id="menu4p01" class="subpage subpage-default">
-				<h3>Aktivitas Marketing</h3>
+			<div id="menu4p01" class="subpage subpage-default" data-path="">
+				<!-- <h3>Aktivitas Marketing</h3> -->
 
 				<div class="form-group-button pull-right">
 					<button class="btn btn-default btn-primary large-button" onclick="menu4Add(this);return false;">Tambah</button>
@@ -189,16 +239,19 @@
 
 
 				<div id="table-container">
-					<table id="menu4p01SearchTable"
+					<table id="menu4Table"
 					data-method="get"
-					data-url="/ttm001/wet"
+					data-url="/api/ttm001/wet"
 					data-content-type="application/json"
-					data-data-type="json">
+					data-data-type="json"
+					data-custom-action="edit"
+					data-edit-func="menu4Edit"
+					data-checkbox-table="menu4TableDisable"
+					data-unique-id="idWeType">
 					<thead>
 						<tr>
-							<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
-							<th data-field="vid" data-sortable="true" data-visible="false">ID User</th>
-							<th data-field="iver" data-sortable="true" data-visible="false">Iver</th>
+							<!-- <th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th> -->
+							<th data-field="idWeType" data-sortable="true" data-visible="false">ID User</th>
 							<th data-field="description" data-sortable="true" data-visible="true">Tipe Aktivitas</th>
 						</tr>
 					</thead>
@@ -208,35 +261,34 @@
 
 		</div>
 
-		<div id="menu4p02" class="subpage">
+		<div id="menu4p02" class="subpage" data-path="">
 			<form class="form-horizontal">
 				<div class="form-group large-font">
-					<label for="menu4p02Vname" class="col-sm-3 control-label">Tipe Aktivitas <span style="color:red">*)</span></label>
+					<label for="menu4p02Description" class="col-sm-3 control-label">Tipe Aktivitas <span style="color:red">*)</span></label>
 					<div class="col-sm-6">
-						<input id="menu4p02Vname" name="vname" class="form-control">
+						<input id="menu4p02Description" name="description" class="form-control">
 					</div>
 				</div>
 				<div class="col-sm-offset-2 col-sm-6 form-group-button">
 					<button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="menu4AddNew(this);return false;" style="display: none">Add New</button>
 					<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu4AddData(this);return false;">Submit</button>
 					<button class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
-					<button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'menu4p01');return false;">Back</button>
+					<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu4p01');return false;">Back</button>
 				</div>
 			</form>
 		</div>
-		<div id="menu4p03" class="subpage">
+		<div id="menu4p03" class="subpage" data-path="">
 			<form class="form-horizontal">
-				<input type="hidden" name="vid" data-field="vid"/>
-				<input type="hidden" name="iver" data-field="iver"/>
+				<input type="hidden" name="idWeType" data-field="idWeType"/>
 				<div class="form-group large-font">
-					<label for="menu4p02Vname" class="col-sm-3 control-label">Tipe Aktivitas <span style="color:red">*)</span></label>
+					<label for="menu4p03Description" class="col-sm-3 control-label">Tipe Aktivitas <span style="color:red">*)</span></label>
 					<div class="col-sm-6">
-						<input id="menu4p02Vname" name="vname" class="form-control">
+						<input id="menu4p03Description" name="description" class="form-control" data-field="description">
 					</div>
 				</div>
 				<div class="col-sm-offset-2 col-sm-6 form-group-button">
-					<button class="btn btn-default btn-primary large-button" onclick="menu4Update(this);return false;">Submit</button>
-					<button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'menu1');return false;">Back</button>
+					<button class="btn btn-default btn-primary large-button" onclick="menu4EditData(this);return false;">Submit</button>
+					<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu4p01');return false;">Back</button>
 				</div>
 
 			</form>
@@ -246,8 +298,8 @@
 
 	<!-- ---------- KATEGORI LOKASI MARKETING ACTIVITY ---------- -->
 	<div id="menu5" class="tab-pane fade">
-		<div id="menu5p01" class="subpage subpage-default">
-			<h3>Kategori Lokasi Mkt Act</h3>
+		<div id="menu5p01" class="subpage subpage-default" data-path="">
+			<!-- <h3>Kategori Lokasi Mkt Act</h3> -->
 
 			<div class="form-group-button pull-right">
 				<button class="btn btn-default btn-primary large-button" onclick="menu5Add(this);return false;">Tambah</button>
@@ -257,17 +309,20 @@
 
 
 			<div id="table-container">
-				<table id="menu5p01SearchTable"
+				<table id="menu5Table"
 				data-method="get"
-				data-url="/ttm001/loc"
+				data-url="/api/ttm001/loc"
 				data-content-type="application/json"
-				data-data-type="json">
+				data-data-type="json"
+				data-custom-action="edit"
+				data-edit-func="menu5Edit"
+				data-checkbox-table="menu1TableDisable"
+				data-unique-id="idFacilityType">
 				<thead>
 					<tr>
-						<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
-						<th data-field="vid" data-sortable="true" data-visible="false">ID User</th>
-						<th data-field="iver" data-sortable="true" data-visible="false">Iver</th>
-						<th data-field="vstat" data-sortable="true" data-visible="true">Kategori</th>
+						<!-- <th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th> -->
+						<th data-field="idFacilityType" data-sortable="true" data-visible="false">ID User</th>
+						<th data-field="category" data-sortable="true" data-visible="true">Kategori</th>
 						<th data-field="description" data-sortable="true" data-visible="true">Keterangan</th>
 					</tr>
 				</thead>
@@ -277,47 +332,46 @@
 
 	</div>
 
-	<div id="menu5p02" class="subpage">
+	<div id="menu5p02" class="subpage" data-path="">
 		<form class="form-horizontal">
 			<div class="form-group large-font">
-				<label for="menu5p02Vname" class="col-sm-3 control-label">Kategori <span style="color:red">*)</span></label>
+				<label for="menu5p02Category" class="col-sm-3 control-label">Kategori <span style="color:red">*)</span></label>
 				<div class="col-sm-6">
-					<input id="menu5p02Vname" name="vname" class="form-control">
+					<input id="menu5p02Category" name="category" class="form-control">
 				</div>
 			</div>
 			<div class="form-group large-font">
-				<label for="menu5p02Vdesc" class="col-sm-3 control-label">Keterangan </label>
+				<label for="menu5p02Description" class="col-sm-3 control-label">Keterangan </label>
 				<div class="col-sm-6">
-					<input id="menu5p02Vdesc" name="vdesc" class="form-control">
+					<input id="menu5p02Description" name="description" class="form-control">
 				</div>
 			</div>
 			<div class="col-sm-offset-2 col-sm-6 form-group-button">
 				<button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="menu5AddNew(this);return false;" style="display: none">Add New</button>
 				<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu5AddData(this);return false;">Submit</button>
 				<button class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
-				<button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'menu5p01');return false;">Back</button>
+				<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu5p01');return false;">Back</button>
 			</div>
 		</form>
 	</div>
-	<div id="menu5p03" class="subpage">
+	<div id="menu5p03" class="subpage" data-path="">
 		<form class="form-horizontal">
-			<input type="hidden" name="vid" data-field="vid"/>
-			<input type="hidden" name="iver" data-field="iver"/>
+			<input type="hidden" name="idFacilityType" data-field="idFacilityType"/>
 			<div class="form-group large-font">
-				<label for="menu5p02Vname" class="col-sm-3 control-label">Kategori <span style="color:red">*)</span></label>
+				<label for="menu5p03Description" class="col-sm-3 control-label">Kategori <span style="color:red">*)</span></label>
 				<div class="col-sm-6">
-					<input id="menu5p02Vname" name="vname" class="form-control">
+					<input id="menu5p03Category" name="category" class="form-control" data-field="category">
 				</div>
 			</div>
 			<div class="form-group large-font">
 				<label for="menu5p02Vdesc" class="col-sm-3 control-label">Keterangan </label>
 				<div class="col-sm-6">
-					<input id="menu5p02Vdesc" name="vdesc" class="form-control">
+					<input id="menu5p03Description" name="description" class="form-control" data-field="description">
 				</div>
 			</div>
 			<div class="col-sm-offset-2 col-sm-6 form-group-button">
-				<button class="btn btn-default btn-primary large-button" onclick="menu5Update(this);return false;">Submit</button>
-				<button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'menu1');return false;">Back</button>
+				<button class="btn btn-default btn-primary large-button" onclick="menu5EditData(this);return false;">Submit</button>
+				<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu5p01');return false;">Back</button>
 			</div>
 
 		</form>
@@ -333,63 +387,518 @@
 </div>
 
 <script type="text/javascript">
+/**
+ * KLASIFIKASI DEALER
+ *
+ **/
 	
-	function menu1Presearch(params){
-        params.search = {"any": $('#menu1p01Search').val()};
-        if(params.sort == undefined){
-            return{
-                limit : params.limit,
-                offset : params.offset,
-                search : params.search
-            }
-        }
-        return params;
-    }
-    function menu1Add(obj){
+
+	function menu1Add(obj){
 		var page = $('#menu1p02');
 		$('input, select', page).prop('disabled',false);
 		_fw_reset_subpage(page);
-		_fw_subpage(obj, 'menu1p02');
+		_subpage(obj, 'menu1p02');
 		$('button[name="btnAddNew"]', page).hide();
 		$('button[name="btnSubmit"]', page).show();
 	}
-	function menu1Edit(obj, row, index){
-		_fw_subpage(obj, 'menu1p03', row);
+
+	function menu1AddData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu1p02Description', 'required');
+		_fw_validation_add(obj, 'menu1p02SalesQty', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+			//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+			vo.idCategoryType = 101;
+			vo.idParentCategory = 0;
+			vo.description = $('input[id="menu1p02Description"]', page).val();
+			vo.salesQty = $('input[id="menu1p02SalesQty"]', page).val();
+			
+			console.log(vo);
+
+			$.ajax
+			({
+				type: "POST",
+				url: "/ahmjxdsh000/api/partycategory",
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu1Table').bootstrapTable('refresh');
+				  },
+			});
+		}
 	}
 
-	function menu1Hapus(obj)
-	{
-		console.log("hapus=>",obj);
+	/* function menu1Edit(obj, row, index){
+		_subpage(obj, 'menu1p03', row);
+	} */
+	
+	function menu1Edit(obj){
+		
+		var editedRows = $('#menu1TableDisable').bootstrapTable('getData');
+		console.log("edited==>",editedRows);
+		if (editedRows.length == 1)
+			{
+			_subpage(obj,'menu1p03', editedRows[0]);
+			
+			}
+		else
+			_fw_setMessage(obj,2,"Check");
 	}
+
+	function menu1EditData(obj)
+	{
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu1p03Description', 'required');
+		_fw_validation_add(obj, 'menu1p03SalesQty', 'required');
+		 if(_fw_validation_validate(obj)){
+				var vo = new Object();
+				//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+				//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+				vo.idCategory = $('input[name="idCategory"]', page).val();
+				vo.idCategoryType = 101;
+				vo.idParentCategory = 0;
+				vo.description = $('input[id="menu1p03Description"]', page).val();
+				vo.salesQty = $('input[id="menu1p03SalesQty"]', page).val();
+				
+				console.log(vo);
+
+				$.ajax
+				({
+					type: "PUT",
+					url: "/ahmjxdsh000/api/partycategory/" + vo.idCategory,
+					contentType: "application/json",
+					dataType: 'json',
+					data: JSON.stringify(vo),
+					success:function(data){
+						console.log(data);
+						_fw_setMessage(obj,1,"Success");
+						$('#menu1Table').bootstrapTable('refresh');
+					  },
+				});
+			} 
+	}
+
+	function menu1Delete(obj){
+		var disabledRows = $('#menu1TableDisable').bootstrapTable('getData');
+		console.log("deletelaksjdlkajsd==>",disabledRows);
+		if(disabledRows.length > 0) {
+			for(var i=0;i<disabledRows.length;i++)
+				{
+					var idx = disabledRows[i].idCategory;
+					$.ajax
+					({
+						type: "DELETE",
+						url: "/ahmjxdsh000/api/partycategory/" + idx,
+						contentType: "application/json",
+						dataType: 'json',
+						data: JSON.stringify(),
+						success:function(data){							
+						  },
+					});			
+				}
+			_fw_setMessage(obj,1,"Success");
+			$('#menu1Table').bootstrapTable();
+			} else {
+			alert('no data selected');
+		}
+	}
+	
+	
 </script>
 
+<!-- ---------------------------------------------------------------------- -->
 
 <script type="text/javascript">
+/**
+ * PENAMAAN RING
+ *
+ **/
 	
 	function menu2Presearch(params){
-        params.search = {"any": $('#menu2p01Search').val()};
-        if(params.sort == undefined){
-            return{
-                limit : params.limit,
-                offset : params.offset,
-                search : params.search
-            }
-        }
-        return params;
-    }
-    function menu2Add(obj){
+		params.search = {"any": $('#menu2p01Search').val()};
+		if(params.sort == undefined){
+			return{
+				limit : params.limit,
+				offset : params.offset,
+				search : params.search
+			}
+		}
+		return params;
+	}
+
+	function menu2Add(obj){
 		var page = $('#menu2p02');
 		$('input, select', page).prop('disabled',false);
 		_fw_reset_subpage(page);
-		_fw_subpage(obj, 'menu2p02');
+		_subpage(obj, 'menu2p02');
 		$('button[name="btnAddNew"]', page).hide();
 		$('button[name="btnSubmit"]', page).show();
 	}
+
+	function menu2AddData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu2p02Description', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			vo.description = $('input[id="menu2p02description"]', page).val();
+			vo.radius = 0;
+			
+			console.log(vo);
+
+			$.ajax
+			({
+				type: "POST",
+				url: "/ahmjxdsh000/api/ringtype",
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu2Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+
 	function menu2Edit(obj, row, index){
-		_fw_subpage(obj, 'menu2p03', row);
+		console.log("roww=>",row);
+		console.log("obj=>",obj);
+		_subpage(obj, 'menu2p03', row);
+	}
+	
+	function menu2EditData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu2p03Description', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+			//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+			vo.idRing = $('input[name="idRing"]', page).val();;
+			vo.description = $('input[id="menu2p03Description"]', page).val();
+			vo.radius = 0;
+			
+			console.log(vo);
+
+			$.ajax
+			({
+				type: "PUT",
+				url: "/ahmjxdsh000/api/ringtype/" + vo.idRing,
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu2Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+	
+	function menu2DisableKonfirm(obj){
+		var disabledRows = $('#menu2TableDisable').bootstrapTable('getData');
+		if(disabledRows.length > 0) {
+			$('#menu2DisableTable').bootstrapTable('destroy');
+			$('#menu2DisableTable').bootstrapTable({data:disabledRows});
+		
+			_subpage(obj, 'menu2p04');
+		} else {
+			alert('no data selected');
+		}
+	}
+	
+	function menu2DisableData(obj){
+		var disabledRows = $('#ahmjxuam003p04DisableTable').bootstrapTable('getData');
+		var disabled = [];
+		var vid = [];
+		var listVo = [];
+		$.each(disabledRows, function(){
+			var row = this;
+			
+			disabled.push({'vid': row.vid});
+			vid.push(row.vid);
+		});
+		_fw_post('/uam003/disable', disabled, function(data){
+			if(data.stat=="200"){
+				_fw_setMessage(obj, 1, data);
+				$('#ahmjxuam003p01TableDisable').bootstrapTable('remove', {field: 'vid', values: vid});
+				$('#ahmjxuam003p01SearchTable').bootstrapTable('refresh');
+			} else {
+				_fw_setMessage(obj, 0, data);
+			}
+		});
 	}
 </script>
 
+<!-- ---------------------------------------------------------------------- -->
+
+<script type="text/javascript">
+/**
+ * WORK EFFORT
+ *
+ **/
+	
+	function menu4Presearch(params){
+		params.search = {"any": $('#menu4p01Search').val()};
+		if(params.sort == undefined){
+			return{
+				limit : params.limit,
+				offset : params.offset,
+				search : params.search
+			}
+		}
+		return params;
+	}
+
+	function menu4Add(obj){
+		var page = $('#menu4p02');
+		$('input, select', page).prop('disabled',false);
+		_fw_reset_subpage(page);
+		_subpage(obj, 'menu4p02');
+		$('button[name="btnAddNew"]', page).hide();
+		$('button[name="btnSubmit"]', page).show();
+	}
+
+	function menu4AddData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu4p02Description', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			vo.description = $('input[id="menu4p02Description"]', page).val();
+			vo.radius = 0;
+			
+			console.log(vo);
+
+			$.ajax
+			({
+				type: "POST",
+				url: "/ahmjxdsh000/api/wetype",
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu4Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+
+	function menu4Edit(obj, row, index){
+		_subpage(obj, 'menu4p03', row);
+	}
+	
+	function menu4EditData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu4p03Description', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+			//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+			vo.idWeType = $('input[name="idWeType"]', page).val();;
+			vo.description = $('input[id="menu4p03Description"]', page).val();
+			vo.radius = 0;
+			
+			console.log(vo);
+
+			$.ajax
+			({
+				type: "PUT",
+				url: "/ahmjxdsh000/api/wetype/" + vo.idWeType,
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu4Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+	
+	function menu4DisableKonfirm(obj){
+		var disabledRows = $('#menu4TableDisable').bootstrapTable('getData');
+		if(disabledRows.length > 0) {
+			$('#menu4DisableTable').bootstrapTable('destroy');
+			$('#menu4DisableTable').bootstrapTable({data:disabledRows});
+		
+			_subpage(obj, 'menu4p04');
+		} else {
+			alert('no data selected');
+		}
+	}
+	
+	function menu4DisableData(obj){
+		var disabledRows = $('#ahmjxuam003p04DisableTable').bootstrapTable('getData');
+		var disabled = [];
+		var vid = [];
+		var listVo = [];
+		$.each(disabledRows, function(){
+			var row = this;
+			
+			disabled.push({'vid': row.vid});
+			vid.push(row.vid);
+		});
+		_fw_post('/uam003/disable', disabled, function(data){
+			if(data.stat=="200"){
+				_fw_setMessage(obj, 1, data);
+				$('#ahmjxuam003p01TableDisable').bootstrapTable('remove', {field: 'vid', values: vid});
+				$('#ahmjxuam003p01SearchTable').bootstrapTable('refresh');
+			} else {
+				_fw_setMessage(obj, 0, data);
+			}
+		});
+	}
+</script>
+
+<!-- ---------------------------------------------------------------------- -->
+
+<script type="text/javascript">
+/**
+ * KATEGORI LOKASI MKT ACT
+ *
+ **/
+	
+	function menu5Presearch(params){
+		params.search = {"any": $('#menu5p01Search').val()};
+		if(params.sort == undefined){
+			return{
+				limit : params.limit,
+				offset : params.offset,
+				search : params.search
+			}
+		}
+		return params;
+	}
+
+	function menu5Add(obj){
+		var page = $('#menu5p02');
+		$('input, select', page).prop('disabled',false);
+		_fw_reset_subpage(page);
+		_subpage(obj, 'menu5p02');
+		$('button[name="btnAddNew"]', page).hide();
+		$('button[name="btnSubmit"]', page).show();
+	}
+
+	function menu5AddData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu5p02Category', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			vo.category = $('input[id="menu5p02Category"]', page).val();
+			vo.description = $('input[id="menu5p02Description"]', page).val();
+			vo.radius = 0;
+			
+			console.log(vo);
+
+			$.ajax
+			({
+				type: "POST",
+				url: "/ahmjxdsh000/api/facilitytype",
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu5Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+
+	function menu5Edit(obj, row, index){
+		_subpage(obj, 'menu5p03', row);
+	}
+	
+	function menu5EditData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu5p03Category', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+			//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+			vo.idFacilityType = $('input[name="idFacilityType"]', page).val();
+			vo.category = $('input[id="menu5p03Category"]', page).val();
+			vo.description = $('input[id="menu5p03Description"]', page).val();
+			
+			console.log(vo);
+
+			$.ajax
+			({
+				type: "PUT",
+				url: "/ahmjxdsh000/api/facilitytype/" + vo.idFacilityType,
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu5Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+	
+	function menu5DisableKonfirm(obj){
+		var disabledRows = $('#menu5TableDisable').bootstrapTable('getData');
+		if(disabledRows.length > 0) {
+			$('#menu5DisableTable').bootstrapTable('destroy');
+			$('#menu5DisableTable').bootstrapTable({data:disabledRows});
+		
+			_subpage(obj, 'menu5p04');
+		} else {
+			alert('no data selected');
+		}
+	}
+	
+	function menu5DisableData(obj){
+		var disabledRows = $('#ahmjxuam003p04DisableTable').bootstrapTable('getData');
+		var disabled = [];
+		var vid = [];
+		var listVo = [];
+		$.each(disabledRows, function(){
+			var row = this;
+			
+			disabled.push({'vid': row.vid});
+			vid.push(row.vid);
+		});
+		_fw_post('/uam003/disable', disabled, function(data){
+			if(data.stat=="200"){
+				_fw_setMessage(obj, 1, data);
+				$('#ahmjxuam003p01TableDisable').bootstrapTable('remove', {field: 'vid', values: vid});
+				$('#ahmjxuam003p01SearchTable').bootstrapTable('refresh');
+			} else {
+				_fw_setMessage(obj, 0, data);
+			}
+		});
+	}
+</script>
+
+<!-- ---------------------------------------------------------------------- -->
 
 <script type="text/javascript">
 
@@ -422,11 +931,11 @@
 			triggerStart: ["f2", "shift+click", "mac+enter"],
 			close: function(event, data) {
 				if( data.save ){
-            		// Quick-enter: add new nodes until we hit [enter] on an empty title
+					// Quick-enter: add new nodes until we hit [enter] on an empty title
 					addNode(data.node.title);
-            		//$("#tree").trigger("nodeCommand", {cmd: "addSibling"});
-            		}
-        		}
+					//$("#tree").trigger("nodeCommand", {cmd: "addSibling"});
+					}
+				}
 	},
 	}).on("nodeCommand", function(event, data){
 		// Custom event handler that is triggered by keydown-handler and
@@ -469,7 +978,7 @@
 			$(this).trigger("nodeCommand", {cmd: cmd});
 			  // e.preventDefault();
 			  // e.stopPropagation();
-		  	return false;
+			return false;
 			}
 		});;
 
@@ -512,41 +1021,41 @@
 		  var dataAdd = {'idCategoryType':xdata.parent.data.idCategoryType,'description':x,'idCategory':xidcategory};
 		  var urlx = baseURL+"/api/partycategory";
 	  }
-      $.ajax
-          ({
-              type: "POST",
-              url: urlx,
-              contentType: "application/json",
-              dataType: 'json',
-              async: false,
-              data:JSON.stringify(dataAdd)
-          })
-          .done(function(response){
-          	$.ajax
-		      ({
-			      type: "GET",
-			      url: baseURL+"/api/ttm001/sf",
-			      contentType: "application/json",
-			      dataType: 'json',
-			      async: false,
-			      data: JSON.stringify()
-		      })
-		      .done(function(data){
-		      	var parsed = JSON.parse(JSON.stringify(data), function(k, v) {
-		      		if (k === "description") 
-		      			this.title = v;
-		      		else if (k === "categories")
-		      			this.children = v;
-		      		else
-		      			return v;
-		      		});
-		      	xdata1 = parsed;
+	  $.ajax
+		  ({
+			  type: "POST",
+			  url: urlx,
+			  contentType: "application/json",
+			  dataType: 'json',
+			  async: false,
+			  data:JSON.stringify(dataAdd)
+		  })
+		  .done(function(response){
+			$.ajax
+			  ({
+				  type: "GET",
+				  url: baseURL+"/api/ttm001/sf",
+				  contentType: "application/json",
+				  dataType: 'json',
+				  async: false,
+				  data: JSON.stringify()
+			  })
+			  .done(function(data){
+				var parsed = JSON.parse(JSON.stringify(data), function(k, v) {
+					if (k === "description") 
+						this.title = v;
+					else if (k === "categories")
+						this.children = v;
+					else
+						return v;
+					});
+				xdata1 = parsed;
 				}) ;
-  		 
-              var tree = $('#tree').fancytree('getTree');
-              tree.reload(xdata1); 
-             })
-      }; 
+		 
+			  var tree = $('#tree').fancytree('getTree');
+			  tree.reload(xdata1); 
+			 })
+	  }; 
 
    function deleteNode(x){
 	   if (x.data.values!=undefined){
@@ -556,20 +1065,42 @@
 		{
 		  var urlx = baseURL+"/api/partycategory/"+x.data.idCategory;
 		}
-           $.ajax
-              ({
-                  type: "DELETE",
-                  url: urlx,
-                  contentType: "application/json",
-                  dataType: 'json',
-                  async: false,
-                  data:JSON.stringify()
-              })
-              .done(function(response){
-                 })
-          };
+		   $.ajax
+			  ({
+				  type: "DELETE",
+				  url: urlx,
+				  contentType: "application/json",
+				  dataType: 'json',
+				  async: false,
+				  data:JSON.stringify()
+			  })
+			  .done(function(response){
+				 })
+		  };
 
 </script>
+
+<!-- ---------------------------------------------------------------------- -->
+
+<script type="text/javascript">
+	function _subpage(obj, id, row){
+	_fw_setMessage(obj);
+	var parent = $(obj).closest('.menu*');
+	console.log(parent);
+	if(parent.html() == undefined) {
+		parent = $(obj).closest('.tab-pane');
+	}
+	$('.subpage.subpage-default', parent).removeClass('subpage-default');
+	var targetSubpage = $('#'+id);
+	_fw_validation_clear(targetSubpage);
+	$(targetSubpage).addClass('subpage-default');
+	
+	automaticFill(row, targetSubpage);
+	
+}
+</script>
+
+<!-- ---------------------------------------------------------------------- -->
 
 <style type="text/css">
 	.ui-menu {
@@ -579,9 +1110,10 @@
 	.ui-menu kbd { /* Keyboard shortcuts for ui-contextmenu titles */
 		float: right;
 	}
+	
+	.row hidden
+	{
+		display:none;
+	}
 	/* custom alignment (set by 'renderColumns'' event) */
 </style>
-
-
-
-
