@@ -1,4 +1,4 @@
-<div id="AHMJXUAM099" class="div-app" data-version="1.0">
+<div id="AHMJXTTM001" class="div-app" data-version="1.0">
 	<div class="global_message">
 
 	</div>
@@ -25,59 +25,23 @@
 					<div id="menu1p01" class="subpage subpage-default" data-path="">
 						<!-- <h3>Klasifikasi Dealer</h3> -->
 						
-						<div class="row">
-							<div class="col-md-6">
-				                <div class="form-group large-font">
-				                    <label>Search</label>
-				                    <div class="input-group">
-				                        <input id="ahmjxuam001p01Search" type="text" class="form-control" placeholder="Search...">
-				                        <span class="input-group-btn">
-				                            <button class="btn btn-primary large-button default" type="button" 
-				                                    onclick="$('#ahmjxuam001p01SearchTable').bootstrapTable('refresh');">Search</button>
-				                        </span>
-				                    </div>
-				                </div><!-- 
-				                <div class="form-group large-font">
-				                    <label>Search User</label>
-				                    <div class="input-group">
-				                        <input id="ahmjxuam001p01Search" type="text" class="form-control" placeholder="Search...">
-				                        <span class="input-group-btn">
-				                            <button class="btn btn-default large-button" type="button" onclick="function(){$('#table-form').bootstrapTable('refresh', {silent: true});}">Search</button>
-				                            <button class="btn btn-primary large-button" type="button" onclick="$('#ahmjxuam001p01SearchTable').bootstrapTable('refresh');">Search</button>
-				                        </span>
-				                    </div>
-				                </div> -->
-				            </div>
-							<div class="col-md-6">
+						<div class="row hidden" >
+							
+							<div class="col-md-6" >
 								<table id="menu1TableDisable" 
 									   data-source-id="menu1Table" 
 									   data-unique-id="idCategory"
 									   data-pagination="true"
 									   data-page-size="5">
 									<thead>
-										<tr>
-											<th data-field="description" 
-												data-sortable="true"
-												>Description</th>
-											<th data-field="salesQty" 
-												data-sortable="true"
-												>Minimal Sales / Month</th>
-											<th data-field="vname" 
-												data-sortable="true"
-												>Application</th>
-											<th data-field="vaction"
-												data-formatter="actionRemoveFormatter"
-												data-events="actionEvents">Action
-											</th>
-										</tr>
 									</thead>
 								</table>
 							</div>
 						</div>
-						<div class="form-group-button pull-left">
+						<div class="form-group-button pull-right">
 							<button class="btn btn-default btn-primary large-button" onclick="menu1Add(this);return false;">Tambah</button>
 							<button class="btn btn-default btn-primary large-button" onclick="menu1Edit(this);return false;">Ubah</button>
-							<button class="btn btn-default btn-primary large-button" onclick="menu1DisableKonfirm(this);return false;">Hapus</button>
+							<button class="btn btn-default btn-primary large-button" onclick="menu1Delete(this);return false;">Hapus</button>
 						</div>
 
 						<div id="table-container">
@@ -90,8 +54,7 @@
 							data-page-size="10"
 							data-page-list="[10,25,50]"
 							data-custom-action="edit, delete"
-							data-edit-func="menu1Edit"
-							data-checkbox-table="menu1TableDisable"
+\							data-checkbox-table="menu1TableDisable"
 							data-unique-id="idCategory">
 							<thead>
 								<tr>
@@ -162,7 +125,7 @@
 							<tr>
 								<th data-field="idCategory" 
 									data-sortable="true"
-									data-visible="false"
+									data-visible="true"
 									>ID</th>
 								<th data-field="description" 
 									data-sortable="true"
@@ -176,7 +139,7 @@
 					</table>
 					<br/>
 					<div class="form-group-button">
-						<button class="btn btn-default btn-primary large-button" onclick="menu1DisableData(this)">Disable</button>
+						<button class="btn btn-default btn-primary large-button" onclick="menu1DeleteData(this)">Delete</button>
 						<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu1p01'); return false;">Back</button>
 					</div>
 				</div>
@@ -186,11 +149,24 @@
 			<div id="menu2" class="tab-pane fade">
 				<div id="menu2p01" class="subpage subpage-default" data-path="">
 					<!-- <h3>Penamaan Ring</h3> -->
-
+					<div class="row hidden" >
+							
+							<div class="col-md-6" >
+								<table id="menu2TableDisable" 
+									   data-source-id="menu2Table" 
+									   data-unique-id="idRing"
+									   data-pagination="true"
+									   data-page-size="5">
+									<thead>
+									</thead>
+								</table>
+							</div>
+					</div>
+					
 					<div class="form-group-button pull-right">
 						<button class="btn btn-default btn-primary large-button" onclick="menu2Add(this);return false;">Tambah</button>
 						<button class="btn btn-default btn-primary large-button" onclick="menu2Edit(this);return false;">Ubah</button>
-						<button class="btn btn-default btn-primary large-button" onclick="menu2Hapus(this);return false;">Hapus</button>
+						<button class="btn btn-default btn-primary large-button" onclick="menu2Delete(this);return false;">Hapus</button>
 					</div>
 
 					<div id="table-container">
@@ -199,13 +175,15 @@
 						data-url="/api/ttm001/ring"
 						data-content-type="application/json"
 						data-data-type="json"
-						data-custom-action="edit"
-						data-edit-func="menu2Edit"
+						data-pagination="true"
+						data-page-size="10"
+						data-page-list="[10,25,50]"
+						data-custom-action="edit, delete"
 						data-checkbox-table="menu2TableDisable"
 						data-unique-id="idRing">
 						<thead>
 							<tr>
-								<!-- <th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th> -->
+								<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
 								<th data-field="idRing" data-sortable="true" data-visible="false">ID Ring</th>
 								<th data-field="radius" data-sortable="true" data-visible="false">Radius</th>
 								<th data-field="description" data-sortable="true" data-visible="true">Nama Ring</th>
@@ -256,9 +234,7 @@
 		<!-- ---------- PENAMAAN SALESFORCE ---------- -->
 		<div id="menu3" class="tab-pane fade">
 			<!-- <h3>Penamaan Salesforce</h3> -->
-
 			<table id="tree">
-
 			</table>
 		</div>
 
@@ -266,11 +242,22 @@
 		<div id="menu4" class="tab-pane fade">
 			<div id="menu4p01" class="subpage subpage-default" data-path="">
 				<!-- <h3>Aktivitas Marketing</h3> -->
-
+				<div class="row hidden" >			
+					<div class="col-md-6" >
+						<table id="menu4TableDisable" 
+							   data-source-id="menu4Table" 
+							   data-unique-id="idWeType"
+							   data-pagination="true"
+							   data-page-size="5">
+							<thead>
+							</thead>
+						</table>
+					</div>
+				</div>
 				<div class="form-group-button pull-right">
 					<button class="btn btn-default btn-primary large-button" onclick="menu4Add(this);return false;">Tambah</button>
 					<button class="btn btn-default btn-primary large-button" onclick="menu4Edit(this);return false;">Ubah</button>
-					<button class="btn btn-default btn-primary large-button" onclick="menu4Hapus(this);return false;">Hapus</button>
+					<button class="btn btn-default btn-primary large-button" onclick="menu4Delete(this);return false;">Hapus</button>
 				</div>
 
 
@@ -280,13 +267,15 @@
 					data-url="/api/ttm001/wet"
 					data-content-type="application/json"
 					data-data-type="json"
-					data-custom-action="edit"
-					data-edit-func="menu4Edit"
+					data-pagination="true"
+					data-page-size="10"
+					data-page-list="[10,25,50]"
+					data-custom-action="edit, delete"
 					data-checkbox-table="menu4TableDisable"
 					data-unique-id="idWeType">
 					<thead>
 						<tr>
-							<!-- <th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th> -->
+							<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
 							<th data-field="idWeType" data-sortable="true" data-visible="false">ID User</th>
 							<th data-field="description" data-sortable="true" data-visible="true">Tipe Aktivitas</th>
 						</tr>
@@ -337,10 +326,22 @@
 		<div id="menu5p01" class="subpage subpage-default" data-path="">
 			<!-- <h3>Kategori Lokasi Mkt Act</h3> -->
 
+			<div class="row hidden" >				
+				<div class="col-md-6" >
+					<table id="menu5TableDisable" 
+						   data-source-id="menu5Table" 
+						   data-unique-id="idFacilityType"
+						   data-pagination="true"
+						   data-page-size="5">
+						<thead>
+						</thead>
+					</table>
+				</div>
+			</div>
 			<div class="form-group-button pull-right">
 				<button class="btn btn-default btn-primary large-button" onclick="menu5Add(this);return false;">Tambah</button>
 				<button class="btn btn-default btn-primary large-button" onclick="menu5Edit(this);return false;">Ubah</button>
-				<button class="btn btn-default btn-primary large-button" onclick="menu5Hapus(this);return false;">Hapus</button>
+				<button class="btn btn-default btn-primary large-button" onclick="menu5Delete(this);return false;">Hapus</button>
 			</div>
 
 
@@ -350,13 +351,15 @@
 				data-url="/api/ttm001/loc"
 				data-content-type="application/json"
 				data-data-type="json"
-				data-custom-action="edit"
-				data-edit-func="menu5Edit"
-				data-checkbox-table="menu1TableDisable"
+				data-pagination="true"
+				data-page-size="10"
+				data-page-list="[10,25,50]"
+				data-custom-action="edit, delete"
+				data-checkbox-table="menu5TableDisable"
 				data-unique-id="idFacilityType">
 				<thead>
 					<tr>
-						<!-- <th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th> -->
+						<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
 						<th data-field="idFacilityType" data-sortable="true" data-visible="false">ID User</th>
 						<th data-field="category" data-sortable="true" data-visible="true">Kategori</th>
 						<th data-field="description" data-sortable="true" data-visible="true">Keterangan</th>
@@ -428,17 +431,6 @@
  *
  **/
 	
-	function menu1Presearch(params){
-		params.search = {"any": $('#menu1p01Search').val()};
-		if(params.sort == undefined){
-			return{
-				limit : params.limit,
-				offset : params.offset,
-				search : params.search
-			}
-		}
-		return params;
-	}
 
 	function menu1Add(obj){
 		var page = $('#menu1p02');
@@ -482,83 +474,82 @@
 		}
 	}
 
-	function menu1Edit(obj, row, index){
+	/* function menu1Edit(obj, row, index){
 		_subpage(obj, 'menu1p03', row);
-	}
+	} */
 	
-	function menu1EditData(obj){
+	function menu1Edit(obj){
+		
+		var editedRows = $('#menu1TableDisable').bootstrapTable('getData');
+		console.log("edited==>",editedRows);
+		if (editedRows.length == 1)
+			{
+			_subpage(obj,'menu1p03', editedRows[0]);
+			
+			}
+		else
+			alert("Pilih salah satu item jika ingin mengubah.");
+	}
+
+	function menu1EditData(obj)
+	{
 		var page = $(obj).closest('.subpage');
 		_fw_validation_clear(obj);
 		_fw_validation_add(obj, 'menu1p03Description', 'required');
 		_fw_validation_add(obj, 'menu1p03SalesQty', 'required');
+		 if(_fw_validation_validate(obj)){
+				var vo = new Object();
+				//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+				//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+				vo.idCategory = $('input[name="idCategory"]', page).val();
+				vo.idCategoryType = 101;
+				vo.idParentCategory = 0;
+				vo.description = $('input[id="menu1p03Description"]', page).val();
+				vo.salesQty = $('input[id="menu1p03SalesQty"]', page).val();
+				
+				console.log(vo);
 
-		if(_fw_validation_validate(obj)){
-			var vo = new Object();
-			//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
-			//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
-			vo.idCategory = $('input[name="idCategory"]', page).val();;
-			vo.idCategoryType = 101;
-			vo.idParentCategory = 0;
-			vo.description = $('input[id="menu1p03Description"]', page).val();
-			vo.salesQty = $('input[id="menu1p03SalesQty"]', page).val();
-			
-			console.log(vo);
-
-			$.ajax
-			({
-				type: "PUT",
-				url: "/ahmjxdsh000/api/partycategory/" + vo.idCategory,
-				contentType: "application/json",
-				dataType: 'json',
-				data: JSON.stringify(vo),
-				success:function(data){
-					console.log(data);
-					_fw_setMessage(obj,1,"Success");
-					$('#menu1Table').bootstrapTable('refresh');
-				  },
-			});
-		}
+				$.ajax
+				({
+					type: "PUT",
+					url: "/ahmjxdsh000/api/partycategory/" + vo.idCategory,
+					contentType: "application/json",
+					dataType: 'json',
+					data: JSON.stringify(vo),
+					success:function(data){
+						console.log(data);
+						_fw_setMessage(obj,1,"Success");
+						$('#menu1Table').bootstrapTable('refresh');
+					  },
+				});
+			} 
 	}
-	
-	function menu1DisableKonfirm(obj){
+
+	function menu1Delete(obj){
 		var disabledRows = $('#menu1TableDisable').bootstrapTable('getData');
-		console.log("deletelaksjdlkajsd");
 		if(disabledRows.length > 0) {
-			$('#menu1DisableTable').bootstrapTable('destroy');
-			$('#menu1DisableTable').bootstrapTable({data:disabledRows});
-		
-			_subpage(obj, 'menu1p04');
-		} else {
+			for(var i=0;i<disabledRows.length;i++)
+				{
+					var idx = disabledRows[i].idCategory;
+					$.ajax
+					({
+						type: "DELETE",
+						url: "/ahmjxdsh000/api/partycategory/" + idx,
+						contentType: "application/json",
+						dataType: 'json',
+						data: JSON.stringify(),
+						success:function(data){							
+						  },
+					});			
+				}
+			_fw_setMessage(obj,1,"Success");
+			$('#menu1Table').bootstrapTable('refresh');
+			} else {
 			alert('no data selected');
 		}
 	}
 	
-	function menu1DisableData(obj){
-		var disabledRows = $('#ahmjxuam003p04DisableTable').bootstrapTable('getData');
-		var disabled = [];
-		var vid = [];
-		var listVo = [];
-		$.each(disabledRows, function(){
-			var row = this;
-			
-			disabled.push({'vid': row.vid});
-			vid.push(row.vid);
-		});
-		_fw_post('/uam003/disable', disabled, function(data){
-			if(data.stat=="200"){
-				_fw_setMessage(obj, 1, data);
-				$('#ahmjxuam003p01TableDisable').bootstrapTable('remove', {field: 'vid', values: vid});
-				$('#ahmjxuam003p01SearchTable').bootstrapTable('refresh');
-			} else {
-				_fw_setMessage(obj, 0, data);
-			}
-		});
-	}
-
-	function menu1Delete(obj, row, index){
-		console.log("deleted");
-		console.log($("#menu1Table > "));
-	}
+	
 </script>
 
 <!-- ---------------------------------------------------------------------- -->
@@ -569,18 +560,6 @@
  *
  **/
 	
-	function menu2Presearch(params){
-		params.search = {"any": $('#menu2p01Search').val()};
-		if(params.sort == undefined){
-			return{
-				limit : params.limit,
-				offset : params.offset,
-				search : params.search
-			}
-		}
-		return params;
-	}
-
 	function menu2Add(obj){
 		var page = $('#menu2p02');
 		$('input, select', page).prop('disabled',false);
@@ -619,7 +598,15 @@
 	}
 
 	function menu2Edit(obj, row, index){
-		_subpage(obj, 'menu2p03', row);
+		var editedRows = $('#menu2TableDisable').bootstrapTable('getData');
+		console.log("edited==>",editedRows);
+		if (editedRows.length == 1)
+			{
+			_subpage(obj,'menu2p03', editedRows[0]);
+			
+			}
+		else
+			alert("Pilih salah satu item jika ingin mengubah.");
 	}
 	
 	function menu2EditData(obj){
@@ -635,8 +622,6 @@
 			vo.description = $('input[id="menu2p03Description"]', page).val();
 			vo.radius = 0;
 			
-			console.log(vo);
-
 			$.ajax
 			({
 				type: "PUT",
@@ -653,38 +638,29 @@
 		}
 	}
 	
-	function menu2DisableKonfirm(obj){
-		var disabledRows = $('#menu2TableDisable').bootstrapTable('getData');
-		if(disabledRows.length > 0) {
-			$('#menu2DisableTable').bootstrapTable('destroy');
-			$('#menu2DisableTable').bootstrapTable({data:disabledRows});
-		
-			_subpage(obj, 'menu2p04');
-		} else {
+	
+	function menu2Delete(obj){
+		var deletedRows = $('#menu2TableDisable').bootstrapTable('getData');
+		if(deletedRows.length > 0) {
+			for(var i=0;i<deletedRows.length;i++)
+				{
+					var idx = deletedRows[i].idRing;
+					$.ajax
+					({
+						type: "DELETE",
+						url: "/ahmjxdsh000/api/ringtype/" + idx,
+						contentType: "application/json",
+						dataType: 'json',
+						data: JSON.stringify(),
+						success:function(data){							
+						  },
+					});			
+				}
+			_fw_setMessage(obj,1,"Success");
+			$('#menu2Table').bootstrapTable();
+			} else {
 			alert('no data selected');
 		}
-	}
-	
-	function menu2DisableData(obj){
-		var disabledRows = $('#ahmjxuam003p04DisableTable').bootstrapTable('getData');
-		var disabled = [];
-		var vid = [];
-		var listVo = [];
-		$.each(disabledRows, function(){
-			var row = this;
-			
-			disabled.push({'vid': row.vid});
-			vid.push(row.vid);
-		});
-		_fw_post('/uam003/disable', disabled, function(data){
-			if(data.stat=="200"){
-				_fw_setMessage(obj, 1, data);
-				$('#ahmjxuam003p01TableDisable').bootstrapTable('remove', {field: 'vid', values: vid});
-				$('#ahmjxuam003p01SearchTable').bootstrapTable('refresh');
-			} else {
-				_fw_setMessage(obj, 0, data);
-			}
-		});
 	}
 </script>
 
@@ -696,18 +672,6 @@
  *
  **/
 	
-	function menu4Presearch(params){
-		params.search = {"any": $('#menu4p01Search').val()};
-		if(params.sort == undefined){
-			return{
-				limit : params.limit,
-				offset : params.offset,
-				search : params.search
-			}
-		}
-		return params;
-	}
-
 	function menu4Add(obj){
 		var page = $('#menu4p02');
 		$('input, select', page).prop('disabled',false);
@@ -746,14 +710,22 @@
 	}
 
 	function menu4Edit(obj, row, index){
-		_subpage(obj, 'menu4p03', row);
-	}
+		var editedRows = $('#menu4TableDisable').bootstrapTable('getData');
+		console.log("edited==>",editedRows);
+		if (editedRows.length == 1)
+			{
+			_subpage(obj,'menu4p03', editedRows[0]);
+			
+			}
+		else
+			alert("Pilih salah satu item jika ingin mengubah.");	}
 	
-	function menu4EditData(obj){
+	function menu4EditData(obj)
+	{
 		var page = $(obj).closest('.subpage');
 		_fw_validation_clear(obj);
 		_fw_validation_add(obj, 'menu4p03Description', 'required');
-
+		console.log("page==>",page);
 		if(_fw_validation_validate(obj)){
 			var vo = new Object();
 			//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
@@ -762,7 +734,7 @@
 			vo.description = $('input[id="menu4p03Description"]', page).val();
 			vo.radius = 0;
 			
-			console.log(vo);
+			console.log("vo==>",vo);
 
 			$.ajax
 			({
@@ -780,38 +752,29 @@
 		}
 	}
 	
-	function menu4DisableKonfirm(obj){
+	function menu4Delete(obj){
 		var disabledRows = $('#menu4TableDisable').bootstrapTable('getData');
+		console.log("deletelaksjdlkajsd==>",disabledRows);
 		if(disabledRows.length > 0) {
-			$('#menu4DisableTable').bootstrapTable('destroy');
-			$('#menu4DisableTable').bootstrapTable({data:disabledRows});
-		
-			_subpage(obj, 'menu4p04');
-		} else {
+			for(var i=0;i<disabledRows.length;i++)
+				{
+					var idx = disabledRows[i].idWeType;
+					$.ajax
+					({
+						type: "DELETE",
+						url: "/ahmjxdsh000/api/wetype/" + idx,
+						contentType: "application/json",
+						dataType: 'json',
+						data: JSON.stringify(),
+						success:function(data){							
+						  },
+					});			
+				}
+			_fw_setMessage(obj,1,"Success");
+			$('#menu4Table').bootstrapTable();
+			} else {
 			alert('no data selected');
 		}
-	}
-	
-	function menu4DisableData(obj){
-		var disabledRows = $('#ahmjxuam003p04DisableTable').bootstrapTable('getData');
-		var disabled = [];
-		var vid = [];
-		var listVo = [];
-		$.each(disabledRows, function(){
-			var row = this;
-			
-			disabled.push({'vid': row.vid});
-			vid.push(row.vid);
-		});
-		_fw_post('/uam003/disable', disabled, function(data){
-			if(data.stat=="200"){
-				_fw_setMessage(obj, 1, data);
-				$('#ahmjxuam003p01TableDisable').bootstrapTable('remove', {field: 'vid', values: vid});
-				$('#ahmjxuam003p01SearchTable').bootstrapTable('refresh');
-			} else {
-				_fw_setMessage(obj, 0, data);
-			}
-		});
 	}
 </script>
 
@@ -823,17 +786,6 @@
  *
  **/
 	
-	function menu5Presearch(params){
-		params.search = {"any": $('#menu5p01Search').val()};
-		if(params.sort == undefined){
-			return{
-				limit : params.limit,
-				offset : params.offset,
-				search : params.search
-			}
-		}
-		return params;
-	}
 
 	function menu5Add(obj){
 		var page = $('#menu5p02');
@@ -874,8 +826,16 @@
 	}
 
 	function menu5Edit(obj, row, index){
-		_subpage(obj, 'menu5p03', row);
-	}
+		var editedRows = $('#menu5TableDisable').bootstrapTable('getData');
+		console.log("edited==>",editedRows);
+		if (editedRows.length == 1)
+			{
+			_subpage(obj,'menu5p03', editedRows[0]);
+			
+			}
+		else
+			alert("Pilih salah satu item jika ingin mengubah.");	
+		}
 	
 	function menu5EditData(obj){
 		var page = $(obj).closest('.subpage');
@@ -908,38 +868,28 @@
 		}
 	}
 	
-	function menu5DisableKonfirm(obj){
+	function menu5Delete(obj){
 		var disabledRows = $('#menu5TableDisable').bootstrapTable('getData');
 		if(disabledRows.length > 0) {
-			$('#menu5DisableTable').bootstrapTable('destroy');
-			$('#menu5DisableTable').bootstrapTable({data:disabledRows});
-		
-			_subpage(obj, 'menu5p04');
-		} else {
+			for(var i=0;i<disabledRows.length;i++)
+				{
+					var idx = disabledRows[i].idFacilityType;
+					$.ajax
+					({
+						type: "DELETE",
+						url: "/ahmjxdsh000/api/facilitytype/" + idx,
+						contentType: "application/json",
+						dataType: 'json',
+						data: JSON.stringify(),
+						success:function(data){							
+						  },
+					});			
+				}
+			_fw_setMessage(obj,1,"Success");
+			$('#menu5Table').bootstrapTable();
+			} else {
 			alert('no data selected');
 		}
-	}
-	
-	function menu5DisableData(obj){
-		var disabledRows = $('#ahmjxuam003p04DisableTable').bootstrapTable('getData');
-		var disabled = [];
-		var vid = [];
-		var listVo = [];
-		$.each(disabledRows, function(){
-			var row = this;
-			
-			disabled.push({'vid': row.vid});
-			vid.push(row.vid);
-		});
-		_fw_post('/uam003/disable', disabled, function(data){
-			if(data.stat=="200"){
-				_fw_setMessage(obj, 1, data);
-				$('#ahmjxuam003p01TableDisable').bootstrapTable('remove', {field: 'vid', values: vid});
-				$('#ahmjxuam003p01SearchTable').bootstrapTable('refresh');
-			} else {
-				_fw_setMessage(obj, 0, data);
-			}
-		});
 	}
 </script>
 
@@ -1154,6 +1104,11 @@
 	}
 	.ui-menu kbd { /* Keyboard shortcuts for ui-contextmenu titles */
 		float: right;
+	}
+	
+	.row hidden
+	{
+		display:none;
 	}
 	/* custom alignment (set by 'renderColumns'' event) */
 </style>
