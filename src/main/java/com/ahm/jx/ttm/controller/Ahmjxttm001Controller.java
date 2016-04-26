@@ -81,17 +81,11 @@ public class Ahmjxttm001Controller {
 	@ResponseBody
 	@Transactional
 	public List<AhmjxMstPartyCategory> getDealerClassfication() {
-		List<AhmjxMstPartyCategory> d = partyCategoryRepo.findByIdCategoryType(AhmjxMstPartyCategoryType.TYPE_DEALER_SALES_CLASSIFICATION);		
+		List<AhmjxMstPartyCategory> d = partyCategoryRepo.findByIdCategoryType(AhmjxMstPartyCategoryType.TYPE_DEALER_SALES);		
 		return d;
 	}
 	
-	//Party Category Update
-	
-	@RequestMapping(value="parcatupd", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public AhmjxMstPartyCategory setSalesForce(@RequestBody AhmjxMstPartyCategory entity) {
-		return partyCategoryRepo.save(entity);
-	}
+	//Party Category Update	
 	
 	@RequestMapping(value="ring", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
@@ -99,12 +93,6 @@ public class Ahmjxttm001Controller {
 	public List<AhmjxTtmRingType> getRingType() {
 		List<AhmjxTtmRingType> d = ringTypeRepo.findAll();		
 		return d;
-	}
-	
-	@RequestMapping(value="ring", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public AhmjxTtmRingType setRingType(@RequestBody AhmjxTtmRingType entity) {		
-		return ringTypeRepo.save(entity);
 	}	
 	
 	@RequestMapping(value="loc", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -115,12 +103,6 @@ public class Ahmjxttm001Controller {
 		return d;
 	}
 	
-	@RequestMapping(value="loc", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public AhmjxMstFacilityType setLocType(@RequestBody AhmjxMstFacilityType entity) {		
-		return facilityTypeRepo.save(entity);
-	}
-	
 	@RequestMapping(value="wet", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@Transactional
@@ -128,11 +110,5 @@ public class Ahmjxttm001Controller {
 		List<AhmjxTtmWeType> d = weTypeRepo.findAll();		
 		return d;
 	}
-	
-	@RequestMapping(value="wet", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public AhmjxTtmWeType setWeType(@RequestBody AhmjxTtmWeType entity) {		
-		return weTypeRepo.save(entity);
-	}	
 	
 }
