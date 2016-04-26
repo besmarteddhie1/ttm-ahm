@@ -687,7 +687,6 @@
 
 	function menu4Edit(obj, row, index){
 		var editedRows = $('#menu4TableDisable').bootstrapTable('getData');
-		console.log("edited==>",editedRows);
 		if (editedRows.length == 1)
 			{
 			_subpage(obj,'menu4p03', editedRows[0]);
@@ -730,7 +729,6 @@
 	
 	function menu4Delete(obj){
 		var disabledRows = $('#menu4TableDisable').bootstrapTable('getData');
-		console.log("deletelaksjdlkajsd==>",disabledRows);
 		if(disabledRows.length > 0) {
 			for(var i=0;i<disabledRows.length;i++)
 				{
@@ -895,6 +893,7 @@
 					return v;}
 			);
 			SOURCE = parsed;
+			console.log("source==>",SOURCE);
 	}) ; 
 
 	$("#tree").fancytree({
@@ -1070,7 +1069,7 @@
 	
 	automaticFill(row, targetSubpage);
 	
-}
+	}
 </script>
 
 <!-- ---------------------------------------------------------------------- -->
