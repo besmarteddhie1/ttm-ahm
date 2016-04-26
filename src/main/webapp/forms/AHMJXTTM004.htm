@@ -1,0 +1,124 @@
+<div id="AHMJXTTM004" class="div-app" data-version="1.0">
+	<div class="global_message">
+
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#menu1" class="inner-tab">Channel</a></li>
+			
+
+			</ul>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="tab-content">
+				<div id="menu1" class="tab-pane fade in active ">
+					<div class="col-md-4">
+						<table id="tree">
+						</table>
+					</div>
+					<div class="col-md-8">
+						<form class="form-horizontal">
+							<input type="hidden" name="idFacilityType" data-field="idFacilityType"/>
+							<div class="form-group large-font">
+								<label for="menu5p03Description" class="col-sm-3 control-label">Kode Main Dealer <span style="color:red">*)</span></label>
+								<div class="col-sm-6">
+									<input id="menu5p03Category" name="category" class="form-control" data-field="category">
+								</div>
+							</div>
+							<div class="form-group large-font">
+								<label for="menu5p02Vdesc" class="col-sm-3 control-label">Nama Main Dealer </label>
+								<div class="col-sm-6">
+									<input id="menu5p03Description" name="description" class="form-control" data-field="description">
+								</div>
+							</div>
+							<div class="form-group large-font">
+								<label for="menu5p02Vdesc" class="col-sm-3 control-label">Alamat </label>
+								<div class="col-sm-6">
+									<input id="menu5p03Description" name="description" class="form-control" data-field="description">
+								</div>
+							</div>
+							<div class="form-group large-font">
+								<label for="menu5p02Vdesc" class="col-sm-3 control-label">Telp </label>
+								<div class="col-sm-6">
+									<input id="menu5p03Description" name="description" class="form-control" data-field="description">
+								</div>
+							</div>
+							<div class="form-group large-font">
+								<label for="menu5p02Vdesc" class="col-sm-3 control-label">Area Kerja </label>
+								<div class="col-sm-6">
+									<input id="menu5p03Description" name="description" class="form-control" data-field="description">
+								</div>
+							</div>
+							<div class="col-sm-offset-2 col-sm-6 form-group-button">
+								<button class="btn btn-default btn-primary large-button" onclick="menu5EditData(this);_subpage(this, 'menu5p01');return false;">Submit</button>
+								<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu5p01');return false;">Back</button>
+							</div>
+				
+						</form>
+					</div>
+				</div>
+				</div>
+
+			
+		</div> <!-- end of tab-content -->
+
+</div>
+</div>
+
+
+</div>
+<script type="text/javascript">
+
+	var xdata;
+	//var SOURCE= CLIPBOARD = null;
+		var SOURCE = [
+		    {title: "Asia Surya Perkasa",id:"1",desc:"abcd", children: [
+		      {title: "Borneo Motor",id:"2",desc:"bv1"},
+		      {title: "47 Motor",id:"3",desc:"12"}
+		     ]},
+		    {title: "Astra Motor Balikpapan",id:"4",desc:"1",children: [
+		      {title: "Balikpapan Motor 1",id:"5",desc:"21"},
+		      {title: "Balikpapan Motor 2",id:"6",desc:"asdas"}
+		     ]}
+		     
+		  ],
+		  CLIPBOARD = null;
+		  
+	$(function(){
+		$(".nav-tabs a").click(function(){
+		$(this).tab('show');
+	});
+
+	/* $.ajax({type: "GET",url: baseURL+"/api/ttm001/sf",contentType: "application/json",
+			dataType: 'json',async: false,data: JSON.stringify()})
+		.done(function(data){
+			var parsed = JSON.parse(JSON.stringify(data), function(k, v) {
+				if (k === "description") 
+					this.title = v;
+				else if (k === "categories")
+					this.children = v;
+				else
+					return v;}
+			);
+			x = parsed;
+			console.log("source==>",SOURCE);
+	}) ;  */
+
+	$("#tree").fancytree({
+		source: SOURCE,
+		 activate: function(event, data) {
+		        var node = data.node;
+		       console.log("id==>",node.data);
+		      },
+		});
+
+	});
+
+  
+
+</script>

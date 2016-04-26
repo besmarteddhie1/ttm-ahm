@@ -89,7 +89,7 @@
 						</div>
 						<div class="col-sm-offset-2 col-sm-6 form-group-button">
 							<button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="menu1AddNew(this);return false;" style="display: none">Add New</button>
-							<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu1AddData(this);return false;">Submit</button>
+							<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu1AddData(this);_subpage(this, 'menu1p01');return false;">Submit</button>
 							<button class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
 							<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu1p01');return false;">Back</button>
 						</div>
@@ -111,7 +111,7 @@
 							</div>
 						</div>
 						<div class="col-sm-offset-2 col-sm-6 form-group-button">
-							<button class="btn btn-default btn-primary large-button" onclick="menu1EditData(this);return false;">Submit</button>
+							<button class="btn btn-default btn-primary large-button" onclick="menu1EditData(this);_subpage(this, 'menu1p01');return false;">Submit</button>
 							<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu1p01');return false;">Back</button>
 						</div>
 
@@ -119,30 +119,7 @@
 
 				</div>
 				
-				<div id="menu1p04" class="subpage" data-path="">
-					<table id="menu1DisableTable">
-						<thead>
-							<tr>
-								<th data-field="idCategory" 
-									data-sortable="true"
-									data-visible="true"
-									>ID</th>
-								<th data-field="description" 
-									data-sortable="true"
-									>Description</th>
-								<th data-field="salesQty" 
-									data-sortable="true"
-									>Minimal Sales / Month</th>
-							</tr>
-						</thead>
-			
-					</table>
-					<br/>
-					<div class="form-group-button">
-						<button class="btn btn-default btn-primary large-button" onclick="menu1DeleteData(this)">Delete</button>
-						<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu1p01'); return false;">Back</button>
-					</div>
-				</div>
+				
 			</div>
 
 			<!-- ---------- PENAMAAN RING ---------- -->
@@ -205,7 +182,7 @@
 					</div>
 					<div class="col-sm-offset-2 col-sm-6 form-group-button">
 						<button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="menu2AddNew(this);return false;" style="display: none">Add New</button>
-						<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu2AddData(this);return false;">Submit</button>
+						<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu2AddData(this);_subpage(this, 'menu2p01');return false;">Submit</button>
 						<button class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
 						<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu2p01');return false;">Back</button>
 					</div>
@@ -222,7 +199,7 @@
 						</div>
 					</div>
 					<div class="col-sm-offset-2 col-sm-6 form-group-button">
-						<button class="btn btn-default btn-primary large-button" onclick="menu2EditData(this);return false;">Submit</button>
+						<button class="btn btn-default btn-primary large-button" onclick="menu2EditData(this);_subpage(this, 'menu2p01');return false;">Submit</button>
 						<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu2p01');return false;">Back</button>
 					</div>
 
@@ -296,7 +273,7 @@
 				</div>
 				<div class="col-sm-offset-2 col-sm-6 form-group-button">
 					<button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="menu4AddNew(this);return false;" style="display: none">Add New</button>
-					<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu4AddData(this);return false;">Submit</button>
+					<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu4AddData(this);_subpage(this, 'menu4p01');return false;">Submit</button>
 					<button class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
 					<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu4p01');return false;">Back</button>
 				</div>
@@ -312,7 +289,7 @@
 					</div>
 				</div>
 				<div class="col-sm-offset-2 col-sm-6 form-group-button">
-					<button class="btn btn-default btn-primary large-button" onclick="menu4EditData(this);return false;">Submit</button>
+					<button class="btn btn-default btn-primary large-button" onclick="menu4EditData(this);_subpage(this, 'menu4p01');return false;">Submit</button>
 					<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu4p01');return false;">Back</button>
 				</div>
 
@@ -387,7 +364,7 @@
 			</div>
 			<div class="col-sm-offset-2 col-sm-6 form-group-button">
 				<button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="menu5AddNew(this);return false;" style="display: none">Add New</button>
-				<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu5AddData(this);return false;">Submit</button>
+				<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu5AddData(this);_subpage(this, 'menu5p01');return false;">Submit</button>
 				<button class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
 				<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu5p01');return false;">Back</button>
 			</div>
@@ -409,7 +386,7 @@
 				</div>
 			</div>
 			<div class="col-sm-offset-2 col-sm-6 form-group-button">
-				<button class="btn btn-default btn-primary large-button" onclick="menu5EditData(this);return false;">Submit</button>
+				<button class="btn btn-default btn-primary large-button" onclick="menu5EditData(this);_subpage(this, 'menu5p01');return false;">Submit</button>
 				<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu5p01');return false;">Back</button>
 			</div>
 
@@ -506,8 +483,6 @@
 				vo.idParentCategory = 0;
 				vo.description = $('input[id="menu1p03Description"]', page).val();
 				vo.salesQty = $('input[id="menu1p03SalesQty"]', page).val();
-				
-				console.log(vo);
 
 				$.ajax
 				({
@@ -517,7 +492,6 @@
 					dataType: 'json',
 					data: JSON.stringify(vo),
 					success:function(data){
-						console.log(data);
 						_fw_setMessage(obj,1,"Success");
 						$('#menu1Table').bootstrapTable('refresh');
 					  },
@@ -538,16 +512,18 @@
 						contentType: "application/json",
 						dataType: 'json',
 						data: JSON.stringify(),
-						success:function(data){							
+						success:function(data){	
+							$('#menu1Table').bootstrapTable('refresh');
+							_fw_setMessage(obj,1,"Success");					
 						  },
 					});			
 				}
-			_fw_setMessage(obj,1,"Success");
-			$('#menu1Table').bootstrapTable('refresh');
 			} else {
 			alert('no data selected');
-		}
+		}		
 	}
+
+
 	
 	
 </script>
@@ -652,12 +628,12 @@
 						contentType: "application/json",
 						dataType: 'json',
 						data: JSON.stringify(),
-						success:function(data){							
+						success:function(data){		
+							$('#menu2Table').bootstrapTable('refresh');
+							_fw_setMessage(obj,1,"Success");			
 						  },
 					});			
 				}
-			_fw_setMessage(obj,1,"Success");
-			$('#menu2Table').bootstrapTable();
 			} else {
 			alert('no data selected');
 		}
@@ -711,7 +687,6 @@
 
 	function menu4Edit(obj, row, index){
 		var editedRows = $('#menu4TableDisable').bootstrapTable('getData');
-		console.log("edited==>",editedRows);
 		if (editedRows.length == 1)
 			{
 			_subpage(obj,'menu4p03', editedRows[0]);
@@ -754,7 +729,6 @@
 	
 	function menu4Delete(obj){
 		var disabledRows = $('#menu4TableDisable').bootstrapTable('getData');
-		console.log("deletelaksjdlkajsd==>",disabledRows);
 		if(disabledRows.length > 0) {
 			for(var i=0;i<disabledRows.length;i++)
 				{
@@ -766,12 +740,13 @@
 						contentType: "application/json",
 						dataType: 'json',
 						data: JSON.stringify(),
-						success:function(data){							
+						success:function(data){	
+							$('#menu4Table').bootstrapTable('refresh');
+							_fw_setMessage(obj,1,"Success");
+												
 						  },
 					});			
 				}
-			_fw_setMessage(obj,1,"Success");
-			$('#menu4Table').bootstrapTable();
 			} else {
 			alert('no data selected');
 		}
@@ -881,15 +856,16 @@
 						contentType: "application/json",
 						dataType: 'json',
 						data: JSON.stringify(),
-						success:function(data){							
+						success:function(data){	
+							$('#menu5Table').bootstrapTable('refresh');
+							_fw_setMessage(obj,1,"Success");
 						  },
 					});			
 				}
-			_fw_setMessage(obj,1,"Success");
-			$('#menu5Table').bootstrapTable();
 			} else {
 			alert('no data selected');
 		}
+		
 	}
 </script>
 
@@ -917,6 +893,7 @@
 					return v;}
 			);
 			SOURCE = parsed;
+			console.log("source==>",SOURCE);
 	}) ; 
 
 	$("#tree").fancytree({
@@ -1092,7 +1069,7 @@
 	
 	automaticFill(row, targetSubpage);
 	
-}
+	}
 </script>
 
 <!-- ---------------------------------------------------------------------- -->
