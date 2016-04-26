@@ -13,6 +13,7 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
@@ -28,7 +29,7 @@ public class BsJpaRepositoryImpl<T, ID extends Serializable> extends SimpleJpaRe
 	}
 
 	@Override
-	public Page<T> findBySearch(String fieldString, String filter, Integer  pageNum, Integer  rowNum) {
+	public Page<T> findBySearch(String fieldString, String filter, Pageable pageable) {
 		String[] values = filter.split("\\s+");
 		String[] fields = fieldString.split("\\s+");
 						
@@ -55,12 +56,10 @@ public class BsJpaRepositoryImpl<T, ID extends Serializable> extends SimpleJpaRe
 		Predicate[] apv = new Predicate[pv.size()];
 		query.where(builder.and(pv.toArray(apv)));				
 		
-		System.out.println("Page Record Start : " + pageNum + "  >> " + ((pageNum - 1) * rowNum));
-		
 		TypedQuery<T> q = em.createQuery(query);
 		
-		q.setFirstResult((pageNum - 1) * rowNum);
-		q.setMaxResults(rowNum);
+		q.setFirstResult((pageable.getPageNumber() - 1) * pageable.getPageSize());
+		q.setMaxResults(pageable.getPageSize());
 		
 		return new PageImpl<T>(q.getResultList());
 		
