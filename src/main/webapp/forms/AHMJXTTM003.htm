@@ -6,8 +6,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<ul class="nav nav-tabs">
-				<li class="active"><a href="#menu1" class="inner-tab">Upload Data</a></li>
-				<li><a href="#menu2" class="inner-tab">Maintain Data</a></li>
+				<li class="active"><a href="#menu1" class="inner-tab">Maintain Data</a></li>
 			</ul>
 		</div>
 	</div>
@@ -17,64 +16,16 @@
 			<div class="tab-content">
 				<div id="menu1" class="tab-pane fade in active ">
 					
-					 <div class="col-md-6">
-		                <div class="form-group large-font">
-		                    <div class="input-group">
-		                        <input id="ahmjxuam004p01Search" type="text" class="form-control" placeholder="Search...">
-		                        <span class="input-group-btn">
-		                            <button class="btn btn-primary large-button" type="button" onclick="$('#ahmjxuam004p01SearchTable').bootstrapTable('refresh');">Search</button>
-		
-		                        </span>
-		                    </div>
-		                </div>
-		            </div>
-					<div class="form-group-button col-md-6 ">
-						<div class="pull-right">
-							<button class="btn btn-default btn-primary large-button" onclick="menu1Download(this);return false;">Download Excel Format</button>
-							<button class="btn btn-default btn-primary large-button" onclick="menu1Upload(this);return false;">Upload Excel Data</button>
-						</div>
-					</div>
-					
-					<div id="table-container">
-							<table id="menu1Table"
-							data-method="get"
-							data-url="/api/ttm001/dc"
-							data-content-type="application/json"
-							data-data-type="json"
-							data-pagination="true"
-							data-page-size="10"
-							data-page-list="[10,25,50]"
-							data-custom-action="edit, delete"
-\							data-checkbox-table="menu1TableDisable"
-							data-unique-id="idCategory">
-							<thead>
-								<tr>
-									<th data-field="kodeProv" data-sortable="true" data-visible="true">Kode</th>
-									<th data-field="prov" data-sortable="true" data-visible="true">Provinsi</th>
-									<th data-field="kodeKab" data-sortable="true" data-visible="true">Kode</th>
-									<th data-field="kab" data-sortable="true" data-visible="true">Kabupaten/Kota</th>
-									<th data-field="kodeKec" data-sortable="true" data-visible="true">Kode</th>
-									<th data-field="kec" data-sortable="true" data-visible="true">Kecamatan</th>
-									<th data-field="kodeKel" data-sortable="true" data-visible="true">Kode</th>
-									<th data-field="kel" data-sortable="true" data-visible="true">Kelurahan/Desa</th>
-								</tr>
-							</thead>
-
-						</table>
-					</div>
-				</div>
-			
-				
-				<div id="menu2" class="tab-pane fade">
 					<div class="col-md-4">
-						<table id="tree">
+						<table id="tree3">
 						</table>
 					</div>
 					<div class="col-md-8">
 						
 					</div>
-			
 				</div>
+			
+				
 			</div>
 
 			
@@ -130,7 +81,7 @@
 			console.log("source==>",SOURCE);
 	}) ;  */
 
-	$("#tree").fancytree({
+	$("#tree3").fancytree({
 		source: SOURCE,
 		 activate: function(event, data) {
 		        var node = data.node;
