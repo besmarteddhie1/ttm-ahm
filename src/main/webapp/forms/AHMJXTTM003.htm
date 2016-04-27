@@ -21,7 +21,7 @@
 						</table>
 					</div>
 					<div class="col-md-8">
-						
+						<div id="map" class="smallmap"></div>
 					</div>
 				</div>
 			
@@ -34,17 +34,17 @@
 </div>
 </div>
 
+<script type="text/javascript" src="resources/maps/exp2.js"></script>
 <script type="text/javascript">
-
 	var xdata;
 	//var SOURCE= CLIPBOARD = null;
 		var SOURCE = [
 		    {title: "DKI Jakarta",id:"1",children: [
 		      {title: "Jakarta Pusat",id:"2",children:[
-				 {title: "Senen",id:"3"},
-				 {title: "Kramat",id:"8"},
-				 {title: "Gunung Sahari",id:"9"},
-				 {title: "Menteng",id:"10"},			                             		                                 		      
+				 {title: "Senen",id:"3",lat:"-42.088534",lon:"146.596076"},
+				 {title: "Kramat",id:"8",lat:"-42.984253",lon:"146.96765"},
+				 {title: "Gunung Sahari",id:"9",lat:"-42.660900",lon:"146.1096633"},
+				 {title: "Menteng",id:"10",lat:"-41.088534",lon:"146.596076"},			                             		                                 		      
 		        ]},
 			    {title: "Jakarta Timur",id:"11"},
 			    {title: "Jakarta Utara",id:"12"},
@@ -84,6 +84,7 @@
 		 activate: function(event, data) {
 		        var node = data.node;
 		       console.log("id==>",node.data);
+		       setFocus(node.data.lon,node.data.lat);
 		      },
 		});
 
