@@ -13,32 +13,25 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ahm.jx.ttm.dao.UamMenuDao;
-import com.ahm.jx.ttm.dao.impl.AbstractImplDao;
 import com.ahm.jx.ttm.model.AhmjxUamMenu;
 
 
 @RestController
 @RequestMapping("/api/menu")
-public class MenuController extends AbstractImplDao<AhmjxUamMenu, String> {	
+public class MenuController  {	
 	
 	@PersistenceContext
 	protected EntityManager em;
 	
 	@Autowired
 	UamMenuDao dao;
-	
-	@Override
-	protected JpaRepository<AhmjxUamMenu, String> getRepository() {
-		return dao;
-	}	
-	
+		
 	public AhmjxUamMenu findOneByIdMenu(String idMenu) {
 		return dao.findOneByIdMenu(idMenu);
 	}
@@ -92,7 +85,6 @@ public class MenuController extends AbstractImplDao<AhmjxUamMenu, String> {
 		return q.getResultList();
 	}
 	
-	@Override
 	public List<AhmjxUamMenu> getByCriteria(String[] fields, String filter, Integer pageNum, Integer rowNum) {
 		String[] values = filter.split("\\s+");
 						
@@ -134,6 +126,5 @@ public class MenuController extends AbstractImplDao<AhmjxUamMenu, String> {
 	public List<AhmjxUamMenu> getAll() {
 		return dao.findAll();
 	}	
-
 	
 }
