@@ -34,17 +34,17 @@
 </div>
 </div>
 
-<script type="text/javascript" src="resources/maps/exp2.js"></script>
+<script type="text/javascript" src="resources/maps/indonesia.js"></script>
 <script type="text/javascript">
 	var xdata;
 	//var SOURCE= CLIPBOARD = null;
 		var SOURCE = [
-		    {title: "DKI Jakarta",id:"1",children: [
-		      {title: "Jakarta Pusat",id:"2",children:[
-				 {title: "Senen",id:"3",lat:"-42.088534",lon:"146.596076"},
-				 {title: "Kramat",id:"8",lat:"-42.984253",lon:"146.96765"},
-				 {title: "Gunung Sahari",id:"9",lat:"-42.660900",lon:"146.1096633"},
-				 {title: "Menteng",id:"10",lat:"-41.088534",lon:"146.596076"},			                             		                                 		      
+		    {title: "DKI Jakarta",id:"1",lat:"-6.230357",lon:"106.829483",level:1,children: [
+		      {title: "Jakarta Pusat",id:"2",lat:"-6.182313",lon:"106.836494",level:2,children:[
+				 {title: "Senen",id:"3",lat:"-6.176315",lon:"106.843433",level:3},
+				 {title: "Kramat",id:"8",lat:"-6.048465",lon:"106.606314",level:3},
+				 {title: "Gunung Sahari",id:"9",lat:"-6.160992",lon:"106.846191",level:3},
+				 {title: "Menteng",id:"10",lat:"-6.593396",lon:"106.777493",level:3},			                             		                                 		      
 		        ]},
 			    {title: "Jakarta Timur",id:"11"},
 			    {title: "Jakarta Utara",id:"12"},
@@ -82,9 +82,9 @@
 	$("#tree3").fancytree({
 		source: SOURCE,
 		 activate: function(event, data) {
-		        var node = data.node;
-		       console.log("id==>",node.data);
-		       setFocus(node.data.lon,node.data.lat);
+		       var node = data.node;
+		       console.log("node.data==>",node.data);
+		       setFocus(node.data.lon,node.data.lat,node.data.level);
 		      },
 		});
 
