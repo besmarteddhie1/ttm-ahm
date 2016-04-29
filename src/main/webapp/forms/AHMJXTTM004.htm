@@ -18,6 +18,8 @@
 			<div class="tab-content">
 				<div id="menu1" class="tab-pane fade in active ">
 					<div class="col-md-4">
+						<input name="search" placeholder="search" autocomplete="off">
+					    <span id="matches"></span>
 						<table id="tree4">
 						</table>
 					</div>
@@ -56,6 +58,7 @@
 								<label for="menu1p01Area" class="col-sm-3 control-label">Area Kerja </label>
 								<div class="col-sm-6">
 									<input id="menu1p01Area" name="menu1p01Area" size="15" maxlength="15" style="width:40%" class="form-control" data-field="menu1p01Area">
+									
 								</div>
 							</div>
 							
@@ -134,15 +137,14 @@
 	var xdata;
 	//var SOURCE= CLIPBOARD = null;
 		var SOURCE = [
-		    {title: "Asia Surya Perkasa",id:"1",address:"Jl. Asia Surya",phone:"0219999",area:"Jakarta",code:"md", children: [
-		      {title: "Jatinegara Motor",id:"2",status:"Aktif",prov:"Jakarta",kab:"Jakarta Timur",kec:"Jatinegara",kel:"Jatinegara Barat",address:"Jl. Jatinegara Raya",phone:"021999898889",code:"d"},
-		      {title: "47 Motor",id:"3",status:"Aktif",prov:"Jakarta",kab:"Jakarta Timur",kec:"Cipinang",kel:"Cipinang Besar",address:"Jl. Cipinang Raya",phone:"021909090",code:"d"}
+		    {title: "Asia Surya Perkasa",id:"1",address:"Jl. Asia Surya",phone:"0219999",area:"Jakarta",code:"md",lat:"-6.230357",lon:"106.829483", level:"1",children: [
+		      {title: "Jatinegara Motor",id:"2",status:"Aktif",prov:"Jakarta",kab:"Jakarta Timur",kec:"Jatinegara",kel:"Jatinegara Barat",address:"Jl. Jatinegara Raya",phone:"021999898889",code:"d",lat:"-6.230357",lon:"106.829483"},
+		      {title: "47 Motor",id:"3",status:"Aktif",prov:"Jakarta",kab:"Jakarta Timur",kec:"Cipinang",kel:"Cipinang Besar",address:"Jl. Cipinang Raya",phone:"021909090",code:"d",lat:"-6.230357",lon:"106.829483"}
 		     ]},
-		    {title: "Astra Motor Balikpapan",id:"4",address:"Jl. Balikpapan Raya",phone:"0259090909",area:"Balikpapan",code:"md",children: [
-		      {title: "Balikpapan Motor 1",id:"5",status:"Tidak Aktif",prov:"Kalimantan Timur",kab:"Balikpapan",kec:"Balikpapan Timur",kel:"Blkpapan",address:"Jl. Balikpapan Raya",phone:"023908989",code:"d"},
-		      {title: "Balikpapan Motor 2",id:"6",status:"Aktif",prov:"Kalimantan Timur",kab:"Balikpapan",kec:"Balikpapan",kel:"Balikpapan Barat",address:"Jl. Balikpapan Raya",phone:"024989898",code:"d"}
+		    {title: "Astra Motor Balikpapan",id:"4",address:"Jl. Balikpapan Raya",phone:"0259090909",area:"Balikpapan",code:"md",lat:"-6.230357",lon:"106.829483",children: [
+		      {title: "Balikpapan Motor 1",id:"5",status:"Tidak Aktif",prov:"Kalimantan Timur",kab:"Balikpapan",kec:"Balikpapan Timur",kel:"Blkpapan",address:"Jl. Balikpapan Raya",phone:"023908989",code:"d",lat:"-6.230357",lon:"106.829483"},
+		      {title: "Balikpapan Motor 2",id:"6",status:"Aktif",prov:"Kalimantan Timur",kab:"Balikpapan",kec:"Balikpapan",kel:"Balikpapan Barat",address:"Jl. Balikpapan Raya",phone:"024989898",code:"d",lat:"-6.230357",lon:"106.829483"}
 		     ]}
-		     
 		  ],
 		  CLIPBOARD = null;
 
@@ -171,6 +173,8 @@
 		source: SOURCE,
 		 activate: function(event, data) {
 		        var node = data.node;
+			 	setFocus(node.data.lon,node.data.lat,node.data.level);
+			 
 		       if (node.data.code=="md")
 			       {
 		            mdShow(node);    		

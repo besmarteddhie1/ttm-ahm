@@ -910,6 +910,8 @@
 					}
 				}
 	},
+	}).on("click dblclick", function(e){
+		    console.log( e, $.ui.fancytree.eventToString(e) );
 	}).on("nodeCommand", function(event, data){
 		// Custom event handler that is triggered by keydown-handler and
 		// context menu:
@@ -924,7 +926,7 @@
 				node.setActive();}
 		break;
 		case "edit":
-			xdata = node;
+			xdata = node;			
 			node.editStart();
 		break;
 		case "delete":
@@ -953,9 +955,9 @@
 			  // e.stopPropagation();
 			return false;
 			}
-		});;
+		});
 
-	$("#tree").contextmenu({
+	$("#tree1").contextmenu({
 		delegate: "span.fancytree-node",
 		menu: [
 		{title: "Add ", cmd: "add", uiIcon: "ui-icon-plus" },
@@ -964,7 +966,8 @@
 		],
 		beforeOpen: function(event, ui) {
 			var node = $.ui.fancytree.getNode(ui.target);
-			$("#tree").contextmenu("enableEntry", "paste", !!CLIPBOARD);
+			console.log("before open");
+			$("#tree1").contextmenu("enableEntry", "paste", !!CLIPBOARD);
 			node.setActive();
 		},
 
@@ -1025,7 +1028,7 @@
 				xdata1 = parsed;
 				}) ;
 		 
-			  var tree = $('#tree').fancytree('getTree');
+			  var tree = $('#tree1').fancytree('getTree');
 			  tree.reload(xdata1); 
 			 })
 	  }; 
