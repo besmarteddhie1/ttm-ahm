@@ -1,0 +1,94 @@
+<div id="AHMJXTTM003" class="div-app" data-version="1.0">
+	<div class="global_message">
+
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#menu1" class="inner-tab">Maintain Data</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="tab-content">
+				<div id="menu1" class="tab-pane fade in active ">
+					<div class="col-md-4">
+						<input name="search" placeholder="search" autocomplete="off">
+					    <span id="matches"></span>
+						<table id="tree3">
+						</table>
+					</div>
+					<div class="col-md-8">
+						<button class="btn btn-default btn-primary large-button" onclick="menu1AutoLink(this);return false;">Autolink Similar Data</button>
+						<button class="btn btn-default btn-primary large-button" onclick="menu1LinkTo(this);return false;">Link Selected To Map</button>
+						<p></p>
+						<div id="map" class="smallmap"></div>
+					</div>
+				</div>
+			</div>
+		</div> <!-- end of tab-content -->
+
+	</div>
+</div>
+
+<script type="text/javascript" src="resources/maps/indonesia.js"></script>
+<script type="text/javascript">
+	var xdata;
+	//var SOURCE= CLIPBOARD = null;
+		var SOURCE = [
+		    {title: "DKI Jakarta",id:"1",lat:"-6.230357",lon:"106.829483",level:1,children: [
+		      {title: "Jakarta Pusat",id:"2",lat:"-6.182313",lon:"106.836494",level:2,children:[
+				 {title: "Senen",id:"3",lat:"-6.176315",lon:"106.843433",level:3},
+				 {title: "Kramat",id:"8",lat:"-6.048465",lon:"106.606314",level:3},
+				 {title: "Gunung Sahari",id:"9",lat:"-6.160992",lon:"106.846191",level:3},
+				 {title: "Menteng",id:"10",lat:"-6.593396",lon:"106.777493",level:3},			                             		                                 		      
+		        ]},
+			    {title: "Jakarta Timur",id:"11"},
+			    {title: "Jakarta Utara",id:"12"},
+			    {title: "Jakarta Selatan",id:"13"},
+			    {title: "Jakarta Barat",id:"14"},		                               		        		     
+		      ]},
+		    {title: "Jawa Barat",id:"4"},
+		    {title: "Jawa Timur",id:"5"},
+		    {title: "Banten",id:"6"},
+		    {title: "DI Yogyakarta",id:"7"}
+		     
+		  ],
+		  CLIPBOARD = null;
+		  
+	$(function(){
+		$(".nav-tabs a").click(function(){
+		$(this).tab('show');
+	});
+
+	/* $.ajax({type: "GET",url: baseURL+"/api/ttm001/sf",contentType: "application/json",
+			dataType: 'json',async: false,data: JSON.stringify()})
+		.done(function(data){
+			var parsed = JSON.parse(JSON.stringify(data), function(k, v) {
+				if (k === "description") 
+					this.title = v;
+				else if (k === "categories")
+					this.children = v;
+				else
+					return v;}
+			);
+			x = parsed;
+			console.log("source==>",SOURCE);
+	}) ;  */
+
+	$("#tree3").fancytree({
+		source: SOURCE,
+		 activate: function(event, data) {
+		       var node = data.node;
+		       setFocus(node.data.lon,node.data.lat,node.data.level);
+		      },
+		});
+
+	});
+
+  
+
+</script>

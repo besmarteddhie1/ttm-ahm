@@ -54,7 +54,7 @@
 							data-page-size="10"
 							data-page-list="[10,25,50]"
 							data-custom-action="edit, delete"
-\							data-checkbox-table="menu1TableDisable"
+							data-checkbox-table="menu1TableDisable"
 							data-unique-id="idCategory">
 							<thead>
 								<tr>
@@ -211,7 +211,7 @@
 		<!-- ---------- PENAMAAN SALESFORCE ---------- -->
 		<div id="menu3" class="tab-pane fade">
 			<!-- <h3>Penamaan Salesforce</h3> -->
-			<table id="tree">
+			<table id="tree1">
 			</table>
 		</div>
 
@@ -877,9 +877,10 @@
 	var SOURCE= CLIPBOARD = null;
 
 	$(function(){
-		$(".nav-tabs a").click(function(){
-		$(this).tab('show');
-	});
+		$(".nav-tabs a").click(function(e){
+			e.preventDefault();
+		    $(this).tab('show');	
+		 });
 
 	$.ajax({type: "GET",url: baseURL+"/api/ttm001/sf",contentType: "application/json",
 			dataType: 'json',async: false,data: JSON.stringify()})
@@ -896,7 +897,7 @@
 			console.log("source==>",SOURCE);
 	}) ; 
 
-	$("#tree").fancytree({
+	$("#tree1").fancytree({
 		source: SOURCE,
 		extensions: ["edit"],
 		edit: {
