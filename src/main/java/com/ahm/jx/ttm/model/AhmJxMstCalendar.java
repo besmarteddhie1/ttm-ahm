@@ -22,7 +22,7 @@ public class AhmJxMstCalendar extends BaseEntity {
 	@Id
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
-	@Column(name="vidfacility", nullable = false)
+	@Column(name="vidcalendar", nullable = false)
 	private String idCalendar;
 	
 	@Column(name="vdescription")
