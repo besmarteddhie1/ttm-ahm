@@ -458,14 +458,19 @@ function get_form(obj) {
                     locale:'id'
                 });
                 $('.panel-control .panel-button',tabPanel).prepend('<a class="panel-control-button" href="#" onclick="toggleMonitoring(this)"><span class="glyphicon glyphicon-chevron-left trasition"></span></a>');
-     
-                $('table', tabPanel).each(function(){
-                    edit_custom_action(this);
-                });
-                $('table', tabPanel).bootstrapTable();
-                $('table', tabPanel).each(function(){
-                    add_custom_action(this);
-                });
+                /*solusi sementara untuk full calendar*/
+                /*========================================*/
+                if(id!='AHMJXTTM021'){
+                    console.log('masuk if tabel');
+                    $('table', tabPanel).each(function(){
+                        edit_custom_action(this);
+                    });
+                    $('table', tabPanel).bootstrapTable();
+                    $('table', tabPanel).each(function(){
+                        add_custom_action(this);
+                    });
+                }
+                /*========================================*/
 
                 //onkey enter
                 $(':input:not([type="button"],[type="submit"],button)', tabPanel).keydown(function (e) {
