@@ -23,6 +23,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
 
 import com.ahm.jx.ttm.service.AccountService;
@@ -121,6 +122,7 @@ class SecurityConfig {
                 .rememberMeServices(rememberMe)
                 .key("remember-me-key")
                 .and()
+             //.addFilterAfter(null, FilterSecurityInterceptor.class)   
              .csrf()
              	.disable();
         }

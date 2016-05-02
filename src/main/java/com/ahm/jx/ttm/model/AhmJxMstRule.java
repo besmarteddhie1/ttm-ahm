@@ -5,31 +5,35 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-@Table(name="ahmjxmst_facility_type")
-public class AhmjxMstFacilityType extends BaseEntity {
+@Table(name="ahmjxmst_rules")
+@Inheritance(strategy=InheritanceType.JOINED)
+public class AhmJxMstRule extends BaseEntity {
 
-	private static final long serialVersionUID = 6855387447315081927L;
-
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="idfactype")
-	private Integer idFacilityType;
+	private static final long serialVersionUID = 3446937428286212535L;
 	
-	@Column(name="vdescription")
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="idrule", nullable = false)
+	private Integer idRule;
+	
+	@Column(name="description")
 	private String description;	
-
-	public Integer getIdFacilityType() {
-		return idFacilityType;
+		
+	public Integer getIdRule() {
+		return idRule;
 	}
 
-	public void setIdFacilityType(Integer idLocationType) {
-		this.idFacilityType = idLocationType;
-	}	
+	public void setIdRule(Integer idRule) {
+		this.idRule = idRule;
+	}
 
 	public String getDescription() {
 		return description;
@@ -42,16 +46,16 @@ public class AhmjxMstFacilityType extends BaseEntity {
 	@Override
 	public int hashCode() {
 		return new HashCodeBuilder()
-			.append(getIdFacilityType())
+			.append(getIdRule())
 			.toHashCode();
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof AhmjxMstFacilityType)) return false;
-		AhmjxMstFacilityType other = (AhmjxMstFacilityType) obj;
+		if (!(obj instanceof AhmJxMstRule)) return false;
+		AhmJxMstRule other = (AhmJxMstRule) obj;
 		return new EqualsBuilder()
-			.append( getIdFacilityType(), other.getIdFacilityType() )
+			.append( getIdRule(), other.getIdRule() )
 			.isEquals();
 	}		
 
