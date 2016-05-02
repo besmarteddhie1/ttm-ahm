@@ -33,7 +33,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @EnableTransactionManagement
 @PropertySource("classpath:persistence.properties")
 @EnableJpaRepositories(basePackageClasses = Application.class)
-@EnableJpaAuditing(auditorAwareRef = "auditorProvider")
+@EnableJpaAuditing(auditorAwareRef = "auditorAwareImpl")
 class JpaConfig {
 
     @Value("${dataSource.driverClassName}")

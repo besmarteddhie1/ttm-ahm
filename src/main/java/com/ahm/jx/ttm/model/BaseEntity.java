@@ -30,7 +30,7 @@ public class BaseEntity implements Serializable {
 	
 	@Version
 	@Column(name="iver")
-	private Integer lockVersion;
+	private int lockVersion;
 	
 	@Column(name="vcreaby")
 	@CreatedBy
@@ -66,11 +66,11 @@ public class BaseEntity implements Serializable {
 		this.modiBy = modiBy;
 	}
 
-	public Integer getLockVersion() {
+	public int getLockVersion() {
 		return lockVersion;
 	}
 
-	public void setLockVersion(Integer lockVersion) {
+	public void setLockVersion(int lockVersion) {
 		this.lockVersion = lockVersion;
 	}
 

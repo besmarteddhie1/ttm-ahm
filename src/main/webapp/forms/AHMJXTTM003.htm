@@ -15,23 +15,23 @@
 		<div class="col-md-12">
 			<div class="tab-content">
 				<div id="menu1" class="tab-pane fade in active ">
-					
 					<div class="col-md-4">
+						<input name="search" placeholder="search" autocomplete="off">
+					    <span id="matches"></span>
 						<table id="tree3">
 						</table>
 					</div>
 					<div class="col-md-8">
+						<button class="btn btn-default btn-primary large-button" onclick="menu1AutoLink(this);return false;">Autolink Similar Data</button>
+						<button class="btn btn-default btn-primary large-button" onclick="menu1LinkTo(this);return false;">Link Selected To Map</button>
+						<p></p>
 						<div id="map" class="smallmap"></div>
 					</div>
 				</div>
-			
-				
 			</div>
-
-			
 		</div> <!-- end of tab-content -->
 
-</div>
+	</div>
 </div>
 
 <script type="text/javascript" src="resources/maps/indonesia.js"></script>
@@ -83,7 +83,6 @@
 		source: SOURCE,
 		 activate: function(event, data) {
 		       var node = data.node;
-		       console.log("node.data==>",node.data);
 		       setFocus(node.data.lon,node.data.lat,node.data.level);
 		      },
 		});
