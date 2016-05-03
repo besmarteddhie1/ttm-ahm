@@ -1,6 +1,43 @@
 /*
     Layer AHM, dan switch layer
 */
+
+/* Click controller
+ * Digunakan untuk mendapatkan kordinat pada saat event single click pada peta.
+ * Koordinat disimpan pada variable clickPos.
+ */
+
+var clickPos;
+OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {                
+                defaultHandlerOptions: {
+                    'single': true,
+                    'double': false,
+                    'pixelTolerance': 0,
+                    'stopSingle': false,
+                    'stopDouble': true
+                },
+
+                initialize: function(options) {
+                    this.handlerOptions = OpenLayers.Util.extend(
+                        {}, this.defaultHandlerOptions
+                    );
+                    OpenLayers.Control.prototype.initialize.apply(
+                        this, arguments
+                    ); 
+                    this.handler = new OpenLayers.Handler.Click(
+                        this, {
+                            'click': this.trigger
+                        }, this.handlerOptions
+                    );
+                }, 
+
+                trigger: function(e) {
+                    var lonlat = map.getLonLatFromPixel(e.xy);
+                    clickPos = lonlat;
+                    clickPeta();
+                }
+
+            });
 var zoom = 8;
 var center = new OpenLayers.LonLat(122.970810,-2.367789); 
 
@@ -87,7 +124,15 @@ function setFocus(lon,lat,level){
     	}else{
     		layerBatas[i].setVisibility(false);
     	}
-    }
+    }  
     map.panTo(lonlat);
     map.zoomTo(zoom+1+level);
+}
+
+var click = new OpenLayers.Control.Click();
+map.addControl(click);
+click.activate();
+
+function clickPeta(){
+	console.log("You click near",clickPos);
 }
