@@ -14,7 +14,8 @@ public class SynchronizePartner implements AbstractSynchronizer {
 	Logger log;
 
 	@Override
-	public void doRunner() {		
+	public void doRunner() {	
+		System.out.println("Sync partner");
 	}
 
 }
