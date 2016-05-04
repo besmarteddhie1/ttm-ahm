@@ -15,6 +15,7 @@
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
     
+    
     <bean id="propertyConfigurer"
         class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations" >

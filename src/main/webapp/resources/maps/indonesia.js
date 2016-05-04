@@ -147,5 +147,4 @@ function renderMap(namaForm)
 {
 	 map = new OpenLayers.Map("map"+namaForm);
 	buildMap();
-
 }
