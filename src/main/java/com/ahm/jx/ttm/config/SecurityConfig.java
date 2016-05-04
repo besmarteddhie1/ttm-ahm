@@ -23,9 +23,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
 
 import com.ahm.jx.ttm.service.AccountService;
+import com.ahm.jx.ttm.utils.BsVoter;
 
 @Configuration
 @EnableWebSecurity
@@ -66,9 +68,11 @@ class SecurityConfig {
 
     @Bean
     public AccessDecisionManager defaultAccessDecisionManager() {
+    	System.out.println("Descision Manager Running");
         List<AccessDecisionVoter<?>> voters = new ArrayList<AccessDecisionVoter<?>>();
         voters.add(new RoleVoter());
         voters.add(new AuthenticatedVoter());
+        voters.add(new BsVoter());
         AccessDecisionManager result = new AffirmativeBased(voters);
         return result;
     }
@@ -118,6 +122,7 @@ class SecurityConfig {
                 .rememberMeServices(rememberMe)
                 .key("remember-me-key")
                 .and()
+             //.addFilterAfter(null, FilterSecurityInterceptor.class)   
              .csrf()
              	.disable();
         }

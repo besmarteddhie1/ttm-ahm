@@ -27,7 +27,7 @@ public class AhmjxMstPartyCategoryType extends BaseEntity {
 	private static final long serialVersionUID = -2500926500169885028L;
 	
 	public static final int TYPE_SALES_FORCE = 50;	
-	public static final int TYPE_DEALER_SALES_CLASSIFICATION = 101;
+	public static final int TYPE_DEALER_SALES = 101;
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idcattype")

@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -32,6 +33,7 @@ public class AhmjxUamRole extends AhmBaseEntity {
     private Boolean status;
     
     @OneToMany(cascade=CascadeType.ALL, mappedBy="role")
+//    @OrderBy("menu.iorder")
     private List<AhmjxUamRoleMenu> roleMenu;
     
     @Transient

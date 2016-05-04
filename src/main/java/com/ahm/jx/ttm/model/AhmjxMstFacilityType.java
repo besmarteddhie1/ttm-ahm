@@ -20,9 +20,6 @@ public class AhmjxMstFacilityType extends BaseEntity {
 	@Column(name="idfactype")
 	private Integer idFacilityType;
 	
-	@Column(name="vcategory")
-	private String category;	
-		
 	@Column(name="vdescription")
 	private String description;	
 
@@ -33,14 +30,6 @@ public class AhmjxMstFacilityType extends BaseEntity {
 	public void setIdFacilityType(Integer idLocationType) {
 		this.idFacilityType = idLocationType;
 	}	
-
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
 
 	public String getDescription() {
 		return description;
