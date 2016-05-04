@@ -25,7 +25,7 @@
 						<button class="btn btn-default btn-primary large-button" onclick="menu1AutoLink(this);return false;">Autolink Similar Data</button>
 						<button class="btn btn-default btn-primary large-button" onclick="menu1LinkTo(this);return false;">Link Selected To Map</button>
 						<p></p>
-						<div id="map" class="smallmap"></div>
+						<div id="map003" class="smallmap"></div>
 					</div>
 				</div>
 			</div>
@@ -34,10 +34,11 @@
 	</div>
 </div>
 
-<script type="text/javascript" src="resources/maps/indonesia.js"></script>
 <script type="text/javascript">
 	var xdata;
 	//var SOURCE= CLIPBOARD = null;
+	renderMap("003");
+	
 		var SOURCE = [
 		    {title: "DKI Jakarta",id:"1",lat:"-6.230357",lon:"106.829483",level:1,children: [
 		      {title: "Jakarta Pusat",id:"2",lat:"-6.182313",lon:"106.836494",level:2,children:[
@@ -62,6 +63,7 @@
 	$(function(){
 		$(".nav-tabs a").click(function(){
 		$(this).tab('show');
+		
 	});
 
 	/* $.ajax({type: "GET",url: baseURL+"/api/ttm001/sf",contentType: "application/json",
@@ -83,6 +85,7 @@
 		source: SOURCE,
 		 activate: function(event, data) {
 		       var node = data.node;
+			       
 		       setFocus(node.data.lon,node.data.lat,node.data.level);
 		      },
 		});

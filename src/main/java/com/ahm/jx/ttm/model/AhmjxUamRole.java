@@ -33,7 +33,7 @@ public class AhmjxUamRole extends AhmBaseEntity {
     private Boolean status;
     
     @OneToMany(cascade=CascadeType.ALL, mappedBy="role")
-    @OrderBy("menu.iorder")
+//    @OrderBy("menu.iorder")
     private List<AhmjxUamRoleMenu> roleMenu;
     
     @Transient

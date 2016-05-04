@@ -16,6 +16,8 @@
 				<div class="tab-content">
 					<div id="menu1" class="tab-pane fade in active ">
 						<div class="col-md-4">
+							<input name="search" placeholder="search" autocomplete="off">
+					    	<span id="matches"></span>
 							<table id="tree6">
 							</table>
 						</div>
@@ -37,7 +39,10 @@
 							<div class="form-group-button pull-right">
 								<button class="btn btn-default btn-primary large-button" onclick="ahmjxttm006Add(this);return false;">Tambah Pos</button>
 								<button class="btn btn-default btn-primary large-button" onclick="ahmjxttm006Edit(this);return false;">Ubah Pos</button>
+								<button class="btn btn-default btn-primary large-button" onclick="ahmjxttm006Delete(this);return false;">Hapus Pos</button>
+							
 							</div>
+							
 	
 							<div id="table-container">
 								<table id="ahmjxttm006Table"
@@ -196,7 +201,7 @@
 						</form>
 
 						</div>
-						<div id="map" class="smallmap"></div>
+						<div id="map006" class="smallmap"></div>
 					
 					</div>
 	
@@ -253,6 +258,7 @@
 	$(function(){
 		$(".nav-tabs a").click(function(){
 		$(this).tab('show');
+		
 	});
 
 	/* $.ajax({type: "GET",url: baseURL+"/api/ttm001/sf",contentType: "application/json",
@@ -270,11 +276,14 @@
 			console.log("source==>",SOURCE);
 	}) ;  */
 
+	
 	$("#tree6").fancytree({
 		source: SOURCE,
 		 activate: function(event, data) {
 		        var node = data.node;
-		       
+				renderMap("006");
+		        
+			    setFocus(node.data.lon,node.data.lat,node.data.level);
 		      },
 		});
 	});
@@ -302,9 +311,7 @@
 			vo.idParentCategory = 0;
 			vo.description = $('input[id="ahmjxttm006p02Description"]', page).val();
 			vo.salesQty = $('input[id="ahmjxttm006p02SalesQty"]', page).val();
-			
-			console.log(vo);
-
+		
 			$.ajax
 			({
 				type: "POST",
