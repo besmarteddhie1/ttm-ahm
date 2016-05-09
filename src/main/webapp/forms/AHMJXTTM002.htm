@@ -1,0 +1,1095 @@
+<div id="AHMJXTTM001" class="div-app" data-version="1.0">
+	<div class="global_message">
+
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#menu1" class="inner-tab">Klasifikasi Dealer</a></li>
+				<li><a href="#menu2" class="inner-tab">Penamaan Ring</a></li>
+				<li><a href="#menu3" class="inner-tab">Penamaan Salesforce</a></li>
+				<li><a href="#menu4" class="inner-tab">Aktivitas Marketing</a></li>
+				<li><a href="#menu5" class="inner-tab">Kategori Lokasi Mkt Act</a></li>
+
+			</ul>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="tab-content">
+
+				<!-- ---------- KLASIFIKASI DEALER ---------- -->
+				<div id="menu1" class="tab-pane fade in active">
+					<div id="menu1p01" class="subpage subpage-default" data-path="">
+						<!-- <h3>Klasifikasi Dealer</h3> -->
+						
+						<div class="row hidden" >
+							
+							<div class="col-md-6" >
+								<table id="menu1TableDisable" 
+									   data-source-id="menu1Table" 
+									   data-unique-id="idCategory"
+									   data-pagination="true"
+									   data-page-size="5">
+									<thead>
+									</thead>
+								</table>
+							</div>
+						</div>
+						<div class="form-group-button pull-right">
+							<button class="btn btn-default btn-primary large-button" onclick="menu1Add(this);return false;">Tambah</button>
+							<button class="btn btn-default btn-primary large-button" onclick="menu1Edit(this);return false;">Ubah</button>
+							<button class="btn btn-default btn-primary large-button" onclick="menu1Delete(this);return false;">Hapus</button>
+						</div>
+
+						<div id="table-container">
+							<table id="menu1Table"
+							data-method="get"
+							data-url="/api/ttm001/dc"
+							data-content-type="application/json"
+							data-data-type="json"
+							data-pagination="true"
+							data-page-size="10"
+							data-page-list="[10,25,50]"
+							data-custom-action="edit, delete"
+							data-checkbox-table="menu1TableDisable"
+							data-unique-id="idCategory">
+							<thead>
+								<tr>
+									<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
+									<th data-field="idCategory" data-sortable="true" data-visible="false">ID Category</th>
+									<th data-field="iver" data-sortable="true" data-visible="false">Iver</th>
+									<th data-field="description" data-sortable="true" data-visible="true">Class</th>
+									<th data-field="salesQty" data-sortable="true" data-visible="true">Minimal Sales / Month</th>
+								</tr>
+							</thead>
+
+						</table>
+					</div>
+
+				</div>
+
+				<div id="menu1p02" class="subpage" data-path="">
+					<form class="form-horizontal">
+						<input id="menu1p02idCategoryType" type="hidden" name="idCategoryType" value="51">
+						<input id="menu1p02idParentCategory" type="hidden" name="idParentCategory" value="0">
+						<div class="form-group large-font">
+							<label for="menu1p02Description" class="col-sm-3 control-label">Class <span style="color:red">*)</span></label>
+							<div class="col-sm-6">
+								<input id="menu1p02Description" name="description" class="form-control">
+							</div>
+						</div>
+						<div class="form-group large-font">
+							<label for="menu1p02SalesQty" class="col-sm-3 control-label">Average Unit Sales / Bulan </label>
+							<div class="col-sm-6">
+								<input id="menu1p02SalesQty" name="salesQty" class="form-control">
+							</div>
+						</div>
+						<div class="col-sm-offset-2 col-sm-6 form-group-button">
+							<button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="menu1AddNew(this);return false;" style="display: none">Add New</button>
+							<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu1AddData(this);_subpage(this, 'menu1p01');return false;">Submit</button>
+							<button class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
+							<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu1p01');return false;">Back</button>
+						</div>
+					</form>
+				</div>
+				<div id="menu1p03" class="subpage" data-path="">
+					<form class="form-horizontal">
+						<input type="hidden" name="idCategory" data-field="idCategory"/>
+						<div class="form-group large-font">
+							<label for="menu1p03Description" class="col-sm-3 control-label">Class <span style="color:red">*)</span></label>
+							<div class="col-sm-6">
+								<input id="menu1p03Description" name="description" class="form-control"data-field="description" >
+							</div>
+						</div>
+						<div class="form-group large-font">
+							<label for="menu1p03SalesQty" class="col-sm-3 control-label">Average Unit Sales / Bulan </label>
+							<div class="col-sm-6">
+								<input id="menu1p03SalesQty" name="salesQty" class="form-control" data-field="salesQty" >
+							</div>
+						</div>
+						<div class="col-sm-offset-2 col-sm-6 form-group-button">
+							<button class="btn btn-default btn-primary large-button" onclick="menu1EditData(this);_subpage(this, 'menu1p01');return false;">Submit</button>
+							<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu1p01');return false;">Back</button>
+						</div>
+
+					</form>
+
+				</div>
+				
+				
+			</div>
+
+			<!-- ---------- PENAMAAN RING ---------- -->
+			<div id="menu2" class="tab-pane fade">
+				<div id="menu2p01" class="subpage subpage-default" data-path="">
+					<!-- <h3>Penamaan Ring</h3> -->
+					<div class="row hidden" >
+							
+							<div class="col-md-6" >
+								<table id="menu2TableDisable" 
+									   data-source-id="menu2Table" 
+									   data-unique-id="idRing"
+									   data-pagination="true"
+									   data-page-size="5">
+									<thead>
+									</thead>
+								</table>
+							</div>
+					</div>
+					
+					<div class="form-group-button pull-right">
+						<button class="btn btn-default btn-primary large-button" onclick="menu2Add(this);return false;">Tambah</button>
+						<button class="btn btn-default btn-primary large-button" onclick="menu2Edit(this);return false;">Ubah</button>
+						<button class="btn btn-default btn-primary large-button" onclick="menu2Delete(this);return false;">Hapus</button>
+					</div>
+
+					<div id="table-container">
+						<table id="menu2Table"
+						data-method="get"
+						data-url="/api/ttm001/ring"
+						data-content-type="application/json"
+						data-data-type="json"
+						data-pagination="true"
+						data-page-size="10"
+						data-page-list="[10,25,50]"
+						data-custom-action="edit, delete"
+						data-checkbox-table="menu2TableDisable"
+						data-unique-id="idRing">
+						<thead>
+							<tr>
+								<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
+								<th data-field="idRing" data-sortable="true" data-visible="false">ID Ring</th>
+								<th data-field="radius" data-sortable="true" data-visible="false">Radius</th>
+								<th data-field="description" data-sortable="true" data-visible="true">Nama Ring</th>
+							</tr>
+						</thead>
+
+					</table>
+				</div>
+
+			</div>
+
+			<div id="menu2p02" class="subpage" data-path="">
+				<form class="form-horizontal">
+					<div class="form-group large-font">
+						<label for="menu2p02description" class="col-sm-3 control-label">Nama Ring <span style="color:red">*)</span></label>
+						<div class="col-sm-6">
+							<input id="menu2p02description" name="description" class="form-control">
+						</div>
+					</div>
+					<div class="col-sm-offset-2 col-sm-6 form-group-button">
+						<button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="menu2AddNew(this);return false;" style="display: none">Add New</button>
+						<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu2AddData(this);_subpage(this, 'menu2p01');return false;">Submit</button>
+						<button class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
+						<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu2p01');return false;">Back</button>
+					</div>
+				</form>
+			</div>
+			<div id="menu2p03" class="subpage" data-path="">
+				<form class="form-horizontal">
+					<input type="hidden" name="idRing" data-field="idRing"/>
+					<input type="hidden" name="radius" data-field="radius"/>
+					<div class="form-group large-font">
+						<label for="menu2p03Description" class="col-sm-3 control-label">Nama Ring <span style="color:red">*)</span></label>
+						<div class="col-sm-6">
+							<input id="menu2p03Description" name="description" class="form-control" data-field="description">
+						</div>
+					</div>
+					<div class="col-sm-offset-2 col-sm-6 form-group-button">
+						<button class="btn btn-default btn-primary large-button" onclick="menu2EditData(this);_subpage(this, 'menu2p01');return false;">Submit</button>
+						<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu2p01');return false;">Back</button>
+					</div>
+
+				</form>
+
+			</div>
+		</div>
+
+		<!-- ---------- PENAMAAN SALESFORCE ---------- -->
+		<div id="menu3" class="tab-pane fade">
+			<!-- <h3>Penamaan Salesforce</h3> -->
+			<table id="tree1">
+			</table>
+		</div>
+
+		<!-- ---------- AKTIVITAS MARKETING ---------- -->
+		<div id="menu4" class="tab-pane fade">
+			<div id="menu4p01" class="subpage subpage-default" data-path="">
+				<!-- <h3>Aktivitas Marketing</h3> -->
+				<div class="row hidden" >			
+					<div class="col-md-6" >
+						<table id="menu4TableDisable" 
+							   data-source-id="menu4Table" 
+							   data-unique-id="idWeType"
+							   data-pagination="true"
+							   data-page-size="5">
+							<thead>
+							</thead>
+						</table>
+					</div>
+				</div>
+				<div class="form-group-button pull-right">
+					<button class="btn btn-default btn-primary large-button" onclick="menu4Add(this);return false;">Tambah</button>
+					<button class="btn btn-default btn-primary large-button" onclick="menu4Edit(this);return false;">Ubah</button>
+					<button class="btn btn-default btn-primary large-button" onclick="menu4Delete(this);return false;">Hapus</button>
+				</div>
+
+
+				<div id="table-container">
+					<table id="menu4Table"
+					data-method="get"
+					data-url="/api/ttm001/wet"
+					data-content-type="application/json"
+					data-data-type="json"
+					data-pagination="true"
+					data-page-size="10"
+					data-page-list="[10,25,50]"
+					data-custom-action="edit, delete"
+					data-checkbox-table="menu4TableDisable"
+					data-unique-id="idWeType">
+					<thead>
+						<tr>
+							<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
+							<th data-field="idWeType" data-sortable="true" data-visible="false">ID User</th>
+							<th data-field="description" data-sortable="true" data-visible="true">Tipe Aktivitas</th>
+						</tr>
+					</thead>
+
+				</table>
+			</div>
+
+		</div>
+
+		<div id="menu4p02" class="subpage" data-path="">
+			<form class="form-horizontal">
+				<div class="form-group large-font">
+					<label for="menu4p02Description" class="col-sm-3 control-label">Tipe Aktivitas <span style="color:red">*)</span></label>
+					<div class="col-sm-6">
+						<input id="menu4p02Description" name="description" class="form-control">
+					</div>
+				</div>
+				<div class="col-sm-offset-2 col-sm-6 form-group-button">
+					<button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="menu4AddNew(this);return false;" style="display: none">Add New</button>
+					<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu4AddData(this);_subpage(this, 'menu4p01');return false;">Submit</button>
+					<button class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
+					<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu4p01');return false;">Back</button>
+				</div>
+			</form>
+		</div>
+		<div id="menu4p03" class="subpage" data-path="">
+			<form class="form-horizontal">
+				<input type="hidden" name="idWeType" data-field="idWeType"/>
+				<div class="form-group large-font">
+					<label for="menu4p03Description" class="col-sm-3 control-label">Tipe Aktivitas <span style="color:red">*)</span></label>
+					<div class="col-sm-6">
+						<input id="menu4p03Description" name="description" class="form-control" data-field="description">
+					</div>
+				</div>
+				<div class="col-sm-offset-2 col-sm-6 form-group-button">
+					<button class="btn btn-default btn-primary large-button" onclick="menu4EditData(this);_subpage(this, 'menu4p01');return false;">Submit</button>
+					<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu4p01');return false;">Back</button>
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+
+	<!-- ---------- KATEGORI LOKASI MARKETING ACTIVITY ---------- -->
+	<div id="menu5" class="tab-pane fade">
+		<div id="menu5p01" class="subpage subpage-default" data-path="">
+			<!-- <h3>Kategori Lokasi Mkt Act</h3> -->
+
+			<div class="row hidden" >				
+				<div class="col-md-6" >
+					<table id="menu5TableDisable" 
+						   data-source-id="menu5Table" 
+						   data-unique-id="idFacilityType"
+						   data-pagination="true"
+						   data-page-size="5">
+						<thead>
+						</thead>
+					</table>
+				</div>
+			</div>
+			<div class="form-group-button pull-right">
+				<button class="btn btn-default btn-primary large-button" onclick="menu5Add(this);return false;">Tambah</button>
+				<button class="btn btn-default btn-primary large-button" onclick="menu5Edit(this);return false;">Ubah</button>
+				<button class="btn btn-default btn-primary large-button" onclick="menu5Delete(this);return false;">Hapus</button>
+			</div>
+
+
+			<div id="table-container">
+				<table id="menu5Table"
+				data-method="get"
+				data-url="/api/ttm001/loc"
+				data-content-type="application/json"
+				data-data-type="json"
+				data-pagination="true"
+				data-page-size="10"
+				data-page-list="[10,25,50]"
+				data-custom-action="edit, delete"
+				data-checkbox-table="menu5TableDisable"
+				data-unique-id="idFacilityType">
+				<thead>
+					<tr>
+						<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
+						<th data-field="idFacilityType" data-sortable="true" data-visible="false">ID User</th>
+						<th data-field="category" data-sortable="true" data-visible="true">Kategori</th>
+						<th data-field="description" data-sortable="true" data-visible="true">Keterangan</th>
+					</tr>
+				</thead>
+
+			</table>
+		</div>
+
+	</div>
+
+	<div id="menu5p02" class="subpage" data-path="">
+		<form class="form-horizontal">
+			<div class="form-group large-font">
+				<label for="menu5p02Category" class="col-sm-3 control-label">Kategori <span style="color:red">*)</span></label>
+				<div class="col-sm-6">
+					<input id="menu5p02Category" name="category" class="form-control">
+				</div>
+			</div>
+			<div class="form-group large-font">
+				<label for="menu5p02Description" class="col-sm-3 control-label">Keterangan </label>
+				<div class="col-sm-6">
+					<input id="menu5p02Description" name="description" class="form-control">
+				</div>
+			</div>
+			<div class="col-sm-offset-2 col-sm-6 form-group-button">
+				<button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="menu5AddNew(this);return false;" style="display: none">Add New</button>
+				<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu5AddData(this);_subpage(this, 'menu5p01');return false;">Submit</button>
+				<button class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
+				<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu5p01');return false;">Back</button>
+			</div>
+		</form>
+	</div>
+	<div id="menu5p03" class="subpage" data-path="">
+		<form class="form-horizontal">
+			<input type="hidden" name="idFacilityType" data-field="idFacilityType"/>
+			<div class="form-group large-font">
+				<label for="menu5p03Description" class="col-sm-3 control-label">Kategori <span style="color:red">*)</span></label>
+				<div class="col-sm-6">
+					<input id="menu5p03Category" name="category" class="form-control" data-field="category">
+				</div>
+			</div>
+			<div class="form-group large-font">
+				<label for="menu5p02Vdesc" class="col-sm-3 control-label">Keterangan </label>
+				<div class="col-sm-6">
+					<input id="menu5p03Description" name="description" class="form-control" data-field="description">
+				</div>
+			</div>
+			<div class="col-sm-offset-2 col-sm-6 form-group-button">
+				<button class="btn btn-default btn-primary large-button" onclick="menu5EditData(this);_subpage(this, 'menu5p01');return false;">Submit</button>
+				<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu5p01');return false;">Back</button>
+			</div>
+
+		</form>
+
+	</div>
+</div>
+</div> <!-- end of tab-content -->
+
+</div>
+</div>
+
+
+</div>
+
+<script type="text/javascript">
+/**
+ * KLASIFIKASI DEALER
+ *
+ **/
+	
+
+	function menu1Add(obj){
+		var page = $('#menu1p02');
+		$('input, select', page).prop('disabled',false);
+		_fw_reset_subpage(page);
+		_subpage(obj, 'menu1p02');
+		$('button[name="btnAddNew"]', page).hide();
+		$('button[name="btnSubmit"]', page).show();
+	}
+
+	function menu1AddData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu1p02Description', 'required');
+		_fw_validation_add(obj, 'menu1p02SalesQty', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+			//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+			vo.idCategoryType = 101;
+			vo.idParentCategory = 0;
+			vo.description = $('input[id="menu1p02Description"]', page).val();
+			vo.salesQty = $('input[id="menu1p02SalesQty"]', page).val();
+			
+			console.log(vo);
+
+			$.ajax
+			({
+				type: "POST",
+				url: "/ahmjxdsh000/api/partycategory",
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu1Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+
+	/* function menu1Edit(obj, row, index){
+		_subpage(obj, 'menu1p03', row);
+	} */
+	
+	function menu1Edit(obj){
+		
+		var editedRows = $('#menu1TableDisable').bootstrapTable('getData');
+		console.log("edited==>",editedRows);
+		if (editedRows.length == 1)
+			{
+			_subpage(obj,'menu1p03', editedRows[0]);
+			
+			}
+		else
+			alert("Pilih salah satu item jika ingin mengubah.");
+	}
+
+	function menu1EditData(obj)
+	{
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu1p03Description', 'required');
+		_fw_validation_add(obj, 'menu1p03SalesQty', 'required');
+		 if(_fw_validation_validate(obj)){
+				var vo = new Object();
+				//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+				//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+				vo.idCategory = $('input[name="idCategory"]', page).val();
+				vo.idCategoryType = 101;
+				vo.idParentCategory = 0;
+				vo.description = $('input[id="menu1p03Description"]', page).val();
+				vo.salesQty = $('input[id="menu1p03SalesQty"]', page).val();
+
+				$.ajax
+				({
+					type: "PUT",
+					url: "/ahmjxdsh000/api/partycategory/" + vo.idCategory,
+					contentType: "application/json",
+					dataType: 'json',
+					data: JSON.stringify(vo),
+					success:function(data){
+						_fw_setMessage(obj,1,"Success");
+						$('#menu1Table').bootstrapTable('refresh');
+					  },
+				});
+			} 
+	}
+
+	function menu1Delete(obj){
+		var disabledRows = $('#menu1TableDisable').bootstrapTable('getData');
+		if(disabledRows.length > 0) {
+			for(var i=0;i<disabledRows.length;i++)
+				{
+					var idx = disabledRows[i].idCategory;
+					$.ajax
+					({
+						type: "DELETE",
+						url: "/ahmjxdsh000/api/partycategory/" + idx,
+						contentType: "application/json",
+						dataType: 'json',
+						data: JSON.stringify(),
+						success:function(data){	
+							$('#menu1Table').bootstrapTable('refresh');
+							_fw_setMessage(obj,1,"Success");					
+						  },
+					});			
+				}
+			} else {
+			alert('no data selected');
+		}		
+	}
+
+
+	
+	
+</script>
+
+<!-- ---------------------------------------------------------------------- -->
+
+<script type="text/javascript">
+/**
+ * PENAMAAN RING
+ *
+ **/
+	
+	function menu2Add(obj){
+		var page = $('#menu2p02');
+		$('input, select', page).prop('disabled',false);
+		_fw_reset_subpage(page);
+		_subpage(obj, 'menu2p02');
+		$('button[name="btnAddNew"]', page).hide();
+		$('button[name="btnSubmit"]', page).show();
+	}
+
+	function menu2AddData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu2p02Description', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			vo.description = $('input[id="menu2p02description"]', page).val();
+			vo.radius = 0;
+			
+			console.log(vo);
+
+			$.ajax
+			({
+				type: "POST",
+				url: "/ahmjxdsh000/api/ringtype",
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu2Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+
+	function menu2Edit(obj, row, index){
+		var editedRows = $('#menu2TableDisable').bootstrapTable('getData');
+		console.log("edited==>",editedRows);
+		if (editedRows.length == 1)
+			{
+			_subpage(obj,'menu2p03', editedRows[0]);
+			
+			}
+		else
+			alert("Pilih salah satu item jika ingin mengubah.");
+	}
+	
+	function menu2EditData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu2p03Description', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+			//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+			vo.idRing = $('input[name="idRing"]', page).val();;
+			vo.description = $('input[id="menu2p03Description"]', page).val();
+			vo.radius = 0;
+			
+			$.ajax
+			({
+				type: "PUT",
+				url: "/ahmjxdsh000/api/ringtype/" + vo.idRing,
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu2Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+	
+	
+	function menu2Delete(obj){
+		var deletedRows = $('#menu2TableDisable').bootstrapTable('getData');
+		if(deletedRows.length > 0) {
+			for(var i=0;i<deletedRows.length;i++)
+				{
+					var idx = deletedRows[i].idRing;
+					$.ajax
+					({
+						type: "DELETE",
+						url: "/ahmjxdsh000/api/ringtype/" + idx,
+						contentType: "application/json",
+						dataType: 'json',
+						data: JSON.stringify(),
+						success:function(data){		
+							$('#menu2Table').bootstrapTable('refresh');
+							_fw_setMessage(obj,1,"Success");			
+						  },
+					});			
+				}
+			} else {
+			alert('no data selected');
+		}
+	}
+</script>
+
+<!-- ---------------------------------------------------------------------- -->
+
+<script type="text/javascript">
+/**
+ * WORK EFFORT
+ *
+ **/
+	
+	function menu4Add(obj){
+		var page = $('#menu4p02');
+		$('input, select', page).prop('disabled',false);
+		_fw_reset_subpage(page);
+		_subpage(obj, 'menu4p02');
+		$('button[name="btnAddNew"]', page).hide();
+		$('button[name="btnSubmit"]', page).show();
+	}
+
+	function menu4AddData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu4p02Description', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			vo.description = $('input[id="menu4p02Description"]', page).val();
+			vo.radius = 0;
+			
+			console.log(vo);
+
+			$.ajax
+			({
+				type: "POST",
+				url: "/ahmjxdsh000/api/wetype",
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu4Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+
+	function menu4Edit(obj, row, index){
+		var editedRows = $('#menu4TableDisable').bootstrapTable('getData');
+		if (editedRows.length == 1)
+			{
+			_subpage(obj,'menu4p03', editedRows[0]);
+			
+			}
+		else
+			alert("Pilih salah satu item jika ingin mengubah.");	}
+	
+	function menu4EditData(obj)
+	{
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu4p03Description', 'required');
+		console.log("page==>",page);
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+			//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+			vo.idWeType = $('input[name="idWeType"]', page).val();;
+			vo.description = $('input[id="menu4p03Description"]', page).val();
+			vo.radius = 0;
+			
+			console.log("vo==>",vo);
+
+			$.ajax
+			({
+				type: "PUT",
+				url: "/ahmjxdsh000/api/wetype/" + vo.idWeType,
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu4Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+	
+	function menu4Delete(obj){
+		var disabledRows = $('#menu4TableDisable').bootstrapTable('getData');
+		if(disabledRows.length > 0) {
+			for(var i=0;i<disabledRows.length;i++)
+				{
+					var idx = disabledRows[i].idWeType;
+					$.ajax
+					({
+						type: "DELETE",
+						url: "/ahmjxdsh000/api/wetype/" + idx,
+						contentType: "application/json",
+						dataType: 'json',
+						data: JSON.stringify(),
+						success:function(data){	
+							$('#menu4Table').bootstrapTable('refresh');
+							_fw_setMessage(obj,1,"Success");
+												
+						  },
+					});			
+				}
+			} else {
+			alert('no data selected');
+		}
+	}
+</script>
+
+<!-- ---------------------------------------------------------------------- -->
+
+<script type="text/javascript">
+/**
+ * KATEGORI LOKASI MKT ACT
+ *
+ **/
+	
+
+	function menu5Add(obj){
+		var page = $('#menu5p02');
+		$('input, select', page).prop('disabled',false);
+		_fw_reset_subpage(page);
+		_subpage(obj, 'menu5p02');
+		$('button[name="btnAddNew"]', page).hide();
+		$('button[name="btnSubmit"]', page).show();
+	}
+
+	function menu5AddData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu5p02Category', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			vo.category = $('input[id="menu5p02Category"]', page).val();
+			vo.description = $('input[id="menu5p02Description"]', page).val();
+			vo.radius = 0;
+			
+			console.log(vo);
+
+			$.ajax
+			({
+				type: "POST",
+				url: "/ahmjxdsh000/api/facilitytype",
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu5Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+
+	function menu5Edit(obj, row, index){
+		var editedRows = $('#menu5TableDisable').bootstrapTable('getData');
+		console.log("edited==>",editedRows);
+		if (editedRows.length == 1)
+			{
+			_subpage(obj,'menu5p03', editedRows[0]);
+			
+			}
+		else
+			alert("Pilih salah satu item jika ingin mengubah.");	
+		}
+	
+	function menu5EditData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu5p03Category', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+			//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+			vo.idFacilityType = $('input[name="idFacilityType"]', page).val();
+			vo.category = $('input[id="menu5p03Category"]', page).val();
+			vo.description = $('input[id="menu5p03Description"]', page).val();
+			
+			console.log(vo);
+
+			$.ajax
+			({
+				type: "PUT",
+				url: "/ahmjxdsh000/api/facilitytype/" + vo.idFacilityType,
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu5Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+	
+	function menu5Delete(obj){
+		var disabledRows = $('#menu5TableDisable').bootstrapTable('getData');
+		if(disabledRows.length > 0) {
+			for(var i=0;i<disabledRows.length;i++)
+				{
+					var idx = disabledRows[i].idFacilityType;
+					$.ajax
+					({
+						type: "DELETE",
+						url: "/ahmjxdsh000/api/facilitytype/" + idx,
+						contentType: "application/json",
+						dataType: 'json',
+						data: JSON.stringify(),
+						success:function(data){	
+							$('#menu5Table').bootstrapTable('refresh');
+							_fw_setMessage(obj,1,"Success");
+						  },
+					});			
+				}
+			} else {
+			alert('no data selected');
+		}
+		
+	}
+</script>
+
+<!-- ---------------------------------------------------------------------- -->
+
+<script type="text/javascript">
+
+	var xdata;
+	var SOURCE= CLIPBOARD = null;
+
+	$(function(){
+		$(".nav-tabs a").click(function(e){
+			e.preventDefault();
+		    $(this).tab('show');	
+		 });
+
+	$.ajax({type: "GET",url: baseURL+"/api/ttm001/sf",contentType: "application/json",
+			dataType: 'json',async: false,data: JSON.stringify()})
+		.done(function(data){
+			var parsed = JSON.parse(JSON.stringify(data), function(k, v) {
+				if (k === "description") 
+					this.title = v;
+				else if (k === "categories")
+					this.children = v;
+				else
+					return v;}
+			);
+			SOURCE = parsed;
+			console.log("source==>",SOURCE);
+	}) ; 
+
+	$("#tree1").fancytree({
+		source: SOURCE,
+		extensions: ["edit"],
+		edit: {
+			triggerStart: ["f2", "shift+click", "mac+enter"],
+			close: function(event, data) {
+				if( data.save ){
+					// Quick-enter: add new nodes until we hit [enter] on an empty title
+					addNode(data.node.title);
+					//$("#tree").trigger("nodeCommand", {cmd: "addSibling"});
+					}
+				}
+	},
+	}).on("click dblclick", function(e){
+		    console.log( e, $.ui.fancytree.eventToString(e) );
+	}).on("nodeCommand", function(event, data){
+		// Custom event handler that is triggered by keydown-handler and
+		// context menu:
+		var refNode, moveMode,
+		tree = $(this).fancytree("getTree"),
+		node = tree.getActiveNode();
+		switch( data.cmd ) {
+		case "moveUp":
+			refNode = node.getPrevSibling();
+			if( refNode ) {
+				node.moveTo(refNode, "before");
+				node.setActive();}
+		break;
+		case "edit":
+			xdata = node;			
+			node.editStart();
+		break;
+		case "delete":
+			refNode = node.getNextSibling() || node.getPrevSibling() || node.getParent();
+			deleteNode(node);
+			node.remove();
+			if( refNode ) {
+				refNode.setActive();
+			}
+		break;
+		case "add":
+			node.data.idCategoryType= null;
+			xdata = node;
+			node.editCreateNode("after", "");
+		break;  
+		default:
+		return;
+		}
+	}).on("keydown", function(e){
+		var cmd = null;
+		// console.log(e.type, $.ui.fancytree.eventToString(e));
+		switch( $.ui.fancytree.eventToString(e) ) {}
+		if( cmd ){
+			$(this).trigger("nodeCommand", {cmd: cmd});
+			  // e.preventDefault();
+			  // e.stopPropagation();
+			return false;
+			}
+		});
+
+	$("#tree1").contextmenu({
+		delegate: "span.fancytree-node",
+		menu: [
+		{title: "Add ", cmd: "add", uiIcon: "ui-icon-plus" },
+		{title: "Edit", cmd: "edit", uiIcon: "ui-icon-pencil" },
+		{title: "Delete", cmd: "delete", uiIcon: "ui-icon-trash" },
+		],
+		beforeOpen: function(event, ui) {
+			var node = $.ui.fancytree.getNode(ui.target);
+			console.log("before open");
+			$("#tree1").contextmenu("enableEntry", "paste", !!CLIPBOARD);
+			node.setActive();
+		},
+
+	select: function(event, ui) {
+	var that = this;
+	  // delay the event, so the menu can close and the click event does
+	  // not interfere with the edit control
+	  setTimeout(function(){
+	  $(that).trigger("nodeCommand", {cmd: ui.cmd});
+	  }, 100);
+		}
+		});
+	});
+
+  function addNode(x){
+
+	  console.log("xdata.data.length==>",xdata);
+	  if (xdata.data.values!=undefined){
+		  var dataAdd = {'parentCategoryType':xdata.data.parentCategoryType,'description':x,"idCategoryType":xdata.data.idCategoryType};
+		  var urlx = baseURL+"/api/partycategorytype";
+	  }
+	  else 
+	  {
+		  if (xdata.data.idCategoryType!=null){var xidcategory = xdata.data.idCategory;}
+		  else {var xidcategory = null;}
+		  
+		  var dataAdd = {'idCategoryType':xdata.parent.data.idCategoryType,'description':x,'idCategory':xidcategory};
+		  var urlx = baseURL+"/api/partycategory";
+	  }
+	  $.ajax
+		  ({
+			  type: "POST",
+			  url: urlx,
+			  contentType: "application/json",
+			  dataType: 'json',
+			  async: false,
+			  data:JSON.stringify(dataAdd)
+		  })
+		  .done(function(response){
+			$.ajax
+			  ({
+				  type: "GET",
+				  url: baseURL+"/api/ttm001/sf",
+				  contentType: "application/json",
+				  dataType: 'json',
+				  async: false,
+				  data: JSON.stringify()
+			  })
+			  .done(function(data){
+				var parsed = JSON.parse(JSON.stringify(data), function(k, v) {
+					if (k === "description") 
+						this.title = v;
+					else if (k === "categories")
+						this.children = v;
+					else
+						return v;
+					});
+				xdata1 = parsed;
+				}) ;
+		 
+			  var tree = $('#tree1').fancytree('getTree');
+			  tree.reload(xdata1); 
+			 })
+	  }; 
+
+   function deleteNode(x){
+	   if (x.data.values!=undefined){
+		  var urlx = baseURL+"/api/partycategorytype/"+x.data.idCategoryType;
+		}
+		else 
+		{
+		  var urlx = baseURL+"/api/partycategory/"+x.data.idCategory;
+		}
+		   $.ajax
+			  ({
+				  type: "DELETE",
+				  url: urlx,
+				  contentType: "application/json",
+				  dataType: 'json',
+				  async: false,
+				  data:JSON.stringify()
+			  })
+			  .done(function(response){
+				 })
+		  };
+
+</script>
+
+<!-- ---------------------------------------------------------------------- -->
+
+<script type="text/javascript">
+	function _subpage(obj, id, row){
+	_fw_setMessage(obj);
+	var parent = $(obj).closest('.menu*');
+	console.log(parent);
+	if(parent.html() == undefined) {
+		parent = $(obj).closest('.tab-pane');
+	}
+	$('.subpage.subpage-default', parent).removeClass('subpage-default');
+	var targetSubpage = $('#'+id);
+	_fw_validation_clear(targetSubpage);
+	$(targetSubpage).addClass('subpage-default');
+	
+	automaticFill(row, targetSubpage);
+	
+	}
+</script>
+
+<!-- ---------------------------------------------------------------------- -->
+
+<style type="text/css">
+	.ui-menu {
+		width: 180px;
+		font-size: 63%;
+	}
+	.ui-menu kbd { /* Keyboard shortcuts for ui-contextmenu titles */
+		float: right;
+	}
+	
+	.row hidden
+	{
+		display:none;
+	}
+	/* custom alignment (set by 'renderColumns'' event) */
+</style>

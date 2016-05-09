@@ -115,6 +115,7 @@ function buildMap(){
 	map.zoomToMaxExtent();
 
 	map.setCenter(center, 4);
+	console.log("map==>",map);
 	var click = new OpenLayers.Control.Click();
 	map.addControl(click);
 	click.activate();
