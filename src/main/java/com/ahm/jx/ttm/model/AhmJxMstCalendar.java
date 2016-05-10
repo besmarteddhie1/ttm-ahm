@@ -13,7 +13,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name="ahmjxmst_calendar")
+@Table(name="ahmjxmst_dealer_calendar")
 @Inheritance(strategy=InheritanceType.JOINED)
 public class AhmJxMstCalendar extends BaseEntity {
 		
