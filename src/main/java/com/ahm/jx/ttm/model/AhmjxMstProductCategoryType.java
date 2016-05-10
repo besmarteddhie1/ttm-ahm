@@ -27,6 +27,8 @@ public class AhmjxMstProductCategoryType extends BaseEntity {
 	private static final long serialVersionUID = -2500926500169885028L;
 	
 	public static final int TYPE_CUB = 50;
+	public static final int TYPE_SEGMENT = 100;
+	public static final int TYPE_SERI = 110;
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idcattype")
