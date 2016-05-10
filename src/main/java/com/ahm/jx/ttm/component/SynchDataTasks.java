@@ -16,13 +16,13 @@ public class SynchDataTasks {
 
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
     
-    @Inject
-    @Qualifier("partner")
-    AbstractSynchronizer syncPartner;
+//    @Inject
+//    @Qualifier("partner")
+//    AbstractSynchronizer syncPartner;
 
     @Scheduled(cron="1 */10 * * * MON-FRI")
     public void UpdatePartner() {
-    	syncPartner.doRunner();
+//    	syncPartner.doRunner();
         System.out.println("Update By Cron " + dateFormat.format(new Date()));
     }    
 }

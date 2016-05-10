@@ -1,8 +1,5 @@
 package com.ahm.jx.ttm.service;
 
-import javax.inject.Inject;
-
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -10,11 +7,12 @@ import org.springframework.stereotype.Service;
 @Qualifier("partner")
 public class SynchronizePartner implements AbstractSynchronizer {
 	
-	@Inject
-	Logger log;
+//	@Inject
+//	Logger log;
 
 	@Override
-	public void doRunner() {		
+	public void doRunner() {	
+		System.out.println("Sync partner");
 	}
 
 }
