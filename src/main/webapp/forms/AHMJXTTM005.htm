@@ -258,6 +258,7 @@
 			}
 
 	var xdata;
+	init("map005");
 	//var SOURCE= CLIPBOARD = null;
 		var SOURCE = [
 		    {title: "Asia Surya Perkasa",id:"1",address:"Jl. Asia Surya",phone:"0219999",area:"Jakarta",code:"md", children: [
@@ -299,7 +300,6 @@
 		source: SOURCE,
 		 activate: function(event, data) {
 		        var node = data.node;
-		        renderMap("005");
 			    setFocus(node.data.lon,node.data.lat,node.data.level);
 		      },
 		});

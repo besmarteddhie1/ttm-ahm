@@ -133,7 +133,8 @@
 
 <script type="text/javascript">
 	var xdata;
-	renderMap("004");
+	//renderMap("004");
+			 init("map004");
 	
 	//var SOURCE= CLIPBOARD = null;
 		var SOURCE = [
@@ -152,7 +153,7 @@
 	$(function(){
 		$(".nav-tabs a").click(function(){
 		$(this).tab('show');
-		
+			
 	});
 
 	/* $.ajax({type: "GET",url: baseURL+"/api/ttm001/sf",contentType: "application/json",
@@ -177,10 +178,10 @@
 				 
 		       if (node.data.code=="md")
 			       {
-		            mdShow(node);    		
+		            	mdShow(node);    		
 			       }
 		       else{
-			       dealerShow(node);
+			       		dealerShow(node);
 		           }
 			 	setFocus(node.data.lon,node.data.lat,node.data.level);   
 		      },

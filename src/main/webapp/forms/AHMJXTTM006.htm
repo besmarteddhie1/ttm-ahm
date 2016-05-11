@@ -232,6 +232,8 @@
 			}
 
 	var xdata;
+	init("map006");
+	
 	//var SOURCE= CLIPBOARD = null;
 		var SOURCE = [
 		    {title: "DKI Jakarta",id:"1",children: [
@@ -280,9 +282,7 @@
 	$("#tree6").fancytree({
 		source: SOURCE,
 		 activate: function(event, data) {
-		        var node = data.node;
-				renderMap("006");
-		        
+		        var node = data.node;		        
 			    setFocus(node.data.lon,node.data.lat,node.data.level);
 		      },
 		});
@@ -375,10 +375,4 @@
 				});
 			} 
 	}
-
-	
-
-	
-  
-
 </script>

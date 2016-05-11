@@ -17,7 +17,7 @@ OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
                     'stopDouble': true
                 },
 
-                initialize: function(options) {
+                initialize: function(optionsa) {
                     this.handlerOptions = OpenLayers.Util.extend(
                         {}, this.defaultHandlerOptions
                     );
@@ -39,14 +39,18 @@ OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
 
             });
 
-var layarBatas,map;
-var zoom = 8;
-var center = new OpenLayers.LonLat(122.970810,-2.367789); 
+var urlWms = "http://t0186.astra-honda.com:7223/geoserver/gwc/service/wms";
+var map,ol_sb;
+var zoom = 4;
+var position = new OpenLayers.LonLat(146.596076,-42.088534);
+//var layarBatas,map;
+//var zoom = 8;
+//var center = new OpenLayers.LonLat(122.970810,-2.367789); 
 
-var wmsUrl = "http://t0186.astra-honda.com:7223/geoserver/gwc/service/wms";
+//var wmsUrl = "http://t0186.astra-honda.com:7223/geoserver/gwc/service/wms";
 
 var indonesia = new OpenLayers.Layer.WMS( "World Map",
-    wmsUrl, 
+		urlWms, 
     {
         layers: 'indonesia',                    
         isTiled: true,
@@ -58,7 +62,7 @@ var indonesia = new OpenLayers.Layer.WMS( "World Map",
     );
 
 var provinsi = new OpenLayers.Layer.WMS( "Provinsi",
-		wmsUrl, 
+		urlWms, 
     {
         layers: 'ahm:INA_PROP',                 
         isTiled: true,
@@ -72,7 +76,7 @@ var provinsi = new OpenLayers.Layer.WMS( "Provinsi",
     }
     );  
 var kabupaten = new OpenLayers.Layer.WMS( "Kabupaten",
-		wmsUrl, 
+		urlWms, 
     {
         layers: 'ahm:INA_KAB',                  
         isTiled: true,
@@ -83,7 +87,7 @@ var kabupaten = new OpenLayers.Layer.WMS( "Kabupaten",
     {isBaseLayer:false}
     );
 var kecamatan = new OpenLayers.Layer.WMS( "Kecamatan",
-		wmsUrl, 
+		urlWms, 
     {
         layers: 'ahm:INA_KEC',                  
         isTiled: true,
@@ -95,7 +99,7 @@ var kecamatan = new OpenLayers.Layer.WMS( "Kecamatan",
     );
 
 var label = new OpenLayers.Layer.WMS( "Label",
-		wmsUrl, 
+		urlWms, 
     {
         layers: 'label',                    
         istiled: false,
@@ -108,7 +112,7 @@ var label = new OpenLayers.Layer.WMS( "Label",
 
 
 function buildMap(){
-	layerBatas = [provinsi,kabupaten,kecamatan];
+//	layerBatas = [provinsi,kabupaten,kecamatan];
 
 	map.addLayers([indonesia,provinsi,kabupaten,kecamatan,label]);   
 	map.addControl(new OpenLayers.Control.LayerSwitcher());
@@ -144,8 +148,39 @@ function clickPeta(){
 	console.log("You click near",clickPos);
 }
 
-function renderMap(namaForm)
-{
-	 map = new OpenLayers.Map("map"+namaForm);
-	buildMap();
+function init(mapId){
+	layerBatas = [provinsi,kabupaten,kecamatan];
+
+    map = new OpenLayers.Map({
+        div:mapId
+    });
+      
+	ol_sb = new OpenLayers.Layer.WMS(
+	    "State Boundaries",
+	    urlWms,
+	    {
+	        layers: "topp:tasmania_state_boundaries",
+	        transparent: true
+	    },
+	    {
+	        isBaseLayer:true,
+	        attribution:"Provided by AHM"
+	    }
+	    );
+	
+	map.addLayers([ol_sb]);   
+	map.addControl(new OpenLayers.Control.LayerSwitcher());
+
+	map.zoomToMaxExtent();   
+	map.setCenter(position, zoom);   
 }
+
+//function renderMap(namaForm)
+//{
+//	if (map!=null){
+//		console.log("map null");
+//		map="";
+//	}
+//	map = new OpenLayers.Map("map"+namaForm);
+//	buildMap();
+//}

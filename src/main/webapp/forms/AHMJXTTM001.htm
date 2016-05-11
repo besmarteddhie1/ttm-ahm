@@ -11,6 +11,7 @@
 				<li><a href="#menu3" class="inner-tab">Penamaan Salesforce</a></li>
 				<li><a href="#menu4" class="inner-tab">Aktivitas Marketing</a></li>
 				<li><a href="#menu5" class="inner-tab">Kategori Lokasi Mkt Act</a></li>
+				<li><a href="#menu6" class="inner-tab">Merk Kompetitor</a></li>
 
 			</ul>
 		</div>
@@ -394,6 +395,115 @@
 
 	</div>
 </div>
+
+	<!-- ---------- MERK KOMPETITOR ---------- -->
+		<div id="menu6" class="tab-pane fade">
+			<div id="menu6p01" class="subpage subpage-default" data-path="">
+				<!-- <h3>Merk Kmpetitor</h3> -->
+				<div class="row hidden" >			
+					<div class="col-md-6" >
+						<table id="menu6TableDisable" 
+							   data-source-id="menu6Table" 
+							   data-unique-id="idWeType"
+							   data-pagination="true"
+							   data-page-size="5">
+							<thead>
+							</thead>
+						</table>
+					</div>
+				</div>
+				<div class="form-group-button pull-right">
+					<button class="btn btn-default btn-primary large-button" onclick="menu6Add(this);return false;">Tambah</button>
+					<button class="btn btn-default btn-primary large-button" onclick="menu6Edit(this);return false;">Ubah</button>
+					<button class="btn btn-default btn-primary large-button" onclick="menu6Delete(this);return false;">Hapus</button>
+				</div>
+
+
+				<div id="table-container">
+					<table id="menu6Table"
+					data-method="get"
+					data-url="/api/ttm001/wet"
+					data-content-type="application/json"
+					data-data-type="json"
+					data-pagination="true"
+					data-page-size="10"
+					data-page-list="[10,25,50]"
+					data-custom-action="edit, delete"
+					data-checkbox-table="menu6TableDisable"
+					data-unique-id="idWeType">
+					<thead>
+						<tr>
+							<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
+							<th data-field="idWeType" data-sortable="true" data-visible="false">ID</th>
+							<th data-field="description" data-sortable="true" data-visible="true">Merk</th>
+							<th data-field="description" data-sortable="true" data-visible="true">Urutan</th>
+							<th data-field="description" data-sortable="true" data-visible="true">Status</th>
+						</tr>
+					</thead>
+
+				</table>
+			</div>
+
+		</div>
+
+		<div id="menu6p02" class="subpage" data-path="">
+			<form class="form-horizontal">
+			<div class="form-group large-font">
+					<label for="menu6p02Description" class="col-sm-3 control-label">Merk <span style="color:red">*)</span></label>
+					<div class="col-sm-6">
+						<input id="menu6p02Description" name="description" class="form-control">
+					</div>
+				</div>
+				<div class="form-group large-font">
+					<label for="menu6p02Description" class="col-sm-3 control-label">Urutan <span style="color:red">*)</span></label>
+					<div class="col-sm-6">
+						<input id="menu6p02Description" name="description" class="form-control">
+					</div>
+				</div>
+				<div class="form-group large-font">
+					<label for="menu6p02Description" class="col-sm-3 control-label">Status <span style="color:red">*)</span></label>
+					<div class="col-sm-6">
+						<input id="menu6p02Description" name="description" class="form-control">
+					</div>
+				</div>
+				<div class="col-sm-offset-2 col-sm-6 form-group-button">
+					<button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="menu6AddNew(this);return false;" style="display: none">Add New</button>
+					<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="menu6AddData(this);_subpage(this, 'menu4p01');return false;">Submit</button>
+					<button class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
+					<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu6p01');return false;">Back</button>
+				</div>
+			</form>
+		</div>
+		<div id="menu4p03" class="subpage" data-path="">
+			<form class="form-horizontal">
+				<input type="hidden" name="idWeType" data-field="idWeType"/>
+				<div class="form-group large-font">
+					<label for="menu6p02Description" class="col-sm-3 control-label">Merk <span style="color:red">*)</span></label>
+					<div class="col-sm-6">
+						<input id="menu6p02Description" name="description" class="form-control">
+					</div>
+				</div>
+				<div class="form-group large-font">
+					<label for="menu6p02Description" class="col-sm-3 control-label">Urutan <span style="color:red">*)</span></label>
+					<div class="col-sm-6">
+						<input id="menu6p02Description" name="description" class="form-control">
+					</div>
+				</div>
+				<div class="form-group large-font">
+					<label for="menu6p02Description" class="col-sm-3 control-label">Status <span style="color:red">*)</span></label>
+					<div class="col-sm-6">
+						<input id="menu6p02Description" name="description" class="form-control">
+					</div>
+				</div>
+				<div class="col-sm-offset-2 col-sm-6 form-group-button">
+					<button class="btn btn-default btn-primary large-button" onclick="menu4EditData(this);_subpage(this, 'menu4p01');return false;">Submit</button>
+					<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'menu4p01');return false;">Back</button>
+				</div>
+
+			</form>
+
+		</div>
+	</div>
 </div> <!-- end of tab-content -->
 
 </div>
@@ -870,7 +980,118 @@
 </script>
 
 <!-- ---------------------------------------------------------------------- -->
+<script type="text/javascript">
+/**
+ * Merk Kompetitor
+ *
+ **/
+	
 
+	function menu6Add(obj){
+		var page = $('#menu6p02');
+		$('input, select', page).prop('disabled',false);
+		_fw_reset_subpage(page);
+		_subpage(obj, 'menu6p02');
+		$('button[name="btnAddNew"]', page).hide();
+		$('button[name="btnSubmit"]', page).show();
+	}
+
+	function menu6AddData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu6p02Category', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			vo.category = $('input[id="menu6p02Category"]', page).val();
+			vo.description = $('input[id="menu6p02Description"]', page).val();
+			vo.radius = 0;
+			
+			console.log(vo);
+
+			$.ajax
+			({
+				type: "POST",
+				url: "/ahmjxdsh000/api/wetype",
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu6Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+
+	function menu6Edit(obj, row, index){
+		var editedRows = $('#menu6TableDisable').bootstrapTable('getData');
+		if (editedRows.length == 1)
+			{
+			_subpage(obj,'menu6p03', editedRows[0]);
+			
+			}
+		else
+			alert("Pilih salah satu item jika ingin mengubah.");	
+		}
+	
+	function menu6EditData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu6p03Category', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+			//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+			vo.idFacilityType = $('input[name="idFacilityType"]', page).val();
+			vo.category = $('input[id="menu6p03Category"]', page).val();
+			vo.description = $('input[id="menu6p03Description"]', page).val();
+			
+			console.log(vo);
+
+			$.ajax
+			({
+				type: "PUT",
+				url: "/ahmjxdsh000/api/wetype/" + vo.id,
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu5Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+	
+	function menu6Delete(obj){
+		var disabledRows = $('#menu6TableDisable').bootstrapTable('getData');
+		if(disabledRows.length > 0) {
+			for(var i=0;i<disabledRows.length;i++)
+				{
+					var idx = disabledRows[i].idWeType;
+					$.ajax
+					({
+						type: "DELETE",
+						url: "/ahmjxdsh000/api/wetype/" + idx,
+						contentType: "application/json",
+						dataType: 'json',
+						data: JSON.stringify(),
+						success:function(data){	
+							$('#menu6Table').bootstrapTable('refresh');
+							_fw_setMessage(obj,1,"Success");
+						  },
+					});			
+				}
+			} else {
+			alert('no data selected');
+		}
+		
+	}
+</script>
 <script type="text/javascript">
 
 	var xdata;
