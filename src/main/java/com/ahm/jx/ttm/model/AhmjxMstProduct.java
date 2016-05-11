@@ -56,7 +56,7 @@ public class AhmjxMstProduct extends BaseEntity {
 		return o;
 	}
 	
-	public AhmjxMstProductCategory getCategory(Integer typeCat) {
+	protected AhmjxMstProductCategory getCategory(Integer typeCat) {
 		for (AhmjxMstProductClassification o: classification) 
 			if (o.getCategory().getCategoryType().getIdCategoryType().equals(typeCat))
 				return o.getCategory();		
@@ -93,7 +93,7 @@ public class AhmjxMstProduct extends BaseEntity {
 
 	public void setClassification(List<AhmjxMstProductClassification> classification) {
 		this.classification = classification;
-	}	
+	}
 	
 	@Override
 	public int hashCode() {
