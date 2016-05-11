@@ -3,7 +3,386 @@
 
     </div>
     <div id="ahmjxttm017p01" class="subpage subpage-default" data-path="Kalendar Kerja">
-        ijmkejdeus
+
+        <div class="row">
+            <div class="col-md-5">
+                <div class="input-group pull-left">
+                    <span class="input-group-addon"><span>Tahun</span></span>
+                    <select class="input-sm col-md-6">
+                        <option value="1">option 1</option>
+                        <option value="2">option 2</option>
+                        <option value="3">option 3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4 large-font"></div>
+            <div class="col-md-3 nopadding">
+                <div class="form-group-button pull-right">
+                    <button class="btn btn-default btn-primary large-button" onclick="ahmjxttm017Add(this);return false;">Tambah</button>
+                </div>
+            </div>
+        </div>
+
+        <br/>
+
+        <div id="table-container">
+            <table id="ahmjxttm020p01TableRoleAccess"
+                data-method="post"
+                data-url="/uam006/paging"
+                data-content-type="application/json"
+                data-data-type="json"
+                data-query-params-type="limit"
+                data-query-params="ahmjxuam006Presearch"
+                data-response-handler="loadData"
+                data-side-pagination="server"
+                data-pagination="true"
+                data-page-size="5"
+                data-page-list="[5,10,15]"  
+                data-unique-id="vid"
+                data-checkbox-table="ahmjxuam006p01TableDelete"
+            >
+                <thead>
+                    <tr>       
+                        <th data-field="state" 
+                            data-checkbox="true"></th>
+                        <th data-field="vidAhmjxuamMstroles" 
+                            data-visible="false"
+                            >VID Role</th>
+                        <th data-field="vrolesId" 
+                            data-sortable="true" 
+                            >Type Aktivitas</th>
+                        <th data-field="vrolesName" 
+                            data-sortable="true"
+                            >Lokasi</th>
+                        <th data-field="vidAhmjxuamMstmenus" 
+                            data-sortable="true"
+                            >Durasi</th>
+                        <th data-field="vmenuid"                            
+                            data-sortable="true"
+                            >Database/Hari</th>           
+                        <th data-field="vtitle" 
+                            data-sortable="true"
+                            >Slaes/Hari</th>
+                        <th data-field="iver" 
+                            data-sortable="true"
+                            >Biaya/Hari</th>
+                        <th data-field="iver" 
+                            data-sortable="true"
+                            >Sales est</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+    <div id="ahmjxttm017p02" class="subpage" data-path="Kalendar Kerja/Tambah Kalendar Kerja">
+        <form class="form-horizontal">
+            <div class="form-group large-font">
+                <label for="ahmjxttm017p02VstartDate" class="col-sm-2 control-label">Tanggal Mulai Libur <span style="color:red">*)</span></label>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class='input-group date' id='ahmjxttm017p02VstartDate'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxttm017p02VendDate" class="col-sm-2 control-label">Tanggal Akhir Libur <span style="color:red">*)</span></label>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class='input-group date' id='ahmjxttm017p02VendDate'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxttm017p02Vket" class="col-sm-2 control-label">Keterangan </label>
+                <div class="col-sm-6">
+                    <input id="ahmjxttm017p02Vket" name="Vket" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxttm017p02Vloop" class="col-sm-2 control-label">Perulangan </label>
+                <div class="col-sm-6">
+                    <select id="ahmjxttm017p02Vloop" name="Vloop" class="form-control">
+                        <option value="1">Tidak Berulang</option>
+                        <option value="2">Mingguan</option>
+                        <option value="3">Bulanan</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxttm017p02VloopEnd" class="col-sm-2 control-label">Perulangan sampai </label>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class='input-group date' id='ahmjxttm017p02VloopEnd'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-offset-2 col-sm-6 form-group-button">
+                <button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="ahmjxttm017AddNew(this);return false;" style="display: none">Add New</button>
+                <button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="ahmjxttm017AddData(this);return false;">Submit</button>
+                <button class="btn btn-default btn-primary large-button" onclick="_fw_reset_subpage(this);return false;">Reset</button>
+                <button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxttm017p01');return false;">Back</button>
+            </div>
+        </form>
+    </div>
+    <div id="ahmjxuam002p03" class="subpage" data-path="Maintain Roles/Edit Role">
+        <form class="form-horizontal">
+            <input type="hidden" name="vid" data-field="vid"/>
+            <input type="hidden" name="iver" data-field="iver"/>
+            <div class="form-group large-font">
+                <label for="ahmjxuam002p03VrolesId" class="col-sm-2 control-label">ID Role</label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam002p03VrolesId" name="vrolesId" class="form-control" data-field="vrolesId" disabled="disabled">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam002p03VrolesName" class="col-sm-2 control-label">Nama Role <span style="color:red">*)</span></label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam002p03VrolesName" name="vrolesName" class="form-control" data-field="vrolesName">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam002p03VrolesDesc" class="col-sm-2 control-label">Deskripsi Role </label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam002p03VrolesDesc" name="vrolesDesc" class="form-control" data-field="vrolesDesc">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label class="col-sm-2 control-label">Status</label>
+                <div class="col-sm-6">
+
+                    <label class="radio-inline">
+                        <input type="radio" name="vrolesStatus" value="AKTIF" data-field="vrolesStatus"> Aktif
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="vrolesStatus" value="TIDAK AKTIF" data-field="vrolesStatus"> Tidak Aktif
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="col-sm-offset-2 col-sm-6 form-group-button">
+                <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam002Update(this);return false;">Submit</button>
+                <button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam002p01');return false;">Back</button>
+            </div>
+
+        </form>
+
+    </div>
+    <div id="ahmjxuam002p04" class="subpage" data-path="Maintain Roles/Konfirmasi Disable">
+        <table 	id="ahmjxuam002p04DisableTable"
+                >
+            <thead>
+                <tr>
+                    <th data-field="vid" 
+                        data-sortable="true"
+                        data-visible="false"
+                        >ID</th>
+                    <th data-field="iver" 
+                        data-sortable="true"
+                        data-visible="false"
+                        >Ver</th>
+
+                    <th data-field="vrolesId" 
+                        data-sortable="true"
+                        data-visible="true"
+                        >ID Role</th>
+                    <th data-field="vrolesName" 
+                        data-sortable="true"
+                        >Nama Role</th>
+                    <th data-field="vrolesDesc" 
+                        data-sortable="true" 
+                        >Deskripsi Role</th>
+                </tr>
+            </thead>
+
+        </table>
+        <br/>
+        <div class="form-group-button">
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam002DisableData(this)">Disable</button>
+            <button class="btn btn-default btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxuam002p01'); return false;">Back</button>
+        </div>
     </div>
 </div>
+<script type="text/javascript">
+    
+    function stateFormatter(value, row, index) {
+        if (row.vrolesStatus === "TIDAK AKTIF") {
+            return {
+                disabled: true
+            };
+        }
+        /*  if (row.vrolesStatus === "TIDAK AKTIF") {
+            return {
+                disabled: true,
+                checked: true
+            }
+        }*/
+        return value;
+    }
+    
+    function ahmjxuam002Presearch(params){
+        params.search = {"any": $('#ahmjxuam002p01Search').val()};
+        if(params.sort == undefined){
+            return{
+                limit : params.limit,
+                offset : params.offset,
+                search : params.search
+            }
+        }
+        return params;
+    }
+    function ahmjxttm017Add(obj){
+        var page = $('#ahmjxttm017p02');
+        // $('input, select', page).prop('disabled',false);
+        _fw_reset_subpage(page);
+        _fw_subpage(obj, 'ahmjxttm017p02');
+        // $('button[name="btnAddNew"]', page).hide();
+        // $('button[name="btnSubmit"]', page).show();
+    }
+    function ahmjxuam002PrepareEdit(obj, row, index){
+        _fw_subpage(obj, 'ahmjxuam002p03', row);
+    }
+    
+    function ahmjxuam002DisableKonfirm(obj){
+        var disabledRows = $('#ahmjxuam002p01TableDisable').bootstrapTable('getData');
+        if(disabledRows.length > 0) {
+            $('#ahmjxuam002p04DisableTable').bootstrapTable('destroy');
+            $('#ahmjxuam002p04DisableTable').bootstrapTable({data:disabledRows});
+        
+            _fw_subpage(obj, 'ahmjxuam002p04');
+        } else {
+            alert('no data selected');
+        }
+    }
+    
+    function ahmjxuam002DisableData(obj){
+        var disabledRows = $('#ahmjxuam002p04DisableTable').bootstrapTable('getData');
+        var disabled = [];
+        var vid = [];
+        var listVo = [];
+        $.each(disabledRows, function(){
+            var row = this;
+            
+            disabled.push({'vid': row.vid});
+            vid.push(row.vid);
+        });
+        _fw_post('/uam002/disable', disabled, function(data){
+            if(data.stat=="200"){
+                _fw_setMessage(obj, 1, data);
+                $('#ahmjxuam002p01TableDisable').bootstrapTable('remove', {field: 'vid', values: vid});
+                $('#ahmjxuam002p01SearchTable').bootstrapTable('refresh');
+            } else {
+                _fw_setMessage(obj, 0, data);
+            }
+        });
+    }
+    function ahmjxttm017AddData(obj){
+        var page = $(obj).closest('.subpage');
+        _fw_validation_clear(obj);
+        _fw_validation_add(obj, 'ahmjxttm017p02VstartDate', 'required');
+        _fw_validation_add(obj, 'ahmjxttm017p02VendDate', 'required');
+        _fw_validation_add(obj, 'ahmjxuam002p02VrolesDesc', 'required');
+        if(_fw_validation_validate(obj)){
+            var vo = new Object();
+            vo.vrolesId = $('input[name="vrolesId"]', page).val();
+            vo.vrolesName = $('input[name="vrolesName"]', page).val();
+            vo.vrolesDesc = $('input[name="vrolesDesc"]', page).val();
+        
+            _fw_post('/uam002/insert', vo, function(data){
+                if(data.stat=="200"){
+                    //_fw_subpage(obj, 'ahmdsh1c008p01');
+                    $('input, select', page).prop('disabled',true);
+                    $('button[name="btnAddNew"]', page).show();
+                    $('button[name="btnSubmit"]', page).hide();
+                    _fw_setMessage(obj, 1, data);
+                    $('#ahmjxuam002p01SearchTable').bootstrapTable('refresh');
+                } else {
+                    _fw_setMessage(obj, 0, data);
+                }
+            });
+        }
+    }
 
+    function ahmjxttm017AddNew(obj){
+        _fw_validation_clear(obj);
+        var page = $(obj).closest('.subpage');
+        $('input, select', page).prop('disabled',false);
+        _fw_reset_subpage(obj);
+        $('button[name="btnAddNew"]', page).hide();
+        $('button[name="btnSubmit"]', page).show();
+    }
+
+    function ahmjxuam002Update(obj){
+        var page = $(obj).closest('.subpage');
+        _fw_validation_clear(obj);
+        _fw_validation_add(obj, 'ahmjxuam002p03VrolesName', 'required');
+        _fw_validation_add(obj, 'ahmjxuam002p03VrolesDesc', 'text area');
+        if(_fw_validation_validate(obj)){
+            var vo = new Object();
+            vo.vid = $('input[name="vid"]', page).val();
+            vo.iver = $('input[name="iver"]', page).val();
+            vo.vrolesId = $('input[name="vrolesId"]', page).val();
+            vo.vrolesName = $('input[name="vrolesName"]', page).val();
+            vo.vrolesDesc = $('input[name="vrolesDesc"]', page).val();
+            vo.vrolesStatus = $('input[name="vrolesStatus"]:checked', page).val();
+            _fw_post('/uam002/update', vo, function(data){
+                if(data.stat=="200"){
+                
+                    //_fw_subpage(obj, 'ahmdsh1c008p01');
+                    _fw_setMessage(obj, 1, data);
+                    var iver = parseInt(vo.iver)+1;
+                    $('input[name="iver"]', page).val(iver);
+                    $('#ahmjxuam002p01SearchTable').bootstrapTable('refresh');
+                } else {
+                    //_fw_setMessage(obj, 0, data);
+                    console.log('update-error');
+                    _fw_setMessage(obj, '0', data);
+                
+                }
+            });
+        }
+    }
+
+    function datergpicker(){
+        $('#ahmjxttm017p02VstartDate').datetimepicker({
+            format: 'DD/mm/YYYY'
+        });
+        $('#ahmjxttm017p02VendDate').datetimepicker({
+            useCurrent: false,
+            format: 'DD/mm/YYYY'
+        });
+        $("#ahmjxttm017p02VstartDate").on("dp.change", function (e) {
+            $('#ahmjxttm017p02VendDate').data("DateTimePicker").minDate(e.date);
+        });
+        $("#ahmjxttm017p02VendDate").on("dp.change", function (e) {
+            $('#ahmjxttm017p02VstartDate').data("DateTimePicker").maxDate(e.date);
+        });
+
+
+        $('#ahmjxttm017p02VloopEnd').datetimepicker({
+            format: 'DD/mm/YYYY'
+        });
+    }
+
+
+    $(function () {
+        datergpicker();
+    });
+
+</script>

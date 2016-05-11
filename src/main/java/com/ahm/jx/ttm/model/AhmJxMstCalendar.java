@@ -96,6 +96,6 @@ public class AhmJxMstCalendar extends BaseEntity {
 		return new EqualsBuilder()
 			.append( getIdCalendar(), other.getIdCalendar() )
 			.isEquals();
-	}		
+	}
 
 }

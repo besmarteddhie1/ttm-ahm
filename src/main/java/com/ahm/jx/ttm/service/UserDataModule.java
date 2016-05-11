@@ -60,6 +60,7 @@ public class UserDataModule implements Serializable {
     @Transactional
     public List<AhmjxUamMenu> activeMenu() {
     	AhmjxUamUser usr = userDao.findOneByUserName(getCurrentUser());
+    	System.out.println("AhmjxUamUser usr"+ usr);
     	if (usr == null) return new ArrayList<AhmjxUamMenu>(); 
         return usr.getMenus();
     }

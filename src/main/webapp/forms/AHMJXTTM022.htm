@@ -1,9 +1,162 @@
-<div id="AHMJXUAM001" class="div-app" data-version="1.0">
-    <div class="global_message">
+<div id="AHMJXTTM022" class="div-app" data-version="1.0">
+	<ul class="nav nav-tabs">
+		<li class="active"><a data-toggle="tab" href="#tupr">Target Unit vs Produktivitas Rencana</a></li>
+		<li><a data-toggle="tab" href="#pkmp">Penyesuaian Kapasitas MP</a></li>
+	</ul>
+	<div class="tab-content">
+		<div id="tupr" class="tab-pane fade in active">
+			<br>
+			<div id="tab_tupr" class="global_message">
+    		</div>
+			<div id="ahmjxttm017p01" class="subpage subpage-default" data-path="Review dan Adjustment">
+		        <div class="row">
+	            	<div class="col-md-5">
+	            		<div class="input-group pull-left">
+		                    <span class="input-group-addon"><span>Area</span></span>
+		                    <select class="input-sm col-md-6">
+		                        <option value="1">option 1</option>
+		                        <option value="2">option 2</option>
+		                        <option value="3">option 3</option>
+		                    </select>
+		                </div>
+					</div>
+	        	</div>
+	        	<br/>
+		        <div id="table-container">
 
-    </div>
-    <div id="ahmjxttm017p01" class="subpage subpage-default" data-path="Kalendar Kerja">
-        ijmkejdeus
-    </div>
+		            <table id="ahmjxttm020p01TableRoleAccess"
+		                   data-method="post"
+		                   data-url="/uam006/paging"
+		                   data-content-type="application/json"
+		                   data-data-type="json"
+		                   data-query-params-type="limit"
+		                   data-query-params="ahmjxuam006Presearch"
+		                   data-response-handler="loadData"
+		                   data-side-pagination="server"
+		                   data-pagination="true"
+		                   data-page-size="5"
+		                   data-page-list="[5,10,15]"  
+		                   data-unique-id="vid"
+		                   data-checkbox-table="ahmjxuam006p01TableDelete"
+		                   >
+		                <thead>
+		                    <tr>       
+		                        <th data-field="state" 
+		                            data-checkbox="true"></th>
+		                        <th data-field="vidAhmjxuamMstroles" 
+		                            data-visible="false"
+		                            >VID Role</th>
+		                        <th data-field="vrolesId" 
+		                            data-sortable="true" 
+		                            >Kecamatan</th>
+		                        <th data-field="vrolesName" 
+		                            data-sortable="true"
+		                            >Target</th>
+		                        <th data-field="vidAhmjxuamMstmenus" 
+		                            data-sortable="true"
+		                            >Aktivity</th>
+		                        <th data-field="vmenuid"                            
+		                            data-sortable="true"
+		                            >Location</th>           
+		                        <th data-field="vtitle" 
+		                            data-sortable="true"
+		                            >Tanggal</th>
+		                        <th data-field="iver" 
+		                            data-sortable="true"
+		                            >Sales Est</th>
+		                        <th data-field="iver" 
+		                            data-sortable="true"
+		                            >Maindays</th>
+		                        <th data-field="iver" 
+		                            data-sortable="true"
+		                            >Cost</th>
+		                        <th data-field="iver" 
+		                            data-sortable="true"
+		                            >Maindays PI</th>
+		                        <th data-field="iver" 
+		                            data-sortable="true"
+		                            >Cost Aq</th>
+		                    </tr>
+		                </thead>
+
+		            </table>
+		        </div>
+					
+		    </div>
+		</div>
+		<div id="pkmp" class="tab-pane fade">
+			<br>
+			<div id="tab_pkmp" class="global_message">
+    		</div>
+			<div id="ahmjxttm017p01" class="subpage subpage-default" data-path="Review dan Adjustment">
+		        <div class="row">
+	            	<div class="col-md-5">
+	            		<div class="input-group pull-left">
+		                    <span class="input-group-addon"><span>Area</span></span>
+		                    <select class="input-sm col-md-6">
+		                        <option value="1">option 1</option>
+		                        <option value="2">option 2</option>
+		                        <option value="3">option 3</option>
+		                    </select>
+		                </div>
+					</div>
+	        	</div>
+	        	<br/>
+		        <div id="table-container">
+
+		            <table id="ahmjxttm020p01TableRoleAccess"
+		                   data-method="post"
+		                   data-url="/uam006/paging"
+		                   data-content-type="application/json"
+		                   data-data-type="json"
+		                   data-query-params-type="limit"
+		                   data-query-params="ahmjxuam006Presearch"
+		                   data-response-handler="loadData"
+		                   data-side-pagination="server"
+		                   data-pagination="true"
+		                   data-page-size="5"
+		                   data-page-list="[5,10,15]"  
+		                   data-unique-id="vid"
+		                   data-checkbox-table="ahmjxuam006p01TableDelete"
+		                   >
+		                <thead>
+		                    <tr>       
+		                        <th data-field="state" 
+		                            data-checkbox="true"></th>
+		                        <th data-field="vidAhmjxuamMstroles" 
+		                            data-visible="false"
+		                            >VID Role</th>
+		                        <th data-field="vrolesId" 
+		                            data-sortable="true" 
+		                            >Salesforce</th>
+		                        <th data-field="vrolesName" 
+		                            data-sortable="true"
+		                            >Level</th>
+		                        <th data-field="vidAhmjxuamMstmenus" 
+		                            data-sortable="true"
+		                            >Total Target</th>
+		                        <th data-field="vmenuid"                            
+		                            data-sortable="true"
+		                            >PI</th>           
+		                        <th data-field="vtitle" 
+		                            data-sortable="true"
+		                            >#Manpower</th>
+		                        <th data-field="iver" 
+		                            data-sortable="true"
+		                            >Sales Est</th>
+		                        <th data-field="iver" 
+		                            data-sortable="true"
+		                            >Status</th>
+		                        <th data-field="iver" 
+		                            data-sortable="true"
+		                            >Rekomendasi #Manpower</th>
+		                </thead>
+
+		            </table>
+		        </div>
+					
+		    </div>
+		</div>
+	</div>
 </div>
 
