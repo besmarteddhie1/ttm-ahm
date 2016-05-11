@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -18,6 +20,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name="ahmjxmst_party_category")
+@Inheritance(strategy=InheritanceType.JOINED)
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="idCategory")
 public class AhmjxMstPartyCategory extends BaseEntity {
 
