@@ -13,28 +13,38 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name="ahmjxmst_rules")
+@Table(name="ahmjxmst_geo_boundary")
 @Inheritance(strategy=InheritanceType.JOINED)
-public class AhmJxMstFacility extends BaseEntity {
+public class AhmjxMstGeoBoundary extends BaseEntity {
 
-	private static final long serialVersionUID = 3446937428286212535L;
-	
+	private static final long serialVersionUID = 2883222714017631224L;
+
 	@Id
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
-	@Column(name="vidfacility", nullable = false)
-	private String idFacility;
+	@Column(name="vidgeobou", nullable = false)
+	private String idGeoBoundary;
+	
+	@Column(name="vname")
+	private String name;
 	
 	@Column(name="vdescription")
-	private String description;	
-		
-
-	public String getIdFacility() {
-		return idFacility;
+	private String description;
+	
+	public String getIdGeoBoundary() {
+		return idGeoBoundary;
 	}
 
-	public void setIdFacility(String idFacility) {
-		this.idFacility = idFacility;
+	public void setIdGeoBoundary(String idGeoBoundary) {
+		this.idGeoBoundary = idGeoBoundary;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getDescription() {
@@ -48,16 +58,16 @@ public class AhmJxMstFacility extends BaseEntity {
 	@Override
 	public int hashCode() {
 		return new HashCodeBuilder()
-			.append(getIdFacility())
+			.append(getIdGeoBoundary())
 			.toHashCode();
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof AhmJxMstFacility)) return false;
-		AhmJxMstFacility other = (AhmJxMstFacility) obj;
+		if (!(obj instanceof AhmjxMstGeoBoundary)) return false;
+		AhmjxMstGeoBoundary other = (AhmjxMstGeoBoundary) obj;
 		return new EqualsBuilder()
-			.append( getIdFacility(), other.getIdFacility() )
+			.append( getIdGeoBoundary(), other.getIdGeoBoundary() )
 			.isEquals();
 	}		
 
