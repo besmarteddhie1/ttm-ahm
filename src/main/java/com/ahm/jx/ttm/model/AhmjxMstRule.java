@@ -15,7 +15,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 @Entity
 @Table(name="ahmjxmst_rules")
 @Inheritance(strategy=InheritanceType.JOINED)
-public class AhmJxMstRule extends BaseEntity {
+public class AhmjxMstRule extends BaseEntity {
 
 	private static final long serialVersionUID = 3446937428286212535L;
 	
@@ -52,8 +52,8 @@ public class AhmJxMstRule extends BaseEntity {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof AhmJxMstRule)) return false;
-		AhmJxMstRule other = (AhmJxMstRule) obj;
+		if (!(obj instanceof AhmjxMstRule)) return false;
+		AhmjxMstRule other = (AhmjxMstRule) obj;
 		return new EqualsBuilder()
 			.append( getIdRule(), other.getIdRule() )
 			.isEquals();

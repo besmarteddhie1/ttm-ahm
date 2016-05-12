@@ -24,12 +24,7 @@
 							</div>
 						</div>
 						<div class="form-group-button pull-left">
-							<select id="ahmjxttm007p01Kategori" class="form-control">
-								<option></option>
-								<option>2014</option>
-								<option>2015</option>
-								<option>2016</option>
-							</select>
+							<select id="ahmjxttm007p01Kategori" class="form-control"></select>
 						</div>
 						<div class="form-group-button pull-right">
 							<button class="btn btn-default btn-primary large-button" onclick="ahmjxttm007Add(this);return false;">Download Format Excel</button>
@@ -214,6 +209,10 @@
 
 <script type="text/javascript">
 
+	$(document).ready(function() {
+		ahmjxttm007GetFacilityType(this);
+	});
+
 	function _subpage(obj, id, row){
 		_fw_setMessage(obj);
 		var parent = $(obj).closest('.menu*');
@@ -259,29 +258,48 @@
 			$(this).tab('show');
 		});
 
-	/* $.ajax({type: "GET",url: baseURL+"/api/ttm001/sf",contentType: "application/json",
-			dataType: 'json',async: false,data: JSON.stringify()})
-		.done(function(data){
-			var parsed = JSON.parse(JSON.stringify(data), function(k, v) {
-				if (k === "description") 
-					this.title = v;
-				else if (k === "categories")
-					this.children = v;
-				else
-					return v;}
-			);
-			x = parsed;
-			console.log("source==>",SOURCE);
-		}) ;  */
-
-	$("#tree6").fancytree({
-		source: SOURCE,
-		activate: function(event, data) {
-			var node = data.node;
-			
-		},
+		/* $.ajax({type: "GET",url: baseURL+"/api/ttm001/sf",contentType: "application/json",
+				dataType: 'json',async: false,data: JSON.stringify()})
+			.done(function(data){
+				var parsed = JSON.parse(JSON.stringify(data), function(k, v) {
+					if (k === "description") 
+						this.title = v;
+					else if (k === "categories")
+						this.children = v;
+					else
+						return v;}
+				);
+				x = parsed;
+				console.log("source==>",SOURCE);
+			}) ;  */
+	
+		$("#tree6").fancytree({
+			source: SOURCE,
+			activate: function(event, data) {
+				var node = data.node;
+				
+			},
+		});
 	});
-});
+	
+	function ahmjxttm007GetFacilityType(obj){
+		console.log("------> TEST");
+		var vo = new Object();
+		$.ajax
+		({
+			type: "GET",
+			url: "/ahmjxdsh000/api/ttm001/loc",
+			contentType: "application/json",
+			dataType: 'json',
+			success:function(data){
+				console.log(data);
+				//$("#ahmjxttm007p01Kategori")
+				$.each(data, function(i, value) {
+		            $('#ahmjxttm007p01Kategori').append($('<option>').text(value.category).attr('value', value.category));
+		        });
+			},
+		});
+	}
 
 	function ahmjxttm007Add(obj){
 		var page = $('#ahmjxttm007p02');

@@ -13,9 +13,9 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name="ahmjxmst_rules")
+@Table(name="ahmjxmst_facility")
 @Inheritance(strategy=InheritanceType.JOINED)
-public class AhmJxMstFacility extends BaseEntity {
+public class AhmjxMstFacility extends BaseEntity {
 
 	private static final long serialVersionUID = 3446937428286212535L;
 	
@@ -54,8 +54,8 @@ public class AhmJxMstFacility extends BaseEntity {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof AhmJxMstFacility)) return false;
-		AhmJxMstFacility other = (AhmJxMstFacility) obj;
+		if (!(obj instanceof AhmjxMstFacility)) return false;
+		AhmjxMstFacility other = (AhmjxMstFacility) obj;
 		return new EqualsBuilder()
 			.append( getIdFacility(), other.getIdFacility() )
 			.isEquals();
