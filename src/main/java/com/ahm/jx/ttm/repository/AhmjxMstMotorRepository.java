@@ -11,6 +11,6 @@ import com.ahm.jx.ttm.model.AhmjxMstMotor;
 @RepositoryRestResource(collectionResourceRel = "motor", path = "motor")
 public interface AhmjxMstMotorRepository extends JpaRepository<AhmjxMstMotor, Integer> {
 	
-	@Query("select r AhmjxMstMotor r")
+	@Query("select r from AhmjxMstMotor r")
     public List<AhmjxMstMotor> queryById();
 }
