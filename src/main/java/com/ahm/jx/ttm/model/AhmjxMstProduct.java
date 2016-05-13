@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -37,7 +38,7 @@ public class AhmjxMstProduct extends BaseEntity {
 	@Column(name="description")
 	private String description;
 
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="product")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="product",fetch= FetchType.LAZY)
 	@Where(clause="current_timestamp between dtfrom and dtthru")
 	private List<AhmjxMstProductClassification> classification = new ArrayList<AhmjxMstProductClassification>();
 	
@@ -57,11 +58,22 @@ public class AhmjxMstProduct extends BaseEntity {
 	}
 	
 	protected AhmjxMstProductCategory getCategory(Integer typeCat) {
-		for (AhmjxMstProductClassification o: classification) 
-			if (o.getCategory().getCategoryType().getIdCategoryType().equals(typeCat))
+		for (AhmjxMstProductClassification o: classification){ 
+			if (o.getCategory().getCategoryType().getParentCategoryType().equals(typeCat) ) 
 				return o.getCategory();		
+		}
 		return null;
-	}	
+	}
+	
+	protected AhmjxMstProductCategory getSegment(Integer typeCat) {
+		for (AhmjxMstProductClassification o: classification){ 
+			if (o.getCategory().getCategoryType().getParentCategoryType().equals(typeCat) ) 
+				return o.getCategory();		
+		}
+		return null;
+	}
+	
+	
 
 	public String getIdProduct() {
 		return idProduct;
@@ -93,7 +105,7 @@ public class AhmjxMstProduct extends BaseEntity {
 
 	public void setClassification(List<AhmjxMstProductClassification> classification) {
 		this.classification = classification;
-	}
+	} 
 	
 	@Override
 	public int hashCode() {
