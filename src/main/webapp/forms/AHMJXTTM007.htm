@@ -211,6 +211,7 @@
 
 	$(document).ready(function() {
 		ahmjxttm007GetFacilityType(this);
+		ahmjxttm007GetProvince(this);
 	});
 
 	function _subpage(obj, id, row){
@@ -297,6 +298,25 @@
 				$.each(data, function(i, value) {
 		            $('#ahmjxttm007p01Kategori').append($('<option>').text(value.category).attr('value', value.category));
 		        });
+			},
+		});
+	}
+	
+	function ahmjxttm007GetProvince(obj){
+		console.log("------> Province");
+		var vo = new Object();
+		$.ajax
+		({
+			type: "GET",
+			url: "/ahmjxdsh000/api/geoboundary",
+			contentType: "application/json",
+			dataType: 'json',
+			success:function(data){
+				console.log(data._embedded);
+				//$("#ahmjxttm007p01Kategori")
+				/*$.each(data, function(i, value) {
+		            $('#ahmjxttm007p01Kategori').append($('<option>').text(value.category).attr('value', value.category));
+		        });*/
 			},
 		});
 	}
