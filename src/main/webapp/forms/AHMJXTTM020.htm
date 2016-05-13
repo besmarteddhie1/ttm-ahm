@@ -1,9 +1,146 @@
-<div id="AHMJXUAM001" class="div-app" data-version="1.0">
+<div id="AHMJXTTM020" class="div-app" data-version="1.0">
     <div class="global_message">
 
     </div>
-    <div id="ahmjxttm017p01" class="subpage subpage-default" data-path="Kalendar Kerja">
-        ijmkejdeus
+    <div id="ahmjxttm020p01" class="subpage subpage-default" data-path="Rencana Aktivitas">
+        <!-- <div class="row">
+            <div class="col-md-6">
+                <div class="form-group large-font">
+                    <label>Search</label>
+                    <div class="input-group">
+                        <input id="ahmjxttm020p01Keyword" type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary large-button" type="button" onclick="$('#ahmjxttm020p01TableRencanaAktivitas').bootstrapTable('refresh');">Search</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <table id="ahmjxttm020p01TableDelete" 
+                       data-source-id="ahmjxttm020p01TableRoleAccess" 
+                       data-unique-id="vid"
+                       data-pagination="true"
+                       data-page-size="5">
+                    <thead>
+                        <tr>
+                            <th data-field="vrolesId" 
+                                data-sortable="false" 
+                                data-visible="true"
+                                >ID Role</th>
+                            <th data-field="vrolesName" 
+                                data-sortable="false" 
+                                data-visible="true"
+                                >Nama Role</th>
+                            <th data-field="vmenuid"                            
+                                data-sortable="true"
+                                >ID Menu</th>
+                            <th data-field="vtitle"                            
+                                data-sortable="true"
+                                >Judul Menu</th>
+                            <th data-field="vaction"
+                                data-formatter="actionRemoveFormatter"
+                                data-events="actionEvents">Action
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+
+        </div> -->
+
+        <!-- <div class="form-group-button">
+            <button id="ahmjxuam006BtnAdd" class="btn btn-default btn-primary large-button" onclick="ahmjxuam006PrepareAdd(this);">Add</button>
+            <button class="btn btn-default btn-primary large-button" onclick="ahmjxuam006DeleteKonfirm(this);return false;">Delete</button>
+        </div> -->
+        <div class="row">
+    		<!-- <div class="form-horizontal"> -->
+            	<div class="col-md-5">
+            		<div class="input-group pull-left">
+	                    <span class="input-group-addon" style="border:none; !important"><span>Area</span></span>
+	                    <div class="form-control" style="border:none; !important">
+		                    <select class="input-sm col-md-6">
+		                        <option value="1">option 1</option>
+		                        <option value="2">option 2</option>
+		                        <option value="3">option 3</option>
+		                    </select>
+		                    <select class="input-sm col-md-6">
+		                        <option value="1">option 1</option>
+		                        <option value="2">option 2</option>
+		                        <option value="3">option 3</option>
+		                    </select>
+	                    </div>
+	                </div>
+				</div>
+				<div class="col-md-4 large-font">
+					Consumer Rate :
+				</div>
+
+	            <div class="col-md-3 nopadding">
+	            	<!-- <div class="input-group "> -->
+	            	<div class="form-group-button pull-right">
+            			<button class="btn btn-default btn-primary large-button" onclick="ahmjxuam002Add(this);return false;">Tambah</button>
+            			<button class="btn btn-default btn-primary large-button" onclick="ahmjxuam002DisableKonfirm(this);return false;">Ubah</button>
+            			<button class="btn btn-default btn-primary large-button" onclick="ahmjxuam002DisableKonfirm(this);return false;">Hapus</button>
+        			</div>
+	                    
+	                <!-- </div> -->
+				</div>
+            <!-- </div> -->
+
+
+        </div>
+        <br/>
+        <div id="table-container">
+
+            <table id="ahmjxttm020p01TableRoleAccess"
+                   data-method="post"
+                   data-url="/uam006/paging"
+                   data-content-type="application/json"
+                   data-data-type="json"
+                   data-query-params-type="limit"
+                   data-query-params="ahmjxuam006Presearch"
+                   data-response-handler="loadData"
+                   data-side-pagination="server"
+                   data-pagination="true"
+                   data-page-size="5"
+                   data-page-list="[5,10,15]"  
+                   data-unique-id="vid"
+                   data-checkbox-table="ahmjxuam006p01TableDelete"
+                   >
+                <thead>
+                    <tr>       
+                        <th data-field="state" 
+                            data-checkbox="true"></th>
+                        <th data-field="vidAhmjxuamMstroles" 
+                            data-visible="false"
+                            >VID Role</th>
+                        <th data-field="vrolesId" 
+                            data-sortable="true" 
+                            >Type Aktivitas</th>
+                        <th data-field="vrolesName" 
+                            data-sortable="true"
+                            >Lokasi</th>
+                        <th data-field="vidAhmjxuamMstmenus" 
+                            data-sortable="true"
+                            >Durasi</th>
+                        <th data-field="vmenuid"                            
+                            data-sortable="true"
+                            >Database/Hari</th>           
+                        <th data-field="vtitle" 
+                            data-sortable="true"
+                            >Slaes/Hari</th>
+                        <th data-field="iver" 
+                            data-sortable="true"
+                            >Biaya/Hari</th>
+                        <th data-field="iver" 
+                            data-sortable="true"
+                            >Sales est</th>
+                    </tr>
+                </thead>
+
+            </table>
+        </div>
     </div>
 </div>
-
