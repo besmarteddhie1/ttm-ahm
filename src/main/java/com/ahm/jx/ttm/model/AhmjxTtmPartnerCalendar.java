@@ -14,4 +14,5 @@ public class AhmjxTtmPartnerCalendar extends AhmJxMstCalendar {
 	@ManyToOne
 	@JoinColumn(name="vuidpartner")
 	private AhmjxTtmPartner partner;
+
 }
