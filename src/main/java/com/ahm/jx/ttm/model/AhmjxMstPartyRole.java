@@ -24,6 +24,10 @@ public class AhmjxMstPartyRole extends BaseEntity {
     @JoinColumn(name="idparty")
     private AhmjxMstParty party;
 	
+	public AhmjxMstParty getParty() {
+		return party;
+	}
+
 	public PartyRoleId getIdPartyRole() {
 		return idPartyRole;
 	}
@@ -36,8 +40,7 @@ public class AhmjxMstPartyRole extends BaseEntity {
 		this.party = party;
 	}
 
-	public AhmjxMstPartyRole() {
-	}
+	
 	
 
 	@Override
