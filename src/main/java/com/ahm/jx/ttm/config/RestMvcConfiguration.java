@@ -11,6 +11,8 @@ import com.ahm.jx.ttm.model.AhmjxMstPartyCategory;
 import com.ahm.jx.ttm.model.AhmjxMstPartyCategoryType;
 import com.ahm.jx.ttm.model.AhmjxMstPerson;
 import com.ahm.jx.ttm.model.AhmjxMstProductCategoryType;
+import com.ahm.jx.ttm.model.AhmjxttmKabupaten;
+import com.ahm.jx.ttm.model.AhmjxttmProvince;
 
 @Configuration
 @EnableSpringDataWebSupport
@@ -27,7 +29,9 @@ public class RestMvcConfiguration extends RepositoryRestMvcConfiguration {
 	    		AhmjxMstPartyCategory.class,
 	    		AhmjxMstPerson.class,
 	    		AhmjxMstOrganization.class,
-	    		AhmjxMstProductCategoryType.class);
+	    		AhmjxMstProductCategoryType.class,
+	    		AhmjxttmProvince.class,
+	    		AhmjxttmKabupaten.class);
 	    return config;
 	}
 }
