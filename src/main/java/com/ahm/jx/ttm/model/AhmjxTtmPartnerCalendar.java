@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="ahmjxttm_partner_calendar")
-public class AhmjxTtmPartnerCalendar extends AhmJxMstCalendar {
+public class AhmjxTtmPartnerCalendar extends AhmjxMstCalendar {
 
 	private static final long serialVersionUID = 8092524056193275862L;
 

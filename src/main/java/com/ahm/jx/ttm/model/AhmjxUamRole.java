@@ -7,12 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-
-import com.ahm.jx.ttm.model.AhmBaseEntity;
-import com.ahm.jx.ttm.model.AhmjxUamMenu;
 
 @Entity
 @Table(name="ahmjxuam_mstroles")

@@ -3,7 +3,6 @@ package com.ahm.jx.ttm.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -11,28 +10,31 @@ import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name="ahmjxmst_rules")
+@Table(name="ahmjxmst_facility")
 @Inheritance(strategy=InheritanceType.JOINED)
-public class AhmJxMstRule extends BaseEntity {
+public class AhmjxMstFacility extends BaseEntity {
 
 	private static final long serialVersionUID = 3446937428286212535L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="idrule", nullable = false)
-	private Integer idRule;
+	@GeneratedValue(generator = "uuid2")
+	@GenericGenerator(name = "uuid2", strategy = "uuid2")
+	@Column(name="vidfacility", nullable = false)
+	private String idFacility;
 	
-	@Column(name="description")
+	@Column(name="vdescription")
 	private String description;	
 		
-	public Integer getIdRule() {
-		return idRule;
+
+	public String getIdFacility() {
+		return idFacility;
 	}
 
-	public void setIdRule(Integer idRule) {
-		this.idRule = idRule;
+	public void setIdFacility(String idFacility) {
+		this.idFacility = idFacility;
 	}
 
 	public String getDescription() {
@@ -46,16 +48,16 @@ public class AhmJxMstRule extends BaseEntity {
 	@Override
 	public int hashCode() {
 		return new HashCodeBuilder()
-			.append(getIdRule())
+			.append(getIdFacility())
 			.toHashCode();
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof AhmJxMstRule)) return false;
-		AhmJxMstRule other = (AhmJxMstRule) obj;
+		if (!(obj instanceof AhmjxMstFacility)) return false;
+		AhmjxMstFacility other = (AhmjxMstFacility) obj;
 		return new EqualsBuilder()
-			.append( getIdRule(), other.getIdRule() )
+			.append( getIdFacility(), other.getIdFacility() )
 			.isEquals();
 	}		
 

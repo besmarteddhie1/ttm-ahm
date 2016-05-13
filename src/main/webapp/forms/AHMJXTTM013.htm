@@ -1,0 +1,363 @@
+<div id="AHMJXTTM013" class="div-app" data-version="1.0">
+	<div class="global_message">
+
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="tab-content">
+				<div id="menu1" class="tab-pane fade in active ">
+					<div class="col-md-12">
+						<div id="ahmjxttm013p01" class="subpage subpage-default" data-path="">
+							<div class="row hidden" >
+								
+								<div class="col-md-6" >
+									<table id="ahmjxttm013TableDisable" 
+									data-source-id="ahmjxttm013Table" 
+									data-unique-id="idCategory"
+									data-pagination="true"
+									data-page-size="5">
+									<thead>
+									</thead>
+								</table>
+							</div>
+						</div>
+						<div class="form-group-button pull-right">
+							<button class="btn btn-default btn-primary large-button" onclick="ahmjxttm013Add(this);return false;">Simpan</button>
+						</div>
+						
+						<div id="table-container">
+							<table id="ahmjxttm013Table"
+							data-method="get"
+							data-url="/api/ttm001/dc"
+							data-content-type="application/json"
+							data-data-type="json"
+							data-pagination="true"
+							data-page-size="10"
+							data-page-list="[10,25,50]"
+							data-custom-action="edit, delete"
+							data-checkbox-table="ahmjxttm013TableDisable"
+							data-unique-id="idCategory">
+							<thead>
+								<tr>
+									<th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
+									<th data-field="idCategory" data-sortable="true" data-visible="false">ID</th>
+									<th data-field="description" data-sortable="true" data-visible="true">Kecamatan</th>
+									<th data-field="salesQty" data-sortable="true" data-visible="true">Consumer Rate</th>
+								</tr>
+							</thead>
+							
+						</table>
+					</div>
+				</div>
+				<div id="ahmjxttm013p02" class="subpage" data-path="">
+					<form class="form-horizontal">
+						<div class="form-group-button">
+							<button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="ahmjxttm013AddNew(this);return false;" style="display: none">Simpan</button>
+							<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="ahmjxttm013AddData(this);_subpage(this, 'ahmjxttm013p01');return false;">Simpan</button>
+							<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'ahmjxttm013p01');return false;">Batal</button>
+						</div>
+						<input id="ahmjxttm013p02id" type="hidden" name="id" >
+						<div class="form-group large-font">
+							<label for="ahmjxttm013p02Brand" class="col-sm-3 control-label">Brand <span style="color:red">*)</span></label>
+							<div class="col-sm-6">
+								<input id="ahmjxttm013p02Brand" name="brand" class="form-control" readonly>
+							</div>
+						</div>
+						<div class="form-group large-font">
+							<label for="ahmjxttm013p02NamePos" class="col-sm-3 control-label">Nama Pos </label>
+							<div class="col-sm-6">
+								<input id="ahmjxttm013p02NamePos" name="namePos" class="form-control">
+							</div>
+						</div>
+						<div class="form-group large-font">
+							<label for="ahmjxttm013p02Prov" class="col-sm-3 control-label">Provinsi </label>
+							<div class="col-sm-6">
+								<input id="ahmjxttm013p02Prov" name="prov" class="form-control">
+							</div>
+						</div>
+						<div class="form-group large-font">
+							<label for="ahmjxttm013p02Kab" class="col-sm-3 control-label">Kabupaten </label>
+							<div class="col-sm-6">
+								<input id="ahmjxttm013p02Kab" name="kab" class="form-control">
+							</div>
+						</div>
+						<div class="form-group large-font">
+							<label for="ahmjxttm013p02Kec" class="col-sm-3 control-label">Kecamatan </label>
+							<div class="col-sm-6">
+								<input id="ahmjxttm013p02Kec" name="kec" class="form-control">
+							</div>
+						</div>
+						<div class="form-group large-font">
+							<label for="ahmjxttm013p02Kel" class="col-sm-3 control-label">Kelurahan</label>
+							<div class="col-sm-6">
+								<input id="ahmjxttm013p02Kel" name="kel" class="form-control">
+							</div>
+						</div>
+						<div class="form-group large-font">
+							<label for="ahmjxttm013p02alamatPos" class="col-sm-3 control-label">Alamat Pos </label>
+							<div class="col-sm-6">
+								<input id="ahmjxttm013p02alamatPos" name="alamatPos" class="form-control">
+							</div>
+						</div>
+						<div class="form-group large-font">
+							<label for="ahmjxttm013p02Telp" class="col-sm-3 control-label">Telp </label>
+							<div class="col-sm-6">
+								<input id="ahmjxttm013p02Telp" name="telp" class="form-control">
+							</div>
+						</div>
+						<div class="form-group large-font">
+							<label for="ahmjxttm013p02koordinat" class="col-sm-3 control-label">Koordinat </label>
+							<div class="col-sm-6">
+								<input id="ahmjxttm013p02Lat" name="lat" size="21.5">
+								<input id="ahmjxttm013p02Lon" name="lon" size="21.5">
+							</div>
+						</div>
+					</form>
+				</div>
+				<div id="ahmjxttm013p03" class="subpage" data-path="">
+					<form class="form-horizontal">
+						<div class="form-group-button">
+							<button name="btnAddNew" class="btn btn-default btn-primary large-button" onclick="ahmjxttm013AddNew(this);return false;" style="display: none">Simpan</button>
+							<button name="btnSubmit" class="btn btn-default btn-primary large-button" onclick="ahmjxttm013AddData(this);_subpage(this, 'ahmjxttm013p01');return false;">Simpan</button>
+							<button class="btn btn-default btn-primary large-button" onclick="_subpage(this, 'ahmjxttm013p01');return false;">Batal</button>
+						</div>
+						<input id="ahmjxttm013p02id" type="hidden" name="id" >
+						<div class="form-group large-font">
+							<label for="ahmjxttm013p02Brand" class="col-sm-3 control-label">Brand <span style="color:red">*)</span></label>
+							<div class="col-sm-6">
+								<input id="ahmjxttm013p02Brand" name="brand" class="form-control" readonly>
+							</div>
+						</div>
+						<div class="form-group large-font">
+							<label for="ahmjxttm013p02NamePos" class="col-sm-3 control-label">Nama Pos </label>
+							<div class="col-sm-6">
+								<input id="ahmjxttm013p02NamePos" name="namePos" class="form-control">
+							</div>
+						</div>
+						<div class="form-group large-font">
+							<label for="ahmjxttm013p02Prov" class="col-sm-3 control-label">Provinsi </label>
+							<div class="col-sm-6">
+								<input id="ahmjxttm013p02Prov" name="prov" class="form-control">
+							</div>
+						</div>
+						<div class="form-group large-font">
+							<label for="ahmjxttm013p02Kab" class="col-sm-3 control-label">Kabupaten </label>
+							<div class="col-sm-6">
+								<input id="ahmjxttm013p02Kab" name="kab" class="form-control">
+							</div>
+						</div>
+						<div class="form-group large-font">
+							<label for="ahmjxttm013p02Kec" class="col-sm-3 control-label">Kecamatan </label>
+							<div class="col-sm-6">
+								<input id="ahmjxttm013p02Kec" name="kec" class="form-control">
+							</div>
+						</div>
+						<div class="form-group large-font">
+							<label for="ahmjxttm013p02Kel" class="col-sm-3 control-label">Kelurahan</label>
+							<div class="col-sm-6">
+								<input id="ahmjxttm013p02Kel" name="kel" class="form-control">
+							</div>
+						</div>
+						<div class="form-group large-font">
+							<label for="ahmjxttm013p02alamatPos" class="col-sm-3 control-label">Alamat Pos </label>
+							<div class="col-sm-6">
+								<input id="ahmjxttm013p02alamatPos" name="alamatPos" class="form-control">
+							</div>
+						</div>
+						<div class="form-group large-font">
+							<label for="ahmjxttm013p02Telp" class="col-sm-3 control-label">Telp </label>
+							<div class="col-sm-6">
+								<input id="ahmjxttm013p02Telp" name="telp" class="form-control">
+							</div>
+						</div>
+						<div class="form-group large-font">
+							<label for="ahmjxttm013p02koordinat" class="col-sm-3 control-label">Koordinat </label>
+							<div class="col-sm-6">
+								<input id="ahmjxttm013p02Lat" name="lat" size="21.5">
+								<input id="ahmjxttm013p02Lon" name="lon" size="21.5">
+							</div>
+						</div>
+						
+					</form>
+
+				</div>
+				<div id="map" class="smallmap"></div>
+				
+			</div>
+			
+			
+			
+		</div>
+	</div>
+</div> <!-- end of tab-content -->
+</div>
+</div>
+
+<script type="text/javascript">
+
+	function _subpage(obj, id, row){
+		_fw_setMessage(obj);
+		var parent = $(obj).closest('.menu*');
+		console.log(parent);
+		if(parent.html() == undefined) {
+			parent = $(obj).closest('.tab-pane');
+		}
+		$('.subpage.subpage-default', parent).removeClass('subpage-default');
+		var targetSubpage = $('#'+id);
+		_fw_validation_clear(targetSubpage);
+		$(targetSubpage).addClass('subpage-default');
+		
+		automaticFill(row, targetSubpage);
+		
+	}
+
+	var xdata;
+	//var SOURCE= CLIPBOARD = null;
+	var SOURCE = [
+	{title: "DKI Jakarta",id:"1",children: [
+	{title: "Jakarta Pusat",id:"2",children:[
+	{title: "Senen",id:"3",lat:"-42.088534",lon:"146.596076"},
+	{title: "Kramat",id:"8",lat:"-42.984253",lon:"146.96765"},
+	{title: "Gunung Sahari",id:"9",lat:"-42.660900",lon:"146.1096633"},
+	{title: "Menteng",id:"10",lat:"-41.088534",lon:"146.596076"},			                             		                                 		      
+	]},
+	{title: "Jakarta Timur",id:"11"},
+	{title: "Jakarta Utara",id:"12"},
+	{title: "Jakarta Selatan",id:"13"},
+	{title: "Jakarta Barat",id:"14"},		                               		        		     
+	]},
+	{title: "Jawa Barat",id:"4"},
+	{title: "Jawa Timur",id:"5"},
+	{title: "Banten",id:"6"},
+	{title: "DI Yogyakarta",id:"7"}
+	
+	],
+	CLIPBOARD = null;
+
+	
+	$(function(){
+		$(".nav-tabs a").click(function(){
+			$(this).tab('show');
+		});
+
+	/* $.ajax({type: "GET",url: baseURL+"/api/ttm001/sf",contentType: "application/json",
+			dataType: 'json',async: false,data: JSON.stringify()})
+		.done(function(data){
+			var parsed = JSON.parse(JSON.stringify(data), function(k, v) {
+				if (k === "description") 
+					this.title = v;
+				else if (k === "categories")
+					this.children = v;
+				else
+					return v;}
+			);
+			x = parsed;
+			console.log("source==>",SOURCE);
+		}) ;  */
+
+	$("#tree6").fancytree({
+		source: SOURCE,
+		activate: function(event, data) {
+			var node = data.node;
+			
+		},
+	});
+});
+
+	function ahmjxttm013Add(obj){
+		var page = $('#ahmjxttm013p02');
+		$('input, select', page).prop('disabled',false);
+		_fw_reset_subpage(page);
+		_subpage(obj, 'ahmjxttm013p02');
+		$('button[name="btnAddNew"]', page).hide();
+		$('button[name="btnSubmit"]', page).show();
+	}
+
+	function ahmjxttm013AddData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'ahmjxttm013p02Description', 'required');
+		_fw_validation_add(obj, 'ahmjxttm013p02SalesQty', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+			//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+			vo.idCategoryType = 101;
+			vo.idParentCategory = 0;
+			vo.description = $('input[id="ahmjxttm013p02Description"]', page).val();
+			vo.salesQty = $('input[id="ahmjxttm013p02SalesQty"]', page).val();
+			
+			console.log(vo);
+
+			$.ajax
+			({
+				type: "POST",
+				url: "/ahmjxdsh000/api/partycategory",
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#ahmjxttm013Table').bootstrapTable('refresh');
+				},
+			});
+		}
+	}
+
+	/* function menu1Edit(obj, row, index){
+		_subpage(obj, 'menu1p03', row);
+	} */
+	
+	function ahmjxttm013Edit(obj){
+		
+		var editedRows = $('#ahmjxttm013TableDisable').bootstrapTable('getData');
+		console.log("edited==>",editedRows);
+		if (editedRows.length == 1)
+		{
+			_subpage(obj,'ahmjxttm013p03', editedRows[0]);
+			
+		}
+		else
+			alert("Pilih salah satu item jika ingin mengubah.");
+	}
+
+	function ahmjxttm013EditData(obj)
+	{
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'ahmjxttm013p03Description', 'required');
+		_fw_validation_add(obj, 'ahmjxttm013p03SalesQty', 'required');
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+				//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+				//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+				vo.idCategory = $('input[name="idCategory"]', page).val();
+				vo.idCategoryType = 101;
+				vo.idParentCategory = 0;
+				vo.description = $('input[id="ahmjxttm013p03Description"]', page).val();
+				vo.salesQty = $('input[id="ahmjxttm013p03SalesQty"]', page).val();
+
+				$.ajax
+				({
+					type: "PUT",
+					url: "/ahmjxdsh000/api/partycategory/" + vo.idCategory,
+					contentType: "application/json",
+					dataType: 'json',
+					data: JSON.stringify(vo),
+					success:function(data){
+						_fw_setMessage(obj,1,"Success");
+						$('#ahmjxttm013Table').bootstrapTable('refresh');
+					},
+				});
+			} 
+		}
+
+		
+
+		
+		
+
+	</script>
