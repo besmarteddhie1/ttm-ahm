@@ -46,4 +46,5 @@ public class UamuserController {
    public AhmjxUamUser user(@PathVariable("name") String userName) {
        return uamuserRepository.findOneByUserName(userName);
    }
+   
 }

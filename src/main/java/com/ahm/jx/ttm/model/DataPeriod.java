@@ -12,7 +12,11 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.joda.time.DateTime;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Embeddable
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
 public class DataPeriod implements Serializable {
 	
 	private static final long serialVersionUID = 721872476808289116L;
