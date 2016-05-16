@@ -43,9 +43,9 @@ public class AhmjxMstDealerClassRule extends BaseEntity {
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="idRule", updatable=false, insertable=false)
-	private AhmJxMstRule rule;
+	private AhmjxMstRule rule;
 	
-	public void setRule(AhmJxMstRule rule) {
+	public void setRule(AhmjxMstRule rule) {
 		this.rule = rule;
 	}
 

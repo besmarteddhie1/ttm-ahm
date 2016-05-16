@@ -15,7 +15,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table(name="ahmjxmst_dealer_calendar")
 @Inheritance(strategy=InheritanceType.JOINED)
-public class AhmJxMstCalendar extends BaseEntity {
+public class AhmjxMstCalendar extends BaseEntity {
 		
 	private static final long serialVersionUID = -1395780620483866551L;
 
@@ -91,8 +91,8 @@ public class AhmJxMstCalendar extends BaseEntity {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof AhmJxMstCalendar)) return false;
-		AhmJxMstCalendar other = (AhmJxMstCalendar) obj;
+		if (!(obj instanceof AhmjxMstCalendar)) return false;
+		AhmjxMstCalendar other = (AhmjxMstCalendar) obj;
 		return new EqualsBuilder()
 			.append( getIdCalendar(), other.getIdCalendar() )
 			.isEquals();

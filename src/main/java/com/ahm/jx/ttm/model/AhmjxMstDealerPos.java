@@ -19,7 +19,7 @@ public class AhmjxMstDealerPos extends BaseEntity {
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
 	@Column(name="idDealerPos")
-	private Integer idDealerPos;
+	private String idDealerPos;
 		
 	@Column(name="nameDealerPos")
 	private String nameDealerPos;
@@ -48,14 +48,15 @@ public class AhmjxMstDealerPos extends BaseEntity {
 	@Column(name="lat")
 	private String lat;
 	
+
 	@Column(name="longi")
 	private String longi;
 
-	public Integer getIdDealerPos() {
+	public String getIdDealerPos() {
 		return idDealerPos;
 	}
 
-	public void setIdDealerPos(Integer idDealerPos) {
+	public void setIdDealerPos(String idDealerPos) {
 		this.idDealerPos = idDealerPos;
 	}
 

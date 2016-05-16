@@ -13,4 +13,5 @@ public interface AhmjxMstMotorRepository extends JpaRepository<AhmjxMstMotor, In
 	
 	//@Query("select r AhmjxMstMotor r")
     //public List<AhmjxMstMotor> queryById();
+
 }

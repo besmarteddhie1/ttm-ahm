@@ -19,7 +19,7 @@ public class AhmjxMstCompetitor extends BaseEntity {
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
 	@Column(name="idCompetitor")
-	private Integer idCompetitor;
+	private String idCompetitor;
 	
 	@Column(name="brand")
 	private String brand;
@@ -51,11 +51,11 @@ public class AhmjxMstCompetitor extends BaseEntity {
 	@Column(name="longi")
 	private String longi;
 
-	public Integer getIdCompetitor() {
+	public String getIdCompetitor() {
 		return idCompetitor;
 	}
 
-	public void setIdCompetitor(Integer idCompetitor) {
+	public void setIdCompetitor(String idCompetitor) {
 		this.idCompetitor = idCompetitor;
 	}
 
