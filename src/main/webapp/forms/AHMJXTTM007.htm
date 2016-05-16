@@ -83,10 +83,8 @@
 						<div class="form-group large-font">
 							<label for="ahmjxttm007p02Provinsi" class="col-sm-3 control-label">Provinsi <span style="color:red">*)</span></label>
 							<div class="col-sm-6">
-								<select id="ahmjxttm007p02Provinsi" name="provinsi" class="form-control">
-									<option>DKI Jakarta 1</option>
-									<option>DKI Jakarta 2</option>
-									<option>DKI Jakarta 3</option>
+								<select id="ahmjxttm007p02Provinsi" name="provinsi" class="form-control" onchange="ahmjxttm007GetKabupaten(this);">
+									<option>Pilih Provinsi</option>
 								</select>
 							</div>
 						</div>
@@ -94,14 +92,14 @@
 						<div class="form-group large-font">
 							<label for="ahmjxttm007p02Kabupaten" class="col-sm-3 control-label">Kabupaten <span style="color:red">*)</span></label>
 							<div class="col-sm-6">
-								<select id="ahmjxttm007p02Kabupaten" name="kabupaten" class="form-control">
+								<select id="ahmjxttm007p02Kabupaten" name="kabupaten" class="form-control" onchange="ahmjxttm007GetKecamatan(this);">
 									<option>Pilih Kabupaten</option>
 								</select>
 							</div>
 						</div>
 						
 						<div class="form-group large-font">
-							<label for="name="category" " class="col-sm-3 control-label">Kecamatan <span style="color:red">*)</span></label>
+							<label for="ahmjxttm007p02Kecamatan" class="col-sm-3 control-label">Kecamatan <span style="color:red">*)</span></label>
 							<div class="col-sm-6">
 								<select id="ahmjxttm007p02Kecamatan" class="form-control" name="kecamatan">
 									<option>Pilih Kecamatan</option>
@@ -150,11 +148,7 @@
 						<div class="form-group large-font">
 							<label for="ahmjxttm007p02Provinsi" class="col-sm-3 control-label">Provinsi <span style="color:red">*)</span></label>
 							<div class="col-sm-6">
-								<select id="ahmjxttm007p02Provinsi" name="provinsi" class="form-control">
-									<option>DKI Jakarta 1</option>
-									<option>DKI Jakarta 2</option>
-									<option>DKI Jakarta 3</option>
-								</select>
+								<select id="ahmjxttm007p02Provinsi" name="provinsi" class="form-control"></select>
 							</div>
 						</div>
 						
@@ -168,7 +162,7 @@
 						</div>
 						
 						<div class="form-group large-font">
-							<label for="name="category" " class="col-sm-3 control-label">Kecamatan <span style="color:red">*)</span></label>
+							<label for="ahmjxttm007p02Kecamatan" class="col-sm-3 control-label">Kecamatan <span style="color:red">*)</span></label>
 							<div class="col-sm-6">
 								<select id="ahmjxttm007p02Kecamatan" class="form-control" name="kecamatan">
 									<option>Pilih Kecamatan</option>
@@ -211,6 +205,7 @@
 
 	$(document).ready(function() {
 		ahmjxttm007GetFacilityType(this);
+		ahmjxttm007GetProvince(this);
 	});
 
 	function _subpage(obj, id, row){
@@ -296,6 +291,65 @@
 				//$("#ahmjxttm007p01Kategori")
 				$.each(data, function(i, value) {
 		            $('#ahmjxttm007p01Kategori').append($('<option>').text(value.category).attr('value', value.category));
+		        });
+			},
+		});
+	}
+	
+	function ahmjxttm007GetProvince(obj){
+		console.log("------> Province");
+		var vo = new Object();
+		$.ajax
+		({
+			type: "GET",
+			url: "/ahmjxdsh000/api/province?page=0&size=100",
+			contentType: "application/json",
+			dataType: 'json',
+			success:function(data){
+				console.log(data._embedded.province);
+				//$("#ahmjxttm007p01Kategori")
+				$.each(data._embedded.province, function(i, value) {
+		            $('#ahmjxttm007p02Provinsi').append($('<option>').text(value.name).attr('value', value.idGeoBoundary));
+		        });
+			},
+		});
+	}
+	
+	function ahmjxttm007GetKabupaten(obj){
+		console.log("------> Kabupaten");
+		var idParentGeoBoundary = $("#ahmjxttm007p02Provinsi").val();
+		//kabupaten/search/findByIdParentGeoBoundary?idParentGeoBoundary=ad969171-18ee-11e6-ada4-001f1616e3d5
+		var vo = new Object();
+		$.ajax
+		({
+			type: "GET",
+			url: "/ahmjxdsh000/api/kabupaten/search/findByIdParentGeoBoundary?idParentGeoBoundary=" + idParentGeoBoundary,
+			contentType: "application/json",
+			dataType: 'json',
+			success:function(data){
+				console.log(data._embedded.kabupaten);
+				//$("#ahmjxttm007p01Kategori")
+				$.each(data._embedded.kabupaten, function(i, value) {
+		            $('#ahmjxttm007p02Kabupaten').append($('<option>').text(value.name).attr('value', value.idGeoBoundary));
+		        });
+			},
+		});
+	}
+	
+	function ahmjxttm007GetKecamatan(obj){
+		console.log("------> Kecamatan");
+		var vo = new Object();
+		$.ajax
+		({
+			type: "GET",
+			url: "/ahmjxdsh000/api/kecamatan?page=0&size=100",
+			contentType: "application/json",
+			dataType: 'json',
+			success:function(data){
+				console.log(data._embedded.kecamatan);
+				//$("#ahmjxttm007p01Kategori")
+				$.each(data._embedded.kecamatan, function(i, value) {
+		            $('#ahmjxttm007p02Kecamatan').append($('<option>').text(value.name).attr('value', value.idGeoBoundary));
 		        });
 			},
 		});

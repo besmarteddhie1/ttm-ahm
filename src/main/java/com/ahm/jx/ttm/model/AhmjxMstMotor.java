@@ -32,15 +32,27 @@ public class AhmjxMstMotor extends AhmjxMstProduct {
 		this.isActive = isActive;
 	}
 	
-	public String getDescriptionSegment() {
+//	public AhmjxMstProductCategory getSegmenta() {
+//		AhmjxMstProductCategory g = getCategory(AhmjxMstProductCategoryType.TYPE_SEGMENT);
+//		if (g != null) return g;
+//		return null;
+//	}
+	
+	public String getCategory() {
 		AhmjxMstProductCategory g = getCategory(AhmjxMstProductCategoryType.TYPE_SEGMENT);
-		if (g != null) return g.getDescription();
-		return null;
+		if (g != null) return g.getCategoryType().getDescription();
+		return null;//"Unknown";
+	}	
+	
+	public String getSegment() {
+		AhmjxMstProductCategory g = getSegment(AhmjxMstProductCategoryType.TYPE_SEGMENT);
+		if (g != null) return g.getDescription(); 
+		return "Unknown";
 	}
 	
-	public String getDescriptionSeri() {
+	public AhmjxMstProductCategory getSeri() {
 		AhmjxMstProductCategory g = getCategory(AhmjxMstProductCategoryType.TYPE_SERI);
-		if (g != null) return g.getDescription();
+		if (g != null) return g;
 		return null;
 	}	
 

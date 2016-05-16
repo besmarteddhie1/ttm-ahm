@@ -1,0 +1,785 @@
+<div id="AHMJXTTM010" class="div-app" data-version="1.0">
+	<div class="global_message">
+
+	</div>
+
+    <div id="ahmjxttm010p01" class="subpage subpage-default" data-path="Data Salespeople">
+	<div class="row">
+		<div class="col-md-4">
+		  		<div class="form-group large-font">
+		  		    <label>Search</label>
+                    <div class="input-group">
+                        <input id="ahmjxuam004p01Search" type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary large-button" type="button" onclick="$('#ahmjxuam004p01SearchTable').bootstrapTable('refresh');">Search</button>
+
+                        </span>
+                    </div>
+                </div>
+					    <span id="matches"></span>
+						<table id="tree3">
+						</table>
+		</div>
+		<div class="col-md-8">
+					<div class="form-group-button pull-right">
+						<button class="btn btn-default btn-primary large-button" onclick="menuAdd(this);return false;">Tambah</button>
+						<button class="btn btn-default btn-primary large-button" onclick="menuEdit(this);return false;">Ubah</button>
+						<button class="btn btn-default btn-primary large-button" onclick="menuDelete(this);return false;">Hapus</button>
+					</div>
+
+					<div id="table-container">
+						<table id="ttm010Table"
+						data-method="get"
+						data-url="/api/ttm001/ring"
+						data-content-type="application/json"
+						data-data-type="json"
+						data-pagination="true"
+						data-page-size="10"
+						data-page-list="[10,25,50]"
+						data-custom-action="edit, delete"
+						data-checkbox-table="menu2TableDisable"
+						data-unique-id="idRing">
+						<thead>
+							<tr>
+							    <th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
+								<th data-field="idRing" data-sortable="true" data-visible="false">ID Ring</th>
+								<th data-field="radius" data-sortable="true" data-visible="false">Radius</th>
+								<th data-field="description" data-sortable="true" data-visible="true">Honda ID</th>
+								<th data-field="description" data-sortable="true" data-visible="true">ID Sementara</th>
+								<th data-field="description" data-sortable="true" data-visible="true">Nama</th>
+								<th data-field="description" data-sortable="true" data-visible="true">Tanggal Lahir</th>
+								<th data-field="description" data-sortable="true" data-visible="true">Jabatan</th>
+							</tr>
+						</thead>
+
+					</table>
+				</div>
+			</div>	
+	</div>
+   </div>
+
+	
+	<div id="ahmjxttm010p02" class="subpage" data-path="Data Salespeople/Tambah Salespeople">
+        <form class="form-horizontal">
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02ApplicationId" class="col-sm-2 control-label" >Honda ID</label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p02ApplicationId" name="vapplicationId" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02MenuId" class="col-sm-2 control-label">ID Sementara</label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p02MenuId" name="vmenuId" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02MenuId" class="col-sm-2 control-label">Nama<span style="color:red"> *)  </span></label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p02MenuId" name="vmenuId" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02MenuId" class="col-sm-2 control-label">Tanggal Lahir</label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p02MenuId" name="vmenuId" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02MenuId" class="col-sm-2 control-label">Tanggal Mulai Kerja</label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p02MenuId" name="vmenuId" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02MenuId" class="col-sm-2 control-label">Tipe Salespeople</label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p02MenuId" name="vmenuId" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02MenuId" class="col-sm-2 control-label">Jabatan</label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p02MenuId" name="vmenuId" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-offset-2 col-sm-6 form-group-button">
+                <button id="ahmjxuam004p02BtnAddNew" class="btn btn-primary large-button" style="display: none" onclick="ahmjxuam004AddNew(this);return false;">Add New</button>
+                <button id="ahmjxuam004p02BtnSubmit" class="btn btn-primary large-button" onclick="ahmjxuam004AddData(this); return false;">Submit</button>
+                <button id="ahmjxuam004p02BtnBack" class="btn btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxttm010p01');return false;">Back</button>
+            </div>
+        </form>
+    </div>
+    
+    <div id="ahmjxttm010p03" class="subpage" data-path="Data Salespeople/Edit Salespeople">
+        <form class="form-horizontal">
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02ApplicationId" class="col-sm-2 control-label" >Honda ID</label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p02ApplicationId" name="vapplicationId" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02MenuId" class="col-sm-2 control-label">ID Sementara</label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p02MenuId" name="vmenuId" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02MenuId" class="col-sm-2 control-label">Nama <span style="color:red"> *)  </span></label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p02MenuId" name="vmenuId" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02MenuId" class="col-sm-2 control-label">Tanggal Lahir</label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p02MenuId" name="vmenuId" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02MenuId" class="col-sm-2 control-label">Tanggal Mulai Kerja</label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p02MenuId" name="vmenuId" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02MenuId" class="col-sm-2 control-label">Tipe Salespeople</label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p02MenuId" name="vmenuId" class="form-control">
+                </div>
+            </div>
+            <div class="form-group large-font">
+                <label for="ahmjxuam004p02MenuId" class="col-sm-2 control-label">Jabatan</label>
+                <div class="col-sm-6">
+                    <input id="ahmjxuam004p02MenuId" name="vmenuId" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-offset-2 col-sm-6 form-group-button">
+                <button id="ahmjxuam004p02BtnAddNew" class="btn btn-primary large-button" style="display: none" onclick="ahmjxuam004AddNew(this);return false;">Add New</button>
+                <button id="ahmjxuam004p02BtnSubmit" class="btn btn-primary large-button" onclick="ahmjxuam004AddData(this); return false;">Submit</button>
+                <button id="ahmjxuam004p02BtnBack" class="btn btn-primary large-button" onclick="_fw_subpage(this, 'ahmjxttm010p01');return false;">Back</button>
+            </div>
+        </form>
+    </div>
+    
+</div>
+</div> <!-- end of tab-content -->
+
+</div>
+</div>
+
+
+</div>
+
+<script type="text/javascript">
+	var xdata;
+	//var SOURCE= CLIPBOARD = null;
+		var SOURCE = [
+		    {title: "DKI Jakarta",id:"1",lat:"-6.230357",lon:"106.829483",level:1,children: [
+		      {title: "Jakarta Pusat",id:"2",lat:"-6.182313",lon:"106.836494",level:2,children:[
+				 {title: "Senen",id:"3",lat:"-6.176315",lon:"106.843433",level:3},
+				 {title: "Kramat",id:"8",lat:"-6.048465",lon:"106.606314",level:3},
+				 {title: "Gunung Sahari",id:"9",lat:"-6.160992",lon:"106.846191",level:3},
+				 {title: "Menteng",id:"10",lat:"-6.593396",lon:"106.777493",level:3},			                             		                                 		      
+		        ]},
+			    {title: "Jakarta Timur",id:"11"},
+			    {title: "Jakarta Utara",id:"12"},
+			    {title: "Jakarta Selatan",id:"13"},
+			    {title: "Jakarta Barat",id:"14"},		                               		        		     
+		      ]},
+		    {title: "Jawa Barat",id:"4"},
+		    {title: "Jawa Timur",id:"5"},
+		    {title: "Banten",id:"6"},
+		    {title: "DI Yogyakarta",id:"7"}
+		     
+		  ],
+		  CLIPBOARD = null;
+		  
+	$(function(){
+		$(".nav-tabs a").click(function(){
+		$(this).tab('show');
+	});
+
+	
+
+	$("#tree3").fancytree({
+		source: SOURCE,
+		 activate: function(event, data) {
+		       var node = data.node;
+		       setFocus(node.data.lon,node.data.lat,node.data.level);
+		      },
+		});
+
+	});
+
+  
+
+</script>
+
+
+<!-- ---------------------------------------------------------------------- -->
+
+<script type="text/javascript">
+/**
+ * ADD
+ *
+ **/
+	
+	function menuAdd(obj){
+		var page = $('#ahmjxttm010p02');
+		$('input, select', page).prop('disabled',false);
+		_fw_reset_subpage(page);
+		_fw_subpage(obj, 'ahmjxttm010p02');
+		$('button[name="btnAddNew"]', page).hide();
+		$('button[name="btnSubmit"]', page).show();
+	}
+
+	function menu2AddData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu2p02Description', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			vo.description = $('input[id="menu2p02description"]', page).val();
+			vo.radius = 0;
+			
+			console.log(vo);
+
+			$.ajax
+			({
+				type: "POST",
+				url: "/ahmjxdsh000/api/ringtype",
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu2Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+
+	function menuEdit(obj, row, index){
+		var editedRows = $('#ttm010Table').bootstrapTable('getData');
+		console.log("edited==>",editedRows);
+		if (editedRows.length >= 1)
+			{
+			_fw_subpage(obj,'ahmjxttm010p03', editedRows[0]);
+			
+			}
+		else
+			alert("Pilih salah satu item jika ingin mengubah.");
+	}
+	
+	function menu2EditData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu2p03Description', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+			//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+			vo.idRing = $('input[name="idRing"]', page).val();;
+			vo.description = $('input[id="menu2p03Description"]', page).val();
+			vo.radius = 0;
+			
+			$.ajax
+			({
+				type: "PUT",
+				url: "/ahmjxdsh000/api/ringtype/" + vo.idRing,
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu2Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+	
+	
+	function menu2Delete(obj){
+		var deletedRows = $('#menu2TableDisable').bootstrapTable('getData');
+		if(deletedRows.length > 0) {
+			for(var i=0;i<deletedRows.length;i++)
+				{
+					var idx = deletedRows[i].idRing;
+					$.ajax
+					({
+						type: "DELETE",
+						url: "/ahmjxdsh000/api/ringtype/" + idx,
+						contentType: "application/json",
+						dataType: 'json',
+						data: JSON.stringify(),
+						success:function(data){		
+							$('#menu2Table').bootstrapTable('refresh');
+							_fw_setMessage(obj,1,"Success");			
+						  },
+					});			
+				}
+			} else {
+			alert('no data selected');
+		}
+	}
+</script>
+
+<!-- ---------------------------------------------------------------------- -->
+
+<script type="text/javascript">
+/**
+ * WORK EFFORT
+ *
+ **/
+	
+	function menu4Add(obj){
+		var page = $('#menu4p02');
+		$('input, select', page).prop('disabled',false);
+		_fw_reset_subpage(page);
+		_subpage(obj, 'menu4p02');
+		$('button[name="btnAddNew"]', page).hide();
+		$('button[name="btnSubmit"]', page).show();
+	}
+
+	function menu4AddData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu4p02Description', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			vo.description = $('input[id="menu4p02Description"]', page).val();
+			vo.radius = 0;
+			
+			console.log(vo);
+
+			$.ajax
+			({
+				type: "POST",
+				url: "/ahmjxdsh000/api/wetype",
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu4Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+
+	function menu4Edit(obj, row, index){
+		var editedRows = $('#menu4TableDisable').bootstrapTable('getData');
+		if (editedRows.length == 1)
+			{
+			_subpage(obj,'menu4p03', editedRows[0]);
+			
+			}
+		else
+			alert("Pilih salah satu item jika ingin mengubah.");	}
+	
+	function menu4EditData(obj)
+	{
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu4p03Description', 'required');
+		console.log("page==>",page);
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+			//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+			vo.idWeType = $('input[name="idWeType"]', page).val();;
+			vo.description = $('input[id="menu4p03Description"]', page).val();
+			vo.radius = 0;
+			
+			console.log("vo==>",vo);
+
+			$.ajax
+			({
+				type: "PUT",
+				url: "/ahmjxdsh000/api/wetype/" + vo.idWeType,
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu4Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+	
+	function menu4Delete(obj){
+		var disabledRows = $('#menu4TableDisable').bootstrapTable('getData');
+		if(disabledRows.length > 0) {
+			for(var i=0;i<disabledRows.length;i++)
+				{
+					var idx = disabledRows[i].idWeType;
+					$.ajax
+					({
+						type: "DELETE",
+						url: "/ahmjxdsh000/api/wetype/" + idx,
+						contentType: "application/json",
+						dataType: 'json',
+						data: JSON.stringify(),
+						success:function(data){	
+							$('#menu4Table').bootstrapTable('refresh');
+							_fw_setMessage(obj,1,"Success");
+												
+						  },
+					});			
+				}
+			} else {
+			alert('no data selected');
+		}
+	}
+</script>
+
+<!-- ---------------------------------------------------------------------- -->
+
+<script type="text/javascript">
+/**
+ * KATEGORI LOKASI MKT ACT
+ *
+ **/
+	
+
+	function menu5Add(obj){
+		var page = $('#menu5p02');
+		$('input, select', page).prop('disabled',false);
+		_fw_reset_subpage(page);
+		_subpage(obj, 'menu5p02');
+		$('button[name="btnAddNew"]', page).hide();
+		$('button[name="btnSubmit"]', page).show();
+	}
+
+	function menu5AddData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu5p02Category', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			vo.category = $('input[id="menu5p02Category"]', page).val();
+			vo.description = $('input[id="menu5p02Description"]', page).val();
+			vo.radius = 0;
+			
+			console.log(vo);
+
+			$.ajax
+			({
+				type: "POST",
+				url: "/ahmjxdsh000/api/facilitytype",
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu5Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+
+	function menu5Edit(obj, row, index){
+		var editedRows = $('#menu5TableDisable').bootstrapTable('getData');
+		console.log("edited==>",editedRows);
+		if (editedRows.length == 1)
+			{
+			_subpage(obj,'menu5p03', editedRows[0]);
+			
+			}
+		else
+			alert("Pilih salah satu item jika ingin mengubah.");	
+		}
+	
+	function menu5EditData(obj){
+		var page = $(obj).closest('.subpage');
+		_fw_validation_clear(obj);
+		_fw_validation_add(obj, 'menu5p03Category', 'required');
+
+		if(_fw_validation_validate(obj)){
+			var vo = new Object();
+			//vo.idCategoryType = $('input[name="idCategoryType"]', page).val();
+			//vo.idParentCategory = $('input[name="idParentCategory"]', page).val();
+			vo.idFacilityType = $('input[name="idFacilityType"]', page).val();
+			vo.category = $('input[id="menu5p03Category"]', page).val();
+			vo.description = $('input[id="menu5p03Description"]', page).val();
+			
+			console.log(vo);
+
+			$.ajax
+			({
+				type: "PUT",
+				url: "/ahmjxdsh000/api/facilitytype/" + vo.idFacilityType,
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(vo),
+				success:function(data){
+					console.log(data);
+					_fw_setMessage(obj,1,"Success");
+					$('#menu5Table').bootstrapTable('refresh');
+				  },
+			});
+		}
+	}
+	
+	function menu5Delete(obj){
+		var disabledRows = $('#menu5TableDisable').bootstrapTable('getData');
+		if(disabledRows.length > 0) {
+			for(var i=0;i<disabledRows.length;i++)
+				{
+					var idx = disabledRows[i].idFacilityType;
+					$.ajax
+					({
+						type: "DELETE",
+						url: "/ahmjxdsh000/api/facilitytype/" + idx,
+						contentType: "application/json",
+						dataType: 'json',
+						data: JSON.stringify(),
+						success:function(data){	
+							$('#menu5Table').bootstrapTable('refresh');
+							_fw_setMessage(obj,1,"Success");
+						  },
+					});			
+				}
+			} else {
+			alert('no data selected');
+		}
+		
+	}
+</script>
+
+<!-- ---------------------------------------------------------------------- -->
+
+<script type="text/javascript">
+
+	var xdata;
+	var SOURCE= CLIPBOARD = null;
+
+	$(function(){
+		$(".nav-tabs a").click(function(e){
+			e.preventDefault();
+		    $(this).tab('show');	
+		 });
+
+	$.ajax({type: "GET",url: baseURL+"/api/ttm001/sf",contentType: "application/json",
+			dataType: 'json',async: false,data: JSON.stringify()})
+		.done(function(data){
+			var parsed = JSON.parse(JSON.stringify(data), function(k, v) {
+				if (k === "description") 
+					this.title = v;
+				else if (k === "categories")
+					this.children = v;
+				else
+					return v;}
+			);
+			SOURCE = parsed;
+			console.log("source==>",SOURCE);
+	}) ; 
+
+	$("#tree1").fancytree({
+		source: SOURCE,
+		extensions: ["edit"],
+		edit: {
+			triggerStart: ["f2", "shift+click", "mac+enter"],
+			close: function(event, data) {
+				if( data.save ){
+					// Quick-enter: add new nodes until we hit [enter] on an empty title
+					addNode(data.node.title);
+					//$("#tree").trigger("nodeCommand", {cmd: "addSibling"});
+					}
+				}
+	},
+	}).on("click dblclick", function(e){
+		    console.log( e, $.ui.fancytree.eventToString(e) );
+	}).on("nodeCommand", function(event, data){
+		// Custom event handler that is triggered by keydown-handler and
+		// context menu:
+		var refNode, moveMode,
+		tree = $(this).fancytree("getTree"),
+		node = tree.getActiveNode();
+		switch( data.cmd ) {
+		case "moveUp":
+			refNode = node.getPrevSibling();
+			if( refNode ) {
+				node.moveTo(refNode, "before");
+				node.setActive();}
+		break;
+		case "edit":
+			xdata = node;			
+			node.editStart();
+		break;
+		case "delete":
+			refNode = node.getNextSibling() || node.getPrevSibling() || node.getParent();
+			deleteNode(node);
+			node.remove();
+			if( refNode ) {
+				refNode.setActive();
+			}
+		break;
+		case "add":
+			node.data.idCategoryType= null;
+			xdata = node;
+			node.editCreateNode("after", "");
+		break;  
+		default:
+		return;
+		}
+	}).on("keydown", function(e){
+		var cmd = null;
+		// console.log(e.type, $.ui.fancytree.eventToString(e));
+		switch( $.ui.fancytree.eventToString(e) ) {}
+		if( cmd ){
+			$(this).trigger("nodeCommand", {cmd: cmd});
+			  // e.preventDefault();
+			  // e.stopPropagation();
+			return false;
+			}
+		});
+
+	$("#tree1").contextmenu({
+		delegate: "span.fancytree-node",
+		menu: [
+		{title: "Add ", cmd: "add", uiIcon: "ui-icon-plus" },
+		{title: "Edit", cmd: "edit", uiIcon: "ui-icon-pencil" },
+		{title: "Delete", cmd: "delete", uiIcon: "ui-icon-trash" },
+		],
+		beforeOpen: function(event, ui) {
+			var node = $.ui.fancytree.getNode(ui.target);
+			console.log("before open");
+			$("#tree1").contextmenu("enableEntry", "paste", !!CLIPBOARD);
+			node.setActive();
+		},
+
+	select: function(event, ui) {
+	var that = this;
+	  // delay the event, so the menu can close and the click event does
+	  // not interfere with the edit control
+	  setTimeout(function(){
+	  $(that).trigger("nodeCommand", {cmd: ui.cmd});
+	  }, 100);
+		}
+		});
+	});
+
+  function addNode(x){
+
+	  console.log("xdata.data.length==>",xdata);
+	  if (xdata.data.values!=undefined){
+		  var dataAdd = {'parentCategoryType':xdata.data.parentCategoryType,'description':x,"idCategoryType":xdata.data.idCategoryType};
+		  var urlx = baseURL+"/api/partycategorytype";
+	  }
+	  else 
+	  {
+		  if (xdata.data.idCategoryType!=null){var xidcategory = xdata.data.idCategory;}
+		  else {var xidcategory = null;}
+		  
+		  var dataAdd = {'idCategoryType':xdata.parent.data.idCategoryType,'description':x,'idCategory':xidcategory};
+		  var urlx = baseURL+"/api/partycategory";
+	  }
+	  $.ajax
+		  ({
+			  type: "POST",
+			  url: urlx,
+			  contentType: "application/json",
+			  dataType: 'json',
+			  async: false,
+			  data:JSON.stringify(dataAdd)
+		  })
+		  .done(function(response){
+			$.ajax
+			  ({
+				  type: "GET",
+				  url: baseURL+"/api/ttm001/sf",
+				  contentType: "application/json",
+				  dataType: 'json',
+				  async: false,
+				  data: JSON.stringify()
+			  })
+			  .done(function(data){
+				var parsed = JSON.parse(JSON.stringify(data), function(k, v) {
+					if (k === "description") 
+						this.title = v;
+					else if (k === "categories")
+						this.children = v;
+					else
+						return v;
+					});
+				xdata1 = parsed;
+				}) ;
+		 
+			  var tree = $('#tree1').fancytree('getTree');
+			  tree.reload(xdata1); 
+			 })
+	  }; 
+
+   function deleteNode(x){
+	   if (x.data.values!=undefined){
+		  var urlx = baseURL+"/api/partycategorytype/"+x.data.idCategoryType;
+		}
+		else 
+		{
+		  var urlx = baseURL+"/api/partycategory/"+x.data.idCategory;
+		}
+		   $.ajax
+			  ({
+				  type: "DELETE",
+				  url: urlx,
+				  contentType: "application/json",
+				  dataType: 'json',
+				  async: false,
+				  data:JSON.stringify()
+			  })
+			  .done(function(response){
+				 })
+		  };
+
+</script>
+
+<!-- ---------------------------------------------------------------------- -->
+
+<script type="text/javascript">
+	function _subpage(obj, id, row){
+	_fw_setMessage(obj);
+	var parent = $(obj).closest('.menu*');
+	console.log(parent);
+	if(parent.html() == undefined) {
+		parent = $(obj).closest('.tab-pane');
+	}
+	$('.subpage.subpage-default', parent).removeClass('subpage-default');
+	var targetSubpage = $('#'+id);
+	_fw_validation_clear(targetSubpage);
+	$(targetSubpage).addClass('subpage-default');
+	
+	automaticFill(row, targetSubpage);
+	
+	}
+</script>
+
+<!-- ---------------------------------------------------------------------- -->
+
+<style type="text/css">
+	.ui-menu {
+		width: 180px;
+		font-size: 63%;
+	}
+	.ui-menu kbd { /* Keyboard shortcuts for ui-contextmenu titles */
+		float: right;
+	}
+	
+	.row hidden
+	{
+		display:none;
+	}
+	/* custom alignment (set by 'renderColumns'' event) */
+</style>
